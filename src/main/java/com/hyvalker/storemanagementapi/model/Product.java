@@ -15,7 +15,7 @@ public class Product {
     private Long id;
 
     private String name;
-    private int quantity;
+    private Integer quantity;
     private String description;
     private BigDecimal price;
 
