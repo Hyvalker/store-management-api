@@ -2,6 +2,9 @@ package com.hyvalker.storemanagementapi.service;
 
 import com.hyvalker.storemanagementapi.dto.CreateOrderItemRequest;
 import com.hyvalker.storemanagementapi.dto.CreateOrderRequest;
+import com.hyvalker.storemanagementapi.exception.InsufficientStockException;
+import com.hyvalker.storemanagementapi.exception.InvalidOrderException;
+import com.hyvalker.storemanagementapi.exception.ProductNotFoundException;
 import com.hyvalker.storemanagementapi.model.Order;
 import com.hyvalker.storemanagementapi.model.OrderItem;
 import com.hyvalker.storemanagementapi.model.Product;
@@ -27,10 +30,6 @@ public class OrderService {
     @Transactional
     public Order createOrder(CreateOrderRequest request) {
 
-        if (request.getItems() == null || request.getItems().isEmpty()) {
-            throw new RuntimeException("A venda deve possuir pelo menos um item.");
-        }
-
         Order order = new Order();
 
         order.setCreatedAt(LocalDateTime.now());
@@ -39,27 +38,20 @@ public class OrderService {
 
         for (CreateOrderItemRequest itemRequest : request.getItems()) {
 
-            if (itemRequest.getQuantity() == null || itemRequest.getQuantity() <= 0) {
-                throw new RuntimeException("Quantidade inválida!");
-            }
-
-            if (itemRequest.getProductId() == null) {
-                throw new RuntimeException("Produto obrigatório.");
-            }
-
             Product product = productRepository.findById(itemRequest.getProductId())
-                    .orElseThrow(() -> new RuntimeException(("Produto nao encontrado")));
+                    .orElseThrow(() -> new ProductNotFoundException(
+                            "Produto com id " + itemRequest.getProductId() + " não encontrado."));
 
             if (product.getQuantity() == null) {
-                throw new RuntimeException("Produto sem estoque definido: " + product.getName());
+                throw new InvalidOrderException("Produto sem estoque definido: " + product.getName());
             }
 
             if (product.getQuantity() < itemRequest.getQuantity()) {
-                throw new RuntimeException("Estoque insuficiente para o produto: " + product.getName());
+                throw new InsufficientStockException("Estoque insuficiente para o produto: " + product.getName());
             }
 
             if (product.getPrice() == null) {
-                throw new RuntimeException("Produto sem preço definido: " + product.getName());
+                throw new InvalidOrderException("Produto sem preço definido: " + product.getName());
             }
 
             OrderItem orderItem = new OrderItem();
