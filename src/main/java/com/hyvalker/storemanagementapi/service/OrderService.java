@@ -2,6 +2,7 @@ package com.hyvalker.storemanagementapi.service;
 
 import com.hyvalker.storemanagementapi.dto.CreateOrderItemRequest;
 import com.hyvalker.storemanagementapi.dto.CreateOrderRequest;
+import com.hyvalker.storemanagementapi.dto.OrderResponseDTO;
 import com.hyvalker.storemanagementapi.exception.InsufficientStockException;
 import com.hyvalker.storemanagementapi.exception.InvalidOrderException;
 import com.hyvalker.storemanagementapi.exception.ProductNotFoundException;
@@ -28,7 +29,7 @@ public class OrderService {
     private final ProductRepository productRepository;
 
     @Transactional
-    public Order createOrder(CreateOrderRequest request) {
+    public OrderResponseDTO createOrder(CreateOrderRequest request) {
 
         Order order = new Order();
 
@@ -73,15 +74,20 @@ public class OrderService {
             product.setQuantity(product.getQuantity() - itemRequest.getQuantity());
 
         }
-        return orderRepository.save(order);
+        Order savedOrder = orderRepository.save(order);
+        return new OrderResponseDTO(savedOrder);
     }
 
-    public List<Order> findAll() {
-        return orderRepository.findAll();
+    public List<OrderResponseDTO> findAll() {
+        return orderRepository.findAll()
+                .stream()
+                .map(OrderResponseDTO::new)
+                .toList();
     }
 
-    public Optional<Order> findById(Long id) {
-        return orderRepository.findById(id);
+    public Optional<OrderResponseDTO> findById(Long id) {
+        return orderRepository.findById(id)
+                .map(OrderResponseDTO::new);
     }
 
 }
