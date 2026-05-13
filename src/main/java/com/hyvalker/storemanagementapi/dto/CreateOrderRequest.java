@@ -13,4 +13,6 @@ public class CreateOrderRequest {
     @NotEmpty(message = "A venda deve possuir pelo menos um item.")
     @Valid
     private List<CreateOrderItemRequest> items;
+
+    
 }

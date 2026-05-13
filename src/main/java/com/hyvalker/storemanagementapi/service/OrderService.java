@@ -8,6 +8,7 @@ import com.hyvalker.storemanagementapi.exception.InvalidOrderException;
 import com.hyvalker.storemanagementapi.exception.ProductNotFoundException;
 import com.hyvalker.storemanagementapi.model.Order;
 import com.hyvalker.storemanagementapi.model.OrderItem;
+import com.hyvalker.storemanagementapi.model.OrderStatus;
 import com.hyvalker.storemanagementapi.model.Product;
 import com.hyvalker.storemanagementapi.repository.OrderRepository;
 import com.hyvalker.storemanagementapi.repository.ProductRepository;
@@ -36,6 +37,8 @@ public class OrderService {
         order.setCreatedAt(LocalDateTime.now());
 
         order.setTotalPrice(BigDecimal.ZERO);
+
+        order.setStatus(OrderStatus.PENDING);
 
         for (CreateOrderItemRequest itemRequest : request.getItems()) {
 
