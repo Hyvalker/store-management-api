@@ -41,6 +41,20 @@ public class GlobalExceptionHandler {
         return ResponseEntity.badRequest().body(error);
     }
 
+    @ExceptionHandler(OrderAlreadyCanceledException.class)
+    public ResponseEntity<ApiError> handleOrderAlreadyCanceled(OrderAlreadyCanceledException ex) {
+
+        ApiError error = new ApiError(HttpStatus.BAD_REQUEST.value(), ex.getMessage());
+        return ResponseEntity.badRequest().body(error);
+    }
+
+    @ExceptionHandler(OrderNotFoundException.class)
+    public ResponseEntity<ApiError> handleOrderNotFound(OrderNotFoundException ex) {
+
+        ApiError error = new ApiError (HttpStatus.NOT_FOUND.value(), ex.getMessage());
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
+    }
+
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ApiError> handleException(Exception ex) {
         ApiError error = new ApiError(HttpStatus.INTERNAL_SERVER_ERROR.value(),

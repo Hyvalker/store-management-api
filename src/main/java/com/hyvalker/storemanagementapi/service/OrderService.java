@@ -3,9 +3,7 @@ package com.hyvalker.storemanagementapi.service;
 import com.hyvalker.storemanagementapi.dto.CreateOrderItemRequest;
 import com.hyvalker.storemanagementapi.dto.CreateOrderRequest;
 import com.hyvalker.storemanagementapi.dto.OrderResponseDTO;
-import com.hyvalker.storemanagementapi.exception.InsufficientStockException;
-import com.hyvalker.storemanagementapi.exception.InvalidOrderException;
-import com.hyvalker.storemanagementapi.exception.ProductNotFoundException;
+import com.hyvalker.storemanagementapi.exception.*;
 import com.hyvalker.storemanagementapi.model.Order;
 import com.hyvalker.storemanagementapi.model.OrderItem;
 import com.hyvalker.storemanagementapi.model.OrderStatus;
@@ -93,4 +91,24 @@ public class OrderService {
                 .map(OrderResponseDTO::new);
     }
 
+    @Transactional
+    public OrderResponseDTO cancelOrder(Long id) {
+        Order order = orderRepository.findById(id)
+                .orElseThrow(() -> new OrderNotFoundException("Pedido não encontrado."));
+
+        if (order.getStatus() == OrderStatus.CANCELED) {
+            throw new OrderAlreadyCanceledException("O pedido já foi cancelado.");
+        }
+
+        for (OrderItem item : order.getItems()) {
+            Product product = item.getProduct();
+
+            product.setQuantity(product.getQuantity() + item.getQuantity());
+        }
+
+        order.setStatus(OrderStatus.CANCELED);
+
+        Order savedOrder = orderRepository.save(order);
+        return new OrderResponseDTO(savedOrder);
+    }
 }
