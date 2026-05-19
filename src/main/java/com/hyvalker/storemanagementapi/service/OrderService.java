@@ -43,6 +43,9 @@ public class OrderService {
             Product product = productRepository.findById(itemRequest.getProductId())
                     .orElseThrow(() -> new ProductNotFoundException(
                             "Produto com id " + itemRequest.getProductId() + " não encontrado."));
+            if (Boolean.FALSE.equals(product.getActive())) {
+                throw new InvalidOrderException("Produto inativo: " + product.getName());
+            }
 
             if (product.getQuantity() == null) {
                 throw new InvalidOrderException("Produto sem estoque definido: " + product.getName());

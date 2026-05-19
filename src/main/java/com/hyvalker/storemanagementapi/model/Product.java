@@ -22,4 +22,6 @@ public class Product {
     @Enumerated(EnumType.STRING)
     private Category category;
 
+    private Boolean active = true;
+
 }

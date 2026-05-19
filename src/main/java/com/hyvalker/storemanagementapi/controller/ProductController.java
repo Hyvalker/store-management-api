@@ -26,7 +26,7 @@ public class ProductController {
     }
 
     @GetMapping
-    public List<Product> findAll(){
+    public List<Product> findAll() {
         return productService.findAll();
     }
 
@@ -46,11 +46,9 @@ public class ProductController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
-        if (productService.deleteById(id)) {
-            return ResponseEntity.noContent().build();
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+    public ResponseEntity<Void> deactivateProduct(@PathVariable Long id) {
+        productService.deactivateProduct(id);
+        return ResponseEntity.noContent().build();
     }
 }
+

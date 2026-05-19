@@ -1,6 +1,7 @@
 package com.hyvalker.storemanagementapi.service;
 
 
+import com.hyvalker.storemanagementapi.exception.ProductNotFoundException;
 import com.hyvalker.storemanagementapi.model.Product;
 import com.hyvalker.storemanagementapi.repository.ProductRepository;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +20,7 @@ public class ProductService {
     }
 
     public List<Product> findAll(){
-        return productRepository.findAll();
+        return productRepository.findByActiveTrue();
     }
 
     public Product create(Product product) {
@@ -43,12 +44,12 @@ public class ProductService {
                 });
     }
 
-    public boolean deleteById(Long id){
-        return productRepository.findById(id)
-                .map(product -> {
-                    productRepository.delete(product);
-                    return true;
-                })
-                .orElse(false);
+    public void deactivateProduct (Long id){
+        Product product = productRepository.findById(id)
+                .orElseThrow(() -> new ProductNotFoundException("Produto não encontrado."));
+
+        product.setActive(false);
+
+        productRepository.save(product);
     }
 }
