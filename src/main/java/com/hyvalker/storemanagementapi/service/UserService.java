@@ -1,5 +1,8 @@
 package com.hyvalker.storemanagementapi.service;
 
+import com.hyvalker.storemanagementapi.dto.CreateUserRequest;
+import com.hyvalker.storemanagementapi.dto.UserResponseDTO;
+import com.hyvalker.storemanagementapi.exception.UserNotFoundException;
 import com.hyvalker.storemanagementapi.model.User;
 import com.hyvalker.storemanagementapi.repository.UserRepository;
 import org.springframework.stereotype.Service;
@@ -17,36 +20,50 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public List<User> findAll(){
-        return userRepository.findAll();
+    public List<UserResponseDTO> findAll(){
+        return userRepository.findByActiveTrue()
+                .stream()
+                .map(UserResponseDTO::new)
+                .toList();
     }
 
-    public User create(User user) {
-        return userRepository.save(user);
+    public UserResponseDTO create(CreateUserRequest request) {
+        User user = new User();
+        user.setName(request.getName());
+        user.setEmail(request.getEmail());
+        user.setAddress(request.getAddress());
+        user.setPhoneNumber(request.getPhoneNumber());
+        user.setActive(true);
+
+        User savedUser = userRepository.save(user);
+
+        return new UserResponseDTO(savedUser);
     }
 
-    public Optional<User> findById(Long id) {
-        return userRepository.findById(id);
+    public Optional<UserResponseDTO> findById(Long id) {
+        return userRepository.findById(id)
+                .map(UserResponseDTO::new);
     }
     
-    public Optional<User> update(Long id, User userDetails) {
+    public Optional<UserResponseDTO> update(Long id, CreateUserRequest request) {
         return userRepository.findById(id)
                 .map(user -> {
-                    user.setName(userDetails.getName());
-                    user.setEmail(userDetails.getEmail());
-                    user.setAddress(userDetails.getAddress());
-                    user.setPhoneNumber(userDetails.getPhoneNumber());
+                    user.setName(request.getName());
+                    user.setEmail(request.getEmail());
+                    user.setAddress(request.getAddress());
+                    user.setPhoneNumber(request.getPhoneNumber());
 
-                    return userRepository.save(user);
+                    User savedUser = userRepository.save(user);
+
+                    return new UserResponseDTO(savedUser);
                 });
     }
 
-    public boolean deleteById(Long id) {
-        return userRepository.findById(id)
-                .map(user -> {
-                    userRepository.delete(user);
-                    return true;
-                })
-                .orElse(false);
+    public void deactivateUser(Long id) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new UserNotFoundException("Usuário não encontrado."));
+        user.setActive(false);
+
+        userRepository.save(user);
     }
 }

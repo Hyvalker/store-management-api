@@ -1,6 +1,8 @@
 package com.hyvalker.storemanagementapi.service;
 
 
+import com.hyvalker.storemanagementapi.dto.CreateProductRequest;
+import com.hyvalker.storemanagementapi.dto.ProductResponseDTO;
 import com.hyvalker.storemanagementapi.exception.ProductNotFoundException;
 import com.hyvalker.storemanagementapi.model.Product;
 import com.hyvalker.storemanagementapi.repository.ProductRepository;
@@ -19,19 +21,33 @@ public class ProductService {
         this.productRepository = productRepository;
     }
 
-    public List<Product> findAll(){
-        return productRepository.findByActiveTrue();
+    public List<ProductResponseDTO> findAll(){
+        return productRepository.findByActiveTrue()
+                .stream()
+                .map(ProductResponseDTO::new)
+                .toList();
     }
 
-    public Product create(Product product) {
-        return productRepository.save(product);
+    public ProductResponseDTO create(CreateProductRequest request) {
+        Product product = new Product();
+
+        product.setName(request.getName());
+        product.setQuantity(request.getQuantity());
+        product.setPrice(request.getPrice());
+        product.setDescription(request.getDescription());
+        product.setCategory(request.getCategory());
+
+        Product savedProduct = productRepository.save(product);
+
+        return new ProductResponseDTO(savedProduct);
     }
 
-    public Optional<Product> findById(Long id) {
-        return productRepository.findById(id);
+    public Optional<ProductResponseDTO> findById(Long id) {
+        return productRepository.findById(id)
+                .map(ProductResponseDTO::new);
     }
 
-    public Optional<Product> update(Long id, Product productDetails) {
+    public Optional<ProductResponseDTO> update(Long id, Product productDetails) {
         return productRepository.findById(id)
                 .map(product -> {
                     product.setName(productDetails.getName());
@@ -40,7 +56,8 @@ public class ProductService {
                     product.setDescription(productDetails.getDescription());
                     product.setQuantity(productDetails.getQuantity());
 
-                    return productRepository.save(product);
+                    Product savedProduct = productRepository.save(product);
+                    return new ProductResponseDTO(savedProduct);
                 });
     }
 

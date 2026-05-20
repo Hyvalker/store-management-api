@@ -17,4 +17,6 @@ public class User {
     private String email;
     private String address;
     private String phoneNumber;
+
+    private Boolean active = true;
 }

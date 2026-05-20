@@ -1,9 +1,13 @@
 package com.hyvalker.storemanagementapi.controller;
 
 
+import com.hyvalker.storemanagementapi.dto.CreateProductRequest;
+import com.hyvalker.storemanagementapi.dto.ProductResponseDTO;
 import com.hyvalker.storemanagementapi.model.Product;
 import com.hyvalker.storemanagementapi.repository.ProductRepository;
 import com.hyvalker.storemanagementapi.service.ProductService;
+import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,24 +25,27 @@ public class ProductController {
 
 
     @PostMapping
-    public Product createProduct(@RequestBody Product product) {
-        return productService.create(product);
+    public ResponseEntity<ProductResponseDTO> createProduct(@Valid @RequestBody CreateProductRequest request) {
+
+        ProductResponseDTO response = productService.create(request);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
     @GetMapping
-    public List<Product> findAll() {
+    public List<ProductResponseDTO> findAll() {
         return productService.findAll();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Product> findById(@PathVariable Long id) {
+    public ResponseEntity<ProductResponseDTO> findById(@PathVariable Long id) {
         return productService.findById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Product> updateProduct(@PathVariable Long id, @RequestBody Product productDetails) {
+    public ResponseEntity<ProductResponseDTO> updateProduct(@PathVariable Long id, @RequestBody Product productDetails) {
         return productService.update(id, productDetails)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
