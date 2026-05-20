@@ -47,14 +47,14 @@ public class ProductService {
                 .map(ProductResponseDTO::new);
     }
 
-    public Optional<ProductResponseDTO> update(Long id, Product productDetails) {
+    public Optional<ProductResponseDTO> update(Long id, CreateProductRequest request) {
         return productRepository.findById(id)
                 .map(product -> {
-                    product.setName(productDetails.getName());
-                    product.setPrice(productDetails.getPrice());
-                    product.setCategory(productDetails.getCategory());
-                    product.setDescription(productDetails.getDescription());
-                    product.setQuantity(productDetails.getQuantity());
+                    product.setName(request.getName());
+                    product.setPrice(request.getPrice());
+                    product.setCategory(request.getCategory());
+                    product.setDescription(request.getDescription());
+                    product.setQuantity(request.getQuantity());
 
                     Product savedProduct = productRepository.save(product);
                     return new ProductResponseDTO(savedProduct);

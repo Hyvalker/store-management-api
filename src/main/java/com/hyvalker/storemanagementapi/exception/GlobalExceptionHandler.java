@@ -26,8 +26,8 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(InsufficientStockException.class)
     public ResponseEntity<ApiError> handleInsufficientStock(InsufficientStockException ex) {
 
-        ApiError error = new ApiError(HttpStatus.BAD_REQUEST.value(),ex.getMessage());
-        return ResponseEntity.badRequest().body(error);
+        ApiError error = new ApiError(HttpStatus.CONFLICT.value(),ex.getMessage());
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(error);
     }
 
     @ExceptionHandler(InvalidOrderException.class)
@@ -51,8 +51,8 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(OrderAlreadyCanceledException.class)
     public ResponseEntity<ApiError> handleOrderAlreadyCanceled(OrderAlreadyCanceledException ex) {
 
-        ApiError error = new ApiError(HttpStatus.BAD_REQUEST.value(), ex.getMessage());
-        return ResponseEntity.badRequest().body(error);
+        ApiError error = new ApiError(HttpStatus.CONFLICT.value(), ex.getMessage());
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(error);
     }
 
     @ExceptionHandler(OrderNotFoundException.class)
