@@ -4,10 +4,7 @@ import com.hyvalker.storemanagementapi.dto.CreateOrderItemRequest;
 import com.hyvalker.storemanagementapi.dto.CreateOrderRequest;
 import com.hyvalker.storemanagementapi.dto.OrderResponseDTO;
 import com.hyvalker.storemanagementapi.exception.*;
-import com.hyvalker.storemanagementapi.model.Order;
-import com.hyvalker.storemanagementapi.model.OrderItem;
-import com.hyvalker.storemanagementapi.model.OrderStatus;
-import com.hyvalker.storemanagementapi.model.Product;
+import com.hyvalker.storemanagementapi.model.*;
 import com.hyvalker.storemanagementapi.repository.OrderRepository;
 import com.hyvalker.storemanagementapi.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
@@ -24,8 +21,8 @@ import java.util.Optional;
 public class OrderService {
 
     private final OrderRepository orderRepository;
-
     private final ProductRepository productRepository;
+    private final StockMovementService stockMovementService;
 
     @Transactional
     public OrderResponseDTO createOrder(CreateOrderRequest request) {
@@ -85,7 +82,13 @@ public class OrderService {
 
             product.setQuantity(product.getQuantity() - itemRequest.getQuantity());
 
+            stockMovementService.createMovement(
+                    product,
+                    itemRequest.getQuantity(),
+                    StockMovementType.SALE
+            );
         }
+
         Order savedOrder = orderRepository.save(order);
         return new OrderResponseDTO(savedOrder);
     }
@@ -115,6 +118,12 @@ public class OrderService {
             Product product = item.getProduct();
 
             product.setQuantity(product.getQuantity() + item.getQuantity());
+
+            stockMovementService.createMovement(
+                    product,
+                    item.getQuantity(),
+                    StockMovementType.RETURN
+            );
         }
 
         order.setStatus(OrderStatus.CANCELED);

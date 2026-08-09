@@ -5,7 +5,9 @@ import com.hyvalker.storemanagementapi.dto.CreateProductRequest;
 import com.hyvalker.storemanagementapi.dto.ProductResponseDTO;
 import com.hyvalker.storemanagementapi.exception.ProductNotFoundException;
 import com.hyvalker.storemanagementapi.model.Product;
+import com.hyvalker.storemanagementapi.model.StockMovementType;
 import com.hyvalker.storemanagementapi.repository.ProductRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -16,9 +18,14 @@ import java.util.Optional;
 public class ProductService {
 
     private final ProductRepository productRepository;
+    private final StockMovementService stockMovementService;
 
-    public ProductService(ProductRepository productRepository) {
+    public ProductService(
+            ProductRepository productRepository,
+            StockMovementService stockMovementService
+    ) {
         this.productRepository = productRepository;
+        this.stockMovementService = stockMovementService;
     }
 
     public List<ProductResponseDTO> findAll(){
@@ -28,6 +35,7 @@ public class ProductService {
                 .toList();
     }
 
+    @Transactional
     public ProductResponseDTO create(CreateProductRequest request) {
         Product product = new Product();
 
@@ -42,6 +50,12 @@ public class ProductService {
 
 
         Product savedProduct = productRepository.save(product);
+
+        stockMovementService.createMovement(
+                savedProduct,
+                request.getQuantity(),
+                StockMovementType.ENTRY
+        );
 
         return new ProductResponseDTO(savedProduct);
     }
