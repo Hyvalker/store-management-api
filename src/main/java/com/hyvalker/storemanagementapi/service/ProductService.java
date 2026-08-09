@@ -6,9 +6,9 @@ import com.hyvalker.storemanagementapi.dto.ProductResponseDTO;
 import com.hyvalker.storemanagementapi.exception.ProductNotFoundException;
 import com.hyvalker.storemanagementapi.model.Product;
 import com.hyvalker.storemanagementapi.repository.ProductRepository;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,10 +32,14 @@ public class ProductService {
         Product product = new Product();
 
         product.setName(request.getName());
+        product.setType(request.getType());
         product.setQuantity(request.getQuantity());
-        product.setPrice(request.getPrice());
-        product.setDescription(request.getDescription());
-        product.setCategory(request.getCategory());
+        product.setCostPrice(request.getCostPrice());
+        product.setSalePrice(request.getSalePrice());
+        product.setProfitMargin(request.getProfitMargin());
+        product.setBarcode(request.getBarcode());
+        product.setCreatedAt(LocalDateTime.now());
+
 
         Product savedProduct = productRepository.save(product);
 
@@ -51,10 +55,10 @@ public class ProductService {
         return productRepository.findById(id)
                 .map(product -> {
                     product.setName(request.getName());
-                    product.setPrice(request.getPrice());
-                    product.setCategory(request.getCategory());
-                    product.setDescription(request.getDescription());
-                    product.setQuantity(request.getQuantity());
+                    product.setType(request.getType());
+                    product.setCostPrice(request.getCostPrice());
+                    product.setSalePrice(request.getSalePrice());
+                    product.setBarcode(request.getBarcode());
 
                     Product savedProduct = productRepository.save(product);
                     return new ProductResponseDTO(savedProduct);

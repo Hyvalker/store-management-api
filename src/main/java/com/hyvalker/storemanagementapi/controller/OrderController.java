@@ -5,7 +5,6 @@ import com.hyvalker.storemanagementapi.dto.CreateOrderRequest;
 import com.hyvalker.storemanagementapi.dto.OrderResponseDTO;
 import com.hyvalker.storemanagementapi.exception.ApiError;
 import com.hyvalker.storemanagementapi.exception.OrderNotFoundException;
-import com.hyvalker.storemanagementapi.exception.ProductNotFoundException;
 import com.hyvalker.storemanagementapi.service.OrderService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;

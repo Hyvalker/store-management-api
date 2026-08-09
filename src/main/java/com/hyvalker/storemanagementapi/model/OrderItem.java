@@ -18,6 +18,7 @@ public class OrderItem {
 
     private Integer quantity;
     private BigDecimal unitPrice;
+    private BigDecimal unitCost;
     private BigDecimal subtotal;
 
     @JsonIgnore

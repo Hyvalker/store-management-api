@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.math.BigDecimal;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @Data
 @Entity
@@ -15,13 +17,18 @@ public class Product {
     private Long id;
 
     private String name;
-    private Integer quantity;
-    private String description;
-    private BigDecimal price;
 
     @Enumerated(EnumType.STRING)
-    private Category category;
+    private Type type;
+
+    private Integer quantity;
+    private BigDecimal costPrice;
+    private BigDecimal salePrice;
+    private BigDecimal profitMargin;
+
+    private String barcode;
 
     private Boolean active = true;
 
+    private LocalDateTime createdAt;
 }

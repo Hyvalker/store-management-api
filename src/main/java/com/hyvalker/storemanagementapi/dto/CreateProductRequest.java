@@ -1,6 +1,6 @@
 package com.hyvalker.storemanagementapi.dto;
 
-import com.hyvalker.storemanagementapi.model.Category;
+import com.hyvalker.storemanagementapi.model.Type;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -14,7 +14,7 @@ public class CreateProductRequest {
 
     @Schema(
             description = "Nome do produto.",
-            example = "Filtro externo Sunsun UBL-802"
+            example = "Amphiprion ocellaris (peixe-palhaço)"
     )
     @NotBlank(message = "O nome não pode estar em branco.")
     private String name;
@@ -27,24 +27,39 @@ public class CreateProductRequest {
     @PositiveOrZero(message = "A quantidade não pode ser negativa.")
     private Integer quantity;
 
-    @Schema(
-            description = "Preço unitário do produto.",
-            example = "149.90"
+    @Schema (
+            description = "Tipo do produto.",
+            example = "LIVING"
+    )
+    @NotNull(message = "O tipo não pode ser nulo.")
+    private Type type;
+
+    @Schema (
+            description = "Preço de custo unitário do produto.",
+            example = "50.00"
     )
     @NotNull(message = "O preço não pode ser nulo.")
-    @PositiveOrZero(message = "O preço não pode ser negativo.")
-    private BigDecimal price;
+    @PositiveOrZero(message = "O preço de custo não pode ser negativo.")
+    private BigDecimal costPrice;
 
-    @Schema(
-            description = "Descrição detalhada do produto.",
-            example = "Filtro externo para aquários de água doce de até 100 litros."
+    @Schema (
+            description = "Preço final de venda. Pode ser informado diretamente ou calculado a patir da margem de lucro.",
+            example = "85,00"
     )
-    private String description;
+    @PositiveOrZero(message = "O preço final não pode ser negativo.")
+    private BigDecimal salePrice;
 
-    @Schema(
-            description = "Categoria do produto.",
-            example = "FRESHWATER"
+    @Schema (
+            description = "Margem de lucro sobre o custo. Pode ser informada diretamente ou calculada a partir do preço final.",
+            example = "70,00"
     )
-    @NotNull(message = "A categoria não pode ser nula.")
-    private Category category;
+    @PositiveOrZero(message = "A margem de lucro não pode ser negativa.")
+    private BigDecimal profitMargin;
+
+    @Schema (
+            description = "Código de barras do produto.",
+            example = "7891234567890"
+    )
+    @NotBlank(message = "O código do produto não pode estar em branco.")
+    private String barcode;
 }

@@ -55,18 +55,26 @@ public class OrderService {
                 throw new InsufficientStockException("Estoque insuficiente para o produto: " + product.getName());
             }
 
-            if (product.getPrice() == null) {
+            if (product.getSalePrice() == null) {
                 throw new InvalidOrderException("Produto sem preço definido: " + product.getName());
             }
+
+            if (product.getCostPrice() == null) {
+                throw new InvalidOrderException(
+                        "Produto sem preço de custo definido: " + product.getName());
+            }
+
 
             OrderItem orderItem = new OrderItem();
 
             orderItem.setOrder(order);
             orderItem.setProduct(product);
             orderItem.setQuantity(itemRequest.getQuantity());
-            orderItem.setUnitPrice(product.getPrice());
 
-            BigDecimal subtotal = product.getPrice()
+            orderItem.setUnitPrice(product.getSalePrice());
+            orderItem.setUnitCost(product.getCostPrice());
+
+            BigDecimal subtotal = product.getSalePrice()
                     .multiply(BigDecimal.valueOf(itemRequest.getQuantity()));
 
             orderItem.setSubtotal(subtotal);
