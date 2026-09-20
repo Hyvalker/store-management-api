@@ -38,7 +38,7 @@ public class CreateProductRequest {
             description = "Preço de custo unitário do produto.",
             example = "50.00"
     )
-    @NotNull(message = "O preço não pode ser nulo.")
+    @NotNull(message = "O preço de custo não pode ser nulo.")
     @PositiveOrZero(message = "O preço de custo não pode ser negativo.")
     private BigDecimal costPrice;
 

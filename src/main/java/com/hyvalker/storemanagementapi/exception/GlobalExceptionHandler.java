@@ -37,6 +37,13 @@ public class GlobalExceptionHandler {
         return ResponseEntity.badRequest().body(error);
     }
 
+    @ExceptionHandler(InvalidProductException.class)
+    public ResponseEntity<ApiError> handleInvalidProduct(InvalidProductException ex) {
+
+        ApiError error = new ApiError(HttpStatus.BAD_REQUEST.value(), ex.getMessage());
+        return ResponseEntity.badRequest().body(error);
+    }
+
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ApiError> handleValidationException(MethodArgumentNotValidException ex) {
         String message = ex.getBindingResult()
