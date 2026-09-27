@@ -80,16 +80,67 @@ public class OrderService {
 
             order.setTotalPrice(order.getTotalPrice().add(subtotal));
 
-            product.setQuantity(product.getQuantity() - itemRequest.getQuantity());
+        }
+
+        Order savedOrder = orderRepository.save(order);
+        return new OrderResponseDTO(savedOrder);
+    }
+
+    @Transactional
+    public OrderResponseDTO payOrder(Long id) {
+        Order order = orderRepository.findById(id)
+                .orElseThrow(() -> new OrderNotFoundException(
+                        "Pedido não encontrado."
+                ));
+
+        if (order.getStatus() == OrderStatus.CANCELED) {
+            throw new InvalidOrderException(
+                    "Não é possível pagar um pedido cancelado."
+            );
+        }
+
+        if (order.getStatus() == OrderStatus.PAID) {
+            throw new InvalidOrderException(
+                    "O pedido já foi pago."
+            );
+        }
+
+        for (OrderItem item : order.getItems()) {
+            Product product = item.getProduct();
+
+            if (!Boolean.TRUE.equals(product.getActive())) {
+                throw new InvalidOrderException(
+                        "Produto inativo: " + product.getName()
+                );
+            }
+
+            if (product.getQuantity() == null) {
+                throw new InvalidOrderException(
+                        "Produto sem estoque definido: " + product.getName()
+                );
+            }
+
+            if (product.getQuantity() < item.getQuantity()) {
+                throw new InsufficientStockException(
+                        "Estoque insuficiente para o produto: " + product.getName()
+                );
+            }
+
+            product.setQuantity(
+                    product.getQuantity() - item.getQuantity()
+            );
 
             stockMovementService.createMovement(
                     product,
-                    itemRequest.getQuantity(),
+                    item.getQuantity(),
                     StockMovementType.SALE
             );
         }
 
+        order.setStatus(OrderStatus.PAID);
+
         Order savedOrder = orderRepository.save(order);
+
         return new OrderResponseDTO(savedOrder);
     }
 
@@ -107,6 +158,7 @@ public class OrderService {
 
     @Transactional
     public OrderResponseDTO cancelOrder(Long id) {
+
         Order order = orderRepository.findById(id)
                 .orElseThrow(() -> new OrderNotFoundException("Pedido não encontrado."));
 
@@ -114,21 +166,26 @@ public class OrderService {
             throw new OrderAlreadyCanceledException("O pedido já foi cancelado.");
         }
 
-        for (OrderItem item : order.getItems()) {
-            Product product = item.getProduct();
+        if (order.getStatus() == OrderStatus.PAID) {
 
-            product.setQuantity(product.getQuantity() + item.getQuantity());
+            for (OrderItem item : order.getItems()) {
 
-            stockMovementService.createMovement(
-                    product,
-                    item.getQuantity(),
-                    StockMovementType.RETURN
-            );
+                Product product = item.getProduct();
+
+                product.setQuantity(product.getQuantity() + item.getQuantity());
+
+                stockMovementService.createMovement(
+                        product,
+                        item.getQuantity(),
+                        StockMovementType.RETURN
+                );
+            }
         }
 
         order.setStatus(OrderStatus.CANCELED);
 
         Order savedOrder = orderRepository.save(order);
+        
         return new OrderResponseDTO(savedOrder);
     }
 }

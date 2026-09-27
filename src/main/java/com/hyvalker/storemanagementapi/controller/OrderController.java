@@ -100,4 +100,25 @@ public class OrderController {
         return ResponseEntity.ok(response);
     }
 
+    @Operation(summary = "Confirma o pagamento de um pedido.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Pagamento confirmado com sucesso."),
+            @ApiResponse(responseCode = "404", description = "Pedido não encontrado.",
+            content = @Content(
+                    mediaType = "application/json",
+                    schema = @Schema(implementation = ApiError.class)
+            )),
+            @ApiResponse(responseCode = "409", description = "Pedido inválido ou estoque insuficiente",
+            content = @Content(
+                    mediaType = "application/json",
+                    schema = @Schema(implementation = ApiError.class)
+            ))
+    })
+    @PatchMapping("/{id}/pay")
+    public ResponseEntity<OrderResponseDTO> payOrder(@PathVariable Long id) {
+
+        OrderResponseDTO response = orderService.payOrder(id);
+
+        return ResponseEntity.ok(response);
+    }
 }
