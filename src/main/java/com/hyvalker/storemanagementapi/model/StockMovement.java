@@ -3,6 +3,7 @@ package com.hyvalker.storemanagementapi.model;
 import jakarta.persistence.*;
 import lombok.Data;
 import java.time.LocalDateTime;
+import java.math.BigDecimal;
 
 @Data
 @Entity
@@ -18,6 +19,14 @@ public class StockMovement {
     private Product product;
 
     private Integer quantity;
+
+    private BigDecimal costPrice;
+
+    private BigDecimal salePrice;
+
+    private BigDecimal profitMargin;
+
+    private String reason;
 
     @Enumerated(EnumType.STRING)
     private StockMovementType type;

@@ -2,7 +2,9 @@ package com.hyvalker.storemanagementapi.controller;
 
 
 import com.hyvalker.storemanagementapi.dto.CreateProductRequest;
+import com.hyvalker.storemanagementapi.dto.CreateStockEntryRequest;
 import com.hyvalker.storemanagementapi.dto.ProductResponseDTO;
+import com.hyvalker.storemanagementapi.dto.CreateStockLossRequest;
 import com.hyvalker.storemanagementapi.exception.ApiError;
 import com.hyvalker.storemanagementapi.exception.ProductNotFoundException;
 import com.hyvalker.storemanagementapi.service.ProductService;
@@ -48,6 +50,15 @@ public class ProductController {
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
+    @PostMapping("/stock-loss")
+    public ResponseEntity<ProductResponseDTO> createStockLoss(
+            @Valid @RequestBody CreateStockLossRequest request
+    ) {
+        return ResponseEntity.ok(
+                productService.createStockLoss(request)
+        );
+    }
+
     @Operation(summary = "Lista todos os produtos cadastrados.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Produtos listados com sucesso.")
@@ -57,18 +68,49 @@ public class ProductController {
         return productService.findAll();
     }
 
+    @Operation(summary = "Buscaproduto ativo pelo código de barras.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Produto encontrado com sucesso."),
+            @ApiResponse(responseCode = "404", description = "Produto não encontrado.",
+                    content = @Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = ApiError.class)
+                    ))
+    })
+    @GetMapping("/barcode/{barcode}")
+    public ResponseEntity<ProductResponseDTO> findByBarcode(
+            @PathVariable String barcode
+    ) {
+        ProductResponseDTO response = productService.findByBarcorde(barcode)
+                .orElseThrow(() -> new ProductNotFoundException(
+                        "Produto não encontrado."
+                ));
+        return ResponseEntity.ok(response);
+    }
+
+    @Operation(summary = "Busca produtos ativos pelo nome.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Produtos encontrados com sucesso.")
+    })
+    @GetMapping("/search")
+    public List<ProductResponseDTO> searchByName(
+            @RequestParam String name
+    ) {
+        return productService.searchByName(name);
+    }
+
     @Operation(summary = "Busca produto por ID.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Produto encontrado com sucesso."),
             @ApiResponse(responseCode = "404", description = "Produto não encontrado.",
                     content = @Content(
-                    mediaType = "application/json",
-                    schema = @Schema(implementation = ApiError.class)
-            ))
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = ApiError.class)
+                    ))
     })
     @GetMapping("/{id}")
     public ResponseEntity<ProductResponseDTO> findById(@PathVariable Long id) {
-        ProductResponseDTO response =  productService.findById(id)
+        ProductResponseDTO response = productService.findById(id)
                 .orElseThrow(() -> new ProductNotFoundException("Produto não encontrado"));
 
         return ResponseEntity.ok(response);
@@ -79,18 +121,18 @@ public class ProductController {
             @ApiResponse(responseCode = "200", description = "Produto atualizado com sucesso."),
             @ApiResponse(responseCode = "400", description = "Dados inválidos na requisição.",
                     content = @Content(
-                    mediaType = "application/json",
-                    schema = @Schema(implementation = ApiError.class)
-            )),
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = ApiError.class)
+                    )),
             @ApiResponse(responseCode = "404", description = "Produto não encontrado.",
                     content = @Content(
-                    mediaType = "application/json",
-                    schema = @Schema(implementation = ApiError.class)
-            ))
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = ApiError.class)
+                    ))
     })
     @PutMapping("/{id}")
     public ResponseEntity<ProductResponseDTO> updateProduct(@PathVariable Long id, @Valid @RequestBody CreateProductRequest request) {
-        ProductResponseDTO response =  productService.update(id, request)
+        ProductResponseDTO response = productService.update(id, request)
                 .orElseThrow(() -> new ProductNotFoundException("Produto não encontrado."));
 
         return ResponseEntity.ok(response);
@@ -102,14 +144,21 @@ public class ProductController {
             @ApiResponse(responseCode = "204", description = "Produto desativado com sucesso."),
             @ApiResponse(responseCode = "404", description = "Produto não encontrado.",
                     content = @Content(
-                    mediaType = "application/json",
-                    schema = @Schema(implementation = ApiError.class)
-            ))
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = ApiError.class)
+                    ))
     })
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deactivateProduct(@PathVariable Long id) {
         productService.deactivateProduct(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping("/stock-entry")
+    public ResponseEntity<ProductResponseDTO> createStockEntry(
+            @Valid @RequestBody CreateStockEntryRequest request
+    ) {
+        return ResponseEntity.ok(productService.createStockEntry(request));
     }
 }
 
