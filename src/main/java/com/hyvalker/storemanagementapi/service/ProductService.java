@@ -2,6 +2,7 @@ package com.hyvalker.storemanagementapi.service;
 
 import com.hyvalker.storemanagementapi.dto.CreateStockEntryRequest;
 import com.hyvalker.storemanagementapi.dto.CreateProductRequest;
+import com.hyvalker.storemanagementapi.dto.UpdateProductRequest;
 import com.hyvalker.storemanagementapi.dto.ProductResponseDTO;
 import com.hyvalker.storemanagementapi.dto.CreateStockLossRequest;
 import com.hyvalker.storemanagementapi.exception.InvalidProductException;
@@ -273,7 +274,7 @@ public class ProductService {
                 .map(ProductResponseDTO::new);
     }
 
-    public Optional<ProductResponseDTO> update(Long id, CreateProductRequest request) {
+    public Optional<ProductResponseDTO> update(Long id, UpdateProductRequest request) {
         return productRepository.findById(id)
                 .map(product -> {
 
@@ -287,7 +288,12 @@ public class ProductService {
                     product.setType(request.getType());
                     product.setBarcode(request.getBarcode());
 
-                    applyPricing(product, request);
+                    applyPricing(
+                            product,
+                            request.getCostPrice(),
+                            request.getSalePrice(),
+                            request.getProfitMargin()
+                    );
 
                     Product savedProduct = productRepository.save(product);
 

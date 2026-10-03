@@ -2,6 +2,7 @@ package com.hyvalker.storemanagementapi.controller;
 
 
 import com.hyvalker.storemanagementapi.dto.CreateProductRequest;
+import com.hyvalker.storemanagementapi.dto.UpdateProductRequest;
 import com.hyvalker.storemanagementapi.dto.CreateStockEntryRequest;
 import com.hyvalker.storemanagementapi.dto.ProductResponseDTO;
 import com.hyvalker.storemanagementapi.dto.CreateStockLossRequest;
@@ -131,7 +132,7 @@ public class ProductController {
                     ))
     })
     @PutMapping("/{id}")
-    public ResponseEntity<ProductResponseDTO> updateProduct(@PathVariable Long id, @Valid @RequestBody CreateProductRequest request) {
+    public ResponseEntity<ProductResponseDTO> updateProduct(@PathVariable Long id, @Valid @RequestBody UpdateProductRequest request) {
         ProductResponseDTO response = productService.update(id, request)
                 .orElseThrow(() -> new ProductNotFoundException("Produto não encontrado."));
 
