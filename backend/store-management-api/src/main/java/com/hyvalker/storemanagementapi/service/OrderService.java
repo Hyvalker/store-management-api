@@ -7,6 +7,7 @@ import com.hyvalker.storemanagementapi.exception.*;
 import com.hyvalker.storemanagementapi.model.*;
 import com.hyvalker.storemanagementapi.repository.OrderRepository;
 import com.hyvalker.storemanagementapi.repository.ProductRepository;
+import com.hyvalker.storemanagementapi.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

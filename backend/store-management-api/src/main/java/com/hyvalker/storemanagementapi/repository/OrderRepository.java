@@ -57,4 +57,23 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
             LocalDateTime from,
             LocalDateTime to
     );
+
+    @Query("""
+        SELECT new com.hyvalker.storemanagementapi.dto.ProductSalesRankingDTO(
+        oi.product.id,
+        oi.product.name,
+        SUM(oi.quantity),
+        SUM(oi.subtotal)
+        )
+        FROM OrderItem oi
+        WHERE oi.order.status = com.hyvalker.storemanagementapi.model.OrderStatus.PAID
+        AND oi.order.createdAt >= :from
+        AND oi.order.createdAt < :to
+        GROUP BY oi.product.id, oi.product.name
+        ORDER BY SUM(oi.subtotal) DESC
+""")
+    List<ProductSalesRankingDTO> findTopRevenueProducts(
+            LocalDateTime from,
+            LocalDateTime to
+    );
 }

@@ -41,8 +41,11 @@ public class DashboardController {
             LocalDateTime to,
 
             @RequestParam
-            Integer limit
+            Integer limit,
+
+            @RequestParam(required = false, defaultValue = "quantity")
+            String sortBy
     ) {
-        return dashboardService.getTopSellingProducts(from, to, limit);
+        return dashboardService.getTopSellingProducts(from, to, limit, sortBy);
     }
 }

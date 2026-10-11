@@ -51,7 +51,8 @@ public class DashboardService {
     public List<ProductSalesRankingDTO> getTopSellingProducts(
             LocalDateTime from,
             LocalDateTime to,
-            Integer limit
+            Integer limit,
+            String sortBy
     ) {
         if (limit <= 0) {
             throw new IllegalArgumentException(
@@ -65,10 +66,23 @@ public class DashboardService {
             );
         }
 
-        return orderRepository.findTopSellingProducts(from, to)
-                .stream()
+        List<ProductSalesRankingDTO> list;
+        if ("revenue".equalsIgnoreCase(sortBy)) {
+            list = orderRepository.findTopRevenueProducts(from, to);
+        } else {
+            list = orderRepository.findTopSellingProducts(from, to);
+        }
+
+        return list.stream()
                 .limit(limit)
                 .toList();
     }
 
+    public List<ProductSalesRankingDTO> getTopSellingProducts(
+            LocalDateTime from,
+            LocalDateTime to,
+            Integer limit
+    ) {
+        return getTopSellingProducts(from, to, limit, "quantity");
+    }
 }
