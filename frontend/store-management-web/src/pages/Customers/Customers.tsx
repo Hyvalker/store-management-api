@@ -383,7 +383,7 @@ function Customers() {
                                     required
                                     value={name}
                                     onChange={(e) => setName(e.target.value)}
-                                    placeholder="Ex: Marcelo Camargo"
+                                    placeholder="Ex: Carlos Silva"
                                     className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:bg-white focus:border-sky-500 focus:ring-1 focus:ring-sky-100 transition-all"
                                 />
                             </div>
@@ -397,7 +397,7 @@ function Customers() {
                                     required
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
-                                    placeholder="marcelo@email.com"
+                                    placeholder="carlos.silva@email.com"
                                     className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:bg-white focus:border-sky-500 focus:ring-1 focus:ring-sky-100 transition-all"
                                 />
                             </div>

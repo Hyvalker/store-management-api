@@ -30,6 +30,6 @@ public class CreateWaterParameterTestRequest {
     // Relato do cliente
     private String clientReport;
 
-    // Diagnóstico e recomendações do Marcelo
+    // Diagnóstico e recomendações do especialista / administrador
     private String diagnosisNotes;
 }

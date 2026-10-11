@@ -10,6 +10,7 @@ import {
     Share2,
     Sliders
 } from 'lucide-react'
+import {getCurrentUser} from '../../services/authService'
 
 const menuItems = [
     {label: 'Balcão / Início', path: '/', icon: Store},
@@ -20,6 +21,8 @@ const menuItems = [
 ]
 
 function Sidebar() {
+    const currentUser = getCurrentUser()
+
     return (
         <aside className="flex h-screen w-64 flex-col border-r border-slate-200 bg-white">
             {/* Brand Header */}
@@ -85,7 +88,7 @@ function Sidebar() {
                         <span>Painel Gerencial</span>
                     </div>
                     <span className="rounded bg-sky-100 px-1.5 py-0.5 text-[10px] font-medium text-sky-800">
-                        Marcelo
+                        {currentUser.name}
                     </span>
                 </NavLink>
 

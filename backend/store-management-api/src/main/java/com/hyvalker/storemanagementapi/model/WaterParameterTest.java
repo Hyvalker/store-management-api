@@ -39,7 +39,7 @@ public class WaterParameterTest {
     @Column(columnDefinition = "TEXT")
     private String clientReport;
 
-    // Diagnóstico técnico e orientações do Marcelo
+    // Diagnóstico técnico e orientações do especialista / administrador
     @Column(columnDefinition = "TEXT")
     private String diagnosisNotes;
 

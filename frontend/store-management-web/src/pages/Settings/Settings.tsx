@@ -8,13 +8,15 @@ import {
     CreditCard,
     Banknote,
     Zap,
-    RotateCcw
+    RotateCcw,
+    User as UserIcon
 } from 'lucide-react'
 import {
     getPaymentDiscounts,
     savePaymentDiscounts,
     type PaymentDiscountSettings
 } from '../../services/settingsService'
+import {getCurrentUser, setCurrentUser} from '../../services/authService'
 
 function Settings() {
     const [discounts, setDiscounts] = useState<PaymentDiscountSettings>({
@@ -25,10 +27,24 @@ function Settings() {
     })
 
     const [savedSuccess, setSavedSuccess] = useState(false)
+    const [operatorName, setOperatorName] = useState('Admin')
+    const [operatorRole, setOperatorRole] = useState('Gerente da Loja')
 
     useEffect(() => {
         setDiscounts(getPaymentDiscounts())
+        const user = getCurrentUser()
+        setOperatorName(user.name)
+        setOperatorRole(user.role)
     }, [])
+
+    function handleSaveOperator() {
+        setCurrentUser({
+            name: operatorName.trim() || 'Admin',
+            role: operatorRole.trim() || 'Gerente da Loja'
+        })
+        setSavedSuccess(true)
+        setTimeout(() => setSavedSuccess(false), 4000)
+    }
 
     function handleSubmit(e: SubmitEvent<HTMLFormElement>) {
         e.preventDefault()
@@ -252,6 +268,61 @@ function Settings() {
                         </button>
                     </div>
                 </form>
+            </div>
+
+            {/* Operator Profile Management (Future-ready for Auth) */}
+            <div className="bg-white rounded-2xl border border-slate-200/80 p-6 shadow-xs space-y-4">
+                <div className="flex items-center justify-between pb-3 border-b border-slate-100">
+                    <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-800">
+                        <UserIcon className="h-4 w-4 text-sky-600" />
+                        <span>Identificação do Operador / Usuário Ativo</span>
+                    </div>
+                    <span className="text-[10px] bg-slate-100 text-slate-600 font-bold px-2 py-0.5 rounded-full">
+                        Pronto para Autenticação / Auth
+                    </span>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+                    <div>
+                        <label className="block text-[11px] font-semibold text-slate-700 mb-1">
+                            Nome de Exibição no Sistema
+                        </label>
+                        <input
+                            type="text"
+                            value={operatorName}
+                            onChange={(e) => setOperatorName(e.target.value)}
+                            placeholder="Ex: Admin"
+                            className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold text-slate-900 focus:bg-white focus:border-sky-500 focus:outline-hidden"
+                        />
+                        <p className="text-[10px] text-slate-400 mt-1">
+                            Este nome aparecerá no menu lateral, nos laudos técnicos do WhatsApp e no painel restrito.
+                        </p>
+                    </div>
+
+                    <div>
+                        <label className="block text-[11px] font-semibold text-slate-700 mb-1">
+                            Cargo / Função
+                        </label>
+                        <input
+                            type="text"
+                            value={operatorRole}
+                            onChange={(e) => setOperatorRole(e.target.value)}
+                            placeholder="Ex: Gerente da Loja"
+                            className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-800 focus:bg-white focus:border-sky-500 focus:outline-hidden"
+                        />
+                    </div>
+                </div>
+
+                <div className="flex justify-end pt-2">
+                    <button
+                        type="button"
+                        onClick={handleSaveOperator}
+                        className="flex items-center gap-2 px-5 py-2 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold rounded-xl transition-all shadow-xs"
+                    >
+                        <Save className="h-3.5 w-3.5" />
+                        <span>Salvar Nome do Operador</span>
+                    </button>
+                </div>
             </div>
         </div>
     )

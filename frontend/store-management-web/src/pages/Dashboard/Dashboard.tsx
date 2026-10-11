@@ -15,6 +15,7 @@ import {
 } from 'lucide-react'
 import {getDashboardSummary, getTopProducts} from '../../services/dashboardService'
 import {updateProduct, getProduct} from '../../services/productService'
+import {getCurrentUser} from '../../services/authService'
 import type {DashboardSummary, ProductSalesRanking} from '../../types/product'
 
 interface DilutionItem {
@@ -26,6 +27,8 @@ interface DilutionItem {
 }
 
 function Dashboard() {
+    const currentUser = getCurrentUser()
+
     // Date filter state (default: last 30 days)
     const [preset, setPreset] = useState<'7' | '30' | 'month' | '90'>('30')
     const [startDate, setStartDate] = useState(() => {
@@ -217,7 +220,7 @@ function Dashboard() {
                 <div>
                     <div className="flex items-center gap-2 text-sky-400 text-xs font-semibold uppercase tracking-wider mb-1">
                         <ShieldAlert className="h-4 w-4" />
-                        <span>Área Restrita do Lojista • Marcelo</span>
+                        <span>Área Restrita do Lojista • {currentUser.name}</span>
                     </div>
                     <h1 className="text-2xl font-bold tracking-tight">
                         Painel Gerencial Bamba Aqua
@@ -351,7 +354,7 @@ function Dashboard() {
                 </div>
             </div>
 
-            {/* Special Section: Loss Dilution Simulator (O pedido do Marcelo) */}
+            {/* Special Section: Loss Dilution Simulator */}
             <div className="bg-gradient-to-br from-slate-900 via-sky-950 to-slate-900 rounded-2xl p-6 text-white border border-sky-800/50 shadow-md">
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-5">
                     <div>
