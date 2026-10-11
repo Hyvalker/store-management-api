@@ -28,6 +28,12 @@ public class OrderResponseDTO {
     @Schema(description = "Lista de itens incluídos no pedido.")
     private List<OrderItemResponseDTO> items;
 
+    @Schema(description = "ID único do cliente.", example = "1")
+    private Long customerId;
+
+    @Schema(description = "Nome do cliente.", example = "Alberto de Souza")
+    private String customerName;
+
 
 
 
@@ -36,6 +42,13 @@ public class OrderResponseDTO {
         this.totalPrice = order.getTotalPrice();
         this.createdAt = order.getCreatedAt();
         this.status = order.getStatus();
+
+        if (order.getCustomer() != null) {
+            this.customerId = order.getCustomer().getId();
+            this.customerName = order.getCustomer().getName();
+        } else {
+            this.customerName = order.getUnregisteredCustomerName();
+        }
         this.items = order.getItems()
                 .stream()
                 .map(OrderItemResponseDTO::new)

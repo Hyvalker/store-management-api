@@ -26,4 +26,12 @@ public class Order {
 
     @Enumerated(EnumType.STRING)
     private OrderStatus status;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = true)
+    private User customer;
+
+    @Column(name = "unregistered_customer_name")
+    private String unregisteredCustomerName;
+
 }

@@ -22,18 +22,30 @@ public class OrderService {
 
     private final OrderRepository orderRepository;
     private final ProductRepository productRepository;
+    private final UserRepository userRepository;
     private final StockMovementService stockMovementService;
 
     @Transactional
     public OrderResponseDTO createOrder(CreateOrderRequest request) {
 
+        if (request.getItems() == null || request.getItems().isEmpty()) {
+            throw new InvalidOrderException("O pedido deve ter pelo menos um item");
+        }
+
         Order order = new Order();
-
         order.setCreatedAt(LocalDateTime.now());
-
         order.setTotalPrice(BigDecimal.ZERO);
-
         order.setStatus(OrderStatus.PENDING);
+
+        if (request.getCustomerId() != null) {
+            User customer = userRepository.findById(request.getCustomerId())
+                    .orElseThrow(() -> new UserNotFoundException (
+                            "Cliente com id " + request.getCustomerId() + " não encontrado."
+                    ));
+            order.setCustomer(customer);
+        } else if (request.getCustomerName() != null && !request.getCustomerName().trim().isEmpty()) {
+            order.setUnregisteredCustomerName(request.getCustomerName().trim());
+        }
 
         for (CreateOrderItemRequest itemRequest : request.getItems()) {
 
