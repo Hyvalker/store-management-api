@@ -3,7 +3,9 @@ import type {
     Aquarium,
     CreateAquariumRequest,
     WaterParameterTest,
-    CreateWaterParameterTestRequest
+    CreateWaterParameterTestRequest,
+    AquariumNote,
+    CreateAquariumNoteRequest
 } from '../types/aquarium'
 
 export async function getAquariumsByUser(userId: number): Promise<Aquarium[]> {
@@ -53,4 +55,31 @@ export async function updateWaterTest(
 
 export async function deleteWaterTest(testId: number): Promise<void> {
     await api.delete(`/aquariums/tests/${testId}`)
+}
+
+// --- General Aquarium Journal & Notes ---
+
+export async function getAquariumNotes(aquariumId: number): Promise<AquariumNote[]> {
+    const response = await api.get<AquariumNote[]>(`/aquariums/${aquariumId}/notes`)
+    return response.data
+}
+
+export async function createAquariumNote(
+    aquariumId: number,
+    data: CreateAquariumNoteRequest
+): Promise<AquariumNote> {
+    const response = await api.post<AquariumNote>(`/aquariums/${aquariumId}/notes`, data)
+    return response.data
+}
+
+export async function updateAquariumNote(
+    noteId: number,
+    data: CreateAquariumNoteRequest
+): Promise<AquariumNote> {
+    const response = await api.put<AquariumNote>(`/aquariums/notes/${noteId}`, data)
+    return response.data
+}
+
+export async function deleteAquariumNote(noteId: number): Promise<void> {
+    await api.delete(`/aquariums/notes/${noteId}`)
 }

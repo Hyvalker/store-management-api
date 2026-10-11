@@ -10,6 +10,7 @@ export interface Aquarium {
     description?: string
     createdAt: string
     testsCount: number
+    notesCount?: number
 }
 
 export interface CreateAquariumRequest {
@@ -59,4 +60,23 @@ export interface CreateWaterParameterTestRequest {
     silicate?: number
     clientReport?: string
     diagnosisNotes?: string
+}
+
+export interface AquariumNote {
+    id: number
+    aquariumId: number
+    aquariumName?: string
+    noteDate: string
+    title?: string
+    content: string
+    authorName?: string
+    createdAt: string
+}
+
+export interface CreateAquariumNoteRequest {
+    aquariumId?: number
+    noteDate?: string
+    title?: string
+    content: string
+    authorName?: string
 }

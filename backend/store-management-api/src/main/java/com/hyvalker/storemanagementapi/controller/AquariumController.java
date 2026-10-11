@@ -1,9 +1,6 @@
 package com.hyvalker.storemanagementapi.controller;
 
-import com.hyvalker.storemanagementapi.dto.AquariumResponseDTO;
-import com.hyvalker.storemanagementapi.dto.CreateAquariumRequest;
-import com.hyvalker.storemanagementapi.dto.CreateWaterParameterTestRequest;
-import com.hyvalker.storemanagementapi.dto.WaterParameterTestResponseDTO;
+import com.hyvalker.storemanagementapi.dto.*;
 import com.hyvalker.storemanagementapi.service.AquariumService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -87,6 +84,39 @@ public class AquariumController {
     @DeleteMapping("/tests/{testId}")
     public ResponseEntity<Void> deleteTest(@PathVariable Long testId) {
         aquariumService.deleteTest(testId);
+        return ResponseEntity.noContent().build();
+    }
+
+    // --- Caderno de Anotações Gerais do Aquário ---
+
+    @Operation(summary = "Lista o histórico de anotações gerais de um aquário.")
+    @GetMapping("/{id}/notes")
+    public List<AquariumNoteResponseDTO> findNotesByAquariumId(@PathVariable Long id) {
+        return aquariumService.findNotesByAquariumId(id);
+    }
+
+    @Operation(summary = "Registra uma nova anotação geral para o aquário.")
+    @PostMapping("/{id}/notes")
+    public ResponseEntity<AquariumNoteResponseDTO> createNote(
+            @PathVariable Long id,
+            @Valid @RequestBody CreateAquariumNoteRequest request) {
+        request.setAquariumId(id);
+        AquariumNoteResponseDTO response = aquariumService.createNote(request);
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
+    }
+
+    @Operation(summary = "Atualiza uma anotação geral do aquário.")
+    @PutMapping("/notes/{noteId}")
+    public AquariumNoteResponseDTO updateNote(
+            @PathVariable Long noteId,
+            @Valid @RequestBody CreateAquariumNoteRequest request) {
+        return aquariumService.updateNote(noteId, request);
+    }
+
+    @Operation(summary = "Remove uma anotação geral do aquário.")
+    @DeleteMapping("/notes/{noteId}")
+    public ResponseEntity<Void> deleteNote(@PathVariable Long noteId) {
+        aquariumService.deleteNote(noteId);
         return ResponseEntity.noContent().build();
     }
 }

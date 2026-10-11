@@ -20,8 +20,9 @@ public class AquariumResponseDTO {
     private String description;
     private LocalDateTime createdAt;
     private long testsCount;
+    private long notesCount;
 
-    public AquariumResponseDTO(Aquarium aquarium, long testsCount) {
+    public AquariumResponseDTO(Aquarium aquarium, long testsCount, long notesCount) {
         this.id = aquarium.getId();
         this.userId = aquarium.getUser() != null ? aquarium.getUser().getId() : null;
         this.userName = aquarium.getUser() != null ? aquarium.getUser().getName() : null;
@@ -31,5 +32,10 @@ public class AquariumResponseDTO {
         this.description = aquarium.getDescription();
         this.createdAt = aquarium.getCreatedAt();
         this.testsCount = testsCount;
+        this.notesCount = notesCount;
+    }
+
+    public AquariumResponseDTO(Aquarium aquarium, long testsCount) {
+        this(aquarium, testsCount, 0);
     }
 }

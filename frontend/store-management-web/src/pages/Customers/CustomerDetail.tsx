@@ -18,9 +18,11 @@ import {
     Activity,
     Droplets,
     MessageSquare,
-    Stethoscope
+    Stethoscope,
+    BookOpen
 } from 'lucide-react'
 import {getUser} from '../../services/userService'
+import {getCurrentUser} from '../../services/authService'
 import {
     getAquariumsByUser,
     createAquarium,
@@ -29,7 +31,11 @@ import {
     getWaterTests,
     createWaterTest,
     updateWaterTest,
-    deleteWaterTest
+    deleteWaterTest,
+    getAquariumNotes,
+    createAquariumNote,
+    updateAquariumNote,
+    deleteAquariumNote
 } from '../../services/aquariumService'
 import type {User} from '../../types/user'
 import type {
@@ -37,7 +43,9 @@ import type {
     CreateAquariumRequest,
     WaterParameterTest,
     CreateWaterParameterTestRequest,
-    AquariumType
+    AquariumType,
+    AquariumNote,
+    CreateAquariumNoteRequest
 } from '../../types/aquarium'
 
 function CustomerDetail() {
@@ -45,13 +53,18 @@ function CustomerDetail() {
     const navigate = useNavigate()
     const customerId = Number(id)
 
+    const currentUser = getCurrentUser()
+
     // Data States
     const [customer, setCustomer] = useState<User | null>(null)
     const [aquariums, setAquariums] = useState<Aquarium[]>([])
     const [selectedAquarium, setSelectedAquarium] = useState<Aquarium | null>(null)
+    const [activeTab, setActiveTab] = useState<'parameters' | 'notes'>('parameters')
     const [tests, setTests] = useState<WaterParameterTest[]>([])
+    const [notes, setNotes] = useState<AquariumNote[]>([])
     const [loadingCustomer, setLoadingCustomer] = useState(true)
     const [loadingTests, setLoadingTests] = useState(false)
+    const [loadingNotes, setLoadingNotes] = useState(false)
     const [feedbackMessage, setFeedbackMessage] = useState<string | null>(null)
     const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
@@ -84,8 +97,17 @@ function CustomerDetail() {
     const [testDiagnosisNotes, setTestDiagnosisNotes] = useState('')
     const [submittingTest, setSubmittingTest] = useState(false)
 
-    // WhatsApp Copy state
+    // General Aquarium Note Modal State
+    const [isNoteModalOpen, setIsNoteModalOpen] = useState(false)
+    const [editingNote, setEditingNote] = useState<AquariumNote | null>(null)
+    const [noteDate, setNoteDate] = useState('')
+    const [noteTitle, setNoteTitle] = useState('')
+    const [noteContent, setNoteContent] = useState('')
+    const [submittingNote, setSubmittingNote] = useState(false)
+
+    // WhatsApp / Clipboard Copy states
     const [copiedTestId, setCopiedTestId] = useState<number | null>(null)
+    const [copiedNoteId, setCopiedNoteId] = useState<number | null>(null)
 
     // Helper for notification
     const notify = (msg: string, isError: boolean = false) => {
@@ -134,13 +156,27 @@ function CustomerDetail() {
         }
     }, [])
 
+    const loadNotesForAquarium = useCallback(async (aquariumId: number) => {
+        setLoadingNotes(true)
+        try {
+            const data = await getAquariumNotes(aquariumId)
+            setNotes(data)
+        } catch {
+            notify('Erro ao carregar anotações do aquário.', true)
+        } finally {
+            setLoadingNotes(false)
+        }
+    }, [])
+
     useEffect(() => {
         if (selectedAquarium) {
             loadTestsForAquarium(selectedAquarium.id)
+            loadNotesForAquarium(selectedAquarium.id)
         } else {
             setTests([])
+            setNotes([])
         }
-    }, [selectedAquarium, loadTestsForAquarium])
+    }, [selectedAquarium, loadTestsForAquarium, loadNotesForAquarium])
 
     // --- Aquarium CRUD ---
     function openCreateAquariumModal() {
@@ -363,7 +399,8 @@ function CustomerDetail() {
         text += paramsList.join('\n') + `\n\n`
 
         if (t.diagnosisNotes) {
-            text += `🩺 *Diagnóstico e Recomendações do Marcelo:*\n${t.diagnosisNotes}\n\n`
+            const operator = currentUser.name || 'Admin'
+            text += `🩺 *Diagnóstico e Recomendações (${operator}):*\n${t.diagnosisNotes}\n\n`
         }
 
         text += `Qualquer dúvida estamos à disposição na loja! 🐠✨`
@@ -372,6 +409,126 @@ function CustomerDetail() {
         setCopiedTestId(t.id)
         notify('Laudo copiado! Agora é só colar no WhatsApp do cliente.')
         setTimeout(() => setCopiedTestId(null), 3000)
+    }
+
+    // --- General Aquarium Notes CRUD ---
+    function openCreateNoteModal() {
+        setEditingNote(null)
+        const now = new Date()
+        const localIso = new Date(now.getTime() - now.getTimezoneOffset() * 60000)
+            .toISOString()
+            .slice(0, 16)
+        setNoteDate(localIso)
+        setNoteTitle('')
+        setNoteContent('')
+        setIsNoteModalOpen(true)
+    }
+
+    function openEditNoteModal(note: AquariumNote) {
+        setEditingNote(note)
+        const dt = note.noteDate ? note.noteDate.slice(0, 16) : ''
+        setNoteDate(dt)
+        setNoteTitle(note.title || '')
+        setNoteContent(note.content || '')
+        setIsNoteModalOpen(true)
+    }
+
+    async function handleSaveNote(e: SubmitEvent<HTMLFormElement>) {
+        e.preventDefault()
+        if (!selectedAquarium) return
+        if (!noteContent.trim()) {
+            notify('O conteúdo da anotação é obrigatório.', true)
+            return
+        }
+
+        setSubmittingNote(true)
+        try {
+            const payload: CreateAquariumNoteRequest = {
+                aquariumId: selectedAquarium.id,
+                noteDate: noteDate ? `${noteDate}:00` : undefined,
+                title: noteTitle.trim() || undefined,
+                content: noteContent.trim(),
+                authorName: currentUser.name || 'Admin'
+            }
+
+            if (editingNote) {
+                const updated = await updateAquariumNote(editingNote.id, payload)
+                setNotes((prev) => prev.map((n) => (n.id === updated.id ? updated : n)))
+                notify('Anotação atualizada com sucesso!')
+            } else {
+                const created = await createAquariumNote(selectedAquarium.id, payload)
+                setNotes((prev) => [created, ...prev])
+                setSelectedAquarium((prev) =>
+                    prev ? {...prev, notesCount: (prev.notesCount || 0) + 1} : null
+                )
+                setAquariums((prev) =>
+                    prev.map((a) =>
+                        a.id === selectedAquarium.id
+                            ? {...a, notesCount: (a.notesCount || 0) + 1}
+                            : a
+                    )
+                )
+                notify('Anotação registrada no diário do aquário!')
+            }
+            setIsNoteModalOpen(false)
+        } catch {
+            notify('Erro ao salvar anotação.', true)
+        } finally {
+            setSubmittingNote(false)
+        }
+    }
+
+    async function handleDeleteNote(noteId: number) {
+        const confirmed = window.confirm('Deseja excluir esta anotação do diário?')
+        if (!confirmed) return
+
+        try {
+            await deleteAquariumNote(noteId)
+            setNotes((prev) => prev.filter((n) => n.id !== noteId))
+            setSelectedAquarium((prev) =>
+                prev ? {...prev, notesCount: Math.max(0, (prev.notesCount || 1) - 1)} : null
+            )
+            setAquariums((prev) =>
+                prev.map((a) =>
+                    a.id === selectedAquarium?.id
+                        ? {...a, notesCount: Math.max(0, (a.notesCount || 1) - 1)}
+                        : a
+                )
+            )
+            notify('Anotação removida com sucesso.')
+        } catch {
+            notify('Erro ao excluir anotação.', true)
+        }
+    }
+
+    function copyNoteToClipboard(n: AquariumNote) {
+        if (!customer || !selectedAquarium) return
+
+        const formattedDate = new Date(n.noteDate).toLocaleDateString('pt-BR', {
+            day: '2-digit',
+            month: '2-digit',
+            year: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+        })
+
+        let text = `📝 *DIÁRIO DO AQUÁRIO - BAMBA AQUA*\n`
+        text += `👤 *Cliente:* ${customer.name}\n`
+        text += `🐠 *Aquário:* ${selectedAquarium.name} (${selectedAquarium.type === 'MARINE' ? 'Marinho' : 'Água Doce'}${selectedAquarium.volumeLiters ? ` • ${selectedAquarium.volumeLiters}L` : ''})\n`
+        text += `📅 *Data:* ${formattedDate}\n`
+        if (n.authorName) {
+            text += `✍️ *Registrado por:* ${n.authorName}\n`
+        }
+        if (n.title) {
+            text += `📌 *Assunto:* ${n.title}\n`
+        }
+        text += `\n${n.content}\n\n`
+        text += `Qualquer dúvida estamos à disposição! 🐠✨`
+
+        navigator.clipboard.writeText(text)
+        setCopiedNoteId(n.id)
+        notify('Anotação copiada para a área de transferência!')
+        setTimeout(() => setCopiedNoteId(null), 3000)
     }
 
     if (loadingCustomer) {
@@ -583,9 +740,11 @@ function CustomerDetail() {
                                     </div>
 
                                     <div className="pt-3 mt-3 border-t border-slate-100 flex items-center justify-between text-[11px]">
-                                        <span className="text-slate-500">
-                                            {aq.testsCount} {aq.testsCount === 1 ? 'medição' : 'medições'}
-                                        </span>
+                                        <div className="flex items-center gap-2 text-slate-500 font-medium">
+                                            <span>{aq.testsCount} {aq.testsCount === 1 ? 'medição' : 'medições'}</span>
+                                            <span>•</span>
+                                            <span>{aq.notesCount || 0} {(aq.notesCount || 0) === 1 ? 'anotação' : 'anotações'}</span>
+                                        </div>
                                         {isSelected && (
                                             <span className="font-bold text-sky-700 flex items-center gap-1">
                                                 <span>Visualizando</span>
@@ -600,223 +759,392 @@ function CustomerDetail() {
                 )}
             </div>
 
-            {/* Parameter Journal for Selected Aquarium */}
+            {/* Active Aquarium Section: Tabs for Parameters vs General Journal Notes */}
             {selectedAquarium && (
                 <div className="bg-white rounded-2xl border border-slate-200/80 p-6 shadow-xs space-y-6">
-                    {/* Header of Active Aquarium Journal */}
+                    {/* Header of Active Aquarium */}
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100">
                         <div>
                             <div className="flex items-center gap-2">
-                                <Activity className="h-5 w-5 text-sky-600" />
+                                <Fish className="h-5 w-5 text-sky-600" />
                                 <h2 className="text-base font-bold text-slate-900">
-                                    Histórico de Parâmetros & Diagnósticos: {selectedAquarium.name}
+                                    {selectedAquarium.name}
                                 </h2>
+                                <span
+                                    className={`text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider ${
+                                        selectedAquarium.type === 'MARINE'
+                                            ? 'bg-sky-100 text-sky-800'
+                                            : 'bg-emerald-100 text-emerald-800'
+                                    }`}
+                                >
+                                    {selectedAquarium.type === 'MARINE' ? 'Marinho Reef' : 'Água Doce'}
+                                </span>
                             </div>
                             <p className="text-xs text-slate-500 mt-0.5">
-                                {selectedAquarium.type === 'MARINE' ? 'Aquário Marinho' : 'Aquário de Água Doce'}
-                                {selectedAquarium.volumeLiters ? ` • ${selectedAquarium.volumeLiters} Litros` : ''}
+                                {selectedAquarium.volumeLiters ? `${selectedAquarium.volumeLiters} Litros` : 'Volume não informado'}
                                 {selectedAquarium.description ? ` • ${selectedAquarium.description}` : ''}
                             </p>
                         </div>
 
+                        <div className="flex items-center gap-2">
+                            {activeTab === 'parameters' ? (
+                                <button
+                                    type="button"
+                                    onClick={openCreateTestModal}
+                                    className="flex items-center gap-2 px-4 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold transition-all shadow-xs"
+                                >
+                                    <Plus className="h-4 w-4" />
+                                    <span>Registrar Nova Medição</span>
+                                </button>
+                            ) : (
+                                <button
+                                    type="button"
+                                    onClick={openCreateNoteModal}
+                                    className="flex items-center gap-2 px-4 py-2.5 bg-sky-600 hover:bg-sky-700 text-white rounded-xl text-xs font-bold transition-all shadow-xs"
+                                >
+                                    <Plus className="h-4 w-4" />
+                                    <span>Nova Anotação no Caderno</span>
+                                </button>
+                            )}
+                        </div>
+                    </div>
+
+                    {/* Section Switcher Tabs */}
+                    <div className="flex items-center gap-2 border-b border-slate-100 pb-3">
                         <button
                             type="button"
-                            onClick={openCreateTestModal}
-                            className="flex items-center gap-2 px-4 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold transition-all shadow-sm"
+                            onClick={() => setActiveTab('parameters')}
+                            className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold transition-all ${
+                                activeTab === 'parameters'
+                                    ? 'bg-slate-900 text-white shadow-xs'
+                                    : 'text-slate-600 hover:bg-slate-100'
+                            }`}
                         >
-                            <Plus className="h-4 w-4" />
-                            <span>Registrar Nova Medição</span>
+                            <Activity className="h-3.5 w-3.5 text-emerald-400" />
+                            <span>Auditoria de Parâmetros ({tests.length})</span>
+                        </button>
+                        <button
+                            type="button"
+                            onClick={() => setActiveTab('notes')}
+                            className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold transition-all ${
+                                activeTab === 'notes'
+                                    ? 'bg-slate-900 text-white shadow-xs'
+                                    : 'text-slate-600 hover:bg-slate-100'
+                            }`}
+                        >
+                            <BookOpen className="h-3.5 w-3.5 text-sky-400" />
+                            <span>Caderno de Anotações & Diário ({notes.length})</span>
                         </button>
                     </div>
 
-                    {/* Tests List / Timeline */}
-                    {loadingTests ? (
-                        <div className="py-12 text-center text-xs text-slate-400">
-                            Carregando medições...
-                        </div>
-                    ) : tests.length === 0 ? (
-                        <div className="py-12 text-center space-y-2">
-                            <Droplets className="h-8 w-8 text-slate-300 mx-auto" />
-                            <p className="text-xs font-semibold text-slate-700">
-                                Nenhuma medição registrada para este aquário ainda.
-                            </p>
-                            <p className="text-[11px] text-slate-400 max-w-md mx-auto">
-                                Clique em &quot;Registrar Nova Medição&quot; para anotar os níveis de pH, Nitrato, Fosfato, KH, Salinidade e o diagnóstico do Marcelo.
-                            </p>
-                        </div>
-                    ) : (
-                        <div className="space-y-4">
-                            {tests.map((t) => {
-                                const formattedDate = new Date(t.testDate).toLocaleDateString('pt-BR', {
-                                    day: '2-digit',
-                                    month: '2-digit',
-                                    year: 'numeric',
-                                    hour: '2-digit',
-                                    minute: '2-digit'
-                                })
+                    {/* Tab 1: Water Parameter Tests */}
+                    {activeTab === 'parameters' && (
+                        <div>
+                            {loadingTests ? (
+                                <div className="py-12 text-center text-xs text-slate-400">
+                                    Carregando medições...
+                                </div>
+                            ) : tests.length === 0 ? (
+                                <div className="py-12 text-center space-y-2">
+                                    <Droplets className="h-8 w-8 text-slate-300 mx-auto" />
+                                    <p className="text-xs font-semibold text-slate-700">
+                                        Nenhuma medição registrada para este aquário ainda.
+                                    </p>
+                                    <p className="text-[11px] text-slate-400 max-w-md mx-auto">
+                                        Clique em &quot;Registrar Nova Medição&quot; para anotar os níveis de pH, Nitrato, Fosfato, KH, Salinidade e o diagnóstico do operador.
+                                    </p>
+                                </div>
+                            ) : (
+                                <div className="space-y-4">
+                                    {tests.map((t) => {
+                                        const formattedDate = new Date(t.testDate).toLocaleDateString('pt-BR', {
+                                            day: '2-digit',
+                                            month: '2-digit',
+                                            year: 'numeric',
+                                            hour: '2-digit',
+                                            minute: '2-digit'
+                                        })
 
-                                return (
-                                    <div
-                                        key={t.id}
-                                        className="p-5 rounded-2xl border border-slate-200 bg-slate-50/50 hover:bg-white transition-all space-y-4 shadow-xs"
-                                    >
-                                        {/* Test Header */}
-                                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                                            <div className="flex items-center gap-2">
-                                                <Calendar className="h-4 w-4 text-sky-600" />
-                                                <span className="text-xs font-bold text-slate-900 font-mono">
-                                                    {formattedDate}
-                                                </span>
-                                            </div>
+                                        return (
+                                            <div
+                                                key={t.id}
+                                                className="p-5 rounded-2xl border border-slate-200 bg-slate-50/50 hover:bg-white transition-all space-y-4 shadow-xs"
+                                            >
+                                                {/* Test Header */}
+                                                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                                                    <div className="flex items-center gap-2">
+                                                        <Calendar className="h-4 w-4 text-sky-600" />
+                                                        <span className="text-xs font-bold text-slate-900 font-mono">
+                                                            {formattedDate}
+                                                        </span>
+                                                    </div>
 
-                                            <div className="flex items-center gap-2">
-                                                <button
-                                                    type="button"
-                                                    onClick={() => copyReportToClipboard(t)}
-                                                    className="flex items-center gap-1.5 px-2.5 py-1 text-[11px] font-semibold text-emerald-700 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 rounded-lg transition-colors"
-                                                    title="Copiar laudo formatado para enviar no WhatsApp"
-                                                >
-                                                    {copiedTestId === t.id ? (
-                                                        <>
-                                                            <Check className="h-3.5 w-3.5 text-emerald-600" />
-                                                            <span>Copiado!</span>
-                                                        </>
-                                                    ) : (
-                                                        <>
-                                                            <Copy className="h-3.5 w-3.5" />
-                                                            <span>Copiar p/ WhatsApp</span>
-                                                        </>
+                                                    <div className="flex items-center gap-2">
+                                                        <button
+                                                            type="button"
+                                                            onClick={() => copyReportToClipboard(t)}
+                                                            className="flex items-center gap-1.5 px-2.5 py-1 text-[11px] font-semibold text-emerald-700 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 rounded-lg transition-colors"
+                                                            title="Copiar laudo formatado para enviar no WhatsApp"
+                                                        >
+                                                            {copiedTestId === t.id ? (
+                                                                <>
+                                                                    <Check className="h-3.5 w-3.5 text-emerald-600" />
+                                                                    <span>Copiado!</span>
+                                                                </>
+                                                            ) : (
+                                                                <>
+                                                                    <Copy className="h-3.5 w-3.5" />
+                                                                    <span>Copiar p/ WhatsApp</span>
+                                                                </>
+                                                            )}
+                                                        </button>
+
+                                                        <button
+                                                            type="button"
+                                                            onClick={() => openEditTestModal(t)}
+                                                            className="p-1.5 text-slate-400 hover:text-sky-600 rounded-lg hover:bg-slate-100 transition-colors"
+                                                            title="Editar medição"
+                                                        >
+                                                            <Edit3 className="h-3.5 w-3.5" />
+                                                        </button>
+
+                                                        <button
+                                                            type="button"
+                                                            onClick={() => handleDeleteTest(t.id)}
+                                                            className="p-1.5 text-slate-400 hover:text-rose-600 rounded-lg hover:bg-slate-100 transition-colors"
+                                                            title="Excluir medição"
+                                                        >
+                                                            <Trash2 className="h-3.5 w-3.5" />
+                                                        </button>
+                                                    </div>
+                                                </div>
+
+                                                {/* Client Report (Relato do cliente) if filled */}
+                                                {t.clientReport && (
+                                                    <div className="p-3 bg-amber-50/80 border border-amber-200 rounded-xl text-xs space-y-1">
+                                                        <div className="flex items-center gap-1.5 font-bold text-amber-900 text-[11px] uppercase tracking-wider">
+                                                            <MessageSquare className="h-3.5 w-3.5 text-amber-600" />
+                                                            <span>Relato do Cliente</span>
+                                                        </div>
+                                                        <p className="text-amber-950 font-medium">
+                                                            &quot;{t.clientReport}&quot;
+                                                        </p>
+                                                    </div>
+                                                )}
+
+                                                {/* Parameters Grid: Badges */}
+                                                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 text-xs">
+                                                    {t.ph !== undefined && t.ph !== null && (
+                                                        <div className="p-2.5 rounded-xl bg-white border border-slate-200">
+                                                            <span className="text-[10px] text-slate-400 block font-semibold">pH</span>
+                                                            <span className="text-sm font-bold text-slate-900 font-mono">{t.ph}</span>
+                                                        </div>
                                                     )}
-                                                </button>
+                                                    {t.temperature !== undefined && t.temperature !== null && (
+                                                        <div className="p-2.5 rounded-xl bg-white border border-slate-200">
+                                                            <span className="text-[10px] text-slate-400 block font-semibold">Temperatura</span>
+                                                            <span className="text-sm font-bold text-slate-900 font-mono">{t.temperature}°C</span>
+                                                        </div>
+                                                    )}
+                                                    {t.salinity !== undefined && t.salinity !== null && (
+                                                        <div className="p-2.5 rounded-xl bg-white border border-slate-200">
+                                                            <span className="text-[10px] text-slate-400 block font-semibold">Salinidade</span>
+                                                            <span className="text-sm font-bold text-slate-900 font-mono">{t.salinity}</span>
+                                                        </div>
+                                                    )}
+                                                    {t.ammonia !== undefined && t.ammonia !== null && (
+                                                        <div className="p-2.5 rounded-xl bg-white border border-slate-200">
+                                                            <span className="text-[10px] text-slate-400 block font-semibold">Amônia (NH₃)</span>
+                                                            <span className={`text-sm font-bold font-mono ${t.ammonia > 0 ? 'text-rose-600' : 'text-emerald-600'}`}>
+                                                                {t.ammonia} ppm
+                                                            </span>
+                                                        </div>
+                                                    )}
+                                                    {t.nitrite !== undefined && t.nitrite !== null && (
+                                                        <div className="p-2.5 rounded-xl bg-white border border-slate-200">
+                                                            <span className="text-[10px] text-slate-400 block font-semibold">Nitrito (NO₂)</span>
+                                                            <span className={`text-sm font-bold font-mono ${t.nitrite > 0 ? 'text-rose-600' : 'text-emerald-600'}`}>
+                                                                {t.nitrite} ppm
+                                                            </span>
+                                                        </div>
+                                                    )}
+                                                    {t.nitrate !== undefined && t.nitrate !== null && (
+                                                        <div className="p-2.5 rounded-xl bg-white border border-slate-200">
+                                                            <span className="text-[10px] text-slate-400 block font-semibold">Nitrato (NO₃)</span>
+                                                            <span className="text-sm font-bold text-slate-900 font-mono">{t.nitrate} ppm</span>
+                                                        </div>
+                                                    )}
+                                                    {t.phosphate !== undefined && t.phosphate !== null && (
+                                                        <div className="p-2.5 rounded-xl bg-white border border-slate-200">
+                                                            <span className="text-[10px] text-slate-400 block font-semibold">Fosfato (PO₄)</span>
+                                                            <span className="text-sm font-bold text-slate-900 font-mono">{t.phosphate} ppm</span>
+                                                        </div>
+                                                    )}
+                                                    {t.kh !== undefined && t.kh !== null && (
+                                                        <div className="p-2.5 rounded-xl bg-white border border-slate-200">
+                                                            <span className="text-[10px] text-slate-400 block font-semibold">Reserva (KH)</span>
+                                                            <span className="text-sm font-bold text-slate-900 font-mono">{t.kh} dKH</span>
+                                                        </div>
+                                                    )}
+                                                    {t.gh !== undefined && t.gh !== null && (
+                                                        <div className="p-2.5 rounded-xl bg-white border border-slate-200">
+                                                            <span className="text-[10px] text-slate-400 block font-semibold">Dureza (GH)</span>
+                                                            <span className="text-sm font-bold text-slate-900 font-mono">{t.gh} dGH</span>
+                                                        </div>
+                                                    )}
+                                                    {t.calcium !== undefined && t.calcium !== null && (
+                                                        <div className="p-2.5 rounded-xl bg-white border border-slate-200">
+                                                            <span className="text-[10px] text-slate-400 block font-semibold">Cálcio (Ca)</span>
+                                                            <span className="text-sm font-bold text-slate-900 font-mono">{t.calcium} ppm</span>
+                                                        </div>
+                                                    )}
+                                                    {t.magnesium !== undefined && t.magnesium !== null && (
+                                                        <div className="p-2.5 rounded-xl bg-white border border-slate-200">
+                                                            <span className="text-[10px] text-slate-400 block font-semibold">Magnésio (Mg)</span>
+                                                            <span className="text-sm font-bold text-slate-900 font-mono">{t.magnesium} ppm</span>
+                                                        </div>
+                                                    )}
+                                                    {t.silicate !== undefined && t.silicate !== null && (
+                                                        <div className="p-2.5 rounded-xl bg-white border border-slate-200">
+                                                            <span className="text-[10px] text-slate-400 block font-semibold">Silicato (SiO₂)</span>
+                                                            <span className="text-sm font-bold text-slate-900 font-mono">{t.silicate} ppm</span>
+                                                        </div>
+                                                    )}
+                                                </div>
 
-                                                <button
-                                                    type="button"
-                                                    onClick={() => openEditTestModal(t)}
-                                                    className="p-1.5 text-slate-400 hover:text-sky-600 rounded-lg hover:bg-slate-100 transition-colors"
-                                                    title="Editar medição"
-                                                >
-                                                    <Edit3 className="h-3.5 w-3.5" />
-                                                </button>
-
-                                                <button
-                                                    type="button"
-                                                    onClick={() => handleDeleteTest(t.id)}
-                                                    className="p-1.5 text-slate-400 hover:text-rose-600 rounded-lg hover:bg-slate-100 transition-colors"
-                                                    title="Excluir medição"
-                                                >
-                                                    <Trash2 className="h-3.5 w-3.5" />
-                                                </button>
+                                                {/* Diagnosis & Recommendations Notes if filled */}
+                                                {t.diagnosisNotes && (
+                                                    <div className="p-3 bg-emerald-50/80 border border-emerald-200 rounded-xl text-xs space-y-1">
+                                                        <div className="flex items-center gap-1.5 font-bold text-emerald-900 text-[11px] uppercase tracking-wider">
+                                                            <Stethoscope className="h-3.5 w-3.5 text-emerald-600" />
+                                                            <span>Diagnóstico & Recomendações ({currentUser.name || 'Admin'})</span>
+                                                        </div>
+                                                        <p className="text-emerald-950 whitespace-pre-line font-medium">
+                                                            {t.diagnosisNotes}
+                                                        </p>
+                                                    </div>
+                                                )}
                                             </div>
-                                        </div>
+                                        )
+                                    })}
+                                </div>
+                            )}
+                        </div>
+                    )}
 
-                                        {/* Client Report (Relato do cliente) if filled */}
-                                        {t.clientReport && (
-                                            <div className="p-3 bg-amber-50/80 border border-amber-200 rounded-xl text-xs space-y-1">
-                                                <div className="flex items-center gap-1.5 font-bold text-amber-900 text-[11px] uppercase tracking-wider">
-                                                    <MessageSquare className="h-3.5 w-3.5 text-amber-600" />
-                                                    <span>Relato do Cliente</span>
-                                                </div>
-                                                <p className="text-amber-950 font-medium">
-                                                    &quot;{t.clientReport}&quot;
-                                                </p>
-                                            </div>
-                                        )}
-
-                                        {/* Parameters Grid: Badges */}
-                                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 text-xs">
-                                            {t.ph !== undefined && t.ph !== null && (
-                                                <div className="p-2.5 rounded-xl bg-white border border-slate-200">
-                                                    <span className="text-[10px] text-slate-400 block font-semibold">pH</span>
-                                                    <span className="text-sm font-bold text-slate-900 font-mono">{t.ph}</span>
-                                                </div>
-                                            )}
-                                            {t.temperature !== undefined && t.temperature !== null && (
-                                                <div className="p-2.5 rounded-xl bg-white border border-slate-200">
-                                                    <span className="text-[10px] text-slate-400 block font-semibold">Temperatura</span>
-                                                    <span className="text-sm font-bold text-slate-900 font-mono">{t.temperature}°C</span>
-                                                </div>
-                                            )}
-                                            {t.salinity !== undefined && t.salinity !== null && (
-                                                <div className="p-2.5 rounded-xl bg-white border border-slate-200">
-                                                    <span className="text-[10px] text-slate-400 block font-semibold">Salinidade</span>
-                                                    <span className="text-sm font-bold text-slate-900 font-mono">{t.salinity}</span>
-                                                </div>
-                                            )}
-                                            {t.ammonia !== undefined && t.ammonia !== null && (
-                                                <div className="p-2.5 rounded-xl bg-white border border-slate-200">
-                                                    <span className="text-[10px] text-slate-400 block font-semibold">Amônia (NH₃)</span>
-                                                    <span className={`text-sm font-bold font-mono ${t.ammonia > 0 ? 'text-rose-600' : 'text-emerald-600'}`}>
-                                                        {t.ammonia} ppm
-                                                    </span>
-                                                </div>
-                                            )}
-                                            {t.nitrite !== undefined && t.nitrite !== null && (
-                                                <div className="p-2.5 rounded-xl bg-white border border-slate-200">
-                                                    <span className="text-[10px] text-slate-400 block font-semibold">Nitrito (NO₂)</span>
-                                                    <span className={`text-sm font-bold font-mono ${t.nitrite > 0 ? 'text-rose-600' : 'text-emerald-600'}`}>
-                                                        {t.nitrite} ppm
-                                                    </span>
-                                                </div>
-                                            )}
-                                            {t.nitrate !== undefined && t.nitrate !== null && (
-                                                <div className="p-2.5 rounded-xl bg-white border border-slate-200">
-                                                    <span className="text-[10px] text-slate-400 block font-semibold">Nitrato (NO₃)</span>
-                                                    <span className="text-sm font-bold text-slate-900 font-mono">{t.nitrate} ppm</span>
-                                                </div>
-                                            )}
-                                            {t.phosphate !== undefined && t.phosphate !== null && (
-                                                <div className="p-2.5 rounded-xl bg-white border border-slate-200">
-                                                    <span className="text-[10px] text-slate-400 block font-semibold">Fosfato (PO₄)</span>
-                                                    <span className="text-sm font-bold text-slate-900 font-mono">{t.phosphate} ppm</span>
-                                                </div>
-                                            )}
-                                            {t.kh !== undefined && t.kh !== null && (
-                                                <div className="p-2.5 rounded-xl bg-white border border-slate-200">
-                                                    <span className="text-[10px] text-slate-400 block font-semibold">Reserva (KH)</span>
-                                                    <span className="text-sm font-bold text-slate-900 font-mono">{t.kh} dKH</span>
-                                                </div>
-                                            )}
-                                            {t.gh !== undefined && t.gh !== null && (
-                                                <div className="p-2.5 rounded-xl bg-white border border-slate-200">
-                                                    <span className="text-[10px] text-slate-400 block font-semibold">Dureza (GH)</span>
-                                                    <span className="text-sm font-bold text-slate-900 font-mono">{t.gh} dGH</span>
-                                                </div>
-                                            )}
-                                            {t.calcium !== undefined && t.calcium !== null && (
-                                                <div className="p-2.5 rounded-xl bg-white border border-slate-200">
-                                                    <span className="text-[10px] text-slate-400 block font-semibold">Cálcio (Ca)</span>
-                                                    <span className="text-sm font-bold text-slate-900 font-mono">{t.calcium} ppm</span>
-                                                </div>
-                                            )}
-                                            {t.magnesium !== undefined && t.magnesium !== null && (
-                                                <div className="p-2.5 rounded-xl bg-white border border-slate-200">
-                                                    <span className="text-[10px] text-slate-400 block font-semibold">Magnésio (Mg)</span>
-                                                    <span className="text-sm font-bold text-slate-900 font-mono">{t.magnesium} ppm</span>
-                                                </div>
-                                            )}
-                                            {t.silicate !== undefined && t.silicate !== null && (
-                                                <div className="p-2.5 rounded-xl bg-white border border-slate-200">
-                                                    <span className="text-[10px] text-slate-400 block font-semibold">Silicato (SiO₂)</span>
-                                                    <span className="text-sm font-bold text-slate-900 font-mono">{t.silicate} ppm</span>
-                                                </div>
-                                            )}
-                                        </div>
-
-                                        {/* Diagnosis & Recommendations Notes if filled */}
-                                        {t.diagnosisNotes && (
-                                            <div className="p-3 bg-emerald-50/80 border border-emerald-200 rounded-xl text-xs space-y-1">
-                                                <div className="flex items-center gap-1.5 font-bold text-emerald-900 text-[11px] uppercase tracking-wider">
-                                                    <Stethoscope className="h-3.5 w-3.5 text-emerald-600" />
-                                                    <span>Diagnóstico & Recomendações do Marcelo</span>
-                                                </div>
-                                                <p className="text-emerald-950 whitespace-pre-line font-medium">
-                                                    {t.diagnosisNotes}
-                                                </p>
-                                            </div>
-                                        )}
+                    {/* Tab 2: General Aquarium Notes & Journal */}
+                    {activeTab === 'notes' && (
+                        <div>
+                            {loadingNotes ? (
+                                <div className="py-12 text-center text-xs text-slate-400">
+                                    Carregando anotações do diário...
+                                </div>
+                            ) : notes.length === 0 ? (
+                                <div className="py-12 text-center space-y-3">
+                                    <BookOpen className="h-8 w-8 text-slate-300 mx-auto" />
+                                    <div>
+                                        <p className="text-xs font-semibold text-slate-700">
+                                            Nenhuma anotação geral registrada para este aquário ainda.
+                                        </p>
+                                        <p className="text-[11px] text-slate-400 max-w-md mx-auto mt-1">
+                                            Use este espaço como um caderno de bordo para registrar manutenções preventivas, troca de lâmpadas/mídias, introdução de novos peixes e corais, relatos do cliente ou qualquer observação do dia a dia.
+                                        </p>
                                     </div>
-                                )
-                            })}
+                                    <button
+                                        type="button"
+                                        onClick={openCreateNoteModal}
+                                        className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-sky-600 text-white rounded-xl text-xs font-bold hover:bg-sky-700 transition-colors shadow-xs"
+                                    >
+                                        <Plus className="h-3.5 w-3.5" />
+                                        <span>Escrever Primeira Anotação</span>
+                                    </button>
+                                </div>
+                            ) : (
+                                <div className="space-y-4">
+                                    {notes.map((n) => {
+                                        const formattedDate = new Date(n.noteDate).toLocaleDateString('pt-BR', {
+                                            day: '2-digit',
+                                            month: '2-digit',
+                                            year: 'numeric',
+                                            hour: '2-digit',
+                                            minute: '2-digit'
+                                        })
+
+                                        return (
+                                            <div
+                                                key={n.id}
+                                                className="p-5 rounded-2xl border border-slate-200 bg-slate-50/50 hover:bg-white transition-all space-y-3 shadow-xs"
+                                            >
+                                                {/* Note Header */}
+                                                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                                                    <div className="flex items-center gap-2 flex-wrap">
+                                                        <Calendar className="h-4 w-4 text-sky-600" />
+                                                        <span className="text-xs font-bold text-slate-900 font-mono">
+                                                            {formattedDate}
+                                                        </span>
+                                                        {n.authorName && (
+                                                            <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-slate-200/80 text-slate-700">
+                                                                Por: {n.authorName}
+                                                            </span>
+                                                        )}
+                                                    </div>
+
+                                                    <div className="flex items-center gap-2">
+                                                        <button
+                                                            type="button"
+                                                            onClick={() => copyNoteToClipboard(n)}
+                                                            className="flex items-center gap-1.5 px-2.5 py-1 text-[11px] font-semibold text-sky-700 bg-sky-50 hover:bg-sky-100 border border-sky-200 rounded-lg transition-colors"
+                                                            title="Copiar anotação para área de transferência / WhatsApp"
+                                                        >
+                                                            {copiedNoteId === n.id ? (
+                                                                <>
+                                                                    <Check className="h-3.5 w-3.5 text-sky-600" />
+                                                                    <span>Copiado!</span>
+                                                                </>
+                                                            ) : (
+                                                                <>
+                                                                    <Copy className="h-3.5 w-3.5" />
+                                                                    <span>Copiar p/ WhatsApp</span>
+                                                                </>
+                                                            )}
+                                                        </button>
+
+                                                        <button
+                                                            type="button"
+                                                            onClick={() => openEditNoteModal(n)}
+                                                            className="p-1.5 text-slate-400 hover:text-sky-600 rounded-lg hover:bg-slate-100 transition-colors"
+                                                            title="Editar anotação"
+                                                        >
+                                                            <Edit3 className="h-3.5 w-3.5" />
+                                                        </button>
+
+                                                        <button
+                                                            type="button"
+                                                            onClick={() => handleDeleteNote(n.id)}
+                                                            className="p-1.5 text-slate-400 hover:text-rose-600 rounded-lg hover:bg-slate-100 transition-colors"
+                                                            title="Excluir anotação"
+                                                        >
+                                                            <Trash2 className="h-3.5 w-3.5" />
+                                                        </button>
+                                                    </div>
+                                                </div>
+
+                                                {/* Note Title if present */}
+                                                {n.title && (
+                                                    <h4 className="font-bold text-sm text-slate-900">
+                                                        {n.title}
+                                                    </h4>
+                                                )}
+
+                                                {/* Note Body */}
+                                                <div className="p-3.5 bg-white border border-slate-200/80 rounded-xl text-xs text-slate-800 whitespace-pre-line leading-relaxed">
+                                                    {n.content}
+                                                </div>
+                                            </div>
+                                        )
+                                    })}
+                                </div>
+                            )}
                         </div>
                     )}
                 </div>
@@ -1174,7 +1502,7 @@ function CustomerDetail() {
                             <div className="pt-2 border-t border-slate-100">
                                 <label className="block text-[11px] font-semibold text-slate-700 mb-1 flex items-center gap-1.5">
                                     <Stethoscope className="h-3.5 w-3.5 text-emerald-600" />
-                                    <span>Diagnóstico & Recomendações do Marcelo (Opcional)</span>
+                                    <span>Diagnóstico & Recomendações ({currentUser.name || 'Admin'}) (Opcional)</span>
                                 </label>
                                 <textarea
                                     rows={3}
@@ -1199,6 +1527,93 @@ function CustomerDetail() {
                                     className="px-5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-bold disabled:opacity-50"
                                 >
                                     {submittingTest ? 'Salvando...' : 'Salvar Medição'}
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            )}
+
+            {/* Modal: Cadastrar / Editar Anotação Geral do Aquário */}
+            {isNoteModalOpen && (
+                <div className="fixed inset-0 bg-slate-900/50 backdrop-blur-xs flex items-center justify-center p-4 z-50 animate-in fade-in">
+                    <div className="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl space-y-4">
+                        <div className="flex items-center justify-between pb-3 border-b border-slate-100">
+                            <div>
+                                <h3 className="font-bold text-sm text-slate-900 flex items-center gap-2">
+                                    <BookOpen className="h-4 w-4 text-sky-600" />
+                                    <span>
+                                        {editingNote ? 'Editar Anotação do Caderno' : 'Nova Anotação no Caderno'}
+                                    </span>
+                                </h3>
+                                <p className="text-[11px] text-slate-500">
+                                    Aquário: {selectedAquarium?.name}
+                                </p>
+                            </div>
+                            <button
+                                type="button"
+                                onClick={() => setIsNoteModalOpen(false)}
+                                className="text-slate-400 hover:text-slate-600 text-xs font-bold"
+                            >
+                                Fechar
+                            </button>
+                        </div>
+
+                        <form onSubmit={handleSaveNote} className="space-y-4 text-xs">
+                            <div>
+                                <label className="block text-[11px] font-semibold text-slate-700 mb-1">
+                                    Data e Hora da Anotação *
+                                </label>
+                                <input
+                                    type="datetime-local"
+                                    required
+                                    value={noteDate}
+                                    onChange={(e) => setNoteDate(e.target.value)}
+                                    className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:border-sky-500 focus:outline-hidden font-mono font-medium"
+                                />
+                            </div>
+
+                            <div>
+                                <label className="block text-[11px] font-semibold text-slate-700 mb-1">
+                                    Título / Assunto (Opcional)
+                                </label>
+                                <input
+                                    type="text"
+                                    value={noteTitle}
+                                    onChange={(e) => setNoteTitle(e.target.value)}
+                                    placeholder="Ex: Troca de carvão ativado, Adição de Palhaço Picasso, Manutenção na bomba..."
+                                    className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:border-sky-500 focus:outline-hidden font-medium"
+                                />
+                            </div>
+
+                            <div>
+                                <label className="block text-[11px] font-semibold text-slate-700 mb-1">
+                                    Conteúdo da Anotação / Observações Gerais *
+                                </label>
+                                <textarea
+                                    rows={5}
+                                    required
+                                    value={noteContent}
+                                    onChange={(e) => setNoteContent(e.target.value)}
+                                    placeholder="Escreva livremente qualquer relato, manutenção realizada, orientações passadas ao cliente ou eventos no aquário..."
+                                    className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:border-sky-500 focus:outline-hidden font-medium resize-none leading-relaxed"
+                                />
+                            </div>
+
+                            <div className="flex justify-end gap-2 pt-3 border-t border-slate-100">
+                                <button
+                                    type="button"
+                                    onClick={() => setIsNoteModalOpen(false)}
+                                    className="px-4 py-2 text-slate-600 hover:bg-slate-100 rounded-xl font-medium"
+                                >
+                                    Cancelar
+                                </button>
+                                <button
+                                    type="submit"
+                                    disabled={submittingNote}
+                                    className="px-5 py-2 bg-sky-600 hover:bg-sky-700 text-white rounded-xl font-bold disabled:opacity-50"
+                                >
+                                    {submittingNote ? 'Salvando...' : 'Salvar Anotação'}
                                 </button>
                             </div>
                         </form>
