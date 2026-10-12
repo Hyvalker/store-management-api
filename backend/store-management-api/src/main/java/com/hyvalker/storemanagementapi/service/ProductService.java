@@ -50,7 +50,7 @@ public class ProductService {
                 .toList();
     }
 
-    public Optional<ProductResponseDTO> findByBarcorde(String barcode) {
+    public Optional<ProductResponseDTO> findByBarcode(String barcode) {
         return productRepository.findByBarcode(barcode)
                 .filter(product -> Boolean.TRUE.equals(product.getActive()))
                 .map(ProductResponseDTO::new);

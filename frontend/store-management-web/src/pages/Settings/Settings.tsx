@@ -306,7 +306,7 @@ function Settings() {
                             Descontos por Forma de Pagamento
                         </h2>
                         <p className="text-xs text-slate-500">
-                            Defina a porcentagem de desconto para cada método. Aplicado automaticamente no Caixa e no Encarte.
+                            Defina a porcentagem de desconto para cada método. Aplicado automaticamente no Caixa e no Catálogo de Ofertas.
                         </p>
                     </div>
                 </div>

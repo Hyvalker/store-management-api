@@ -19,7 +19,7 @@ import type {Product} from '../../types/product'
 import {matchesSearch} from '../../utils/searchUtils'
 import {useToast} from '../../contexts/ToastContext'
 
-interface EncarteItem {
+export interface CatalogItem {
     id: number
     name: string
     salePrice: number
@@ -27,11 +27,11 @@ interface EncarteItem {
     image: string
 }
 
-function Encarte() {
+function Catalog() {
     const {toast} = useToast()
     const [products, setProducts] = useState<Product[]>([])
     const [loading, setLoading] = useState(true)
-    const [selectedItems, setSelectedItems] = useState<EncarteItem[]>([])
+    const [selectedItems, setSelectedItems] = useState<CatalogItem[]>([])
 
     // Search & Autocomplete
     const [searchTerm, setSearchTerm] = useState('')
@@ -40,7 +40,7 @@ function Encarte() {
     // Catalog custom options
     const [catalogTitle, setCatalogTitle] = useState('DISPONÍVEIS NA LOJA')
     const [catalogSubtitle, setCatalogSubtitle] = useState('Consulte disponibilidade • WhatsApp Bamba Aqua')
-    const [cardPriceLabel, setCardPriceLabel] = useState<'cartao' | 'parcelado'>('cartao')
+    const [cardPriceLabel, setCardPriceLabel] = useState<'card' | 'installments'>('card')
     const [numInstallments, setNumInstallments] = useState(10)
     const [pixDiscountPercent, setPixDiscountPercent] = useState(10)
     const [isExporting, setIsExporting] = useState(false)
@@ -73,7 +73,7 @@ function Encarte() {
                 setSelectedItems(livingWithStock.slice(0, 9))
             }
         } catch (err) {
-            console.error('Erro ao carregar produtos para encarte', err)
+            console.error('Erro ao carregar produtos para catálogo', err)
         } finally {
             setLoading(false)
         }
@@ -105,7 +105,7 @@ function Encarte() {
             return
         }
 
-        const newItem: EncarteItem = {
+        const newItem: CatalogItem = {
             id: product.id,
             name: product.name,
             salePrice: Number(product.salePrice || 0),
@@ -160,14 +160,14 @@ function Encarte() {
 
             const link = document.createElement('a')
             const dateStr = new Date().toISOString().slice(0, 10)
-            link.download = `bamba-aqua-encarte-${dateStr}.jpg`
+            link.download = `bamba-aqua-catalogo-${dateStr}.jpg`
             link.href = dataUrl
             link.click()
 
-            toast.success('Encarte gerado e baixado com sucesso em alta resolução!', 'Catálogo Exportado')
+            toast.success('Catálogo de ofertas gerado e baixado com sucesso em alta resolução!', 'Catálogo Exportado')
         } catch (err) {
-            console.error('Falha ao exportar encarte:', err)
-            toast.error('Não foi possível gerar a imagem do encarte. Tente novamente.', 'Erro ao Exportar')
+            console.error('Falha ao exportar catálogo:', err)
+            toast.error('Não foi possível gerar a imagem do catálogo. Tente novamente.', 'Erro ao Exportar')
         } finally {
             setIsExporting(false)
         }
@@ -180,10 +180,10 @@ function Encarte() {
                 <div>
                     <h1 className="text-2xl font-bold tracking-tight text-slate-900 flex items-center gap-2.5">
                         <Share2 className="h-6 w-6 text-sky-600" />
-                        <span>Gerador de Encarte & Catálogo WhatsApp</span>
+                        <span>Catálogo & Encarte de Ofertas</span>
                     </h1>
                     <p className="text-xs text-slate-500 mt-1">
-                        Crie imagens profissionais com os animais da loja para envio no WhatsApp, Stories e redes sociais.
+                        Crie imagens profissionais com os animais e produtos da loja para divulgação em WhatsApp, Stories e redes sociais.
                     </p>
                 </div>
 
@@ -209,7 +209,7 @@ function Encarte() {
                 </div>
             </div>
 
-            {/* Main Layout: Configuration & Selection Left / Real-Time Encarte Preview Right */}
+            {/* Main Layout: Configuration & Selection Left / Real-Time Catalog Preview Right */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
                 {/* Control Panel (5 Cols) */}
                 <div className="lg:col-span-5 space-y-4">
@@ -230,7 +230,7 @@ function Encarte() {
                             <button
                                 type="button"
                                 onClick={handleSelectAllLiving}
-                                className="flex-1 min-w-[170px] flex items-center justify-center gap-2 px-3 py-2 bg-sky-600 hover:bg-sky-700 text-white text-xs font-semibold rounded-xl transition-all shadow-xs"
+                                className="flex-1 min-w-[170px] flex items-center justify-center gap-2 px-3 py-2 bg-sky-600 hover:bg-sky-700 text-white text-xs font-semibold rounded-xl transition-all shadow-xs cursor-pointer"
                             >
                                 <Sparkles className="h-3.5 w-3.5" />
                                 <span>Todos os Seres Vivos</span>
@@ -240,7 +240,7 @@ function Encarte() {
                                 type="button"
                                 onClick={handleClearAll}
                                 disabled={selectedItems.length === 0}
-                                className="px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-medium rounded-xl transition-all disabled:opacity-40"
+                                className="px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-medium rounded-xl transition-all disabled:opacity-40 cursor-pointer"
                             >
                                 Limpar
                             </button>
@@ -249,7 +249,7 @@ function Encarte() {
                         {/* Autocomplete Search */}
                         <div className="relative">
                             <label className="block text-[11px] font-semibold text-slate-600 mb-1">
-                                Adicionar Animal Avulso (Autocomplete)
+                                Adicionar Item Avulso (Autocomplete)
                             </label>
                             <div className="relative">
                                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-slate-400" />
@@ -302,7 +302,7 @@ function Encarte() {
                                                     onMouseEnter={() => setHighlightedIndex(index)}
                                                     onClick={() => handleAddItem(p)}
                                                     disabled={isAlreadyAdded}
-                                                    className={`w-full px-3 py-2 text-left flex items-center justify-between text-xs transition-colors ${
+                                                    className={`w-full px-3 py-2 text-left flex items-center justify-between text-xs transition-colors cursor-pointer ${
                                                         isAlreadyAdded
                                                             ? 'opacity-50 cursor-not-allowed bg-slate-50'
                                                             : index === highlightedIndex
@@ -338,7 +338,7 @@ function Encarte() {
                         <div className="space-y-1.5 max-h-60 overflow-y-auto pr-1">
                             {selectedItems.length === 0 ? (
                                 <div className="p-4 text-center text-xs text-slate-400 border border-dashed border-slate-200 rounded-xl">
-                                    Nenhum animal selecionado. Clique em &quot;Todos os Seres Vivos&quot; ou busque acima.
+                                    Nenhum item selecionado. Clique em &quot;Todos os Seres Vivos&quot; ou busque acima.
                                 </div>
                             ) : (
                                 selectedItems.map((item, idx) => (
@@ -365,8 +365,8 @@ function Encarte() {
                                         <button
                                             type="button"
                                             onClick={() => handleRemoveItem(item.id)}
-                                            className="text-slate-400 hover:text-rose-600 p-1 transition-colors"
-                                            title="Remover do encarte"
+                                            className="text-slate-400 hover:text-rose-600 p-1 transition-colors cursor-pointer"
+                                            title="Remover do catálogo"
                                         >
                                             <Trash2 className="h-3.5 w-3.5" />
                                         </button>
@@ -380,7 +380,7 @@ function Encarte() {
                     <div className="bg-white rounded-2xl border border-slate-200/80 p-5 shadow-xs space-y-4">
                         <div className="flex items-center gap-2 pb-3 border-b border-slate-100 text-xs font-bold uppercase tracking-wider text-slate-800">
                             <Sliders className="h-4 w-4 text-sky-600" />
-                            <span>Opções de Exibição do Encarte</span>
+                            <span>Opções de Exibição do Catálogo</span>
                         </div>
 
                         <div className="space-y-3 text-xs">
@@ -430,17 +430,17 @@ function Encarte() {
                                     <select
                                         value={cardPriceLabel}
                                         onChange={(e) =>
-                                            setCardPriceLabel(e.target.value as 'cartao' | 'parcelado')
+                                            setCardPriceLabel(e.target.value as 'card' | 'installments')
                                         }
                                         className="w-full px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs font-semibold focus:bg-white focus:border-sky-500 focus:outline-hidden"
                                     >
-                                        <option value="cartao">Cartão R$ XX,XX</option>
-                                        <option value="parcelado">Parcelado sem juros</option>
+                                        <option value="card">Cartão R$ XX,XX</option>
+                                        <option value="installments">Parcelado sem juros</option>
                                     </select>
                                 </div>
                             </div>
 
-                            {cardPriceLabel === 'parcelado' && (
+                            {cardPriceLabel === 'installments' && (
                                 <div>
                                     <label className="block text-[11px] font-semibold text-slate-600 mb-1">
                                         Número de Parcelas Sem Juros
@@ -462,18 +462,18 @@ function Encarte() {
                         <div className="p-3 bg-sky-50 text-sky-800 rounded-xl text-[11px] flex items-start gap-2">
                             <Info className="h-4 w-4 shrink-0 text-sky-600 mt-0.5" />
                             <span>
-                                As fotos exibidas vêm salvas localmente no sistema para garantir carregamento instantâneo e exportação limpa em alta resolução para envio no WhatsApp.
+                                As fotos exibidas vêm salvas localmente no sistema para garantir carregamento instantâneo e exportação limpa em alta resolução para divulgação.
                             </span>
                         </div>
                     </div>
                 </div>
 
-                {/* Encarte Visual Canvas Preview (7 Cols) */}
+                {/* Catalog Visual Canvas Preview (7 Cols) */}
                 <div className="lg:col-span-7 space-y-3">
                     <div className="flex items-center justify-between">
                         <span className="text-xs font-bold uppercase tracking-wider text-slate-600 flex items-center gap-1.5">
                             <Layers className="h-4 w-4 text-sky-600" />
-                            Visualização Real do Encarte (Pronto para WhatsApp)
+                            Visualização Real do Catálogo (Pronto para Exportar)
                         </span>
                         <span className="text-[11px] text-slate-400">
                             Fundo Navy Escuro • Badges Âmbar
@@ -508,7 +508,7 @@ function Encarte() {
                                 </div>
                             ) : selectedItems.length === 0 ? (
                                 <div className="py-20 text-center text-slate-500 text-xs">
-                                    Nenhum item selecionado para o encarte.
+                                    Nenhum item selecionado para o catálogo.
                                 </div>
                             ) : (
                                 <div className="grid grid-cols-3 gap-4">
@@ -539,7 +539,7 @@ function Encarte() {
                                                     Pix: R$ {getPixPrice(item.salePrice)}
                                                 </p>
                                                 <p className="text-[10px] font-semibold text-slate-900/90 leading-tight">
-                                                    {cardPriceLabel === 'parcelado'
+                                                    {cardPriceLabel === 'installments'
                                                         ? `${numInstallments}x sem juros: R$ ${(
                                                               item.salePrice / numInstallments
                                                           )
@@ -570,4 +570,4 @@ function Encarte() {
     )
 }
 
-export default Encarte
+export default Catalog

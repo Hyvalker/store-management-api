@@ -20,7 +20,7 @@ const menuItems = [
     {label: 'Produtos & Estoque', path: '/products', icon: Package},
     {label: 'Vendas & Pedidos', path: '/orders', icon: ShoppingCart},
     {label: 'Clientes', path: '/customers', icon: Users},
-    {label: 'Encarte WhatsApp', path: '/encarte', icon: Share2},
+    {label: 'Catálogo de Ofertas', path: '/catalog', icon: Share2},
 ]
 
 function Sidebar() {

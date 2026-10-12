@@ -82,7 +82,7 @@ public class ProductController {
     public ResponseEntity<ProductResponseDTO> findByBarcode(
             @PathVariable String barcode
     ) {
-        ProductResponseDTO response = productService.findByBarcorde(barcode)
+        ProductResponseDTO response = productService.findByBarcode(barcode)
                 .orElseThrow(() -> new ProductNotFoundException(
                         "Produto não encontrado."
                 ));

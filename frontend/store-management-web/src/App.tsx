@@ -6,7 +6,7 @@ import Products from './pages/Products/Products'
 import Customers from './pages/Customers/Customers'
 import CustomerDetail from './pages/Customers/CustomerDetail'
 import Orders from './pages/Orders/Orders'
-import Encarte from './pages/Encarte/Encarte'
+import Catalog from './pages/Catalog/Catalog'
 import Settings from './pages/Settings/Settings'
 import Login from './pages/Login/Login'
 import {ToastProvider} from './contexts/ToastContext'
@@ -37,7 +37,8 @@ function App() {
                         <Route path="/customers" element={<Customers />} />
                         <Route path="/customers/:id" element={<CustomerDetail />} />
                         <Route path="/orders" element={<Orders />} />
-                        <Route path="/encarte" element={<Encarte />} />
+                        <Route path="/catalog" element={<Catalog />} />
+                        <Route path="/encarte" element={<Navigate to="/catalog" replace />} />
 
                         {/* Área Restrita - Exige papel ADMIN */}
                         <Route
