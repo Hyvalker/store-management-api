@@ -31,26 +31,38 @@ export function getAnimalImage(itemOrName: ItemImageSource | string): string {
         .replace(/[\u0300-\u036f]/g, '')
         .toLowerCase()
 
-    // 1. Morfos e variações específicas
-    if (norm.includes('storm') && (norm.includes('palhaco') || norm.includes('ocellaris'))) {
-        return '/images/animals/peixe-palhaco-storm-black.jpg'
+    // 1. Morfos de Peixe-Palhaço (EcoReef)
+    if (norm.includes('storm')) {
+        if (norm.includes('orange')) return '/images/animals/palhaco-orange-storm.jpg'
+        if (norm.includes('snow')) return '/images/animals/palhaco-snow-storm.jpg'
+        if (norm.includes('mocha')) return '/images/animals/palhaco-mocha-storm.jpg'
+        return '/images/animals/palhaco-black-storm.jpg'
     }
-    if (norm.includes('snowflake') && (norm.includes('palhaco') || norm.includes('ocellaris'))) {
-        return '/images/animals/peixe-palhaco-snowflake.jpg'
+    if (norm.includes('snowflake')) {
+        if (norm.includes('maroon')) return '/images/animals/palhaco-maroon-snowflake.jpg'
+        return '/images/animals/palhaco-snowflake.jpg'
     }
-    if (norm.includes('picasso') && (norm.includes('palhaco') || norm.includes('ocellaris'))) {
-        return '/images/animals/peixe-palhaco-picasso.jpg'
-    }
+    if (norm.includes('picasso')) return '/images/animals/palhaco-premium-picasso.jpg'
+    if (norm.includes('lightning')) return '/images/animals/palhaco-maroon-lightning.jpg'
+    if (norm.includes('nugget')) return '/images/animals/palhaco-maroon-golden-nugget.jpg'
+    if (norm.includes('maroon')) return '/images/animals/palhaco-maroon-espinho.jpg'
+    if (norm.includes('black ocellaris')) return '/images/animals/palhaco-black-ocellaris.jpg'
     if (norm.includes('palhaco') || norm.includes('ocellaris') || norm.includes('clownfish')) {
-        return '/images/animals/peixe-palhaco-ocellaris.jpg'
+        return '/images/animals/palhaco-ocellaris-comum.jpg'
     }
 
-    // 2. Peixes Marinhos
-    if (norm.includes('yellow tang') || norm.includes('flavescens')) {
-        return '/images/animals/yellow-tang.jpg'
-    }
+    // 2. Cirurgiões / Tangs Marinhos
     if (norm.includes('blue tang') || norm.includes('hepatus')) {
-        return '/images/animals/blue-tang.jpg'
+        return '/images/animals/tang-hepatus.jpg'
+    }
+    if (norm.includes('yellow tang') || norm.includes('flavescens')) {
+        return '/images/animals/tang-amarelo.jpg'
+    }
+    if (norm.includes('purple') && norm.includes('tang')) {
+        return '/images/animals/tang-purple.jpg'
+    }
+    if (norm.includes('powder blue')) {
+        return '/images/animals/tang-powder-blue.jpg'
     }
     if (norm.includes('leao') || norm.includes('volitans')) {
         return '/images/animals/peixe-leao.jpg'
@@ -59,61 +71,65 @@ export function getAnimalImage(itemOrName: ItemImageSource | string): string {
         return '/images/animals/gramma-loreto.jpg'
     }
 
-    // 3. Corais
-    if (norm.includes('hammer')) {
-        return '/images/animals/coral-hammer.jpg'
+    // 3. Invertebrados (Camarões e Equipe de Limpeza)
+    if (norm.includes('bailarino') || norm.includes('wurdemanni')) {
+        return '/images/animals/camarao-bailarino-comedor-de-aiptasia.jpg'
     }
-    if (norm.includes('frogspawn')) {
-        return '/images/animals/coral-frogspawn.jpg'
+    if (norm.includes('cleaner') || norm.includes('amboinensis')) {
+        return '/images/animals/camarao-skunk-cleaner.jpg'
     }
-    if (norm.includes('torch')) {
-        return '/images/animals/coral-torch.jpg'
+    if (norm.includes('stenopus')) {
+        return '/images/animals/camarao-stenopus.jpg'
+    }
+
+    // 4. Corais
+    if (norm.includes('hammer') || norm.includes('ancora')) {
+        return '/images/animals/hammer-coral-branching.jpg'
+    }
+    if (norm.includes('frogspawn') || norm.includes('divisa')) {
+        return '/images/animals/frogspawn-coral-green.jpg'
+    }
+    if (norm.includes('torch') || norm.includes('glabrescens')) {
+        return '/images/animals/torch-coral-green-tip.jpg'
     }
     if (norm.includes('zoanthus')) {
-        return '/images/animals/zoanthus.jpg'
+        return '/images/animals/zoanthus-grandis-cinnamon.jpg'
     }
 
-    // 4. Invertebrados
-    if (norm.includes('bailarino') || norm.includes('camarao')) {
-        return '/images/animals/camarao-bailarino.jpg'
-    }
-
-    // 5. Água Doce
-    if (norm.includes('neon') || norm.includes('axelrodi') || norm.includes('cardinal')) {
-        return '/images/animals/tetra-neon.jpg'
+    // 5. Peixes de Água Doce
+    if (norm.includes('cardinal') || (norm.includes('neon') && !norm.includes('goby'))) {
+        return '/images/animals/tetra-neon-cardinal.jpg'
     }
     if (norm.includes('disco') || norm.includes('discus')) {
-        return '/images/animals/acara-disco.jpg'
+        return '/images/animals/acara-disco-selvagem-azul.jpg'
     }
-    if (norm.includes('corydora') || norm.includes('sterbai')) {
-        return '/images/animals/corydora-sterbai.jpg'
+    if (norm.includes('coridora') || norm.includes('corydora') || norm.includes('sterbai')) {
+        return '/images/animals/coridora-sterbai.jpg'
     }
     if (norm.includes('betta')) {
         return '/images/animals/betta-splendens.jpg'
     }
     if (norm.includes('platy')) {
-        return '/images/animals/platy.jpg'
+        return '/images/animals/platy-variatus-arco-iris.jpg'
     }
 
-    // 6. Fallback por subcategoria se não achar pelo nome
+    // 6. Fallback limpo por subcategoria (somente se não bater por nenhuma espécie)
     if (subCategory) {
         switch (subCategory) {
             case 'CORAL':
-                return '/images/animals/coral-hammer.jpg'
+                return '/images/animals/hammer-coral-branching.jpg'
             case 'INVERTEBRATE':
-                return '/images/animals/camarao-bailarino.jpg'
+                return '/images/animals/camarao-bailarino-comedor-de-aiptasia.jpg'
             case 'FRESHWATER_FISH':
-                return '/images/animals/tetra-neon.jpg'
+                return '/images/animals/tetra-neon-cardinal.jpg'
             case 'MARINE_FISH':
-            case 'OTHER_LIVING':
-                return '/images/animals/peixe-palhaco-ocellaris.jpg'
+                return '/images/animals/tang-hepatus.jpg'
             default:
                 break
         }
     }
 
-    // Fallback padrão
-    return '/images/animals/peixe-palhaco-ocellaris.jpg'
+    return '/images/animals/palhaco-ocellaris-comum.jpg'
 }
 
 /**

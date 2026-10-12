@@ -122,25 +122,25 @@ VALUES
 INSERT INTO products (name, normalized_name, type, sub_category, image_slug, quantity, cost_price, sale_price, profit_margin, barcode, active, created_at)
 VALUES
     -- Seres Vivos Marinhos
-    ('Peixe-palhaço Ocellaris (Amphiprion ocellaris)', 'peixe-palhaço ocellaris (amphiprion ocellaris)', 'LIVING', 'MARINE_FISH', 'peixe-palhaco-ocellaris.jpg', 24, 45.00, 76.50, 70.00, '789000000001', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
+    ('Peixe-palhaço Ocellaris (Amphiprion ocellaris)', 'peixe-palhaço ocellaris (amphiprion ocellaris)', 'LIVING', 'MARINE_FISH', 'palhaco-ocellaris-comum.jpg', 24, 45.00, 76.50, 70.00, '789000000001', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
     ('Peixe-leão (Pterois volitans)', 'peixe-leão (pterois volitans)', 'LIVING', 'MARINE_FISH', 'peixe-leao.jpg', 6, 120.00, 204.00, 70.00, '789000000002', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
-    ('Blue Tang (Paracanthurus hepatus)', 'blue tang (paracanthurus hepatus)', 'LIVING', 'MARINE_FISH', 'blue-tang.jpg', 8, 280.00, 476.00, 70.00, '789000000003', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
-    ('Yellow Tang (Zebrasoma flavescens)', 'yellow tang (zebrasoma flavescens)', 'LIVING', 'MARINE_FISH', 'yellow-tang.jpg', 4, 650.00, 1105.00, 70.00, '789000000004', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
+    ('Blue Tang (Paracanthurus hepatus)', 'blue tang (paracanthurus hepatus)', 'LIVING', 'MARINE_FISH', 'tang-hepatus.jpg', 8, 280.00, 476.00, 70.00, '789000000003', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
+    ('Yellow Tang (Zebrasoma flavescens)', 'yellow tang (zebrasoma flavescens)', 'LIVING', 'MARINE_FISH', 'tang-amarelo.jpg', 4, 650.00, 1105.00, 70.00, '789000000004', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
     ('Gramma Loreto', 'gramma loreto', 'LIVING', 'MARINE_FISH', 'gramma-loreto.jpg', 10, 110.00, 187.00, 70.00, '789000000005', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
 
     -- Seres Vivos Água Doce
-    ('Platy Sunset', 'platy sunset', 'LIVING', 'FRESHWATER_FISH', 'platy.jpg', 45, 4.00, 10.00, 150.00, '789000000006', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
+    ('Platy Sunset', 'platy sunset', 'LIVING', 'FRESHWATER_FISH', 'platy-variatus-arco-iris.jpg', 45, 4.00, 10.00, 150.00, '789000000006', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
     ('Betta Splendens Halfmoon', 'betta splendens halfmoon', 'LIVING', 'FRESHWATER_FISH', 'betta-splendens.jpg', 18, 15.00, 35.00, 133.33, '789000000007', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
-    ('Tetra Neon Cardinal (Paracheirodon axelrodi)', 'tetra neon cardinal (paracheirodon axelrodi)', 'LIVING', 'FRESHWATER_FISH', 'tetra-neon.jpg', 80, 2.50, 7.00, 180.00, '789000000008', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
-    ('Acará Disco Blue Diamond', 'acará disco blue diamond', 'LIVING', 'FRESHWATER_FISH', 'acara-disco.jpg', 5, 140.00, 280.00, 100.00, '789000000009', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
-    ('Corydora Sterbai', 'corydora sterbai', 'LIVING', 'FRESHWATER_FISH', 'corydora-sterbai.jpg', 22, 12.00, 25.00, 108.33, '789000000010', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
+    ('Tetra Neon Cardinal (Paracheirodon axelrodi)', 'tetra neon cardinal (paracheirodon axelrodi)', 'LIVING', 'FRESHWATER_FISH', 'tetra-neon-cardinal.jpg', 80, 2.50, 7.00, 180.00, '789000000008', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
+    ('Acará Disco Blue Diamond', 'acará disco blue diamond', 'LIVING', 'FRESHWATER_FISH', 'acara-disco-selvagem-azul.jpg', 5, 140.00, 280.00, 100.00, '789000000009', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
+    ('Corydora Sterbai', 'corydora sterbai', 'LIVING', 'FRESHWATER_FISH', 'coridora-sterbai.jpg', 22, 12.00, 25.00, 108.33, '789000000010', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
 
     -- Corais e Invertebrados
-    ('Coral Hammer Verde Metálico (Euphyllia ancora)', 'coral hammer verde metálico (euphyllia ancora)', 'LIVING', 'CORAL', 'coral-hammer.jpg', 7, 90.00, 160.00, 77.78, '789000000011', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
-    ('Coral Frogspawn Ultra Green', 'coral frogspawn ultra green', 'LIVING', 'CORAL', 'coral-frogspawn.jpg', 5, 140.00, 250.00, 78.57, '789000000012', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
-    ('Coral Torch Gold Dourado', 'coral torch gold dourado', 'LIVING', 'CORAL', 'coral-torch.jpg', 3, 350.00, 600.00, 71.43, '789000000013', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
-    ('Muda Zoanthus Watermelon', 'muda zoanthus watermelon', 'LIVING', 'CORAL', 'zoanthus.jpg', 12, 40.00, 80.00, 100.00, '789000000014', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
-    ('Camarão Bailarino (Lysmata wurdemanni)', 'camarão bailarino (lysmata wurdemanni)', 'LIVING', 'INVERTEBRATE', 'camarao-bailarino.jpg', 15, 25.00, 50.00, 100.00, '789000000015', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
+    ('Coral Hammer Verde Metálico (Euphyllia ancora)', 'coral hammer verde metálico (euphyllia ancora)', 'LIVING', 'CORAL', 'hammer-coral-branching.jpg', 7, 90.00, 160.00, 77.78, '789000000011', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
+    ('Coral Frogspawn Ultra Green', 'coral frogspawn ultra green', 'LIVING', 'CORAL', 'frogspawn-coral-green.jpg', 5, 140.00, 250.00, 78.57, '789000000012', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
+    ('Coral Torch Gold Dourado', 'coral torch gold dourado', 'LIVING', 'CORAL', 'torch-coral-green-tip.jpg', 3, 350.00, 600.00, 71.43, '789000000013', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
+    ('Muda Zoanthus Watermelon', 'muda zoanthus watermelon', 'LIVING', 'CORAL', 'zoanthus-grandis-cinnamon.jpg', 12, 40.00, 80.00, 100.00, '789000000014', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
+    ('Camarão Bailarino (Lysmata wurdemanni)', 'camarão bailarino (lysmata wurdemanni)', 'LIVING', 'INVERTEBRATE', 'camarao-bailarino-comedor-de-aiptasia.jpg', 15, 25.00, 50.00, 100.00, '789000000015', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
 
     -- Rações e Nutrição
     ('Ração Marine Flakes 100g', 'ração marine flakes 100g', 'PRODUCT', 'SUPPLY', NULL, 35, 25.00, 45.00, 80.00, '789000000016', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
