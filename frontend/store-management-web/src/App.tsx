@@ -8,26 +8,29 @@ import CustomerDetail from './pages/Customers/CustomerDetail'
 import Orders from './pages/Orders/Orders'
 import Encarte from './pages/Encarte/Encarte'
 import Settings from './pages/Settings/Settings'
+import {ToastProvider} from './contexts/ToastContext'
 
 function App() {
     return (
-        <Routes>
-            <Route element={<MainLayout/>}>
-                {/* Safe Home / Operational Counter View */}
-                <Route path="/" element={<Home/>}/>
+        <ToastProvider>
+            <Routes>
+                <Route element={<MainLayout/>}>
+                    {/* Safe Home / Operational Counter View */}
+                    <Route path="/" element={<Home/>}/>
 
-                {/* Operations */}
-                <Route path="/products" element={<Products/>}/>
-                <Route path="/customers" element={<Customers/>}/>
-                <Route path="/customers/:id" element={<CustomerDetail/>}/>
-                <Route path="/orders" element={<Orders/>}/>
-                <Route path="/encarte" element={<Encarte/>}/>
+                    {/* Operations */}
+                    <Route path="/products" element={<Products/>}/>
+                    <Route path="/customers" element={<Customers/>}/>
+                    <Route path="/customers/:id" element={<CustomerDetail/>}/>
+                    <Route path="/orders" element={<Orders/>}/>
+                    <Route path="/encarte" element={<Encarte/>}/>
 
-                {/* Private Store Manager Dashboard & Settings */}
-                <Route path="/dashboard" element={<Dashboard/>}/>
-                <Route path="/settings" element={<Settings/>}/>
-            </Route>
-        </Routes>
+                    {/* Private Store Manager Dashboard & Settings */}
+                    <Route path="/dashboard" element={<Dashboard/>}/>
+                    <Route path="/settings" element={<Settings/>}/>
+                </Route>
+            </Routes>
+        </ToastProvider>
     )
 }
 
