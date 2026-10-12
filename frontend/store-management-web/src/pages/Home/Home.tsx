@@ -1,4 +1,4 @@
-import {useEffect, useState, useRef} from 'react'
+import {useEffect, useState, useRef, useMemo, useCallback} from 'react'
 import {useNavigate} from 'react-router-dom'
 import {
     ScanBarcode,
@@ -7,11 +7,15 @@ import {
     ShoppingCart,
     Fish,
     Layers,
+    Package,
     CheckCircle2,
-    AlertCircle
+    AlertCircle,
+    RefreshCw,
+    X
 } from 'lucide-react'
 import {getProducts} from '../../services/productService'
 import type {Product} from '../../types/product'
+import {matchesSearch} from '../../utils/searchUtils'
 
 function Home() {
     const navigate = useNavigate()
@@ -20,30 +24,57 @@ function Home() {
     const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
     const [highlightedIndex, setHighlightedIndex] = useState<number>(0)
     const [loading, setLoading] = useState(true)
+    const [typeFilter, setTypeFilter] = useState<'ALL' | 'LIVING' | 'PRODUCT'>('ALL')
+    const [tableSearch, setTableSearch] = useState('')
+    const [displayLimit, setDisplayLimit] = useState<number>(30)
     const searchInputRef = useRef<HTMLInputElement>(null)
 
-    useEffect(() => {
-        async function load() {
-            try {
-                const data = await getProducts()
-                setProducts(data)
-            } catch (err) {
-                console.error('Erro ao carregar catálogo', err)
-            } finally {
-                setLoading(false)
-            }
+    const loadProducts = useCallback(async () => {
+        setLoading(true)
+        try {
+            const data = await getProducts()
+            setProducts(data)
+        } catch (err) {
+            console.error('Erro ao carregar catálogo', err)
+        } finally {
+            setLoading(false)
         }
-        load()
     }, [])
 
-    // Quick lookup logic
-    const filteredProducts = products.filter((p) => {
-        const query = searchTerm.toLowerCase()
-        return (
-            p.name.toLowerCase().includes(query) ||
-            (p.barcode && p.barcode.toLowerCase().includes(query))
-        )
-    })
+    useEffect(() => {
+        loadProducts()
+    }, [loadProducts])
+
+    // Category counts
+    const livingCount = useMemo(() => products.filter((p) => p.type === 'LIVING').length, [products])
+    const productCount = useMemo(() => products.filter((p) => p.type === 'PRODUCT').length, [products])
+
+    // Quick lookup logic with type filter & accent-insensitive search
+    const filteredProducts = useMemo(() => {
+        if (!searchTerm.trim()) return []
+        return products.filter((p) => {
+            if (typeFilter !== 'ALL' && p.type !== typeFilter) {
+                return false
+            }
+            return matchesSearch(p.name, searchTerm, p.barcode)
+        })
+    }, [products, searchTerm, typeFilter])
+
+    const anyCategoryMatches = useMemo(() => {
+        if (!searchTerm.trim() || typeFilter === 'ALL' || filteredProducts.length > 0) return 0
+        return products.filter((p) => matchesSearch(p.name, searchTerm, p.barcode)).length
+    }, [products, searchTerm, typeFilter, filteredProducts.length])
+
+    // Filtered items for quick catalog table
+    const filteredCatalog = useMemo(() => {
+        return products.filter((p) => {
+            if (typeFilter !== 'ALL' && p.type !== typeFilter) {
+                return false
+            }
+            if (!tableSearch.trim()) return true
+            return matchesSearch(p.name, tableSearch, p.barcode)
+        })
+    }, [products, typeFilter, tableSearch])
 
     function handleSelect(product: Product) {
         setSelectedProduct(product)
@@ -87,11 +118,61 @@ function Home() {
 
             {/* Quick Price & Stock Lookup - Customer Friendly */}
             <div className="bg-white rounded-2xl border border-slate-200/80 p-6 shadow-xs">
-                <div className="flex items-center gap-2 mb-3 text-slate-800">
-                    <ScanBarcode className="h-5 w-5 text-sky-600" />
-                    <h2 className="text-base font-semibold text-slate-800">
-                        Consultar Preço & Estoque no Balcão
-                    </h2>
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-3">
+                    <div className="flex items-center gap-2 text-slate-800">
+                        <ScanBarcode className="h-5 w-5 text-sky-600" />
+                        <h2 className="text-base font-semibold text-slate-800">
+                            Consultar Preço & Estoque no Balcão
+                        </h2>
+                    </div>
+
+                    {/* Filter selector */}
+                    <div className="flex items-center bg-slate-100 p-1 rounded-xl border border-slate-200">
+                        <button
+                            type="button"
+                            onClick={() => {
+                                setTypeFilter('ALL')
+                                setHighlightedIndex(0)
+                            }}
+                            className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                                typeFilter === 'ALL'
+                                    ? 'bg-white text-sky-700 shadow-xs'
+                                    : 'text-slate-600 hover:text-slate-900'
+                            }`}
+                        >
+                            Todos ({products.length})
+                        </button>
+                        <button
+                            type="button"
+                            onClick={() => {
+                                setTypeFilter('LIVING')
+                                setHighlightedIndex(0)
+                            }}
+                            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                                typeFilter === 'LIVING'
+                                    ? 'bg-white text-sky-700 shadow-xs'
+                                    : 'text-slate-600 hover:text-slate-900'
+                            }`}
+                        >
+                            <Fish className="h-3.5 w-3.5 text-sky-600" />
+                            <span>Seres Vivos ({livingCount})</span>
+                        </button>
+                        <button
+                            type="button"
+                            onClick={() => {
+                                setTypeFilter('PRODUCT')
+                                setHighlightedIndex(0)
+                            }}
+                            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                                typeFilter === 'PRODUCT'
+                                    ? 'bg-white text-sky-700 shadow-xs'
+                                    : 'text-slate-600 hover:text-slate-900'
+                            }`}
+                        >
+                            <Package className="h-3.5 w-3.5 text-slate-500" />
+                            <span>Produtos Secos ({productCount})</span>
+                        </button>
+                    </div>
                 </div>
 
                 <div className="relative">
@@ -133,7 +214,26 @@ function Home() {
                         <div className="absolute top-full left-0 right-0 mt-2 bg-white rounded-xl border border-slate-200 shadow-lg z-20 max-h-72 overflow-y-auto divide-y divide-slate-100">
                             {filteredProducts.length === 0 ? (
                                 <div className="p-4 text-center text-sm text-slate-500">
-                                    Nenhum item encontrado para &quot;{searchTerm}&quot;
+                                    <p>
+                                        Nenhum item encontrado para &quot;{searchTerm}&quot;
+                                        {typeFilter !== 'ALL' && (
+                                            <span className="font-semibold text-slate-700">
+                                                {' '}em {typeFilter === 'LIVING' ? 'Seres Vivos' : 'Produtos Secos'}
+                                            </span>
+                                        )}
+                                    </p>
+                                    {anyCategoryMatches > 0 && (
+                                        <button
+                                            type="button"
+                                            onClick={() => {
+                                                setTypeFilter('ALL')
+                                                setHighlightedIndex(0)
+                                            }}
+                                            className="mt-2 text-xs font-semibold text-sky-600 hover:text-sky-800 underline cursor-pointer"
+                                        >
+                                            Buscar em todas as categorias ({anyCategoryMatches} encontrado{anyCategoryMatches > 1 ? 's' : ''})
+                                        </button>
+                                    )}
                                 </div>
                             ) : (
                                 filteredProducts.slice(0, 8).map((p, index) => (
@@ -249,78 +349,213 @@ function Home() {
             </div>
 
             {/* Quick Catalog Overview */}
-            <div className="bg-white rounded-2xl border border-slate-200/80 p-6 shadow-xs">
-                <div className="flex items-center justify-between mb-4">
-                    <div>
-                        <h2 className="text-base font-semibold text-slate-900">
-                            Catálogo Rápido da Loja
-                        </h2>
-                        <p className="text-xs text-slate-500">
-                            Visualização direta dos produtos e estoque sem exposição de custos.
-                        </p>
+            <div className="bg-white rounded-2xl border border-slate-200/80 p-6 shadow-xs space-y-4">
+                <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-3 border-b border-slate-100">
+                    <div className="flex items-center gap-2">
+                        <Package className="h-5 w-5 text-sky-600" />
+                        <div>
+                            <h2 className="text-base font-bold text-slate-900">
+                                Catálogo Rápido da Loja
+                            </h2>
+                            <p className="text-xs text-slate-500">
+                                Visualização direta dos produtos e estoque sem exposição de custos. Clique para consultar.
+                            </p>
+                        </div>
+                        <span className="text-xs bg-slate-100 text-slate-600 font-semibold px-2.5 py-0.5 rounded-full ml-1">
+                            {filteredCatalog.length} de {products.length} itens
+                        </span>
                     </div>
-                    <span className="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700">
-                        {products.length} itens cadastrados
-                    </span>
+
+                    <div className="flex flex-wrap items-center gap-2.5">
+                        {/* Type Filter Buttons */}
+                        <div className="flex items-center bg-slate-100 p-1 rounded-xl border border-slate-200">
+                            <button
+                                type="button"
+                                onClick={() => {
+                                    setTypeFilter('ALL')
+                                    setDisplayLimit(30)
+                                }}
+                                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                                    typeFilter === 'ALL'
+                                        ? 'bg-white text-sky-700 shadow-xs'
+                                        : 'text-slate-600 hover:text-slate-900'
+                                }`}
+                            >
+                                Todos ({products.length})
+                            </button>
+                            <button
+                                type="button"
+                                onClick={() => {
+                                    setTypeFilter('LIVING')
+                                    setDisplayLimit(30)
+                                }}
+                                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                                    typeFilter === 'LIVING'
+                                        ? 'bg-white text-sky-700 shadow-xs'
+                                        : 'text-slate-600 hover:text-slate-900'
+                                }`}
+                            >
+                                <Fish className="h-3.5 w-3.5 text-sky-600" />
+                                <span>Seres Vivos ({livingCount})</span>
+                            </button>
+                            <button
+                                type="button"
+                                onClick={() => {
+                                    setTypeFilter('PRODUCT')
+                                    setDisplayLimit(30)
+                                }}
+                                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                                    typeFilter === 'PRODUCT'
+                                        ? 'bg-white text-sky-700 shadow-xs'
+                                        : 'text-slate-600 hover:text-slate-900'
+                                }`}
+                            >
+                                <Package className="h-3.5 w-3.5 text-slate-500" />
+                                <span>Produtos Secos ({productCount})</span>
+                            </button>
+                        </div>
+
+                        {/* Search Input */}
+                        <div className="relative w-full sm:w-60">
+                            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
+                            <input
+                                type="text"
+                                value={tableSearch}
+                                onChange={(e) => setTableSearch(e.target.value)}
+                                placeholder="Filtrar tabela..."
+                                className="w-full pl-9 pr-8 py-1.5 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:bg-white focus:border-sky-500 focus:outline-hidden transition-all placeholder:text-slate-400"
+                            />
+                            {tableSearch && (
+                                <button
+                                    type="button"
+                                    onClick={() => setTableSearch('')}
+                                    className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 cursor-pointer"
+                                >
+                                    <X className="h-3.5 w-3.5" />
+                                </button>
+                            )}
+                        </div>
+
+                        <button
+                            type="button"
+                            onClick={loadProducts}
+                            className="p-2 text-slate-500 hover:text-slate-800 hover:bg-slate-100 rounded-xl border border-slate-200 transition-colors cursor-pointer"
+                            title="Atualizar catálogo"
+                        >
+                            <RefreshCw className="h-4 w-4" />
+                        </button>
+                    </div>
                 </div>
 
                 {loading ? (
                     <div className="py-12 text-center text-sm text-slate-400">
                         Carregando produtos...
                     </div>
-                ) : (
-                    <div className="overflow-x-auto">
-                        <table className="w-full text-left text-sm text-slate-600">
-                            <thead className="bg-slate-50 text-xs uppercase tracking-wider text-slate-500 border-y border-slate-200/80">
-                                <tr>
-                                    <th className="py-3 px-4 font-semibold">Produto / Ser-vivo</th>
-                                    <th className="py-3 px-4 font-semibold">Tipo</th>
-                                    <th className="py-3 px-4 font-semibold">Cód. Barras</th>
-                                    <th className="py-3 px-4 font-semibold text-center">Status Estoque</th>
-                                    <th className="py-3 px-4 font-semibold text-right">Preço de Venda</th>
-                                </tr>
-                            </thead>
-                            <tbody className="divide-y divide-slate-100">
-                                {products.slice(0, 15).map((p) => (
-                                    <tr key={p.id} className="hover:bg-slate-50/80 transition-colors">
-                                        <td className="py-3.5 px-4 font-medium text-slate-900">
-                                            {p.name}
-                                        </td>
-                                        <td className="py-3.5 px-4 text-xs">
-                                            <span
-                                                className={`px-2 py-0.5 rounded-md font-medium ${
-                                                    p.type === 'LIVING'
-                                                        ? 'bg-blue-50 text-blue-700'
-                                                        : 'bg-slate-100 text-slate-700'
-                                                }`}
-                                            >
-                                                {p.type === 'LIVING' ? 'Ser-vivo' : 'Produto'}
-                                            </span>
-                                        </td>
-                                        <td className="py-3.5 px-4 text-xs text-slate-400 font-mono">
-                                            {p.barcode || '—'}
-                                        </td>
-                                        <td className="py-3.5 px-4 text-center">
-                                            <span
-                                                className={`inline-flex items-center gap-1 text-xs font-semibold px-2.5 py-0.5 rounded-full ${
-                                                    p.quantity > 5
-                                                        ? 'bg-emerald-50 text-emerald-700'
-                                                        : p.quantity > 0
-                                                        ? 'bg-amber-50 text-amber-700'
-                                                        : 'bg-rose-50 text-rose-700'
-                                                }`}
-                                            >
-                                                {p.quantity} un.
-                                            </span>
-                                        </td>
-                                        <td className="py-3.5 px-4 text-right font-bold text-slate-900">
-                                            R$ {Number(p.salePrice || 0).toFixed(2)}
-                                        </td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
+                ) : filteredCatalog.length === 0 ? (
+                    <div className="py-12 text-center text-slate-500 text-sm space-y-2">
+                        <p>Nenhum item encontrado com os filtros selecionados.</p>
+                        {(typeFilter !== 'ALL' || tableSearch) && (
+                            <button
+                                type="button"
+                                onClick={() => {
+                                    setTypeFilter('ALL')
+                                    setTableSearch('')
+                                }}
+                                className="text-xs text-sky-600 font-semibold hover:underline cursor-pointer"
+                            >
+                                Limpar filtros
+                            </button>
+                        )}
                     </div>
+                ) : (
+                    <>
+                        <div className="overflow-x-auto">
+                            <table className="w-full text-left text-sm text-slate-600">
+                                <thead className="bg-slate-50 text-xs uppercase tracking-wider text-slate-500 border-y border-slate-200/80">
+                                    <tr>
+                                        <th className="py-3 px-4 font-semibold">Produto / Ser-vivo</th>
+                                        <th className="py-3 px-4 font-semibold">Tipo</th>
+                                        <th className="py-3 px-4 font-semibold">Cód. Barras</th>
+                                        <th className="py-3 px-4 font-semibold text-center">Status Estoque</th>
+                                        <th className="py-3 px-4 font-semibold text-right">Preço de Venda</th>
+                                    </tr>
+                                </thead>
+                                <tbody className="divide-y divide-slate-100">
+                                    {filteredCatalog.slice(0, displayLimit).map((p) => {
+                                        const isSelected = selectedProduct?.id === p.id
+                                        return (
+                                            <tr
+                                                key={p.id}
+                                                onClick={() => handleSelect(p)}
+                                                className={`transition-colors cursor-pointer ${
+                                                    isSelected
+                                                        ? 'bg-sky-50 text-sky-950 font-medium border-l-4 border-sky-600'
+                                                        : 'hover:bg-slate-50/80'
+                                                }`}
+                                                title="Clique para consultar e destacar no balcão"
+                                            >
+                                                <td className="py-3.5 px-4 font-medium text-slate-900 flex items-center gap-2">
+                                                    {p.type === 'LIVING' ? (
+                                                        <Fish className="h-4 w-4 text-sky-600 shrink-0" />
+                                                    ) : (
+                                                        <Package className="h-4 w-4 text-slate-400 shrink-0" />
+                                                    )}
+                                                    <span>{p.name}</span>
+                                                </td>
+                                                <td className="py-3.5 px-4 text-xs">
+                                                    <span
+                                                        className={`px-2 py-0.5 rounded-md font-medium ${
+                                                            p.type === 'LIVING'
+                                                                ? 'bg-blue-50 text-blue-700'
+                                                                : 'bg-slate-100 text-slate-700'
+                                                        }`}
+                                                    >
+                                                        {p.type === 'LIVING' ? 'Ser-vivo' : 'Produto'}
+                                                    </span>
+                                                </td>
+                                                <td className="py-3.5 px-4 text-xs text-slate-400 font-mono">
+                                                    {p.barcode || '—'}
+                                                </td>
+                                                <td className="py-3.5 px-4 text-center">
+                                                    <span
+                                                        className={`inline-flex items-center gap-1 text-xs font-semibold px-2.5 py-0.5 rounded-full ${
+                                                            p.quantity > 5
+                                                                ? 'bg-emerald-50 text-emerald-700'
+                                                                : p.quantity > 0
+                                                                ? 'bg-amber-50 text-amber-700'
+                                                                : 'bg-rose-50 text-rose-700'
+                                                        }`}
+                                                    >
+                                                        {p.quantity} un.
+                                                    </span>
+                                                </td>
+                                                <td className="py-3.5 px-4 text-right font-bold text-slate-900">
+                                                    R$ {Number(p.salePrice || 0).toFixed(2)}
+                                                </td>
+                                            </tr>
+                                        )
+                                    })}
+                                </tbody>
+                            </table>
+                        </div>
+
+                        {/* Pagination / Load more footer */}
+                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs text-slate-500 pt-3 border-t border-slate-100">
+                            <span>
+                                Exibindo {Math.min(displayLimit, filteredCatalog.length)} de {filteredCatalog.length} itens
+                                {typeFilter !== 'ALL' && ` (${typeFilter === 'LIVING' ? 'Seres Vivos' : 'Produtos Secos'})`}
+                            </span>
+                            {filteredCatalog.length > displayLimit && (
+                                <button
+                                    type="button"
+                                    onClick={() => setDisplayLimit((prev) => prev + 50)}
+                                    className="font-bold text-sky-600 hover:text-sky-800 transition-colors cursor-pointer self-start sm:self-auto"
+                                >
+                                    Mostrar mais ({filteredCatalog.length - displayLimit} restantes)
+                                </button>
+                            )}
+                        </div>
+                    </>
                 )}
             </div>
         </div>

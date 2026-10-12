@@ -1,14 +1,16 @@
-import {useEffect, useState, useCallback} from 'react'
+import {useEffect, useState, useCallback, useMemo} from 'react'
 import {useSearchParams} from 'react-router-dom'
 import {
     PackagePlus,
     PlusCircle,
     Search,
     Package,
-    RefreshCw
+    RefreshCw,
+    Fish
 } from 'lucide-react'
 import {getProducts} from '../../services/productService'
 import type {Product} from '../../types/product'
+import {matchesSearch} from '../../utils/searchUtils'
 import ReplenishmentForm from './ReplenishmentForm'
 import ProductForm from './ProductForm'
 
@@ -19,6 +21,7 @@ function Products() {
 
     const [products, setProducts] = useState<Product[]>([])
     const [tableSearch, setTableSearch] = useState('')
+    const [typeFilter, setTypeFilter] = useState<'ALL' | 'LIVING' | 'PRODUCT'>('ALL')
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState<string | null>(null)
 
@@ -44,13 +47,17 @@ function Products() {
         setSearchParams(tab === 'new' ? {tab: 'new'} : {tab: 'replenish'})
     }
 
-    const filtered = products.filter((p) => {
-        const query = tableSearch.toLowerCase()
-        return (
-            p.name.toLowerCase().includes(query) ||
-            (p.barcode && p.barcode.toLowerCase().includes(query))
-        )
-    })
+    const livingCount = useMemo(() => products.filter((p) => p.type === 'LIVING').length, [products])
+    const productCount = useMemo(() => products.filter((p) => p.type === 'PRODUCT').length, [products])
+
+    const filtered = useMemo(() => {
+        return products.filter((p) => {
+            if (typeFilter !== 'ALL' && p.type !== typeFilter) {
+                return false
+            }
+            return matchesSearch(p.name, tableSearch, p.barcode)
+        })
+    }, [products, typeFilter, tableSearch])
 
     return (
         <div className="space-y-6 max-w-7xl mx-auto">
@@ -108,33 +115,74 @@ function Products() {
             </div>
 
             {/* Catalog Table */}
-            <div className="bg-white rounded-2xl border border-slate-200/80 p-6 shadow-xs">
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
+            <div className="bg-white rounded-2xl border border-slate-200/80 p-6 shadow-xs space-y-4">
+                <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-3 border-b border-slate-100">
                     <div className="flex items-center gap-2">
                         <Package className="h-5 w-5 text-sky-600" />
                         <h2 className="text-base font-bold text-slate-900">
                             Catálogo Completo da Loja
                         </h2>
-                        <span className="text-xs bg-slate-100 text-slate-600 font-semibold px-2 py-0.5 rounded-full ml-1">
-                            {products.length} itens
+                        <span className="text-xs bg-slate-100 text-slate-600 font-semibold px-2.5 py-0.5 rounded-full ml-1">
+                            {filtered.length} de {products.length} itens
                         </span>
                     </div>
 
-                    <div className="flex items-center gap-2">
-                        <div className="relative w-64">
+                    <div className="flex flex-wrap items-center gap-2.5">
+                        {/* Type Filter Buttons */}
+                        <div className="flex items-center bg-slate-100 p-1 rounded-xl border border-slate-200">
+                            <button
+                                type="button"
+                                onClick={() => setTypeFilter('ALL')}
+                                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                                    typeFilter === 'ALL'
+                                        ? 'bg-white text-sky-700 shadow-xs'
+                                        : 'text-slate-600 hover:text-slate-900'
+                                }`}
+                            >
+                                Todos ({products.length})
+                            </button>
+                            <button
+                                type="button"
+                                onClick={() => setTypeFilter('LIVING')}
+                                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                                    typeFilter === 'LIVING'
+                                        ? 'bg-white text-sky-700 shadow-xs'
+                                        : 'text-slate-600 hover:text-slate-900'
+                                }`}
+                            >
+                                <Fish className="h-3.5 w-3.5 text-sky-600" />
+                                <span>Seres Vivos ({livingCount})</span>
+                            </button>
+                            <button
+                                type="button"
+                                onClick={() => setTypeFilter('PRODUCT')}
+                                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                                    typeFilter === 'PRODUCT'
+                                        ? 'bg-white text-sky-700 shadow-xs'
+                                        : 'text-slate-600 hover:text-slate-900'
+                                }`}
+                            >
+                                <Package className="h-3.5 w-3.5 text-slate-500" />
+                                <span>Produtos Secos ({productCount})</span>
+                            </button>
+                        </div>
+
+                        {/* Search Input */}
+                        <div className="relative w-full sm:w-64">
                             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
                             <input
                                 type="text"
                                 value={tableSearch}
                                 onChange={(e) => setTableSearch(e.target.value)}
-                                placeholder="Filtrar tabela por nome ou cód..."
-                                className="w-full pl-9 pr-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs focus:bg-white focus:border-sky-500 focus:ring-1 focus:ring-sky-100 transition-all placeholder:text-slate-400"
+                                placeholder="Filtrar por nome ou código..."
+                                className="w-full pl-9 pr-3 py-1.5 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:bg-white focus:border-sky-500 focus:outline-hidden transition-all placeholder:text-slate-400"
                             />
                         </div>
+
                         <button
                             type="button"
                             onClick={loadProducts}
-                            className="p-2 text-slate-500 hover:text-slate-800 hover:bg-slate-100 rounded-lg transition-colors"
+                            className="p-2 text-slate-500 hover:text-slate-800 hover:bg-slate-100 rounded-xl border border-slate-200 transition-colors cursor-pointer"
                             title="Atualizar lista"
                         >
                             <RefreshCw className="h-4 w-4" />

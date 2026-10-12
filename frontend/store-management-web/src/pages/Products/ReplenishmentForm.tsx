@@ -13,17 +13,28 @@ import {
 } from 'lucide-react'
 import {createStockEntry, getProducts, getProductByBarcode} from '../../services/productService'
 import type {Product, CreateStockEntryRequest} from '../../types/product'
+import {matchesSearch} from '../../utils/searchUtils'
+import {useToast} from '../../contexts/ToastContext'
 
 interface ReplenishmentFormProps {
     onSuccess?: () => void
+    initialProduct?: Product | null
 }
 
-function ReplenishmentForm({onSuccess}: ReplenishmentFormProps) {
+function ReplenishmentForm({onSuccess, initialProduct}: ReplenishmentFormProps) {
+    const {toast} = useToast()
     const [products, setProducts] = useState<Product[]>([])
     const [searchTerm, setSearchTerm] = useState('')
-    const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+    const [selectedProduct, setSelectedProduct] = useState<Product | null>(initialProduct || null)
     const [barcodeInput, setBarcodeInput] = useState('')
     const [highlightedIndex, setHighlightedIndex] = useState<number>(0)
+
+    useEffect(() => {
+        if (initialProduct) {
+            setSelectedProduct(initialProduct)
+        }
+    }, [initialProduct])
 
     // Form inputs - leave empty initially as requested by user
     const [quantity, setQuantity] = useState('')
@@ -53,11 +64,22 @@ function ReplenishmentForm({onSuccess}: ReplenishmentFormProps) {
         load()
     }, [])
 
-    // Autocomplete filtering
-    const matchingProducts = products.filter((p) => {
-        if (!searchTerm.trim()) return false
-        return p.name.toLowerCase().includes(searchTerm.toLowerCase())
-    })
+    // Close autocomplete dropdown when clicking outside
+    useEffect(() => {
+        function handleClickOutside(e: MouseEvent) {
+            if (autocompleteRef.current && !autocompleteRef.current.contains(e.target as Node)) {
+                setIsDropdownOpen(false)
+            }
+        }
+        document.addEventListener('mousedown', handleClickOutside)
+        return () => document.removeEventListener('mousedown', handleClickOutside)
+    }, [])
+
+    // Autocomplete filtering with smart accent, hyphen and multi-word normalization
+    // ONLY returns items when a search term is actually typed
+    const matchingProducts = searchTerm.trim()
+        ? products.filter((p) => matchesSearch(p.name, searchTerm, p.barcode))
+        : []
 
     // Barcode quick search
     async function handleBarcodeSearch(code: string) {
@@ -142,18 +164,23 @@ function ReplenishmentForm({onSuccess}: ReplenishmentFormProps) {
                 costPrice: Number(costPrice),
             }
 
-            if (salePrice && Number(salePrice) >= 0) {
+            // Backend strictly requires EITHER salePrice OR profitMargin, NEVER both!
+            const cost = Number(costPrice)
+            if (cost === 0) {
+                payload.salePrice = Number(salePrice || 0)
+            } else if (lastEditedPriceField === 'salePrice' && salePrice && Number(salePrice) >= 0) {
                 payload.salePrice = Number(salePrice)
-            }
-            if (profitMargin && Number(profitMargin) >= 0) {
+            } else if (profitMargin && Number(profitMargin) >= 0) {
                 payload.profitMargin = Number(profitMargin)
+            } else if (salePrice && Number(salePrice) >= 0) {
+                payload.salePrice = Number(salePrice)
             }
 
             const updated = await createStockEntry(payload)
 
-            setSuccessMessage(
-                `Entrada de ${quantity} un. realizada com sucesso para "${updated.name}"! Novo estoque: ${updated.quantity} un.`
-            )
+            const msg = `Entrada de ${quantity} un. realizada com sucesso para "${updated.name}"! Novo estoque: ${updated.quantity} un.`
+            setSuccessMessage(msg)
+            toast.success(msg, 'Estoque Atualizado')
 
             // Reset fields
             setSelectedProduct(null)
@@ -168,7 +195,13 @@ function ReplenishmentForm({onSuccess}: ReplenishmentFormProps) {
             }
         } catch (err: unknown) {
             console.error(err)
-            setError('Não foi possível registrar a entrada de estoque. Verifique os dados.')
+            const backendMsg =
+                err && typeof err === 'object' && 'response' in err
+                    ? (err as {response?: {data?: {message?: string}}}).response?.data?.message
+                    : null
+            const errorText = backendMsg || 'Não foi possível registrar a entrada de estoque. Verifique os dados.'
+            setError(errorText)
+            toast.error(errorText, 'Erro na Entrada')
         } finally {
             setLoading(false)
         }
@@ -210,8 +243,12 @@ function ReplenishmentForm({onSuccess}: ReplenishmentFormProps) {
                                 <input
                                     type="text"
                                     value={searchTerm}
+                                    onFocus={() => {
+                                        if (searchTerm.trim().length > 0) setIsDropdownOpen(true)
+                                    }}
                                     onChange={(e) => {
                                         setSearchTerm(e.target.value)
+                                        setIsDropdownOpen(true)
                                         setHighlightedIndex(0)
                                     }}
                                     onKeyDown={(e) => {
@@ -229,9 +266,11 @@ function ReplenishmentForm({onSuccess}: ReplenishmentFormProps) {
                                                 const chosen = matchingProducts[highlightedIndex]
                                                 setSelectedProduct(chosen)
                                                 setSearchTerm('')
+                                                setIsDropdownOpen(false)
                                                 setHighlightedIndex(0)
                                             }
                                         } else if (e.key === 'Escape') {
+                                            setIsDropdownOpen(false)
                                             setSearchTerm('')
                                             setHighlightedIndex(0)
                                         }
@@ -242,37 +281,44 @@ function ReplenishmentForm({onSuccess}: ReplenishmentFormProps) {
                             </div>
 
                             {/* Dropdown list */}
-                            {matchingProducts.length > 0 && (
+                            {isDropdownOpen && searchTerm.trim().length > 0 && (
                                 <div className="absolute top-full left-0 right-0 mt-1 bg-white rounded-xl border border-slate-200 shadow-xl z-30 max-h-60 overflow-y-auto divide-y divide-slate-100">
-                                    {matchingProducts.slice(0, 8).map((p, index) => (
-                                        <button
-                                            key={p.id}
-                                            type="button"
-                                            onMouseEnter={() => setHighlightedIndex(index)}
-                                            onClick={() => {
-                                                setSelectedProduct(p)
-                                                setSearchTerm('')
-                                                setHighlightedIndex(0)
-                                            }}
-                                            className={`w-full px-4 py-2.5 text-left flex items-center justify-between text-xs transition-colors ${
-                                                index === highlightedIndex
-                                                    ? 'bg-sky-100 text-sky-950 font-semibold border-l-4 border-sky-600'
-                                                    : 'hover:bg-sky-50 text-slate-800'
-                                            }`}
-                                        >
-                                            <div className="flex items-center gap-2">
-                                                <span className="font-semibold">
-                                                    {p.name}
+                                    {matchingProducts.length === 0 ? (
+                                        <div className="p-3 text-center text-xs text-slate-400">
+                                            Nenhum produto encontrado com "{searchTerm}".
+                                        </div>
+                                    ) : (
+                                        matchingProducts.slice(0, 8).map((p, index) => (
+                                            <button
+                                                key={p.id}
+                                                type="button"
+                                                onMouseEnter={() => setHighlightedIndex(index)}
+                                                onClick={() => {
+                                                    setSelectedProduct(p)
+                                                    setSearchTerm('')
+                                                    setIsDropdownOpen(false)
+                                                    setHighlightedIndex(0)
+                                                }}
+                                                className={`w-full px-4 py-2.5 text-left flex items-center justify-between text-xs transition-colors ${
+                                                    index === highlightedIndex
+                                                        ? 'bg-sky-100 text-sky-950 font-semibold border-l-4 border-sky-600'
+                                                        : 'hover:bg-sky-50 text-slate-800'
+                                                }`}
+                                            >
+                                                <div className="flex items-center gap-2">
+                                                    <span className="font-semibold">
+                                                        {p.name}
+                                                    </span>
+                                                    <span className="text-[10px] text-slate-600 bg-slate-100 px-1.5 py-0.5 rounded">
+                                                        {p.type === 'LIVING' ? 'Ser-vivo' : 'Produto'}
+                                                    </span>
+                                                </div>
+                                                <span className="text-slate-600 font-medium">
+                                                    Estoque: {p.quantity} un.
                                                 </span>
-                                                <span className="text-[10px] text-slate-600 bg-slate-100 px-1.5 py-0.5 rounded">
-                                                    {p.type === 'LIVING' ? 'Ser-vivo' : 'Produto'}
-                                                </span>
-                                            </div>
-                                            <span className="text-slate-600 font-medium">
-                                                Estoque: {p.quantity} un.
-                                            </span>
-                                        </button>
-                                    ))}
+                                            </button>
+                                        ))
+                                    )}
                                 </div>
                             )}
                         </div>

@@ -10,12 +10,14 @@ import {
 } from 'lucide-react'
 import {createProduct} from '../../services/productService'
 import type {CreateProductRequest, ProductType} from '../../types/product'
+import {useToast} from '../../contexts/ToastContext'
 
 interface ProductFormProps {
     onSuccess?: () => void
 }
 
 function ProductForm({onSuccess}: ProductFormProps) {
+    const {toast} = useToast()
     const [name, setName] = useState('')
     const [type, setType] = useState<ProductType>('PRODUCT')
     const [quantity, setQuantity] = useState('')
@@ -48,17 +50,22 @@ function ProductForm({onSuccess}: ProductFormProps) {
                 barcode: barcode.trim() || null,
             }
 
-            if (lastEditedPriceField === 'salePrice') {
+            const cost = Number(costPrice)
+            if (cost === 0) {
+                // Para custo zero o backend exige apenas preço de venda
+                data.salePrice = Number(salePrice || 0)
+            } else if (lastEditedPriceField === 'salePrice' && salePrice && Number(salePrice) >= 0) {
                 data.salePrice = Number(salePrice)
-            }
-
-            if (lastEditedPriceField === 'profitMargin') {
+            } else if (profitMargin && Number(profitMargin) >= 0) {
                 data.profitMargin = Number(profitMargin)
+            } else if (salePrice && Number(salePrice) >= 0) {
+                data.salePrice = Number(salePrice)
             }
 
             await createProduct(data)
 
             setSuccess(true)
+            toast.success(`"${data.name}" cadastrado com sucesso no catálogo!`, 'Novo Produto')
 
             setName('')
             setType('PRODUCT')
@@ -74,9 +81,15 @@ function ProductForm({onSuccess}: ProductFormProps) {
             }
         } catch (err: unknown) {
             console.error(err)
-            setError(
+            const backendMsg =
+                err && typeof err === 'object' && 'response' in err
+                    ? (err as {response?: {data?: {message?: string}}}).response?.data?.message
+                    : null
+            const errorMsg =
+                backendMsg ||
                 'Não foi possível cadastrar o produto. Verifique se o nome já existe no catálogo.'
-            )
+            setError(errorMsg)
+            toast.error(errorMsg, 'Erro no Cadastro')
         } finally {
             setLoading(false)
         }
