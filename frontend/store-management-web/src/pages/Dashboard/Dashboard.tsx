@@ -382,7 +382,7 @@ function Dashboard() {
             }
 
             const rawIncrease = item.currentPrice * uniformMultiplier
-            let roundedIncrease = rawIncrease
+            let roundedIncrease: number
 
             if (rounding === '5cents') {
                 roundedIncrease = Math.max(0.05, Math.round(rawIncrease * 20) / 20)

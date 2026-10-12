@@ -48,10 +48,6 @@ function Encarte() {
     const catalogRef = useRef<HTMLDivElement>(null)
     const searchInputRef = useRef<HTMLInputElement>(null)
 
-    useEffect(() => {
-        loadData()
-    }, [])
-
     async function loadData() {
         setLoading(true)
         try {
@@ -82,6 +78,10 @@ function Encarte() {
             setLoading(false)
         }
     }
+
+    useEffect(() => {
+        loadData()
+    }, [])
 
     // Select all living animals with stock
     function handleSelectAllLiving() {
