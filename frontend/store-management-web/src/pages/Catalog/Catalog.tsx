@@ -10,7 +10,8 @@ import {
     Layers,
     Share2,
     Info,
-    RefreshCw
+    RefreshCw,
+    Package
 } from 'lucide-react'
 import {getProducts} from '../../services/productService'
 import {getPaymentDiscounts} from '../../services/settingsService'
@@ -96,6 +97,21 @@ function Catalog() {
             }))
 
         setSelectedItems(allLiving)
+    }
+
+    // Select all equipment and supplies products with stock
+    function handleSelectAllProducts() {
+        const allProducts = products
+            .filter((p) => p.type === 'PRODUCT' && p.quantity > 0)
+            .map((p) => ({
+                id: p.id,
+                name: p.name,
+                salePrice: Number(p.salePrice || 0),
+                quantity: p.quantity,
+                image: getAnimalImage(p.name),
+            }))
+
+        setSelectedItems(allProducts)
     }
 
     // Add specific product from search
@@ -217,8 +233,8 @@ function Catalog() {
                     <div className="bg-white rounded-2xl border border-slate-200/80 p-5 shadow-xs space-y-4">
                         <div className="flex items-center justify-between pb-3 border-b border-slate-100">
                             <span className="text-xs font-bold uppercase tracking-wider text-slate-800 flex items-center gap-1.5">
-                                <Fish className="h-4 w-4 text-sky-600" />
-                                Seleção dos Animais
+                                <Layers className="h-4 w-4 text-sky-600" />
+                                Seleção dos Itens do Catálogo
                             </span>
                             <span className="text-xs text-sky-700 font-semibold bg-sky-50 px-2 py-0.5 rounded-full">
                                 {selectedItems.length} selecionados
@@ -230,10 +246,21 @@ function Catalog() {
                             <button
                                 type="button"
                                 onClick={handleSelectAllLiving}
-                                className="flex-1 min-w-[170px] flex items-center justify-center gap-2 px-3 py-2 bg-sky-600 hover:bg-sky-700 text-white text-xs font-semibold rounded-xl transition-all shadow-xs cursor-pointer"
+                                className="flex-1 min-w-[140px] flex items-center justify-center gap-1.5 px-3 py-2 bg-sky-600 hover:bg-sky-700 text-white text-xs font-semibold rounded-xl transition-all shadow-xs cursor-pointer"
+                                title="Adicionar todos os seres vivos com estoque positivo"
                             >
-                                <Sparkles className="h-3.5 w-3.5" />
-                                <span>Todos os Seres Vivos</span>
+                                <Sparkles className="h-3.5 w-3.5 shrink-0" />
+                                <span>Seres Vivos</span>
+                            </button>
+
+                            <button
+                                type="button"
+                                onClick={handleSelectAllProducts}
+                                className="flex-1 min-w-[140px] flex items-center justify-center gap-1.5 px-3 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-semibold rounded-xl transition-all shadow-xs cursor-pointer"
+                                title="Adicionar todos os produtos e equipamentos com estoque positivo"
+                            >
+                                <Package className="h-3.5 w-3.5 shrink-0" />
+                                <span>Produtos</span>
                             </button>
 
                             <button
@@ -241,6 +268,7 @@ function Catalog() {
                                 onClick={handleClearAll}
                                 disabled={selectedItems.length === 0}
                                 className="px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-medium rounded-xl transition-all disabled:opacity-40 cursor-pointer"
+                                title="Limpar seleção atual"
                             >
                                 Limpar
                             </button>
