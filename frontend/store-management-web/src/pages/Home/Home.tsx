@@ -11,7 +11,11 @@ import {
     CheckCircle2,
     AlertCircle,
     RefreshCw,
-    X
+    X,
+    ChevronLeft,
+    ChevronRight,
+    ChevronsLeft,
+    ChevronsRight
 } from 'lucide-react'
 import {getProducts} from '../../services/productService'
 import type {Product} from '../../types/product'
@@ -26,7 +30,8 @@ function Home() {
     const [loading, setLoading] = useState(true)
     const [typeFilter, setTypeFilter] = useState<'ALL' | 'LIVING' | 'PRODUCT'>('ALL')
     const [tableSearch, setTableSearch] = useState('')
-    const [displayLimit, setDisplayLimit] = useState<number>(30)
+    const [currentPage, setCurrentPage] = useState(1)
+    const [itemsPerPage, setItemsPerPage] = useState<number>(20)
     const searchInputRef = useRef<HTMLInputElement>(null)
 
     const loadProducts = useCallback(async () => {
@@ -44,6 +49,11 @@ function Home() {
     useEffect(() => {
         loadProducts()
     }, [loadProducts])
+
+    // Reseta para página 1 ao alterar busca na tabela, filtro de tipo ou tamanho da página
+    useEffect(() => {
+        setCurrentPage(1)
+    }, [tableSearch, typeFilter, itemsPerPage])
 
     // Category counts
     const livingCount = useMemo(() => products.filter((p) => p.type === 'LIVING').length, [products])
@@ -75,6 +85,15 @@ function Home() {
             return matchesSearch(p.name, tableSearch, p.barcode)
         })
     }, [products, typeFilter, tableSearch])
+
+    const totalItems = filteredCatalog.length
+    const totalPages = Math.ceil(totalItems / itemsPerPage) || 1
+    const validCurrentPage = Math.min(Math.max(currentPage, 1), totalPages)
+    const startIndex = totalItems === 0 ? 0 : (validCurrentPage - 1) * itemsPerPage
+    const endIndex = Math.min(startIndex + itemsPerPage, totalItems)
+    const paginatedCatalog = useMemo(() => {
+        return filteredCatalog.slice(startIndex, endIndex)
+    }, [filteredCatalog, startIndex, endIndex])
 
     function handleSelect(product: Product) {
         setSelectedProduct(product)
@@ -371,10 +390,7 @@ function Home() {
                         <div className="flex items-center bg-slate-100 p-1 rounded-xl border border-slate-200">
                             <button
                                 type="button"
-                                onClick={() => {
-                                    setTypeFilter('ALL')
-                                    setDisplayLimit(30)
-                                }}
+                                onClick={() => setTypeFilter('ALL')}
                                 className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                                     typeFilter === 'ALL'
                                         ? 'bg-white text-sky-700 shadow-xs'
@@ -385,10 +401,7 @@ function Home() {
                             </button>
                             <button
                                 type="button"
-                                onClick={() => {
-                                    setTypeFilter('LIVING')
-                                    setDisplayLimit(30)
-                                }}
+                                onClick={() => setTypeFilter('LIVING')}
                                 className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                                     typeFilter === 'LIVING'
                                         ? 'bg-white text-sky-700 shadow-xs'
@@ -400,10 +413,7 @@ function Home() {
                             </button>
                             <button
                                 type="button"
-                                onClick={() => {
-                                    setTypeFilter('PRODUCT')
-                                    setDisplayLimit(30)
-                                }}
+                                onClick={() => setTypeFilter('PRODUCT')}
                                 className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                                     typeFilter === 'PRODUCT'
                                         ? 'bg-white text-sky-700 shadow-xs'
@@ -481,7 +491,7 @@ function Home() {
                                     </tr>
                                 </thead>
                                 <tbody className="divide-y divide-slate-100">
-                                    {filteredCatalog.slice(0, displayLimit).map((p) => {
+                                    {paginatedCatalog.map((p) => {
                                         const isSelected = selectedProduct?.id === p.id
                                         return (
                                             <tr
@@ -539,22 +549,114 @@ function Home() {
                             </table>
                         </div>
 
-                        {/* Pagination / Load more footer */}
-                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs text-slate-500 pt-3 border-t border-slate-100">
-                            <span>
-                                Exibindo {Math.min(displayLimit, filteredCatalog.length)} de {filteredCatalog.length} itens
-                                {typeFilter !== 'ALL' && ` (${typeFilter === 'LIVING' ? 'Seres Vivos' : 'Produtos Secos'})`}
-                            </span>
-                            {filteredCatalog.length > displayLimit && (
-                                <button
-                                    type="button"
-                                    onClick={() => setDisplayLimit((prev) => prev + 50)}
-                                    className="font-bold text-sky-600 hover:text-sky-800 transition-colors cursor-pointer self-start sm:self-auto"
-                                >
-                                    Mostrar mais ({filteredCatalog.length - displayLimit} restantes)
-                                </button>
-                            )}
-                        </div>
+                        {/* Barra de Paginação Profissional */}
+                        {totalItems > 0 && (
+                            <div className="px-4 py-3 bg-slate-50 border-t border-slate-200/80 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-600 rounded-b-xl">
+                                {/* Lado Esquerdo: Estatísticas & Itens Por Página */}
+                                <div className="flex flex-wrap items-center gap-3">
+                                    <span>
+                                        Mostrando <strong className="text-slate-900 font-bold">{startIndex + 1}</strong> a{' '}
+                                        <strong className="text-slate-900 font-bold">{endIndex}</strong> de{' '}
+                                        <strong className="text-slate-900 font-bold">{totalItems}</strong> produtos
+                                        {typeFilter !== 'ALL' && (
+                                            <span className="text-slate-500 font-normal">
+                                                {' '}({typeFilter === 'LIVING' ? 'Seres Vivos' : 'Produtos Secos'})
+                                            </span>
+                                        )}
+                                    </span>
+
+                                    <div className="flex items-center gap-1.5">
+                                        <span className="text-slate-500">Exibir:</span>
+                                        <select
+                                            value={itemsPerPage}
+                                            onChange={(e) => setItemsPerPage(Number(e.target.value))}
+                                            className="px-2 py-1 bg-white border border-slate-200 rounded-lg text-xs font-semibold text-slate-700 focus:outline-hidden focus:border-sky-500 cursor-pointer"
+                                        >
+                                            <option value={10}>10</option>
+                                            <option value={20}>20</option>
+                                            <option value={50}>50</option>
+                                            <option value={100}>100</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                {/* Lado Direito: Navegação de Páginas */}
+                                <div className="flex items-center gap-1">
+                                    <button
+                                        type="button"
+                                        title="Primeira página"
+                                        disabled={validCurrentPage <= 1}
+                                        onClick={() => setCurrentPage(1)}
+                                        className="p-1.5 rounded-lg border border-slate-200 bg-white text-slate-600 hover:bg-slate-100 disabled:opacity-40 disabled:cursor-not-allowed transition-colors cursor-pointer"
+                                    >
+                                        <ChevronsLeft className="h-4 w-4" />
+                                    </button>
+                                    <button
+                                        type="button"
+                                        title="Página anterior"
+                                        disabled={validCurrentPage <= 1}
+                                        onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+                                        className="p-1.5 rounded-lg border border-slate-200 bg-white text-slate-600 hover:bg-slate-100 disabled:opacity-40 disabled:cursor-not-allowed transition-colors cursor-pointer"
+                                    >
+                                        <ChevronLeft className="h-4 w-4" />
+                                    </button>
+
+                                    {/* Botões Numéricos com Ellipsis */}
+                                    <div className="flex items-center gap-1 px-1">
+                                        {Array.from({length: totalPages}, (_, i) => i + 1)
+                                            .filter((p) => {
+                                                return (
+                                                    p === 1 ||
+                                                    p === totalPages ||
+                                                    Math.abs(p - validCurrentPage) <= 1
+                                                )
+                                            })
+                                            .map((p, idx, arr) => {
+                                                const prevPage = arr[idx - 1]
+                                                const showEllipsis = prevPage && p - prevPage > 1
+
+                                                return (
+                                                    <span key={p} className="flex items-center gap-1">
+                                                        {showEllipsis && (
+                                                            <span className="px-1 text-slate-400">...</span>
+                                                        )}
+                                                        <button
+                                                            type="button"
+                                                            onClick={() => setCurrentPage(p)}
+                                                            className={`min-w-7 h-7 px-2 rounded-lg font-bold text-xs transition-colors cursor-pointer ${
+                                                                p === validCurrentPage
+                                                                    ? 'bg-sky-600 text-white shadow-xs'
+                                                                    : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-100'
+                                                            }`}
+                                                        >
+                                                            {p}
+                                                        </button>
+                                                    </span>
+                                                )
+                                            })}
+                                    </div>
+
+                                    <button
+                                        type="button"
+                                        title="Próxima página"
+                                        disabled={validCurrentPage >= totalPages}
+                                        onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
+                                        className="p-1.5 rounded-lg border border-slate-200 bg-white text-slate-600 hover:bg-slate-100 disabled:opacity-40 disabled:cursor-not-allowed transition-colors cursor-pointer"
+                                    >
+                                        <ChevronRight className="h-4 w-4" />
+                                    </button>
+                                    <button
+                                        type="button"
+                                        title="Última página"
+                                        disabled={validCurrentPage >= totalPages}
+                                        onClick={() => setCurrentPage(totalPages)}
+                                        className="p-1.5 rounded-lg border border-slate-200 bg-white text-slate-600 hover:bg-slate-100 disabled:opacity-40 disabled:cursor-not-allowed transition-colors cursor-pointer"
+                                    >
+                                        <ChevronsRight className="h-4 w-4" />
+                                    </button>
+                                </div>
+                            </div>
+                        )}
                     </>
                 )}
             </div>
