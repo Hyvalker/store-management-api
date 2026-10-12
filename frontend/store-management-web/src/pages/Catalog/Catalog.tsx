@@ -1,4 +1,4 @@
-import {useState, useEffect, useRef} from 'react'
+import {useState, useEffect, useRef, useMemo} from 'react'
 import {toJpeg} from 'html-to-image'
 import {
     Download,
@@ -15,8 +15,8 @@ import {
 } from 'lucide-react'
 import {getProducts} from '../../services/productService'
 import {getPaymentDiscounts} from '../../services/settingsService'
-import {getAnimalImage} from '../../utils/animalImages'
-import type {Product} from '../../types/product'
+import {getAnimalImage, getSubCategoryLabel} from '../../utils/animalImages'
+import type {Product, SubCategory, ProductType} from '../../types/product'
 import {matchesSearch} from '../../utils/searchUtils'
 import {useToast} from '../../contexts/ToastContext'
 
@@ -26,7 +26,21 @@ export interface CatalogItem {
     salePrice: number
     quantity: number
     image: string
+    subCategory?: SubCategory
+    type?: ProductType
 }
+
+const CATEGORY_ORDER: SubCategory[] = [
+    'CORAL',
+    'MARINE_FISH',
+    'FRESHWATER_FISH',
+    'INVERTEBRATE',
+    'PLANT',
+    'OTHER_LIVING',
+    'EQUIPMENT',
+    'SUPPLY',
+    'OTHER_PRODUCT',
+]
 
 function Catalog() {
     const {toast} = useToast()
@@ -44,10 +58,50 @@ function Catalog() {
     const [cardPriceLabel, setCardPriceLabel] = useState<'card' | 'installments'>('card')
     const [numInstallments, setNumInstallments] = useState(10)
     const [pixDiscountPercent, setPixDiscountPercent] = useState(10)
+    const [groupByCategory, setGroupByCategory] = useState(false)
     const [isExporting, setIsExporting] = useState(false)
 
     const catalogRef = useRef<HTMLDivElement>(null)
     const searchInputRef = useRef<HTMLInputElement>(null)
+
+    function toCatalogItem(p: Product): CatalogItem {
+        return {
+            id: p.id,
+            name: p.name,
+            salePrice: Number(p.salePrice || 0),
+            quantity: p.quantity,
+            image: getAnimalImage({
+                name: p.name,
+                imageSlug: p.imageSlug,
+                subCategory: p.subCategory,
+                type: p.type,
+            }),
+            subCategory: p.subCategory,
+            type: p.type,
+        }
+    }
+
+    const groupedItems = useMemo(() => {
+        if (!groupByCategory) return null
+        const map = new Map<string, CatalogItem[]>()
+        selectedItems.forEach((item) => {
+            const cat = item.subCategory || 'OTHER_LIVING'
+            if (!map.has(cat)) map.set(cat, [])
+            map.get(cat)!.push(item)
+        })
+        return map
+    }, [groupByCategory, selectedItems])
+
+    const orderedGroupCategories = useMemo(() => {
+        if (!groupedItems) return []
+        return Array.from(groupedItems.keys()).sort((a, b) => {
+            const indexA = CATEGORY_ORDER.indexOf(a as SubCategory)
+            const indexB = CATEGORY_ORDER.indexOf(b as SubCategory)
+            const posA = indexA === -1 ? 999 : indexA
+            const posB = indexB === -1 ? 999 : indexB
+            return posA - posB
+        })
+    }, [groupedItems])
 
     async function loadData() {
         setLoading(true)
@@ -61,13 +115,7 @@ function Catalog() {
             // Initial preselection: all LIVING animals with stock > 0
             const livingWithStock = prods
                 .filter((p) => p.type === 'LIVING' && p.quantity > 0)
-                .map((p) => ({
-                    id: p.id,
-                    name: p.name,
-                    salePrice: Number(p.salePrice || 0),
-                    quantity: p.quantity,
-                    image: getAnimalImage(p.name),
-                }))
+                .map(toCatalogItem)
 
             // If found living animals, pre-select up to 9 for a quick instant preview
             if (livingWithStock.length > 0) {
@@ -88,28 +136,25 @@ function Catalog() {
     function handleSelectAllLiving() {
         const allLiving = products
             .filter((p) => p.type === 'LIVING' && p.quantity > 0)
-            .map((p) => ({
-                id: p.id,
-                name: p.name,
-                salePrice: Number(p.salePrice || 0),
-                quantity: p.quantity,
-                image: getAnimalImage(p.name),
-            }))
+            .map(toCatalogItem)
 
         setSelectedItems(allLiving)
+    }
+
+    // Select by specific subcategory
+    function handleSelectSubCategory(subCategory: SubCategory) {
+        const filtered = products
+            .filter((p) => p.subCategory === subCategory && p.quantity > 0)
+            .map(toCatalogItem)
+
+        setSelectedItems(filtered)
     }
 
     // Select all equipment and supplies products with stock
     function handleSelectAllProducts() {
         const allProducts = products
             .filter((p) => p.type === 'PRODUCT' && p.quantity > 0)
-            .map((p) => ({
-                id: p.id,
-                name: p.name,
-                salePrice: Number(p.salePrice || 0),
-                quantity: p.quantity,
-                image: getAnimalImage(p.name),
-            }))
+            .map(toCatalogItem)
 
         setSelectedItems(allProducts)
     }
@@ -121,13 +166,7 @@ function Catalog() {
             return
         }
 
-        const newItem: CatalogItem = {
-            id: product.id,
-            name: product.name,
-            salePrice: Number(product.salePrice || 0),
-            quantity: product.quantity,
-            image: getAnimalImage(product.name),
-        }
+        const newItem = toCatalogItem(product)
 
         setSelectedItems((prev) => [...prev, newItem])
         setSearchTerm('')
@@ -157,6 +196,47 @@ function Catalog() {
 
     function getCardPrice(price: number): string {
         return price.toFixed(2).replace('.', ',')
+    }
+
+    function renderCatalogCard(item: CatalogItem) {
+        return (
+            <div
+                key={item.id}
+                className="flex flex-col items-center bg-[#070a16] rounded-2xl p-2.5 border border-slate-800/80 shadow-md transition-all"
+            >
+                {/* Photo Container */}
+                <div className="w-full aspect-4/3 rounded-xl overflow-hidden bg-slate-900 border border-slate-800/50 mb-2.5 flex items-center justify-center">
+                    <img
+                        src={item.image}
+                        alt={item.name}
+                        crossOrigin="anonymous"
+                        className="w-full h-full object-cover"
+                    />
+                </div>
+
+                {/* Amber / Orange Badge matching the user reference */}
+                <div
+                    style={{backgroundColor: '#f39c12'}}
+                    className="w-full py-2 px-1.5 rounded-xl text-center text-slate-950 font-bold shadow-xs flex flex-col justify-center"
+                >
+                    <p className="text-[11px] font-black leading-tight truncate px-1 text-slate-950">
+                        {item.name}
+                    </p>
+                    <p className="text-[11px] font-bold text-slate-950 mt-0.5">
+                        Pix: R$ {getPixPrice(item.salePrice)}
+                    </p>
+                    <p className="text-[10px] font-semibold text-slate-900/90 leading-tight">
+                        {cardPriceLabel === 'installments'
+                            ? `${numInstallments}x sem juros: R$ ${(
+                                  item.salePrice / numInstallments
+                              )
+                                  .toFixed(2)
+                                  .replace('.', ',')}`
+                            : `Cartão: R$ ${getCardPrice(item.salePrice)}`}
+                    </p>
+                </div>
+            </div>
+        )
     }
 
     // Export to JPEG
@@ -242,36 +322,77 @@ function Catalog() {
                         </div>
 
                         {/* Quick Action Buttons */}
-                        <div className="flex flex-wrap gap-2">
-                            <button
-                                type="button"
-                                onClick={handleSelectAllLiving}
-                                className="flex-1 min-w-[140px] flex items-center justify-center gap-1.5 px-3 py-2 bg-sky-600 hover:bg-sky-700 text-white text-xs font-semibold rounded-xl transition-all shadow-xs cursor-pointer"
-                                title="Adicionar todos os seres vivos com estoque positivo"
-                            >
-                                <Sparkles className="h-3.5 w-3.5 shrink-0" />
-                                <span>Seres Vivos</span>
-                            </button>
+                        <div className="space-y-2.5">
+                            <div className="flex flex-wrap gap-2">
+                                <button
+                                    type="button"
+                                    onClick={handleSelectAllLiving}
+                                    className="flex-1 min-w-[130px] flex items-center justify-center gap-1.5 px-3 py-2 bg-sky-600 hover:bg-sky-700 text-white text-xs font-semibold rounded-xl transition-all shadow-xs cursor-pointer"
+                                    title="Adicionar todos os seres vivos com estoque positivo"
+                                >
+                                    <Sparkles className="h-3.5 w-3.5 shrink-0" />
+                                    <span>Todos os Seres Vivos</span>
+                                </button>
 
-                            <button
-                                type="button"
-                                onClick={handleSelectAllProducts}
-                                className="flex-1 min-w-[140px] flex items-center justify-center gap-1.5 px-3 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-semibold rounded-xl transition-all shadow-xs cursor-pointer"
-                                title="Adicionar todos os produtos e equipamentos com estoque positivo"
-                            >
-                                <Package className="h-3.5 w-3.5 shrink-0" />
-                                <span>Produtos</span>
-                            </button>
+                                <button
+                                    type="button"
+                                    onClick={handleSelectAllProducts}
+                                    className="flex-1 min-w-[110px] flex items-center justify-center gap-1.5 px-3 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-semibold rounded-xl transition-all shadow-xs cursor-pointer"
+                                    title="Adicionar todos os produtos e equipamentos com estoque positivo"
+                                >
+                                    <Package className="h-3.5 w-3.5 shrink-0" />
+                                    <span>Produtos</span>
+                                </button>
 
-                            <button
-                                type="button"
-                                onClick={handleClearAll}
-                                disabled={selectedItems.length === 0}
-                                className="px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-medium rounded-xl transition-all disabled:opacity-40 cursor-pointer"
-                                title="Limpar seleção atual"
-                            >
-                                Limpar
-                            </button>
+                                <button
+                                    type="button"
+                                    onClick={handleClearAll}
+                                    disabled={selectedItems.length === 0}
+                                    className="px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-medium rounded-xl transition-all disabled:opacity-40 cursor-pointer"
+                                    title="Limpar seleção atual"
+                                >
+                                    Limpar
+                                </button>
+                            </div>
+
+                            {/* Subcategory Filter Pills */}
+                            <div className="flex flex-wrap items-center gap-1.5 pt-2 border-t border-slate-100">
+                                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mr-1">
+                                    Filtrar:
+                                </span>
+                                <button
+                                    type="button"
+                                    onClick={() => handleSelectSubCategory('CORAL')}
+                                    className="px-2.5 py-1 bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200/60 rounded-lg text-[11px] font-medium transition-all cursor-pointer"
+                                    title="Adicionar somente corais com estoque positivo"
+                                >
+                                    🪸 Corais
+                                </button>
+                                <button
+                                    type="button"
+                                    onClick={() => handleSelectSubCategory('MARINE_FISH')}
+                                    className="px-2.5 py-1 bg-cyan-50 hover:bg-cyan-100 text-cyan-700 border border-cyan-200/60 rounded-lg text-[11px] font-medium transition-all cursor-pointer"
+                                    title="Adicionar somente peixes marinhos com estoque positivo"
+                                >
+                                    🐠 Marinhos
+                                </button>
+                                <button
+                                    type="button"
+                                    onClick={() => handleSelectSubCategory('FRESHWATER_FISH')}
+                                    className="px-2.5 py-1 bg-emerald-50 hover:bg-emerald-100 text-emerald-700 border border-emerald-200/60 rounded-lg text-[11px] font-medium transition-all cursor-pointer"
+                                    title="Adicionar somente peixes de água doce com estoque positivo"
+                                >
+                                    🐟 Água Doce
+                                </button>
+                                <button
+                                    type="button"
+                                    onClick={() => handleSelectSubCategory('INVERTEBRATE')}
+                                    className="px-2.5 py-1 bg-amber-50 hover:bg-amber-100 text-amber-700 border border-amber-200/60 rounded-lg text-[11px] font-medium transition-all cursor-pointer"
+                                    title="Adicionar somente invertebrados com estoque positivo"
+                                >
+                                    🦐 Invertebrados
+                                </button>
+                            </div>
                         </div>
 
                         {/* Autocomplete Search */}
@@ -485,6 +606,27 @@ function Catalog() {
                                     </select>
                                 </div>
                             )}
+
+                            {/* Group by category toggle */}
+                            <div className="pt-2 border-t border-slate-100 flex items-center justify-between">
+                                <div>
+                                    <p className="text-xs font-semibold text-slate-800">
+                                        Agrupar por Categorias
+                                    </p>
+                                    <p className="text-[10px] text-slate-500">
+                                        Divide em seções (Corais, Marinhos, Água Doce, etc.)
+                                    </p>
+                                </div>
+                                <label className="relative inline-flex items-center cursor-pointer">
+                                    <input
+                                        type="checkbox"
+                                        checked={groupByCategory}
+                                        onChange={(e) => setGroupByCategory(e.target.checked)}
+                                        className="sr-only peer"
+                                    />
+                                    <div className="w-9 h-5 bg-slate-200 peer-focus:outline-hidden rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-sky-600"></div>
+                                </label>
+                            </div>
                         </div>
 
                         <div className="p-3 bg-sky-50 text-sky-800 rounded-xl text-[11px] flex items-start gap-2">
@@ -538,46 +680,31 @@ function Catalog() {
                                 <div className="py-20 text-center text-slate-500 text-xs">
                                     Nenhum item selecionado para o catálogo.
                                 </div>
+                            ) : groupByCategory && groupedItems ? (
+                                <div className="space-y-6">
+                                    {orderedGroupCategories.map((catKey) => {
+                                        const items = groupedItems.get(catKey) || []
+                                        if (items.length === 0) return null
+                                        return (
+                                            <div key={catKey}>
+                                                <div className="flex items-center gap-2 mb-3 pb-1 border-b border-slate-800/80">
+                                                    <span className="text-xs font-black uppercase tracking-wider text-amber-400">
+                                                        {getSubCategoryLabel(catKey)}
+                                                    </span>
+                                                    <span className="text-[10px] text-slate-400 font-semibold">
+                                                        ({items.length} {items.length === 1 ? 'item' : 'itens'})
+                                                    </span>
+                                                </div>
+                                                <div className="grid grid-cols-3 gap-4">
+                                                    {items.map(renderCatalogCard)}
+                                                </div>
+                                            </div>
+                                        )
+                                    })}
+                                </div>
                             ) : (
                                 <div className="grid grid-cols-3 gap-4">
-                                    {selectedItems.map((item) => (
-                                        <div
-                                            key={item.id}
-                                            className="flex flex-col items-center bg-[#070a16] rounded-2xl p-2.5 border border-slate-800/80 shadow-md transition-all"
-                                        >
-                                            {/* Photo Container */}
-                                            <div className="w-full aspect-4/3 rounded-xl overflow-hidden bg-slate-900 border border-slate-800/50 mb-2.5 flex items-center justify-center">
-                                                <img
-                                                    src={item.image}
-                                                    alt={item.name}
-                                                    crossOrigin="anonymous"
-                                                    className="w-full h-full object-cover"
-                                                />
-                                            </div>
-
-                                            {/* Amber / Orange Badge matching the user reference */}
-                                            <div
-                                                style={{backgroundColor: '#f39c12'}}
-                                                className="w-full py-2 px-1.5 rounded-xl text-center text-slate-950 font-bold shadow-xs flex flex-col justify-center"
-                                            >
-                                                <p className="text-[11px] font-black leading-tight truncate px-1 text-slate-950">
-                                                    {item.name}
-                                                </p>
-                                                <p className="text-[11px] font-bold text-slate-950 mt-0.5">
-                                                    Pix: R$ {getPixPrice(item.salePrice)}
-                                                </p>
-                                                <p className="text-[10px] font-semibold text-slate-900/90 leading-tight">
-                                                    {cardPriceLabel === 'installments'
-                                                        ? `${numInstallments}x sem juros: R$ ${(
-                                                              item.salePrice / numInstallments
-                                                          )
-                                                              .toFixed(2)
-                                                              .replace('.', ',')}`
-                                                        : `Cartão: R$ ${getCardPrice(item.salePrice)}`}
-                                                </p>
-                                            </div>
-                                        </div>
-                                    ))}
+                                    {selectedItems.map(renderCatalogCard)}
                                 </div>
                             )}
 

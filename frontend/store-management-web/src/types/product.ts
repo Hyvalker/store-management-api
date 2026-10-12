@@ -1,9 +1,22 @@
 export type ProductType = 'LIVING' | 'PRODUCT'
 
+export type SubCategory =
+    | 'CORAL'
+    | 'MARINE_FISH'
+    | 'FRESHWATER_FISH'
+    | 'INVERTEBRATE'
+    | 'PLANT'
+    | 'OTHER_LIVING'
+    | 'EQUIPMENT'
+    | 'SUPPLY'
+    | 'OTHER_PRODUCT'
+
 export interface Product {
     id: number
     name: string
     type: ProductType
+    subCategory?: SubCategory
+    imageSlug?: string
     quantity: number
     costPrice: number
     salePrice: number
@@ -15,6 +28,8 @@ export interface Product {
 export interface CreateProductRequest {
     name: string
     type: ProductType
+    subCategory?: SubCategory
+    imageSlug?: string
     quantity: number
     costPrice: number
     salePrice?: number
@@ -33,6 +48,8 @@ export interface CreateStockEntryRequest {
 export interface UpdateProductRequest {
     name: string
     type: ProductType
+    subCategory?: SubCategory
+    imageSlug?: string
     costPrice: number
     salePrice?: number
     profitMargin?: number
