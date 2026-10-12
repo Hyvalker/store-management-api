@@ -5,6 +5,10 @@
     Executa a limpeza das tabelas e insere 28 produtos, 8 clientes, histórico de vendas de 30 dias e perdas biológicas.
 #>
 
+param(
+    [string]$Password = $env:PGPASSWORD
+)
+
 $ErrorActionPreference = "Stop"
 
 Write-Host ""
@@ -32,8 +36,12 @@ if (-not (Test-Path $sqlFile)) {
     exit 1
 }
 
+if (-not $Password) {
+    $Password = Read-Host "Digite a senha do PostgreSQL (postgres)"
+}
+
 Write-Host "[1/3] Configurando credenciais e codificação UTF-8..." -ForegroundColor Gray
-$env:PGPASSWORD = "Ft22N*644p"
+$env:PGPASSWORD = $Password
 $env:PGCLIENTENCODING = "UTF8"
 
 Write-Host "[2/3] Executando carga em 'storedb'..." -ForegroundColor Cyan
@@ -44,10 +52,12 @@ if ($LASTEXITCODE -eq 0) {
     Write-Host "[3/3] Sucesso! Banco de dados resetado e semeado com:" -ForegroundColor Green
     Write-Host "  • 28 Produtos & Seres Vivos (Marinhos, Água Doce, Corais, Equipamentos)" -ForegroundColor White
     Write-Host "  • 8 Clientes cadastrados com e-mails e telefones" -ForegroundColor White
-    Write-Host "  • 15 Pedidos com histórico nos últimos 30 dias (Pagos e Pendentes)" -ForegroundColor White
-    Write-Host "  • 3 Perdas biológicas registradas (para o simulador do Dashboard)" -ForegroundColor White
+    Write-Host "  • 7 Aquários vinculados com litragem e especificações" -ForegroundColor White
+    Write-Host "  • 6 Testes de parâmetros com diagnósticos e 6 Anotações" -ForegroundColor White
+    Write-Host "  • 18 Pedidos históricos (Pagos, Pendentes e Cancelados)" -ForegroundColor White
+    Write-Host "  • Movimentações de estoque e perdas biológicas registradas" -ForegroundColor White
     Write-Host ""
-    Write-Host "Tudo pronto para testar o PDV, Produtos e o Dashboard!" -ForegroundColor Yellow
+    Write-Host "Tudo pronto para testar o PDV, Produtos, Aquários e Dashboard!" -ForegroundColor Yellow
 } else {
     Write-Error "Ocorreu um erro ao executar o script SQL."
 }
