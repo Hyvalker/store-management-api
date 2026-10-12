@@ -34,6 +34,7 @@ import type {User} from '../../types/user'
 import type {OrderResponse, CreateOrderRequest} from '../../types/order'
 import {matchesSearch} from '../../utils/searchUtils'
 import {useToast} from '../../contexts/ToastContext'
+import {useAuth} from '../../contexts/AuthContext'
 
 interface CartItem {
     product: Product
@@ -42,6 +43,7 @@ interface CartItem {
 
 function Orders() {
     const {toast} = useToast()
+    const {isAdmin} = useAuth()
     // Products & Customers data
     const [products, setProducts] = useState<Product[]>([])
     const [customers, setCustomers] = useState<User[]>([])
@@ -1291,7 +1293,7 @@ function Orders() {
                                         {cancelingOrderId === viewingOrder.id ? 'Cancelando...' : 'Cancelar este pedido'}
                                     </button>
                                 )}
-                                {viewingOrder.status === 'PAID' && (
+                                {viewingOrder.status === 'PAID' && isAdmin && (
                                     <button
                                         type="button"
                                         disabled={cancelingOrderId === viewingOrder.id}
@@ -1300,6 +1302,11 @@ function Orders() {
                                     >
                                         {cancelingOrderId === viewingOrder.id ? 'Estornando...' : 'Estornar pedido e devolver ao estoque'}
                                     </button>
+                                )}
+                                {viewingOrder.status === 'PAID' && !isAdmin && (
+                                    <span className="text-[11px] text-slate-400 italic">
+                                        Estorno de venda finalizada restrito a Administradores.
+                                    </span>
                                 )}
                             </div>
 

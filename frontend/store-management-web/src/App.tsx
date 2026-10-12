@@ -1,4 +1,4 @@
-import {Route, Routes} from 'react-router-dom'
+import {Route, Routes, Navigate} from 'react-router-dom'
 import MainLayout from './layouts/MainLayout/MainLayout'
 import Home from './pages/Home/Home'
 import Dashboard from './pages/Dashboard/Dashboard'
@@ -8,28 +8,60 @@ import CustomerDetail from './pages/Customers/CustomerDetail'
 import Orders from './pages/Orders/Orders'
 import Encarte from './pages/Encarte/Encarte'
 import Settings from './pages/Settings/Settings'
+import Login from './pages/Login/Login'
 import {ToastProvider} from './contexts/ToastContext'
+import {AuthProvider} from './contexts/AuthContext'
+import {ProtectedRoute} from './components/auth/ProtectedRoute'
 
 function App() {
     return (
         <ToastProvider>
-            <Routes>
-                <Route element={<MainLayout/>}>
-                    {/* Safe Home / Operational Counter View */}
-                    <Route path="/" element={<Home/>}/>
+            <AuthProvider>
+                <Routes>
+                    {/* Rota Pública de Autenticação */}
+                    <Route path="/login" element={<Login />} />
 
-                    {/* Operations */}
-                    <Route path="/products" element={<Products/>}/>
-                    <Route path="/customers" element={<Customers/>}/>
-                    <Route path="/customers/:id" element={<CustomerDetail/>}/>
-                    <Route path="/orders" element={<Orders/>}/>
-                    <Route path="/encarte" element={<Encarte/>}/>
+                    {/* Rotas Protegidas dentro do Layout Principal */}
+                    <Route
+                        element={
+                            <ProtectedRoute>
+                                <MainLayout />
+                            </ProtectedRoute>
+                        }
+                    >
+                        {/* Safe Home / Operação de Balcão e Caixa */}
+                        <Route path="/" element={<Home />} />
 
-                    {/* Private Store Manager Dashboard & Settings */}
-                    <Route path="/dashboard" element={<Dashboard/>}/>
-                    <Route path="/settings" element={<Settings/>}/>
-                </Route>
-            </Routes>
+                        {/* Operações da Loja (Acesso para qualquer operador autenticado) */}
+                        <Route path="/products" element={<Products />} />
+                        <Route path="/customers" element={<Customers />} />
+                        <Route path="/customers/:id" element={<CustomerDetail />} />
+                        <Route path="/orders" element={<Orders />} />
+                        <Route path="/encarte" element={<Encarte />} />
+
+                        {/* Área Restrita - Exige papel ADMIN */}
+                        <Route
+                            path="/dashboard"
+                            element={
+                                <ProtectedRoute requiredRole="ADMIN">
+                                    <Dashboard />
+                                </ProtectedRoute>
+                            }
+                        />
+                        <Route
+                            path="/settings"
+                            element={
+                                <ProtectedRoute requiredRole="ADMIN">
+                                    <Settings />
+                                </ProtectedRoute>
+                            }
+                        />
+                    </Route>
+
+                    {/* Redirecionamento de rotas desconhecidas */}
+                    <Route path="*" element={<Navigate to="/" replace />} />
+                </Routes>
+            </AuthProvider>
         </ToastProvider>
     )
 }

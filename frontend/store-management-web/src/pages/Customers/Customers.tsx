@@ -25,9 +25,11 @@ import {
 import type {User, CreateUserRequest} from '../../types/user'
 import {matchesSearch} from '../../utils/searchUtils'
 import {useToast} from '../../contexts/ToastContext'
+import {useAuth} from '../../contexts/AuthContext'
 
 function Customers() {
     const {toast} = useToast()
+    const {isAdmin} = useAuth()
     const [customers, setCustomers] = useState<User[]>([])
     const [searchTerm, setSearchTerm] = useState('')
     const [loading, setLoading] = useState(true)
@@ -331,19 +333,21 @@ function Customers() {
                                                     <button
                                                         type="button"
                                                         onClick={() => handleOpenEditModal(customer)}
-                                                        className="p-1.5 text-slate-500 hover:text-sky-700 hover:bg-sky-50 rounded-lg transition-colors"
+                                                        className="p-1.5 text-slate-500 hover:text-sky-700 hover:bg-sky-50 rounded-lg transition-colors cursor-pointer"
                                                         title="Editar cliente"
                                                     >
                                                         <Edit2 className="h-3.5 w-3.5" />
                                                     </button>
-                                                    <button
-                                                        type="button"
-                                                        onClick={() => handleDelete(customer)}
-                                                        className="p-1.5 text-slate-500 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition-colors"
-                                                        title="Desativar cliente"
-                                                    >
-                                                        <Trash2 className="h-3.5 w-3.5" />
-                                                    </button>
+                                                    {isAdmin && (
+                                                        <button
+                                                            type="button"
+                                                            onClick={() => handleDelete(customer)}
+                                                            className="p-1.5 text-slate-500 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition-colors cursor-pointer"
+                                                            title="Desativar cliente"
+                                                        >
+                                                            <Trash2 className="h-3.5 w-3.5" />
+                                                        </button>
+                                                    )}
                                                 </div>
                                             </td>
                                         </tr>

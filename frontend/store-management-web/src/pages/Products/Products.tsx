@@ -11,12 +11,14 @@ import {
 import {getProducts} from '../../services/productService'
 import type {Product} from '../../types/product'
 import {matchesSearch} from '../../utils/searchUtils'
+import {useAuth} from '../../contexts/AuthContext'
 import ReplenishmentForm from './ReplenishmentForm'
 import ProductForm from './ProductForm'
 
 function Products() {
+    const {isAdmin} = useAuth()
     const [searchParams, setSearchParams] = useSearchParams()
-    const initialTab = searchParams.get('tab') === 'new' ? 'new' : 'replenish'
+    const initialTab = isAdmin && searchParams.get('tab') === 'new' ? 'new' : 'replenish'
     const [activeTab, setActiveTab] = useState<'replenish' | 'new'>(initialTab)
 
     const [products, setProducts] = useState<Product[]>([])
@@ -90,18 +92,23 @@ function Products() {
                         </span>
                     </button>
 
-                    <button
-                        type="button"
-                        onClick={() => switchTab('new')}
-                        className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold transition-all ${
-                            activeTab === 'new'
-                                ? 'bg-white text-slate-900 shadow-xs'
-                                : 'text-slate-600 hover:text-slate-900'
-                        }`}
-                    >
-                        <PlusCircle className="h-4 w-4" />
-                        <span>Novo Item no Catálogo</span>
-                    </button>
+                    {isAdmin && (
+                        <button
+                            type="button"
+                            onClick={() => switchTab('new')}
+                            className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                                activeTab === 'new'
+                                    ? 'bg-white text-slate-900 shadow-xs'
+                                    : 'text-slate-600 hover:text-slate-900'
+                            }`}
+                        >
+                            <PlusCircle className="h-4 w-4" />
+                            <span>Novo Item no Catálogo</span>
+                            <span className="text-[10px] bg-emerald-100 text-emerald-800 px-1.5 py-0.2 rounded-full font-semibold">
+                                Admin
+                            </span>
+                        </button>
+                    )}
                 </div>
             </div>
 
