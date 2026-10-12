@@ -1,4 +1,4 @@
-import {useEffect, useState, useRef, useCallback} from 'react'
+import {useEffect, useState, useRef, useCallback, useMemo} from 'react'
 import {
     ShoppingCart,
     Search,
@@ -13,11 +13,12 @@ import {
     AlertCircle,
     DollarSign,
     RefreshCw,
-    Eye,
     Receipt,
     Zap,
     Banknote,
-    CreditCard
+    CreditCard,
+    X,
+    ChevronRight
 } from 'lucide-react'
 import {getPaymentDiscounts, type PaymentDiscountSettings} from '../../services/settingsService'
 import {getProducts} from '../../services/productService'
@@ -31,6 +32,8 @@ import {
 import type {Product} from '../../types/product'
 import type {User} from '../../types/user'
 import type {OrderResponse, CreateOrderRequest} from '../../types/order'
+import {matchesSearch} from '../../utils/searchUtils'
+import {useToast} from '../../contexts/ToastContext'
 
 interface CartItem {
     product: Product
@@ -38,6 +41,7 @@ interface CartItem {
 }
 
 function Orders() {
+    const {toast} = useToast()
     // Products & Customers data
     const [products, setProducts] = useState<Product[]>([])
     const [customers, setCustomers] = useState<User[]>([])
@@ -49,6 +53,9 @@ function Orders() {
     const [cart, setCart] = useState<CartItem[]>([])
     const [customerType, setCustomerType] = useState<'walkin' | 'registered'>('walkin')
     const [selectedCustomerId, setSelectedCustomerId] = useState<number | null>(null)
+    const [customerSearchTerm, setCustomerSearchTerm] = useState('')
+    const [isCustomerDropdownOpen, setIsCustomerDropdownOpen] = useState(false)
+    const [highlightedCustomerIndex, setHighlightedCustomerIndex] = useState(0)
     const [walkinName, setWalkinName] = useState('')
     const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<PaymentMethod | null>(null)
     const [paymentDiscounts, setPaymentDiscounts] = useState<PaymentDiscountSettings>(getPaymentDiscounts())
@@ -58,12 +65,36 @@ function Orders() {
     const [highlightedIndex, setHighlightedIndex] = useState(0)
     const [barcodeInput, setBarcodeInput] = useState('')
     const searchInputRef = useRef<HTMLInputElement>(null)
+    const customerSearchInputRef = useRef<HTMLInputElement>(null)
+    const customerDropdownRef = useRef<HTMLDivElement>(null)
+
+    // Close customer autocomplete dropdown on outside click
+    useEffect(() => {
+        function handleClickOutside(event: MouseEvent) {
+            if (
+                customerDropdownRef.current &&
+                !customerDropdownRef.current.contains(event.target as Node) &&
+                customerSearchInputRef.current &&
+                !customerSearchInputRef.current.contains(event.target as Node)
+            ) {
+                setIsCustomerDropdownOpen(false)
+            }
+        }
+        document.addEventListener('mousedown', handleClickOutside)
+        return () => document.removeEventListener('mousedown', handleClickOutside)
+    }, [])
 
     // Feedback & Modals
     const [submitting, setSubmitting] = useState(false)
     const [orderSuccess, setOrderSuccess] = useState<string | null>(null)
     const [orderError, setOrderError] = useState<string | null>(null)
     const [viewingOrder, setViewingOrder] = useState<OrderResponse | null>(null)
+
+    // Sales list filtering & quick actions
+    const [orderStatusFilter, setOrderStatusFilter] = useState<'ALL' | 'PAID' | 'PENDING' | 'CANCELED'>('ALL')
+    const [orderSearchTerm, setOrderSearchTerm] = useState('')
+    const [payingOrderId, setPayingOrderId] = useState<number | null>(null)
+    const [cancelingOrderId, setCancelingOrderId] = useState<number | null>(null)
 
     const loadInitialData = useCallback(async () => {
         setLoadingData(true)
@@ -89,15 +120,25 @@ function Orders() {
         loadInitialData()
     }, [loadInitialData])
 
-    // Autocomplete filtering
-    const matchingProducts = products.filter((p) => {
-        if (!searchTerm.trim()) return false
-        const query = searchTerm.toLowerCase()
-        return (
-            p.name.toLowerCase().includes(query) ||
-            (p.barcode && p.barcode.toLowerCase().includes(query))
+    // Customer Autocomplete filtering
+    const selectedCustomer = useMemo(() => {
+        if (!selectedCustomerId) return null
+        return customers.find((c) => c.id === selectedCustomerId) || null
+    }, [customers, selectedCustomerId])
+
+    const matchingCustomers = useMemo(() => {
+        if (!customerSearchTerm.trim()) {
+            return customers.slice(0, 10)
+        }
+        return customers.filter((c) =>
+            matchesSearch(c.name, customerSearchTerm, c.email || c.phoneNumber || '')
         )
-    })
+    }, [customers, customerSearchTerm])
+
+    // Autocomplete filtering with smart accent, hyphen and multi-term normalization
+    const matchingProducts = searchTerm.trim()
+        ? products.filter((p) => matchesSearch(p.name, searchTerm, p.barcode))
+        : []
 
     // Add product to cart
     function addToCart(product: Product) {
@@ -205,52 +246,95 @@ function Orders() {
 
             if (asPaid) {
                 await payOrder(created.id)
-                setOrderSuccess(
-                    `Venda #${created.id} finalizada e PAGA com sucesso! Total: R$ ${finalToPay.toFixed(2)}${paymentDetail}`
-                )
+                const msg = `Venda #${created.id} finalizada e PAGA com sucesso! Total: R$ ${finalToPay.toFixed(2)}${paymentDetail}`
+                setOrderSuccess(msg)
+                toast.success(msg, 'Venda Concluída')
             } else {
-                setOrderSuccess(
-                    `Pedido #${created.id} registrado como PENDENTE. Total a pagar: R$ ${finalToPay.toFixed(2)}${paymentDetail}`
-                )
+                const msg = `Pedido #${created.id} registrado como PENDENTE. Total a pagar: R$ ${finalToPay.toFixed(2)}${paymentDetail}`
+                setOrderSuccess(msg)
+                toast.info(msg, 'Pedido Registrado')
             }
 
-            // Clear cart
+            // Clear cart & checkout form
             setCart([])
             setWalkinName('')
             setSelectedCustomerId(null)
+            setCustomerSearchTerm('')
+            setIsCustomerDropdownOpen(false)
             setSelectedPaymentMethod(null)
 
             // Refresh data (orders & products stock)
             loadInitialData()
         } catch (err: unknown) {
             console.error(err)
-            setOrderError('Erro ao finalizar venda. Verifique se há estoque suficiente.')
+            const errorMsg = 'Erro ao finalizar venda. Verifique se há estoque suficiente.'
+            setOrderError(errorMsg)
+            toast.error(errorMsg, 'Erro no Caixa')
         } finally {
             setSubmitting(false)
         }
     }
 
-    // Quick action on recent orders: Pay
+    // Filtered orders computation
+    const filteredOrders = useMemo(() => {
+        return recentOrders.filter((order) => {
+            if (orderStatusFilter !== 'ALL' && order.status !== orderStatusFilter) {
+                return false
+            }
+            if (orderSearchTerm.trim()) {
+                const term = orderSearchTerm.trim().toLowerCase()
+                const idMatch = String(order.id).includes(term) || `#${order.id}`.includes(term)
+                const customerMatch = (order.customerName || 'Consumidor Balcão').toLowerCase().includes(term)
+                const itemsMatch = order.items?.some((i) =>
+                    i.productName.toLowerCase().includes(term)
+                )
+                if (!idMatch && !customerMatch && !itemsMatch) {
+                    return false
+                }
+            }
+            return true
+        })
+    }, [recentOrders, orderStatusFilter, orderSearchTerm])
+
+    const paidOrdersCount = useMemo(() => recentOrders.filter((o) => o.status === 'PAID').length, [recentOrders])
+    const pendingOrdersCount = useMemo(() => recentOrders.filter((o) => o.status === 'PENDING').length, [recentOrders])
+    const canceledOrdersCount = useMemo(() => recentOrders.filter((o) => o.status === 'CANCELED').length, [recentOrders])
+
+    // Quick action on orders: Pay
     async function handlePayRecent(orderId: number) {
+        setPayingOrderId(orderId)
         try {
-            await payOrder(orderId)
+            const updated = await payOrder(orderId)
+            toast.success(`Pagamento do pedido #${orderId} registrado com sucesso!`, 'Pagamento Recebido')
+            if (viewingOrder && viewingOrder.id === orderId) {
+                setViewingOrder(updated)
+            }
             loadInitialData()
         } catch (err) {
             console.error(err)
-            alert('Não foi possível registrar o pagamento deste pedido.')
+            toast.error('Não foi possível registrar o pagamento deste pedido.', 'Erro no Pagamento')
+        } finally {
+            setPayingOrderId(null)
         }
     }
 
-    // Quick action on recent orders: Cancel
+    // Quick action on orders: Cancel
     async function handleCancelRecent(orderId: number) {
-        const confirmed = window.confirm(`Deseja cancelar o pedido #${orderId}? O estoque será devolvido.`)
+        const confirmed = window.confirm(`Deseja cancelar o pedido #${orderId}? Os itens serão estornados ao estoque.`)
         if (!confirmed) return
+        setCancelingOrderId(orderId)
         try {
-            await cancelOrder(orderId)
+            const updated = await cancelOrder(orderId)
+            toast.info(`Pedido #${orderId} cancelado. Estoque estornado com sucesso.`, 'Pedido Cancelado')
+            if (viewingOrder && viewingOrder.id === orderId) {
+                setViewingOrder(updated)
+            }
             loadInitialData()
         } catch (err) {
             console.error(err)
-            alert('Não foi possível cancelar o pedido.')
+            toast.error('Não foi possível cancelar o pedido.', 'Erro ao Cancelar')
+        } finally {
+            setCancelingOrderId(null)
         }
     }
 
@@ -330,26 +414,147 @@ function Orders() {
                                 />
                             </div>
                         ) : (
-                            <div>
-                                <label className="block text-[11px] font-medium text-slate-500 mb-1">
+                            <div className="space-y-1.5">
+                                <label className="block text-[11px] font-medium text-slate-500">
                                     Selecione o Cliente Cadastrado
                                 </label>
-                                <select
-                                    value={selectedCustomerId || ''}
-                                    onChange={(e) =>
-                                        setSelectedCustomerId(
-                                            e.target.value ? Number(e.target.value) : null
-                                        )
-                                    }
-                                    className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold text-slate-800 focus:bg-white focus:border-sky-500 focus:outline-hidden"
-                                >
-                                    <option value="">Selecione um cliente cadastrado...</option>
-                                    {customers.map((c) => (
-                                        <option key={c.id} value={c.id}>
-                                            {c.name} ({c.email})
-                                        </option>
-                                    ))}
-                                </select>
+
+                                {selectedCustomer ? (
+                                    <div className="flex items-center justify-between p-3 bg-sky-50/80 border border-sky-200 rounded-xl animate-in fade-in">
+                                        <div className="flex items-center gap-3 min-w-0">
+                                            <div className="h-8 w-8 rounded-lg bg-sky-600 text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-xs">
+                                                {selectedCustomer.name.charAt(0).toUpperCase()}
+                                            </div>
+                                            <div className="min-w-0">
+                                                <p className="text-xs font-bold text-slate-900 truncate flex items-center gap-2">
+                                                    <span>{selectedCustomer.name}</span>
+                                                    <span className="text-[10px] bg-sky-100 text-sky-800 font-semibold px-1.5 py-0.2 rounded-full">
+                                                        #{selectedCustomer.id}
+                                                    </span>
+                                                </p>
+                                                <p className="text-[11px] text-slate-500 truncate mt-0.5">
+                                                    {selectedCustomer.email} {selectedCustomer.phoneNumber ? `• ${selectedCustomer.phoneNumber}` : ''}
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <button
+                                            type="button"
+                                            onClick={() => {
+                                                setSelectedCustomerId(null)
+                                                setCustomerSearchTerm('')
+                                                setIsCustomerDropdownOpen(true)
+                                                setTimeout(() => customerSearchInputRef.current?.focus(), 50)
+                                            }}
+                                            className="flex items-center gap-1 text-xs text-sky-700 hover:text-sky-900 hover:bg-sky-100 px-2 py-1 rounded-lg transition-colors font-semibold cursor-pointer shrink-0 ml-2"
+                                            title="Trocar cliente"
+                                        >
+                                            <X className="h-3.5 w-3.5" />
+                                            <span>Trocar</span>
+                                        </button>
+                                    </div>
+                                ) : (
+                                    <div className="relative">
+                                        <div className="relative">
+                                            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-slate-400" />
+                                            <input
+                                                ref={customerSearchInputRef}
+                                                type="text"
+                                                value={customerSearchTerm}
+                                                onFocus={() => setIsCustomerDropdownOpen(true)}
+                                                onChange={(e) => {
+                                                    setCustomerSearchTerm(e.target.value)
+                                                    setHighlightedCustomerIndex(0)
+                                                    setIsCustomerDropdownOpen(true)
+                                                }}
+                                                onKeyDown={(e) => {
+                                                    if (matchingCustomers.length === 0) return
+
+                                                    if (e.key === 'ArrowDown') {
+                                                        e.preventDefault()
+                                                        setHighlightedCustomerIndex((prev) => (prev + 1) % matchingCustomers.length)
+                                                    } else if (e.key === 'ArrowUp') {
+                                                        e.preventDefault()
+                                                        setHighlightedCustomerIndex((prev) => (prev - 1 + matchingCustomers.length) % matchingCustomers.length)
+                                                    } else if (e.key === 'Enter') {
+                                                        if (highlightedCustomerIndex >= 0 && highlightedCustomerIndex < matchingCustomers.length) {
+                                                            e.preventDefault()
+                                                            const picked = matchingCustomers[highlightedCustomerIndex]
+                                                            setSelectedCustomerId(picked.id)
+                                                            setCustomerSearchTerm('')
+                                                            setIsCustomerDropdownOpen(false)
+                                                        }
+                                                    } else if (e.key === 'Escape') {
+                                                        setIsCustomerDropdownOpen(false)
+                                                    }
+                                                }}
+                                                placeholder="Digite o nome, e-mail ou telefone para buscar o cliente..."
+                                                className="w-full pl-9 pr-8 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium text-slate-800 focus:bg-white focus:border-sky-500 focus:outline-hidden transition-all placeholder:text-slate-400"
+                                            />
+                                            {customerSearchTerm && (
+                                                <button
+                                                    type="button"
+                                                    onClick={() => {
+                                                        setCustomerSearchTerm('')
+                                                        setHighlightedCustomerIndex(0)
+                                                    }}
+                                                    className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 cursor-pointer"
+                                                >
+                                                    <X className="h-3.5 w-3.5" />
+                                                </button>
+                                            )}
+                                        </div>
+
+                                        {/* Dropdown list */}
+                                        {isCustomerDropdownOpen && (
+                                            <div
+                                                ref={customerDropdownRef}
+                                                className="absolute top-full left-0 right-0 mt-1.5 bg-white rounded-xl border border-slate-200 shadow-lg z-30 max-h-60 overflow-y-auto divide-y divide-slate-100"
+                                            >
+                                                {matchingCustomers.length === 0 ? (
+                                                    <div className="p-4 text-center text-xs text-slate-500">
+                                                        Nenhum cliente cadastrado encontrado para &quot;{customerSearchTerm}&quot;
+                                                    </div>
+                                                ) : (
+                                                    matchingCustomers.map((c, index) => (
+                                                        <button
+                                                            key={c.id}
+                                                            type="button"
+                                                            onMouseEnter={() => setHighlightedCustomerIndex(index)}
+                                                            onClick={() => {
+                                                                setSelectedCustomerId(c.id)
+                                                                setCustomerSearchTerm('')
+                                                                setIsCustomerDropdownOpen(false)
+                                                            }}
+                                                            className={`w-full px-3.5 py-2.5 text-left flex items-center justify-between transition-colors cursor-pointer ${
+                                                                index === highlightedCustomerIndex
+                                                                    ? 'bg-sky-50 text-sky-950 font-semibold border-l-4 border-sky-600'
+                                                                    : 'hover:bg-slate-50 text-slate-800'
+                                                            }`}
+                                                        >
+                                                            <div className="flex items-center gap-2.5 min-w-0">
+                                                                <div className="h-7 w-7 rounded-lg bg-sky-100 text-sky-700 flex items-center justify-center font-bold text-xs shrink-0">
+                                                                    {c.name.charAt(0).toUpperCase()}
+                                                                </div>
+                                                                <div className="min-w-0">
+                                                                    <p className="text-xs font-bold text-slate-900 truncate">
+                                                                        {c.name}
+                                                                    </p>
+                                                                    <p className="text-[11px] text-slate-500 truncate">
+                                                                        {c.email} {c.phoneNumber ? `• ${c.phoneNumber}` : ''}
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                            <span className="text-[10px] text-sky-600 font-semibold shrink-0 ml-2">
+                                                                Selecionar
+                                                            </span>
+                                                        </button>
+                                                    ))
+                                                )}
+                                            </div>
+                                        )}
+                                    </div>
+                                )}
                             </div>
                         )}
                     </div>
@@ -763,25 +968,91 @@ function Orders() {
                             <div className="flex items-center gap-2">
                                 <Receipt className="h-4 w-4 text-sky-600" />
                                 <h3 className="text-sm font-bold text-slate-900">
-                                    Últimas Vendas da Loja
+                                    Vendas da Loja
                                 </h3>
                             </div>
                             <span className="text-[11px] font-semibold text-slate-500">
-                                {recentOrders.length} registros
+                                {filteredOrders.length} de {recentOrders.length} registros
                             </span>
+                        </div>
+
+                        {/* Status Filter Buttons */}
+                        <div className="flex flex-wrap items-center gap-1.5">
+                            <button
+                                type="button"
+                                onClick={() => setOrderStatusFilter('ALL')}
+                                className={`px-2.5 py-1 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                                    orderStatusFilter === 'ALL'
+                                        ? 'bg-sky-600 text-white shadow-xs'
+                                        : 'bg-slate-100 text-slate-600 hover:text-slate-900'
+                                }`}
+                            >
+                                Todos ({recentOrders.length})
+                            </button>
+                            <button
+                                type="button"
+                                onClick={() => setOrderStatusFilter('PAID')}
+                                className={`px-2.5 py-1 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-1 ${
+                                    orderStatusFilter === 'PAID'
+                                        ? 'bg-emerald-600 text-white shadow-xs'
+                                        : 'bg-emerald-50 text-emerald-800 hover:bg-emerald-100'
+                                }`}
+                            >
+                                <CheckCircle2 className="h-3 w-3" />
+                                <span>Pagos ({paidOrdersCount})</span>
+                            </button>
+                            <button
+                                type="button"
+                                onClick={() => setOrderStatusFilter('PENDING')}
+                                className={`px-2.5 py-1 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-1 ${
+                                    orderStatusFilter === 'PENDING'
+                                        ? 'bg-amber-600 text-white shadow-xs'
+                                        : pendingOrdersCount > 0
+                                        ? 'bg-amber-100 text-amber-900 hover:bg-amber-200 font-black'
+                                        : 'bg-slate-100 text-slate-600 hover:text-slate-900'
+                                }`}
+                            >
+                                <Clock className="h-3 w-3" />
+                                <span>Pendentes ({pendingOrdersCount})</span>
+                            </button>
+                            <button
+                                type="button"
+                                onClick={() => setOrderStatusFilter('CANCELED')}
+                                className={`px-2.5 py-1 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-1 ${
+                                    orderStatusFilter === 'CANCELED'
+                                        ? 'bg-rose-600 text-white shadow-xs'
+                                        : 'bg-slate-100 text-slate-600 hover:text-slate-900'
+                                }`}
+                            >
+                                <XCircle className="h-3 w-3" />
+                                <span>Cancelados ({canceledOrdersCount})</span>
+                            </button>
+                        </div>
+
+                        {/* Search Input for Orders */}
+                        <div className="relative">
+                            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-slate-400" />
+                            <input
+                                type="text"
+                                value={orderSearchTerm}
+                                onChange={(e) => setOrderSearchTerm(e.target.value)}
+                                placeholder="Buscar por #ID, cliente ou produto..."
+                                className="w-full pl-9 pr-3 py-1.5 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:bg-white focus:border-sky-500 focus:outline-hidden"
+                            />
                         </div>
 
                         {loadingData ? (
                             <div className="py-12 text-center text-xs text-slate-400">
                                 Carregando vendas...
                             </div>
-                        ) : recentOrders.length === 0 ? (
-                            <div className="py-12 text-center text-xs text-slate-400">
-                                Nenhuma venda registrada ainda.
+                        ) : filteredOrders.length === 0 ? (
+                            <div className="py-12 text-center text-xs text-slate-400 space-y-1">
+                                <p className="font-semibold text-slate-600">Nenhuma venda encontrada.</p>
+                                <p className="text-[11px]">Tente alterar o filtro de status ou o termo de busca.</p>
                             </div>
                         ) : (
-                            <div className="divide-y divide-slate-100 max-h-[600px] overflow-y-auto">
-                                {recentOrders.slice(0, 15).map((order) => {
+                            <div className="divide-y divide-slate-100 max-h-[600px] overflow-y-auto space-y-2 pr-1">
+                                {filteredOrders.map((order) => {
                                     const formattedDate = new Date(order.createdAt).toLocaleDateString(
                                         'pt-BR',
                                         {
@@ -795,15 +1066,16 @@ function Orders() {
                                     return (
                                         <div
                                             key={order.id}
-                                            className="py-3 px-1 flex flex-col gap-2 hover:bg-slate-50/50 transition-colors"
+                                            onClick={() => setViewingOrder(order)}
+                                            className="p-3 rounded-xl border border-slate-100 hover:border-sky-300 hover:bg-sky-50/40 transition-all cursor-pointer space-y-2 group shadow-2xs"
                                         >
+                                            {/* Line 1: Header */}
                                             <div className="flex items-center justify-between">
                                                 <div className="flex items-center gap-2">
-                                                    <span className="font-bold text-slate-900 text-xs">
+                                                    <span className="font-mono font-black text-xs text-sky-800 bg-sky-100/70 px-2 py-0.5 rounded-md">
                                                         #{order.id}
                                                     </span>
-                                                    <span className="text-slate-400 text-[11px]">•</span>
-                                                    <span className="text-slate-600 text-xs font-medium">
+                                                    <span className="text-slate-900 text-xs font-bold truncate max-w-[170px]">
                                                         {order.customerName || 'Consumidor Balcão'}
                                                     </span>
                                                 </div>
@@ -811,78 +1083,78 @@ function Orders() {
                                                 <span
                                                     className={`text-[10px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1 ${
                                                         order.status === 'PAID'
-                                                            ? 'bg-emerald-50 text-emerald-700'
+                                                            ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
                                                             : order.status === 'PENDING'
-                                                            ? 'bg-amber-50 text-amber-700'
-                                                            : 'bg-rose-50 text-rose-700'
+                                                            ? 'bg-amber-50 text-amber-800 border border-amber-300'
+                                                            : 'bg-slate-100 text-slate-600 border border-slate-200'
                                                     }`}
                                                 >
                                                     {order.status === 'PAID' && (
-                                                        <CheckCircle2 className="h-2.5 w-2.5" />
+                                                        <CheckCircle2 className="h-2.5 w-2.5 text-emerald-600" />
                                                     )}
                                                     {order.status === 'PENDING' && (
-                                                        <Clock className="h-2.5 w-2.5" />
+                                                        <Clock className="h-2.5 w-2.5 text-amber-600" />
                                                     )}
                                                     {order.status === 'CANCELED' && (
-                                                        <XCircle className="h-2.5 w-2.5" />
+                                                        <XCircle className="h-2.5 w-2.5 text-slate-500" />
                                                     )}
-                                                    {order.status === 'PAID'
-                                                        ? 'PAGO'
-                                                        : order.status === 'PENDING'
-                                                        ? 'PENDENTE'
-                                                        : 'CANCELADO'}
+                                                    <span>
+                                                        {order.status === 'PAID'
+                                                            ? 'PAGO'
+                                                            : order.status === 'PENDING'
+                                                            ? 'PENDENTE'
+                                                            : 'CANCELADO'}
+                                                    </span>
                                                 </span>
                                             </div>
 
-                                            <div className="flex items-center justify-between text-xs">
-                                                <span className="text-slate-400 text-[11px]">
-                                                    {formattedDate} • {order.items?.length || 0} itens
-                                                </span>
-                                                <span className="font-bold text-slate-900 font-mono">
-                                                    R$ {Number(order.totalPrice || 0).toFixed(2)}
-                                                </span>
-                                            </div>
-
-                                            {/* Action buttons */}
-                                            <div className="flex items-center justify-end gap-2 pt-1">
-                                                <button
-                                                    type="button"
-                                                    onClick={() => setViewingOrder(order)}
-                                                    className="p-1 text-slate-400 hover:text-slate-700 transition-colors"
-                                                    title="Ver itens do pedido"
-                                                >
-                                                    <Eye className="h-3.5 w-3.5" />
-                                                </button>
-
-                                                {order.status === 'PENDING' && (
-                                                    <>
-                                                        <button
-                                                            type="button"
-                                                            onClick={() => handlePayRecent(order.id)}
-                                                            className="px-2.5 py-1 bg-emerald-50 text-emerald-700 hover:bg-emerald-100 font-bold rounded-md text-[10px] transition-colors"
-                                                        >
-                                                            Pagar
-                                                        </button>
-                                                        <button
-                                                            type="button"
-                                                            onClick={() => handleCancelRecent(order.id)}
-                                                            className="px-2.5 py-1 bg-slate-100 text-slate-600 hover:bg-rose-50 hover:text-rose-700 font-bold rounded-md text-[10px] transition-colors"
-                                                        >
-                                                            Cancelar
-                                                        </button>
-                                                    </>
-                                                )}
-
-                                                {order.status === 'PAID' && (
-                                                    <button
-                                                        type="button"
-                                                        onClick={() => handleCancelRecent(order.id)}
-                                                        className="px-2 py-0.5 text-slate-400 hover:text-rose-600 font-medium text-[10px] transition-colors"
-                                                        title="Estornar pedido e devolver ao estoque"
+                                            {/* Line 2: Items preview tags */}
+                                            <div className="flex flex-wrap gap-1">
+                                                {order.items?.slice(0, 3).map((item, idx) => (
+                                                    <span
+                                                        key={idx}
+                                                        className="text-[10px] font-medium bg-slate-100 text-slate-700 px-2 py-0.5 rounded-md truncate max-w-[160px]"
                                                     >
-                                                        Estornar
-                                                    </button>
+                                                        {item.quantity}x {item.productName}
+                                                    </span>
+                                                ))}
+                                                {order.items && order.items.length > 3 && (
+                                                    <span className="text-[10px] font-bold bg-slate-100 text-slate-500 px-1.5 py-0.5 rounded-md">
+                                                        +{order.items.length - 3} itens
+                                                    </span>
                                                 )}
+                                            </div>
+
+                                            {/* Line 3: Footer with date, total and actions */}
+                                            <div className="flex items-center justify-between pt-1 border-t border-slate-100/80 text-xs">
+                                                <span className="text-[11px] text-slate-400">
+                                                    {formattedDate}
+                                                </span>
+
+                                                <div className="flex items-center gap-2">
+                                                    <span className="font-mono font-black text-slate-900 text-sm">
+                                                        R$ {Number(order.totalPrice || 0).toFixed(2)}
+                                                    </span>
+
+                                                    {/* Quick actions (stop propagation so card click opens modal) */}
+                                                    {order.status === 'PENDING' && (
+                                                        <button
+                                                            type="button"
+                                                            disabled={payingOrderId === order.id}
+                                                            onClick={(e) => {
+                                                                e.stopPropagation()
+                                                                handlePayRecent(order.id)
+                                                            }}
+                                                            className="px-2.5 py-1 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-lg text-[10px] transition-all cursor-pointer shadow-xs disabled:opacity-50"
+                                                        >
+                                                            {payingOrderId === order.id ? 'Baixando...' : 'Pagar'}
+                                                        </button>
+                                                    )}
+
+                                                    <span className="text-sky-600 text-[11px] font-bold group-hover:underline flex items-center gap-0.5">
+                                                        Ver itens <ChevronRight className="h-3 w-3" />
+                                                    </span>
+                                                </div>
                                             </div>
                                         </div>
                                     )
@@ -893,60 +1165,170 @@ function Orders() {
                 </div>
             </div>
 
-            {/* Modal: View Order Details */}
+            {/* Modal: View Full Order Details */}
             {viewingOrder && (
-                <div className="fixed inset-0 z-50 bg-black/40 flex items-center justify-center p-4">
-                    <div className="bg-white rounded-2xl max-w-md w-full p-6 shadow-xl space-y-4">
-                        <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+                <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4 animate-in fade-in">
+                    <div className="bg-white rounded-2xl max-w-2xl w-full p-6 shadow-2xl space-y-5 max-h-[90vh] overflow-y-auto">
+                        <div className="flex items-start justify-between pb-4 border-b border-slate-100">
                             <div>
-                                <h3 className="text-base font-bold text-slate-900">
-                                    Detalhes do Pedido #{viewingOrder.id}
-                                </h3>
+                                <div className="flex items-center gap-2 mb-1">
+                                    <h3 className="font-bold text-base text-slate-900">
+                                        Detalhes da Venda #{viewingOrder.id}
+                                    </h3>
+                                    {viewingOrder.status === 'PAID' && (
+                                        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                                            <CheckCircle2 className="h-3.5 w-3.5" />
+                                            Pago
+                                        </span>
+                                    )}
+                                    {viewingOrder.status === 'PENDING' && (
+                                        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-bold bg-amber-50 text-amber-800 border border-amber-300">
+                                            <Clock className="h-3.5 w-3.5 text-amber-600" />
+                                            Pendente de Pagamento
+                                        </span>
+                                    )}
+                                    {viewingOrder.status === 'CANCELED' && (
+                                        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-bold bg-slate-100 text-slate-600 border border-slate-200">
+                                            <XCircle className="h-3.5 w-3.5" />
+                                            Cancelado
+                                        </span>
+                                    )}
+                                </div>
                                 <p className="text-xs text-slate-500">
-                                    Cliente: {viewingOrder.customerName || 'Consumidor Balcão'}
+                                    Realizada em{' '}
+                                    {new Date(viewingOrder.createdAt).toLocaleDateString('pt-BR', {
+                                        day: '2-digit',
+                                        month: '2-digit',
+                                        year: 'numeric',
+                                        hour: '2-digit',
+                                        minute: '2-digit',
+                                    })}{' '}
+                                    • Cliente: {viewingOrder.customerName || 'Consumidor Balcão'}
                                 </p>
                             </div>
+
                             <button
                                 type="button"
                                 onClick={() => setViewingOrder(null)}
-                                className="text-slate-400 hover:text-slate-700 font-bold text-sm"
+                                className="p-1.5 text-slate-400 hover:text-slate-600 rounded-lg hover:bg-slate-100 transition-colors cursor-pointer"
                             >
-                                ✕
+                                <X className="h-5 w-5" />
                             </button>
                         </div>
 
-                        <div className="space-y-2 max-h-60 overflow-y-auto divide-y divide-slate-100 text-xs">
-                            {viewingOrder.items?.map((item, idx) => (
-                                <div key={idx} className="pt-2 flex justify-between items-center">
-                                    <div>
-                                        <p className="font-semibold text-slate-800">
-                                            {item.productName}
-                                        </p>
-                                        <p className="text-slate-400 text-[11px]">
-                                            {item.quantity}x de R$ {Number(item.unitPrice || 0).toFixed(2)}
-                                        </p>
-                                    </div>
-                                    <span className="font-bold text-slate-900 font-mono">
-                                        R$ {Number(item.subtotal || 0).toFixed(2)}
-                                    </span>
+                        {/* Items Table */}
+                        <div className="overflow-x-auto">
+                            <table className="w-full text-left text-xs">
+                                <thead className="bg-slate-50 text-slate-500 font-semibold uppercase text-[10px] tracking-wider border-y border-slate-100">
+                                    <tr>
+                                        <th className="py-2.5 px-3">Item / Produto</th>
+                                        <th className="py-2.5 px-3 text-center">Quantidade</th>
+                                        <th className="py-2.5 px-3 text-right">Preço Unitário</th>
+                                        <th className="py-2.5 px-3 text-right">Subtotal</th>
+                                    </tr>
+                                </thead>
+                                <tbody className="divide-y divide-slate-100">
+                                    {viewingOrder.items?.map((item, index) => (
+                                        <tr key={index} className="hover:bg-slate-50/50">
+                                            <td className="py-3 px-3 font-semibold text-slate-900">
+                                                {item.productName}
+                                            </td>
+                                            <td className="py-3 px-3 text-center text-slate-600 font-medium">
+                                                {item.quantity} un.
+                                            </td>
+                                            <td className="py-3 px-3 text-right font-mono text-slate-600">
+                                                R$ {Number(item.unitPrice || 0).toFixed(2)}
+                                            </td>
+                                            <td className="py-3 px-3 text-right font-mono font-bold text-slate-900">
+                                                R$ {Number(item.subtotal || 0).toFixed(2)}
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                                <tfoot>
+                                    <tr className="border-t-2 border-slate-200 bg-slate-50/50">
+                                        <td colSpan={3} className="py-3 px-3 font-bold text-slate-900 text-right">
+                                            Total Geral do Pedido:
+                                        </td>
+                                        <td className="py-3 px-3 font-black text-slate-900 text-right font-mono text-base">
+                                            R$ {Number(viewingOrder.totalPrice || 0).toFixed(2)}
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+
+                        {/* Status Alert Banner */}
+                        {viewingOrder.status === 'PENDING' && (
+                            <div className="p-4 bg-amber-50 border border-amber-200 rounded-xl space-y-1">
+                                <div className="flex items-center gap-2 text-amber-800 text-xs font-bold">
+                                    <Clock className="h-4 w-4 text-amber-600 shrink-0" />
+                                    <span>Pagamento Pendente</span>
                                 </div>
-                            ))}
-                        </div>
+                                <p className="text-xs text-amber-700 leading-relaxed">
+                                    Este pedido foi registrado no balcão e ainda não foi quitado. Caso o cliente esteja na loja efetuando o pagamento agora, confirme abaixo para liquidar a venda.
+                                </p>
+                            </div>
+                        )}
 
-                        <div className="pt-3 border-t border-slate-100 flex justify-between items-center">
-                            <span className="text-xs font-semibold text-slate-500">Total Pago:</span>
-                            <span className="text-lg font-black text-slate-900 font-mono">
-                                R$ {Number(viewingOrder.totalPrice || 0).toFixed(2)}
-                            </span>
-                        </div>
+                        {viewingOrder.status === 'PAID' && (
+                            <div className="p-3 bg-emerald-50 border border-emerald-200 rounded-xl flex items-center gap-2 text-xs text-emerald-800 font-medium">
+                                <CheckCircle2 className="h-4 w-4 text-emerald-600 shrink-0" />
+                                <span>Este pedido está totalmente pago e finalizado.</span>
+                            </div>
+                        )}
 
-                        <button
-                            type="button"
-                            onClick={() => setViewingOrder(null)}
-                            className="w-full py-2 bg-slate-900 text-white rounded-xl text-xs font-bold hover:bg-slate-800 transition-colors"
-                        >
-                            Fechar
-                        </button>
+                        {/* Modal Action Buttons */}
+                        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-3 border-t border-slate-100">
+                            <div>
+                                {viewingOrder.status === 'PENDING' && (
+                                    <button
+                                        type="button"
+                                        disabled={cancelingOrderId === viewingOrder.id}
+                                        onClick={() => handleCancelRecent(viewingOrder.id)}
+                                        className="text-xs text-rose-600 hover:text-rose-700 hover:underline font-semibold cursor-pointer disabled:opacity-50"
+                                    >
+                                        {cancelingOrderId === viewingOrder.id ? 'Cancelando...' : 'Cancelar este pedido'}
+                                    </button>
+                                )}
+                                {viewingOrder.status === 'PAID' && (
+                                    <button
+                                        type="button"
+                                        disabled={cancelingOrderId === viewingOrder.id}
+                                        onClick={() => handleCancelRecent(viewingOrder.id)}
+                                        className="text-xs text-slate-400 hover:text-rose-600 hover:underline font-medium cursor-pointer disabled:opacity-50"
+                                    >
+                                        {cancelingOrderId === viewingOrder.id ? 'Estornando...' : 'Estornar pedido e devolver ao estoque'}
+                                    </button>
+                                )}
+                            </div>
+
+                            <div className="flex items-center gap-2 w-full sm:w-auto justify-end">
+                                <button
+                                    type="button"
+                                    onClick={() => setViewingOrder(null)}
+                                    className="px-4 py-2 text-slate-600 hover:bg-slate-100 rounded-xl text-xs font-semibold cursor-pointer"
+                                >
+                                    Fechar
+                                </button>
+
+                                {viewingOrder.status === 'PENDING' && (
+                                    <button
+                                        type="button"
+                                        disabled={payingOrderId === viewingOrder.id}
+                                        onClick={() => handlePayRecent(viewingOrder.id)}
+                                        className="flex items-center gap-1.5 px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold transition-all shadow-xs disabled:opacity-50 cursor-pointer"
+                                    >
+                                        <CheckCircle2 className="h-4 w-4" />
+                                        <span>
+                                            {payingOrderId === viewingOrder.id
+                                                ? 'Registrando Pagamento...'
+                                                : 'Confirmar Pagamento Agora'}
+                                        </span>
+                                    </button>
+                                )}
+                            </div>
+                        </div>
                     </div>
                 </div>
             )}

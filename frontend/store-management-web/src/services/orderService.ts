@@ -11,6 +11,11 @@ export async function getOrder(id: number): Promise<OrderResponse> {
     return response.data
 }
 
+export async function getOrdersByCustomer(customerId: number): Promise<OrderResponse[]> {
+    const all = await getOrders()
+    return all.filter((o) => o.customerId === customerId)
+}
+
 export async function createOrder(data: CreateOrderRequest): Promise<OrderResponse> {
     const response = await api.post<OrderResponse>('/orders', data)
     return response.data

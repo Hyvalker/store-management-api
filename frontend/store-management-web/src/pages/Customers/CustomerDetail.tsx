@@ -19,7 +19,15 @@ import {
     Droplets,
     MessageSquare,
     Stethoscope,
-    BookOpen
+    BookOpen,
+    ShoppingBag,
+    Receipt,
+    Clock,
+    XCircle,
+    DollarSign,
+    Eye,
+    RefreshCw,
+    X
 } from 'lucide-react'
 import {getUser} from '../../services/userService'
 import {getCurrentUser} from '../../services/authService'
@@ -37,6 +45,7 @@ import {
     updateAquariumNote,
     deleteAquariumNote
 } from '../../services/aquariumService'
+import {getOrdersByCustomer, payOrder, cancelOrder} from '../../services/orderService'
 import type {User} from '../../types/user'
 import type {
     Aquarium,
@@ -47,8 +56,11 @@ import type {
     AquariumNote,
     CreateAquariumNoteRequest
 } from '../../types/aquarium'
+import type {OrderResponse} from '../../types/order'
+import {useToast} from '../../contexts/ToastContext'
 
 function CustomerDetail() {
+    const {toast} = useToast()
     const {id} = useParams<{id: string}>()
     const navigate = useNavigate()
     const customerId = Number(id)
@@ -105,20 +117,101 @@ function CustomerDetail() {
     const [noteContent, setNoteContent] = useState('')
     const [submittingNote, setSubmittingNote] = useState(false)
 
+    // Navigation between Aquariums and Orders
+    const [activeSection, setActiveSection] = useState<'aquariums' | 'orders'>('aquariums')
+
+    // Customer Orders States
+    const [customerOrders, setCustomerOrders] = useState<OrderResponse[]>([])
+    const [loadingOrders, setLoadingOrders] = useState(false)
+    const [orderStatusFilter, setOrderStatusFilter] = useState<'ALL' | 'PENDING' | 'PAID' | 'CANCELED'>('ALL')
+    const [selectedOrderDetails, setSelectedOrderDetails] = useState<OrderResponse | null>(null)
+    const [payingOrderId, setPayingOrderId] = useState<number | null>(null)
+    const [cancelingOrderId, setCancelingOrderId] = useState<number | null>(null)
+
     // WhatsApp / Clipboard Copy states
     const [copiedTestId, setCopiedTestId] = useState<number | null>(null)
     const [copiedNoteId, setCopiedNoteId] = useState<number | null>(null)
 
-    // Helper for notification
+    // Helper for notification (local state + floating global toast)
     const notify = (msg: string, isError: boolean = false) => {
         if (isError) {
             setErrorMessage(msg)
+            toast.error(msg)
             setTimeout(() => setErrorMessage(null), 4000)
         } else {
             setFeedbackMessage(msg)
+            toast.success(msg)
             setTimeout(() => setFeedbackMessage(null), 4000)
         }
     }
+
+    const loadCustomerOrders = useCallback(async () => {
+        if (!customerId) return
+        setLoadingOrders(true)
+        try {
+            const list = await getOrdersByCustomer(customerId)
+            setCustomerOrders(list.sort((a, b) => b.id - a.id))
+        } catch {
+            notify('Erro ao carregar histórico de pedidos do cliente.', true)
+        } finally {
+            setLoadingOrders(false)
+        }
+    }, [customerId])
+
+    useEffect(() => {
+        loadCustomerOrders()
+    }, [loadCustomerOrders])
+
+    async function handlePayCustomerOrder(orderId: number) {
+        setPayingOrderId(orderId)
+        try {
+            const updated = await payOrder(orderId)
+            toast.success(`Pagamento do pedido #${orderId} confirmado com sucesso!`, 'Pagamento Recebido')
+            setCustomerOrders((prev) => prev.map((o) => (o.id === orderId ? updated : o)))
+            if (selectedOrderDetails?.id === orderId) {
+                setSelectedOrderDetails(updated)
+            }
+        } catch {
+            toast.error('Não foi possível registrar o pagamento deste pedido.', 'Erro no Pagamento')
+        } finally {
+            setPayingOrderId(null)
+        }
+    }
+
+    async function handleCancelCustomerOrder(orderId: number) {
+        const confirmed = window.confirm(
+            `Deseja realmente cancelar o pedido #${orderId}? Os itens voltarão para o estoque.`
+        )
+        if (!confirmed) return
+
+        setCancelingOrderId(orderId)
+        try {
+            const updated = await cancelOrder(orderId)
+            toast.info(`Pedido #${orderId} cancelado. Estoque estornado com sucesso.`, 'Pedido Cancelado')
+            setCustomerOrders((prev) => prev.map((o) => (o.id === orderId ? updated : o)))
+            if (selectedOrderDetails?.id === orderId) {
+                setSelectedOrderDetails(updated)
+            }
+        } catch {
+            toast.error('Não foi possível cancelar o pedido.', 'Erro ao Cancelar')
+        } finally {
+            setCancelingOrderId(null)
+        }
+    }
+
+    const pendingOrdersCount = customerOrders.filter((o) => o.status === 'PENDING').length
+    const paidOrdersCount = customerOrders.filter((o) => o.status === 'PAID').length
+    const totalPaidAmount = customerOrders
+        .filter((o) => o.status === 'PAID')
+        .reduce((acc, o) => acc + Number(o.totalPrice || 0), 0)
+    const totalPendingAmount = customerOrders
+        .filter((o) => o.status === 'PENDING')
+        .reduce((acc, o) => acc + Number(o.totalPrice || 0), 0)
+
+    const filteredOrders = customerOrders.filter((o) => {
+        if (orderStatusFilter === 'ALL') return true
+        return o.status === orderStatusFilter
+    })
 
     const loadCustomerData = useCallback(async () => {
         if (!customerId) return
@@ -633,8 +726,63 @@ function CustomerDetail() {
                 </div>
             </div>
 
-            {/* Aquariums Selector Tabs */}
-            <div className="space-y-3">
+            {/* Main Section Navigation Switcher */}
+            <div className="flex flex-wrap items-center gap-2 border-b border-slate-200 pb-2">
+                <button
+                    type="button"
+                    onClick={() => setActiveSection('aquariums')}
+                    className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all ${
+                        activeSection === 'aquariums'
+                            ? 'bg-sky-600 text-white shadow-xs'
+                            : 'bg-white text-slate-600 hover:text-slate-900 border border-slate-200'
+                    }`}
+                >
+                    <Fish className="h-4 w-4" />
+                    <span>Aquários & Caderno Técnico</span>
+                    <span
+                        className={`text-[10px] px-1.5 py-0.5 rounded-full font-semibold ${
+                            activeSection === 'aquariums'
+                                ? 'bg-sky-500 text-white'
+                                : 'bg-slate-100 text-slate-700'
+                        }`}
+                    >
+                        {aquariums.length}
+                    </span>
+                </button>
+
+                <button
+                    type="button"
+                    onClick={() => setActiveSection('orders')}
+                    className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all ${
+                        activeSection === 'orders'
+                            ? 'bg-sky-600 text-white shadow-xs'
+                            : 'bg-white text-slate-600 hover:text-slate-900 border border-slate-200'
+                    }`}
+                >
+                    <ShoppingBag className="h-4 w-4" />
+                    <span>Histórico de Compras & Pedidos</span>
+                    <span
+                        className={`text-[10px] px-1.5 py-0.5 rounded-full font-semibold ${
+                            activeSection === 'orders'
+                                ? 'bg-sky-500 text-white'
+                                : 'bg-slate-100 text-slate-700'
+                        }`}
+                    >
+                        {customerOrders.length}
+                    </span>
+                    {pendingOrdersCount > 0 && (
+                        <span className="text-[10px] px-2 py-0.5 rounded-full bg-amber-500 text-white font-bold animate-pulse">
+                            {pendingOrdersCount} pendente{pendingOrdersCount > 1 ? 's' : ''}
+                        </span>
+                    )}
+                </button>
+            </div>
+
+            {/* Section 1: Aquários & Caderno Técnico */}
+            {activeSection === 'aquariums' && (
+                <div className="space-y-6 animate-in fade-in duration-150">
+                    {/* Aquariums Selector Tabs */}
+                    <div className="space-y-3">
                 <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-700">
                         <Fish className="h-4 w-4 text-sky-600" />
@@ -1149,6 +1297,307 @@ function CustomerDetail() {
                     )}
                 </div>
             )}
+                </div>
+            )}
+
+            {/* Section 2: Histórico de Compras & Pedidos do Cliente */}
+            {activeSection === 'orders' && (
+                <div className="space-y-6 animate-in fade-in duration-150">
+                    {/* Financial Summary & KPI Cards */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                        <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-xs">
+                            <div className="flex items-center justify-between text-slate-500 mb-2">
+                                <span className="text-xs font-medium">Total em Compras Pagas</span>
+                                <DollarSign className="h-4 w-4 text-emerald-600" />
+                            </div>
+                            <p className="text-2xl font-black text-slate-900">
+                                R$ {totalPaidAmount.toFixed(2)}
+                            </p>
+                            <p className="text-[11px] text-slate-400 mt-1">
+                                {paidOrdersCount} compra(s) quitada(s)
+                            </p>
+                        </div>
+
+                        <div
+                            className={`p-5 rounded-2xl border shadow-xs transition-all ${
+                                pendingOrdersCount > 0
+                                    ? 'bg-amber-50/50 border-amber-300'
+                                    : 'bg-white border-slate-200/80'
+                            }`}
+                        >
+                            <div className="flex items-center justify-between mb-2">
+                                <span
+                                    className={`text-xs font-semibold ${
+                                        pendingOrdersCount > 0 ? 'text-amber-800' : 'text-slate-500'
+                                    }`}
+                                >
+                                    Pendente de Pagamento
+                                </span>
+                                <Clock
+                                    className={`h-4 w-4 ${
+                                        pendingOrdersCount > 0 ? 'text-amber-600' : 'text-slate-400'
+                                    }`}
+                                />
+                            </div>
+                            <p
+                                className={`text-2xl font-black ${
+                                    pendingOrdersCount > 0 ? 'text-amber-700' : 'text-slate-900'
+                                }`}
+                            >
+                                R$ {totalPendingAmount.toFixed(2)}
+                            </p>
+                            <p
+                                className={`text-[11px] mt-1 ${
+                                    pendingOrdersCount > 0 ? 'text-amber-700 font-medium' : 'text-slate-400'
+                                }`}
+                            >
+                                {pendingOrdersCount > 0
+                                    ? `${pendingOrdersCount} pedido(s) aguardando quitação`
+                                    : 'Nenhum valor pendente'}
+                            </p>
+                        </div>
+
+                        <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-xs">
+                            <div className="flex items-center justify-between text-slate-500 mb-2">
+                                <span className="text-xs font-medium">Total de Pedidos</span>
+                                <ShoppingBag className="h-4 w-4 text-sky-600" />
+                            </div>
+                            <p className="text-2xl font-black text-slate-900">
+                                {customerOrders.length}
+                            </p>
+                            <p className="text-[11px] text-slate-400 mt-1">
+                                Pedidos registrados no histórico
+                            </p>
+                        </div>
+
+                        <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-xs">
+                            <div className="flex items-center justify-between text-slate-500 mb-2">
+                                <span className="text-xs font-medium">Ticket Médio</span>
+                                <Receipt className="h-4 w-4 text-indigo-600" />
+                            </div>
+                            <p className="text-2xl font-black text-slate-900">
+                                R$ {paidOrdersCount > 0 ? (totalPaidAmount / paidOrdersCount).toFixed(2) : '0,00'}
+                            </p>
+                            <p className="text-[11px] text-slate-400 mt-1">
+                                Média por pedido pago
+                            </p>
+                        </div>
+                    </div>
+
+                    {/* Filter Bar & Controls */}
+                    <div className="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                        <div className="flex flex-wrap items-center gap-1.5">
+                            <button
+                                type="button"
+                                onClick={() => setOrderStatusFilter('ALL')}
+                                className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
+                                    orderStatusFilter === 'ALL'
+                                        ? 'bg-sky-600 text-white shadow-xs'
+                                        : 'bg-slate-100 text-slate-600 hover:text-slate-900'
+                                }`}
+                            >
+                                Todos ({customerOrders.length})
+                            </button>
+                            <button
+                                type="button"
+                                onClick={() => setOrderStatusFilter('PENDING')}
+                                className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
+                                    orderStatusFilter === 'PENDING'
+                                        ? 'bg-amber-600 text-white shadow-xs'
+                                        : pendingOrdersCount > 0
+                                        ? 'bg-amber-100 text-amber-800 hover:bg-amber-200'
+                                        : 'bg-slate-100 text-slate-600 hover:text-slate-900'
+                                }`}
+                            >
+                                <Clock className="h-3.5 w-3.5" />
+                                <span>Pendentes ({pendingOrdersCount})</span>
+                            </button>
+                            <button
+                                type="button"
+                                onClick={() => setOrderStatusFilter('PAID')}
+                                className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
+                                    orderStatusFilter === 'PAID'
+                                        ? 'bg-emerald-600 text-white shadow-xs'
+                                        : 'bg-slate-100 text-slate-600 hover:text-slate-900'
+                                }`}
+                            >
+                                <CheckCircle2 className="h-3.5 w-3.5" />
+                                <span>Pagos ({paidOrdersCount})</span>
+                            </button>
+                            <button
+                                type="button"
+                                onClick={() => setOrderStatusFilter('CANCELED')}
+                                className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
+                                    orderStatusFilter === 'CANCELED'
+                                        ? 'bg-slate-700 text-white shadow-xs'
+                                        : 'bg-slate-100 text-slate-600 hover:text-slate-900'
+                                }`}
+                            >
+                                <XCircle className="h-3.5 w-3.5" />
+                                <span>Cancelados ({customerOrders.filter((o) => o.status === 'CANCELED').length})</span>
+                            </button>
+                        </div>
+
+                        <button
+                            type="button"
+                            onClick={loadCustomerOrders}
+                            disabled={loadingOrders}
+                            className="flex items-center gap-1.5 px-3 py-1.5 text-xs text-slate-600 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 rounded-xl font-semibold transition-all self-end sm:self-auto cursor-pointer"
+                            title="Recarregar pedidos"
+                        >
+                            <RefreshCw className={`h-3.5 w-3.5 ${loadingOrders ? 'animate-spin' : ''}`} />
+                            <span>Atualizar</span>
+                        </button>
+                    </div>
+
+                    {/* Orders List */}
+                    {loadingOrders ? (
+                        <div className="bg-white rounded-2xl border border-slate-200/80 p-8 text-center text-slate-400 text-xs">
+                            Carregando histórico de pedidos...
+                        </div>
+                    ) : filteredOrders.length === 0 ? (
+                        <div className="bg-white rounded-2xl border border-dashed border-slate-300 p-8 text-center space-y-2">
+                            <ShoppingBag className="h-10 w-10 text-slate-400 mx-auto" />
+                            <p className="text-sm font-bold text-slate-800">
+                                Nenhum pedido encontrado.
+                            </p>
+                            <p className="text-xs text-slate-500">
+                                {customerOrders.length === 0
+                                    ? 'Este cliente ainda não possui compras registradas. Vendas realizadas no caixa associadas a este cliente aparecerão aqui.'
+                                    : 'Não há pedidos para o filtro selecionado.'}
+                            </p>
+                        </div>
+                    ) : (
+                        <div className="space-y-3">
+                            {filteredOrders.map((order) => {
+                                const isPending = order.status === 'PENDING'
+                                const isPaid = order.status === 'PAID'
+                                const isCanceled = order.status === 'CANCELED'
+                                const orderDate = new Date(order.createdAt).toLocaleDateString('pt-BR', {
+                                    day: '2-digit',
+                                    month: '2-digit',
+                                    year: 'numeric',
+                                    hour: '2-digit',
+                                    minute: '2-digit',
+                                })
+
+                                return (
+                                    <div
+                                        key={order.id}
+                                        className={`bg-white rounded-2xl border p-5 shadow-xs transition-all space-y-4 ${
+                                            isPending
+                                                ? 'border-amber-300 hover:border-amber-400'
+                                                : isPaid
+                                                ? 'border-slate-200/80 hover:border-slate-300'
+                                                : 'border-slate-200 bg-slate-50/50 opacity-75'
+                                        }`}
+                                    >
+                                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-100">
+                                            <div className="flex items-center gap-3">
+                                                <span className="text-sm font-black text-slate-900 tracking-tight">
+                                                    Pedido #{order.id}
+                                                </span>
+                                                <span className="flex items-center gap-1.5 text-xs text-slate-500 font-medium">
+                                                    <Calendar className="h-3.5 w-3.5 text-slate-400" />
+                                                    {orderDate}
+                                                </span>
+                                            </div>
+
+                                            <div className="flex items-center gap-2">
+                                                {isPaid && (
+                                                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                                                        <CheckCircle2 className="h-3.5 w-3.5" />
+                                                        Pago
+                                                    </span>
+                                                )}
+                                                {isPending && (
+                                                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-50 text-amber-800 border border-amber-300">
+                                                        <Clock className="h-3.5 w-3.5 text-amber-600" />
+                                                        Pendente de Pagamento
+                                                    </span>
+                                                )}
+                                                {isCanceled && (
+                                                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-slate-100 text-slate-600 border border-slate-200">
+                                                        <XCircle className="h-3.5 w-3.5" />
+                                                        Cancelado
+                                                    </span>
+                                                )}
+                                            </div>
+                                        </div>
+
+                                        {/* Items preview and Total */}
+                                        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                                            <div className="space-y-1.5 flex-1">
+                                                <span className="text-[10px] text-slate-400 uppercase font-semibold">
+                                                    Itens do Pedido ({order.items.reduce((acc, i) => acc + i.quantity, 0)} unidades):
+                                                </span>
+                                                <div className="flex flex-wrap gap-1.5">
+                                                    {order.items.map((item, idx) => (
+                                                        <span
+                                                            key={idx}
+                                                            className="inline-flex items-center gap-1 text-xs bg-slate-50 border border-slate-200/80 px-2.5 py-1 rounded-lg text-slate-700 font-medium"
+                                                        >
+                                                            <strong className="text-slate-900">{item.quantity}x</strong>
+                                                            <span>{item.productName}</span>
+                                                        </span>
+                                                    ))}
+                                                </div>
+                                            </div>
+
+                                            <div className="text-left md:text-right shrink-0">
+                                                <span className="text-[10px] text-slate-400 uppercase font-semibold block">
+                                                    Valor Total
+                                                </span>
+                                                <span className="text-xl font-black text-slate-900">
+                                                    R$ {Number(order.totalPrice || 0).toFixed(2)}
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        {/* Action buttons */}
+                                        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-3 border-t border-slate-100">
+                                            <button
+                                                type="button"
+                                                onClick={() => setSelectedOrderDetails(order)}
+                                                className="flex items-center gap-1.5 text-xs font-semibold text-sky-700 hover:text-sky-800 hover:underline cursor-pointer"
+                                            >
+                                                <Eye className="h-3.5 w-3.5" />
+                                                <span>Ver Itens & Detalhes ({order.items.length} itens)</span>
+                                            </button>
+
+                                            {isPending && (
+                                                <div className="flex items-center gap-2 w-full sm:w-auto justify-end">
+                                                    <button
+                                                        type="button"
+                                                        disabled={cancelingOrderId === order.id}
+                                                        onClick={() => handleCancelCustomerOrder(order.id)}
+                                                        className="px-3 py-1.5 text-xs text-rose-600 hover:bg-rose-50 rounded-xl font-semibold transition-all disabled:opacity-50 cursor-pointer"
+                                                    >
+                                                        Cancelar Pedido
+                                                    </button>
+                                                    <button
+                                                        type="button"
+                                                        disabled={payingOrderId === order.id}
+                                                        onClick={() => handlePayCustomerOrder(order.id)}
+                                                        className="flex items-center gap-1.5 px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold transition-all shadow-xs disabled:opacity-50 cursor-pointer"
+                                                    >
+                                                        <CheckCircle2 className="h-4 w-4" />
+                                                        <span>
+                                                            {payingOrderId === order.id
+                                                                ? 'Confirmando...'
+                                                                : 'Confirmar Pagamento'}
+                                                        </span>
+                                                    </button>
+                                                </div>
+                                            )}
+                                        </div>
+                                    </div>
+                                )
+                            })}
+                        </div>
+                    )}
+                </div>
+            )}
 
             {/* Modal: Cadastrar / Editar Aquário */}
             {isAquariumModalOpen && (
@@ -1617,6 +2066,165 @@ function CustomerDetail() {
                                 </button>
                             </div>
                         </form>
+                    </div>
+                </div>
+            )}
+
+            {/* Modal: Detalhes Completos do Pedido */}
+            {selectedOrderDetails && (
+                <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4 z-50 animate-in fade-in">
+                    <div className="bg-white rounded-2xl max-w-2xl w-full p-6 shadow-2xl space-y-5 max-h-[90vh] overflow-y-auto">
+                        <div className="flex items-start justify-between pb-4 border-b border-slate-100">
+                            <div>
+                                <div className="flex items-center gap-2 mb-1">
+                                    <h3 className="font-bold text-base text-slate-900">
+                                        Pedido #{selectedOrderDetails.id}
+                                    </h3>
+                                    {selectedOrderDetails.status === 'PAID' && (
+                                        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                                            <CheckCircle2 className="h-3.5 w-3.5" />
+                                            Pago
+                                        </span>
+                                    )}
+                                    {selectedOrderDetails.status === 'PENDING' && (
+                                        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-bold bg-amber-50 text-amber-800 border border-amber-300">
+                                            <Clock className="h-3.5 w-3.5 text-amber-600" />
+                                            Pendente de Pagamento
+                                        </span>
+                                    )}
+                                    {selectedOrderDetails.status === 'CANCELED' && (
+                                        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-bold bg-slate-100 text-slate-600 border border-slate-200">
+                                            <XCircle className="h-3.5 w-3.5" />
+                                            Cancelado
+                                        </span>
+                                    )}
+                                </div>
+                                <p className="text-xs text-slate-500">
+                                    Realizado em{' '}
+                                    {new Date(selectedOrderDetails.createdAt).toLocaleDateString('pt-BR', {
+                                        day: '2-digit',
+                                        month: '2-digit',
+                                        year: 'numeric',
+                                        hour: '2-digit',
+                                        minute: '2-digit',
+                                    })}{' '}
+                                    • Cliente: {customer.name}
+                                </p>
+                            </div>
+
+                            <button
+                                type="button"
+                                onClick={() => setSelectedOrderDetails(null)}
+                                className="p-1.5 text-slate-400 hover:text-slate-600 rounded-lg hover:bg-slate-100 transition-colors cursor-pointer"
+                            >
+                                <X className="h-5 w-5" />
+                            </button>
+                        </div>
+
+                        {/* Items Table */}
+                        <div className="overflow-x-auto">
+                            <table className="w-full text-left text-xs">
+                                <thead className="bg-slate-50 text-slate-500 font-semibold uppercase text-[10px] tracking-wider border-y border-slate-100">
+                                    <tr>
+                                        <th className="py-2.5 px-3">Item / Produto</th>
+                                        <th className="py-2.5 px-3 text-center">Quantidade</th>
+                                        <th className="py-2.5 px-3 text-right">Preço Unitário</th>
+                                        <th className="py-2.5 px-3 text-right">Subtotal</th>
+                                    </tr>
+                                </thead>
+                                <tbody className="divide-y divide-slate-100">
+                                    {selectedOrderDetails.items.map((item, index) => (
+                                        <tr key={index} className="hover:bg-slate-50/50">
+                                            <td className="py-3 px-3 font-semibold text-slate-900">
+                                                {item.productName}
+                                            </td>
+                                            <td className="py-3 px-3 text-center text-slate-600 font-medium">
+                                                {item.quantity} un.
+                                            </td>
+                                            <td className="py-3 px-3 text-right font-mono text-slate-600">
+                                                R$ {Number(item.unitPrice || 0).toFixed(2)}
+                                            </td>
+                                            <td className="py-3 px-3 text-right font-mono font-bold text-slate-900">
+                                                R$ {Number(item.subtotal || 0).toFixed(2)}
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                                <tfoot>
+                                    <tr className="border-t-2 border-slate-200 bg-slate-50/50">
+                                        <td colSpan={3} className="py-3 px-3 font-bold text-slate-900 text-right">
+                                            Total Geral do Pedido:
+                                        </td>
+                                        <td className="py-3 px-3 font-black text-slate-900 text-right font-mono text-base">
+                                            R$ {Number(selectedOrderDetails.totalPrice || 0).toFixed(2)}
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+
+                        {/* Status Alert Banner */}
+                        {selectedOrderDetails.status === 'PENDING' && (
+                            <div className="p-4 bg-amber-50 border border-amber-200 rounded-xl space-y-2">
+                                <div className="flex items-center gap-2 text-amber-800 text-xs font-bold">
+                                    <Clock className="h-4 w-4 text-amber-600 shrink-0" />
+                                    <span>Pagamento Pendente</span>
+                                </div>
+                                <p className="text-xs text-amber-700 leading-relaxed">
+                                    O cliente reservou ou realizou este pedido e ele ainda não foi baixado como pago.
+                                    Caso o cliente esteja na loja efetuando o pagamento agora, confirme abaixo para liquidar a venda.
+                                </p>
+                            </div>
+                        )}
+
+                        {selectedOrderDetails.status === 'PAID' && (
+                            <div className="p-3 bg-emerald-50 border border-emerald-200 rounded-xl flex items-center gap-2 text-xs text-emerald-800 font-medium">
+                                <CheckCircle2 className="h-4 w-4 text-emerald-600 shrink-0" />
+                                <span>Este pedido está totalmente pago e finalizado.</span>
+                            </div>
+                        )}
+
+                        {/* Modal Action Buttons */}
+                        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-3 border-t border-slate-100">
+                            <div>
+                                {selectedOrderDetails.status === 'PENDING' && (
+                                    <button
+                                        type="button"
+                                        disabled={cancelingOrderId === selectedOrderDetails.id}
+                                        onClick={() => handleCancelCustomerOrder(selectedOrderDetails.id)}
+                                        className="text-xs text-rose-600 hover:text-rose-700 hover:underline font-semibold cursor-pointer"
+                                    >
+                                        Cancelar este pedido
+                                    </button>
+                                )}
+                            </div>
+
+                            <div className="flex items-center gap-2 w-full sm:w-auto justify-end">
+                                <button
+                                    type="button"
+                                    onClick={() => setSelectedOrderDetails(null)}
+                                    className="px-4 py-2 text-slate-600 hover:bg-slate-100 rounded-xl text-xs font-semibold cursor-pointer"
+                                >
+                                    Fechar
+                                </button>
+
+                                {selectedOrderDetails.status === 'PENDING' && (
+                                    <button
+                                        type="button"
+                                        disabled={payingOrderId === selectedOrderDetails.id}
+                                        onClick={() => handlePayCustomerOrder(selectedOrderDetails.id)}
+                                        className="flex items-center gap-1.5 px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold transition-all shadow-xs disabled:opacity-50 cursor-pointer"
+                                    >
+                                        <CheckCircle2 className="h-4 w-4" />
+                                        <span>
+                                            {payingOrderId === selectedOrderDetails.id
+                                                ? 'Registrando Pagamento...'
+                                                : 'Confirmar Pagamento Agora'}
+                                        </span>
+                                    </button>
+                                )}
+                            </div>
+                        </div>
                     </div>
                 </div>
             )}

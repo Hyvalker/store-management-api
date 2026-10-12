@@ -23,8 +23,11 @@ import {
     deleteUser
 } from '../../services/userService'
 import type {User, CreateUserRequest} from '../../types/user'
+import {matchesSearch} from '../../utils/searchUtils'
+import {useToast} from '../../contexts/ToastContext'
 
 function Customers() {
+    const {toast} = useToast()
     const [customers, setCustomers] = useState<User[]>([])
     const [searchTerm, setSearchTerm] = useState('')
     const [loading, setLoading] = useState(true)
@@ -61,14 +64,14 @@ function Customers() {
         loadCustomers()
     }, [loadCustomers])
 
-    // Filter customers by search term
+    // Filter customers by search term with smart accent and hyphen normalization
     const filteredCustomers = customers.filter((c) => {
-        const query = searchTerm.toLowerCase()
+        if (!searchTerm.trim()) return true
         return (
-            c.name.toLowerCase().includes(query) ||
-            c.email.toLowerCase().includes(query) ||
-            (c.phoneNumber && c.phoneNumber.includes(query)) ||
-            (c.address && c.address.toLowerCase().includes(query))
+            matchesSearch(c.name, searchTerm) ||
+            matchesSearch(c.email, searchTerm) ||
+            matchesSearch(c.phoneNumber || '', searchTerm) ||
+            matchesSearch(c.address || '', searchTerm)
         )
     })
 
@@ -103,10 +106,12 @@ function Customers() {
 
         try {
             await deleteUser(customer.id)
-            setSuccessMessage(`Cliente "${customer.name}" desativado com sucesso.`)
+            const msg = `Cliente "${customer.name}" desativado com sucesso.`
+            setSuccessMessage(msg)
+            toast.info(msg, 'Cliente Desativado')
             loadCustomers()
         } catch {
-            alert('Não foi possível desativar o cliente.')
+            toast.error('Não foi possível desativar o cliente.', 'Erro ao Desativar')
         }
     }
 
@@ -131,16 +136,22 @@ function Customers() {
         try {
             if (editingCustomer) {
                 await updateUser(editingCustomer.id, payload)
-                setSuccessMessage(`Cliente "${payload.name}" atualizado com sucesso!`)
+                const msg = `Cliente "${payload.name}" atualizado com sucesso!`
+                setSuccessMessage(msg)
+                toast.success(msg, 'Cliente Atualizado')
             } else {
                 await createUser(payload)
-                setSuccessMessage(`Cliente "${payload.name}" cadastrado com sucesso!`)
+                const msg = `Cliente "${payload.name}" cadastrado com sucesso!`
+                setSuccessMessage(msg)
+                toast.success(msg, 'Novo Cliente')
             }
 
             setIsModalOpen(false)
             loadCustomers()
         } catch {
-            setFormError('Erro ao salvar cliente. Verifique se o e-mail já não está cadastrado.')
+            const errText = 'Erro ao salvar cliente. Verifique se o e-mail já não está cadastrado.'
+            setFormError(errText)
+            toast.error(errText, 'Erro no Formulário')
         } finally {
             setFormLoading(false)
         }
