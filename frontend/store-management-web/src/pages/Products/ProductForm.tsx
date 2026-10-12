@@ -291,9 +291,14 @@ function ProductForm({onSuccess}: ProductFormProps) {
                                                             ({sp.scientificName})
                                                         </span>
                                                     </div>
-                                                    <span className="text-[10px] text-slate-600 mt-0.5">
-                                                        {sp.familyGroup} • {sp.section}
-                                                    </span>
+                                                    <div className="flex items-center gap-2 text-[10px] text-slate-500 mt-0.5">
+                                                        <span>{sp.familyGroup} • {sp.section}</span>
+                                                        {sp.synonyms && sp.synonyms.length > 0 && (
+                                                            <span className="text-slate-400 italic">
+                                                                (ou: {sp.synonyms.slice(0, 2).join(', ')})
+                                                            </span>
+                                                        )}
+                                                    </div>
                                                 </div>
                                                 <span className="shrink-0 px-2 py-0.5 rounded-full text-[10px] font-bold bg-slate-100 text-slate-700 border border-slate-200/60">
                                                     {getSubCategoryLabel(sp.subCategory)}
