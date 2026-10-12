@@ -25,6 +25,13 @@ public class Product {
     @Enumerated(EnumType.STRING)
     private Type type;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "sub_category")
+    private SubCategory subCategory;
+
+    @Column(name = "image_slug")
+    private String imageSlug;
+
     @Column (nullable = false)
     private Integer quantity;
 

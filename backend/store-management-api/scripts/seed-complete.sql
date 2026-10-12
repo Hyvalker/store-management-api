@@ -11,6 +11,10 @@
 -- 8. Movimentações de Estoque e Perdas Biológicas
 -- =========================================================================
 
+-- 0. GARANTIA DAS COLUNAS DE TAXONOMIA E IMAGEM
+ALTER TABLE products ADD COLUMN IF NOT EXISTS sub_category VARCHAR(50);
+ALTER TABLE products ADD COLUMN IF NOT EXISTS image_slug VARCHAR(100);
+
 -- 1. LIMPEZA TOTAL COM REINÍCIO DOS IDS
 TRUNCATE TABLE
     aquarium_notes,
@@ -115,47 +119,47 @@ VALUES
     (6, CURRENT_TIMESTAMP - INTERVAL '12 days', 'Troca Parcial e Adição de Folhas de Amendoeira', 'Realizada TPA de 25% com água tratada com Prime e adicionadas 2 folhas secas de catappa para liberar taninos benéficos.', 'Lucas Ferraz', CURRENT_TIMESTAMP - INTERVAL '12 days');
 
 -- 7. CADASTRO DE PRODUTOS E SERES VIVOS DA BAMBA AQUA
-INSERT INTO products (name, normalized_name, type, quantity, cost_price, sale_price, profit_margin, barcode, active, created_at)
+INSERT INTO products (name, normalized_name, type, sub_category, image_slug, quantity, cost_price, sale_price, profit_margin, barcode, active, created_at)
 VALUES
     -- Seres Vivos Marinhos
-    ('Peixe-palhaço Ocellaris (Amphiprion ocellaris)', 'peixe-palhaço ocellaris (amphiprion ocellaris)', 'LIVING', 24, 45.00, 76.50, 70.00, '789000000001', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
-    ('Peixe-leão (Pterois volitans)', 'peixe-leão (pterois volitans)', 'LIVING', 6, 120.00, 204.00, 70.00, '789000000002', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
-    ('Blue Tang (Paracanthurus hepatus)', 'blue tang (paracanthurus hepatus)', 'LIVING', 8, 280.00, 476.00, 70.00, '789000000003', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
-    ('Yellow Tang (Zebrasoma flavescens)', 'yellow tang (zebrasoma flavescens)', 'LIVING', 4, 650.00, 1105.00, 70.00, '789000000004', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
-    ('Gramma Loreto', 'gramma loreto', 'LIVING', 10, 110.00, 187.00, 70.00, '789000000005', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
+    ('Peixe-palhaço Ocellaris (Amphiprion ocellaris)', 'peixe-palhaço ocellaris (amphiprion ocellaris)', 'LIVING', 'MARINE_FISH', 'peixe-palhaco-ocellaris.jpg', 24, 45.00, 76.50, 70.00, '789000000001', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
+    ('Peixe-leão (Pterois volitans)', 'peixe-leão (pterois volitans)', 'LIVING', 'MARINE_FISH', 'peixe-leao.jpg', 6, 120.00, 204.00, 70.00, '789000000002', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
+    ('Blue Tang (Paracanthurus hepatus)', 'blue tang (paracanthurus hepatus)', 'LIVING', 'MARINE_FISH', 'blue-tang.jpg', 8, 280.00, 476.00, 70.00, '789000000003', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
+    ('Yellow Tang (Zebrasoma flavescens)', 'yellow tang (zebrasoma flavescens)', 'LIVING', 'MARINE_FISH', 'yellow-tang.jpg', 4, 650.00, 1105.00, 70.00, '789000000004', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
+    ('Gramma Loreto', 'gramma loreto', 'LIVING', 'MARINE_FISH', 'gramma-loreto.jpg', 10, 110.00, 187.00, 70.00, '789000000005', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
 
     -- Seres Vivos Água Doce
-    ('Platy Sunset', 'platy sunset', 'LIVING', 45, 4.00, 10.00, 150.00, '789000000006', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
-    ('Betta Splendens Halfmoon', 'betta splendens halfmoon', 'LIVING', 18, 15.00, 35.00, 133.33, '789000000007', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
-    ('Tetra Neon Cardinal (Paracheirodon axelrodi)', 'tetra neon cardinal (paracheirodon axelrodi)', 'LIVING', 80, 2.50, 7.00, 180.00, '789000000008', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
-    ('Acará Disco Blue Diamond', 'acará disco blue diamond', 'LIVING', 5, 140.00, 280.00, 100.00, '789000000009', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
-    ('Corydora Sterbai', 'corydora sterbai', 'LIVING', 22, 12.00, 25.00, 108.33, '789000000010', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
+    ('Platy Sunset', 'platy sunset', 'LIVING', 'FRESHWATER_FISH', 'platy.jpg', 45, 4.00, 10.00, 150.00, '789000000006', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
+    ('Betta Splendens Halfmoon', 'betta splendens halfmoon', 'LIVING', 'FRESHWATER_FISH', 'betta-splendens.jpg', 18, 15.00, 35.00, 133.33, '789000000007', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
+    ('Tetra Neon Cardinal (Paracheirodon axelrodi)', 'tetra neon cardinal (paracheirodon axelrodi)', 'LIVING', 'FRESHWATER_FISH', 'tetra-neon.jpg', 80, 2.50, 7.00, 180.00, '789000000008', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
+    ('Acará Disco Blue Diamond', 'acará disco blue diamond', 'LIVING', 'FRESHWATER_FISH', 'acara-disco.jpg', 5, 140.00, 280.00, 100.00, '789000000009', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
+    ('Corydora Sterbai', 'corydora sterbai', 'LIVING', 'FRESHWATER_FISH', 'corydora-sterbai.jpg', 22, 12.00, 25.00, 108.33, '789000000010', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
 
     -- Corais e Invertebrados
-    ('Coral Hammer Verde Metálico (Euphyllia ancora)', 'coral hammer verde metálico (euphyllia ancora)', 'LIVING', 7, 90.00, 160.00, 77.78, '789000000011', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
-    ('Coral Frogspawn Ultra Green', 'coral frogspawn ultra green', 'LIVING', 5, 140.00, 250.00, 78.57, '789000000012', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
-    ('Coral Torch Gold Dourado', 'coral torch gold dourado', 'LIVING', 3, 350.00, 600.00, 71.43, '789000000013', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
-    ('Muda Zoanthus Watermelon', 'muda zoanthus watermelon', 'LIVING', 12, 40.00, 80.00, 100.00, '789000000014', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
-    ('Camarão Bailarino (Lysmata wurdemanni)', 'camarão bailarino (lysmata wurdemanni)', 'LIVING', 15, 25.00, 50.00, 100.00, '789000000015', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
+    ('Coral Hammer Verde Metálico (Euphyllia ancora)', 'coral hammer verde metálico (euphyllia ancora)', 'LIVING', 'CORAL', 'coral-hammer.jpg', 7, 90.00, 160.00, 77.78, '789000000011', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
+    ('Coral Frogspawn Ultra Green', 'coral frogspawn ultra green', 'LIVING', 'CORAL', 'coral-frogspawn.jpg', 5, 140.00, 250.00, 78.57, '789000000012', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
+    ('Coral Torch Gold Dourado', 'coral torch gold dourado', 'LIVING', 'CORAL', 'coral-torch.jpg', 3, 350.00, 600.00, 71.43, '789000000013', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
+    ('Muda Zoanthus Watermelon', 'muda zoanthus watermelon', 'LIVING', 'CORAL', 'zoanthus.jpg', 12, 40.00, 80.00, 100.00, '789000000014', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
+    ('Camarão Bailarino (Lysmata wurdemanni)', 'camarão bailarino (lysmata wurdemanni)', 'LIVING', 'INVERTEBRATE', 'camarao-bailarino.jpg', 15, 25.00, 50.00, 100.00, '789000000015', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
 
     -- Rações e Nutrição
-    ('Ração Marine Flakes 100g', 'ração marine flakes 100g', 'PRODUCT', 35, 25.00, 45.00, 80.00, '789000000016', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
-    ('Ração Nori Alga Marinha 50 Folhas', 'ração nori alga marinha 50 folhas', 'PRODUCT', 20, 30.00, 55.00, 83.33, '789000000017', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
-    ('Ração Spirulina Wafers Fundo 80g', 'ração spirulina wafers fundo 80g', 'PRODUCT', 28, 22.00, 42.00, 90.91, '789000000018', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
-    ('Artemia Salina Congelada 100g', 'artemia salina congelada 100g', 'PRODUCT', 40, 12.00, 25.00, 108.33, '789000000019', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
+    ('Ração Marine Flakes 100g', 'ração marine flakes 100g', 'PRODUCT', 'SUPPLY', NULL, 35, 25.00, 45.00, 80.00, '789000000016', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
+    ('Ração Nori Alga Marinha 50 Folhas', 'ração nori alga marinha 50 folhas', 'PRODUCT', 'SUPPLY', NULL, 20, 30.00, 55.00, 83.33, '789000000017', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
+    ('Ração Spirulina Wafers Fundo 80g', 'ração spirulina wafers fundo 80g', 'PRODUCT', 'SUPPLY', NULL, 28, 22.00, 42.00, 90.91, '789000000018', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
+    ('Artemia Salina Congelada 100g', 'artemia salina congelada 100g', 'PRODUCT', 'SUPPLY', NULL, 40, 12.00, 25.00, 108.33, '789000000019', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
 
     -- Sais e Químicos
-    ('Sal Sintético Red Sea Coral Pro 7kg', 'sal sintético red sea coral pro 7kg', 'PRODUCT', 12, 160.00, 260.00, 62.50, '789000000020', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
-    ('Água Salgada Pronta para TPA (Galão 20L)', 'água salgada pronta para tpa (galão 20l)', 'PRODUCT', 50, 10.00, 28.00, 180.00, '789000000021', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
-    ('Teste de Nitrato (NO3) Salifert', 'teste de nitrato (no3) salifert', 'PRODUCT', 9, 75.00, 130.00, 73.33, '789000000022', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
-    ('Teste de Fosfato (PO4) Salifert', 'teste de fosfato (po4) salifert', 'PRODUCT', 8, 80.00, 140.00, 75.00, '789000000023', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
-    ('Carvão Ativado Especial Reef 500g', 'carvão ativado especial reef 500g', 'PRODUCT', 25, 35.00, 65.00, 85.71, '789000000024', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
+    ('Sal Sintético Red Sea Coral Pro 7kg', 'sal sintético red sea coral pro 7kg', 'PRODUCT', 'SUPPLY', NULL, 12, 160.00, 260.00, 62.50, '789000000020', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
+    ('Água Salgada Pronta para TPA (Galão 20L)', 'água salgada pronta para tpa (galão 20l)', 'PRODUCT', 'SUPPLY', NULL, 50, 10.00, 28.00, 180.00, '789000000021', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
+    ('Teste de Nitrato (NO3) Salifert', 'teste de nitrato (no3) salifert', 'PRODUCT', 'SUPPLY', NULL, 9, 75.00, 130.00, 73.33, '789000000022', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
+    ('Teste de Fosfato (PO4) Salifert', 'teste de fosfato (po4) salifert', 'PRODUCT', 'SUPPLY', NULL, 8, 80.00, 140.00, 75.00, '789000000023', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
+    ('Carvão Ativado Especial Reef 500g', 'carvão ativado especial reef 500g', 'PRODUCT', 'SUPPLY', NULL, 25, 35.00, 65.00, 85.71, '789000000024', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
 
     -- Equipamentos
-    ('Filtro Hang On 500L/h Atman', 'filtro hang on 500l/h atman', 'PRODUCT', 8, 80.00, 145.00, 81.25, '789000000025', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
-    ('Termostato 100W com Protetor', 'termostato 100w com protetor', 'PRODUCT', 14, 55.00, 105.00, 90.91, '789000000026', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
-    ('Skimmer Interno Bubble Magus Curve 5', 'skimmer interno bubble magus curve 5', 'PRODUCT', 3, 720.00, 1190.00, 65.28, '789000000027', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
-    ('Bomba de Circulação Jebao 4000L/h', 'bomba de circulação jebao 4000l/h', 'PRODUCT', 6, 210.00, 360.00, 71.43, '789000000028', true, CURRENT_TIMESTAMP - INTERVAL '40 days');
+    ('Filtro Hang On 500L/h Atman', 'filtro hang on 500l/h atman', 'PRODUCT', 'EQUIPMENT', NULL, 8, 80.00, 145.00, 81.25, '789000000025', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
+    ('Termostato 100W com Protetor', 'termostato 100w com protetor', 'PRODUCT', 'EQUIPMENT', NULL, 14, 55.00, 105.00, 90.91, '789000000026', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
+    ('Skimmer Interno Bubble Magus Curve 5', 'skimmer interno bubble magus curve 5', 'PRODUCT', 'EQUIPMENT', NULL, 3, 720.00, 1190.00, 65.28, '789000000027', true, CURRENT_TIMESTAMP - INTERVAL '40 days'),
+    ('Bomba de Circulação Jebao 4000L/h', 'bomba de circulação jebao 4000l/h', 'PRODUCT', 'EQUIPMENT', NULL, 6, 210.00, 360.00, 71.43, '789000000028', true, CURRENT_TIMESTAMP - INTERVAL '40 days');
 
 -- 8. REGISTRO DE PERDAS BIOLÓGICAS (LOSS) PARA O DASHBOARD E AUDITORIA
 INSERT INTO stock_movements (product_id, quantity, cost_price, sale_price, profit_margin, reason, type, created_at)

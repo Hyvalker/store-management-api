@@ -1,6 +1,7 @@
 package com.hyvalker.storemanagementapi.dto;
 
 import com.hyvalker.storemanagementapi.model.Product;
+import com.hyvalker.storemanagementapi.model.SubCategory;
 import com.hyvalker.storemanagementapi.model.Type;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
@@ -19,6 +20,12 @@ public class ProductResponseDTO {
 
     @Schema(description = "Tipo do produto.", example = "LIVING")
     private Type type;
+
+    @Schema(description = "Subcategoria taxonômica do produto.", example = "MARINE_FISH")
+    private SubCategory subCategory;
+
+    @Schema(description = "Slug do arquivo de imagem do produto.", example = "peixe-palhaco-ocellaris.jpg")
+    private String imageSlug;
 
     @Schema(description = "Quantidade disponível em estoque.", example = "10")
     private Integer quantity;
@@ -45,6 +52,8 @@ public class ProductResponseDTO {
         this.id = product.getId();
         this.name = product.getName();
         this.type = product.getType();
+        this.subCategory = product.getSubCategory();
+        this.imageSlug = product.getImageSlug();
         this.quantity = product.getQuantity();
         this.costPrice = product.getCostPrice();
         this.salePrice = product.getSalePrice();

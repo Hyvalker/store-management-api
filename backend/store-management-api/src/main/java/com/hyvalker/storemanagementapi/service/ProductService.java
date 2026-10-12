@@ -9,6 +9,7 @@ import com.hyvalker.storemanagementapi.exception.InvalidProductException;
 import com.hyvalker.storemanagementapi.exception.ProductNotFoundException;
 import com.hyvalker.storemanagementapi.model.Product;
 import com.hyvalker.storemanagementapi.model.StockMovementType;
+import com.hyvalker.storemanagementapi.model.SubCategory;
 import com.hyvalker.storemanagementapi.repository.ProductRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
@@ -26,13 +27,26 @@ public class ProductService {
 
     private final ProductRepository productRepository;
     private final StockMovementService stockMovementService;
+    private final TaxonomyClassifierService taxonomyClassifierService;
 
     public ProductService(
             ProductRepository productRepository,
-            StockMovementService stockMovementService
+            StockMovementService stockMovementService,
+            TaxonomyClassifierService taxonomyClassifierService
     ) {
         this.productRepository = productRepository;
         this.stockMovementService = stockMovementService;
+        this.taxonomyClassifierService = taxonomyClassifierService;
+    }
+
+    public List<ProductResponseDTO> findBySubCategory(SubCategory subCategory) {
+        if (subCategory == null) {
+            return findAll();
+        }
+        return productRepository.findBySubCategoryAndActiveTrue(subCategory)
+                .stream()
+                .map(ProductResponseDTO::new)
+                .toList();
     }
 
     public List<ProductResponseDTO> findAll() {
@@ -220,6 +234,18 @@ public class ProductService {
         product.setQuantity(request.getQuantity());
         product.setBarcode(request.getBarcode());
 
+        SubCategory subCategory = request.getSubCategory();
+        if (subCategory == null) {
+            subCategory = taxonomyClassifierService.classifySubCategory(productName, request.getType());
+        }
+        product.setSubCategory(subCategory);
+
+        String imageSlug = request.getImageSlug();
+        if (imageSlug == null || imageSlug.isBlank()) {
+            imageSlug = taxonomyClassifierService.resolveImageSlug(productName, subCategory);
+        }
+        product.setImageSlug(imageSlug);
+
         applyPricing(product, request);
 
         Product savedProduct = productRepository.save(product);
@@ -287,6 +313,19 @@ public class ProductService {
                     product.setNormalizedName(normalizeProductName(productName));
                     product.setType(request.getType());
                     product.setBarcode(request.getBarcode());
+
+                    SubCategory subCategory = request.getSubCategory();
+                    if (subCategory != null) {
+                        product.setSubCategory(subCategory);
+                    } else if (product.getSubCategory() == null) {
+                        product.setSubCategory(taxonomyClassifierService.classifySubCategory(productName, request.getType()));
+                    }
+
+                    if (request.getImageSlug() != null && !request.getImageSlug().isBlank()) {
+                        product.setImageSlug(request.getImageSlug());
+                    } else if (product.getImageSlug() == null || product.getImageSlug().isBlank()) {
+                        product.setImageSlug(taxonomyClassifierService.resolveImageSlug(productName, product.getSubCategory()));
+                    }
 
                     applyPricing(
                             product,

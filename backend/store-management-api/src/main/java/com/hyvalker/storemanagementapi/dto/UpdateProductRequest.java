@@ -1,5 +1,6 @@
 package com.hyvalker.storemanagementapi.dto;
 
+import com.hyvalker.storemanagementapi.model.SubCategory;
 import com.hyvalker.storemanagementapi.model.Type;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
@@ -19,6 +20,12 @@ public class UpdateProductRequest {
     @Schema(description = "Tipo do produto.", example = "LIVING")
     @NotNull(message = "O tipo não pode ser nulo.")
     private Type type;
+
+    @Schema(description = "Subcategoria taxonômica do produto. Opcional (inferida automaticamente caso não informada).", example = "MARINE_FISH")
+    private SubCategory subCategory;
+
+    @Schema(description = "Slug de imagem do produto. Opcional.", example = "peixe-palhaco-ocellaris.jpg")
+    private String imageSlug;
 
     @Schema(description = "Preço de custo unitário do produto.", example = "50.00")
     @NotNull(message = "O preço de custo não pode ser nulo.")

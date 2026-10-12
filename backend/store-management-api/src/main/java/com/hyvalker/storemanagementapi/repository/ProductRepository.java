@@ -1,6 +1,7 @@
 package com.hyvalker.storemanagementapi.repository;
 
 import com.hyvalker.storemanagementapi.model.Product;
+import com.hyvalker.storemanagementapi.model.SubCategory;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -10,6 +11,8 @@ import java.util.Optional;
 
 public interface ProductRepository extends JpaRepository<Product, Long> {
     List<Product> findByActiveTrue();
+
+    List<Product> findBySubCategoryAndActiveTrue(SubCategory subCategory);
 
     Optional<Product> findByBarcode(String barcode);
 

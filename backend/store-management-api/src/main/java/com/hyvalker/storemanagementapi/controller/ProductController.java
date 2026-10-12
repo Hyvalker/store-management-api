@@ -8,6 +8,7 @@ import com.hyvalker.storemanagementapi.dto.ProductResponseDTO;
 import com.hyvalker.storemanagementapi.dto.CreateStockLossRequest;
 import com.hyvalker.storemanagementapi.exception.ApiError;
 import com.hyvalker.storemanagementapi.exception.ProductNotFoundException;
+import com.hyvalker.storemanagementapi.model.SubCategory;
 import com.hyvalker.storemanagementapi.service.ProductService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -65,7 +66,10 @@ public class ProductController {
             @ApiResponse(responseCode = "200", description = "Produtos listados com sucesso.")
     })
     @GetMapping
-    public List<ProductResponseDTO> findAll() {
+    public List<ProductResponseDTO> findAll(@RequestParam(required = false) SubCategory subCategory) {
+        if (subCategory != null) {
+            return productService.findBySubCategory(subCategory);
+        }
         return productService.findAll();
     }
 

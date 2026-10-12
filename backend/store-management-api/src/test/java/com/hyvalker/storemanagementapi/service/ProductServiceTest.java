@@ -15,6 +15,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Spy;
+import com.hyvalker.storemanagementapi.model.SubCategory;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.math.BigDecimal;
@@ -33,6 +35,9 @@ class ProductServiceTest {
 
     @Mock
     private StockMovementService stockMovementService;
+
+    @Spy
+    private TaxonomyClassifierService taxonomyClassifierService = new TaxonomyClassifierService();
 
     @InjectMocks
     private ProductService productService;
@@ -235,5 +240,69 @@ class ProductServiceTest {
 
         assertThat(product.getActive()).isFalse();
         verify(productRepository).save(product);
+    }
+
+    // ==========================================
+    // TAXONOMY AUTO-CLASSIFICATION TESTS
+    // ==========================================
+
+    @Test
+    @DisplayName("Deve inferir automaticamente SubCategory e ImageSlug ao cadastrar sem informar")
+    void shouldAutoClassifySubCategoryAndImageSlugWhenNotProvided() {
+        CreateProductRequest request = new CreateProductRequest();
+        request.setName("Coral Hammer Toxic Green");
+        request.setType(Type.LIVING);
+        request.setQuantity(4);
+        request.setCostPrice(BigDecimal.valueOf(80));
+        request.setSalePrice(BigDecimal.valueOf(150));
+
+        when(productRepository.existsByNormalizedName("coral hammer toxic green")).thenReturn(false);
+        when(productRepository.save(any(Product.class))).thenAnswer(invocation -> {
+            Product p = invocation.getArgument(0);
+            p.setId(100L);
+            return p;
+        });
+
+        ProductResponseDTO response = productService.create(request);
+
+        assertThat(response).isNotNull();
+        assertThat(response.getSubCategory()).isEqualTo(SubCategory.CORAL);
+        assertThat(response.getImageSlug()).isEqualTo("coral-hammer.jpg");
+    }
+
+    @Test
+    @DisplayName("Deve respeitar SubCategory informada manualmente pelo usuário")
+    void shouldRespectManuallyProvidedSubCategory() {
+        CreateProductRequest request = new CreateProductRequest();
+        request.setName("Animal Raro Customizado");
+        request.setType(Type.LIVING);
+        request.setSubCategory(SubCategory.INVERTEBRATE);
+        request.setImageSlug("custom-slug.jpg");
+        request.setQuantity(2);
+        request.setCostPrice(BigDecimal.valueOf(50));
+        request.setSalePrice(BigDecimal.valueOf(100));
+
+        when(productRepository.existsByNormalizedName("animal raro customizado")).thenReturn(false);
+        when(productRepository.save(any(Product.class))).thenAnswer(invocation -> {
+            Product p = invocation.getArgument(0);
+            p.setId(101L);
+            return p;
+        });
+
+        ProductResponseDTO response = productService.create(request);
+
+        assertThat(response).isNotNull();
+        assertThat(response.getSubCategory()).isEqualTo(SubCategory.INVERTEBRATE);
+        assertThat(response.getImageSlug()).isEqualTo("custom-slug.jpg");
+    }
+
+    @Test
+    @DisplayName("Deve filtrar produtos por subcategoria chamando o repositório correto")
+    void shouldFilterProductsBySubCategory() {
+        productService.findBySubCategory(SubCategory.CORAL);
+        verify(productRepository).findBySubCategoryAndActiveTrue(SubCategory.CORAL);
+
+        productService.findBySubCategory(null);
+        verify(productRepository).findByActiveTrue();
     }
 }
