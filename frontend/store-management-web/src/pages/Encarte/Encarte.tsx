@@ -16,6 +16,8 @@ import {getProducts} from '../../services/productService'
 import {getPaymentDiscounts} from '../../services/settingsService'
 import {getAnimalImage} from '../../utils/animalImages'
 import type {Product} from '../../types/product'
+import {matchesSearch} from '../../utils/searchUtils'
+import {useToast} from '../../contexts/ToastContext'
 
 interface EncarteItem {
     id: number
@@ -26,6 +28,7 @@ interface EncarteItem {
 }
 
 function Encarte() {
+    const {toast} = useToast()
     const [products, setProducts] = useState<Product[]>([])
     const [loading, setLoading] = useState(true)
     const [selectedItems, setSelectedItems] = useState<EncarteItem[]>([])
@@ -125,15 +128,10 @@ function Encarte() {
         setSelectedItems([])
     }
 
-    // Autocomplete filter
-    const matchingProducts = products.filter((p) => {
-        if (!searchTerm.trim()) return false
-        const query = searchTerm.toLowerCase()
-        return (
-            p.name.toLowerCase().includes(query) ||
-            (p.barcode && p.barcode.toLowerCase().includes(query))
-        )
-    })
+    // Autocomplete filter with smart accent, hyphen and multi-word normalization
+    const matchingProducts = searchTerm.trim()
+        ? products.filter((p) => matchesSearch(p.name, searchTerm, p.barcode))
+        : []
 
     // Calculate discounted PIX price
     function getPixPrice(price: number): string {
@@ -165,9 +163,11 @@ function Encarte() {
             link.download = `bamba-aqua-encarte-${dateStr}.jpg`
             link.href = dataUrl
             link.click()
+
+            toast.success('Encarte gerado e baixado com sucesso em alta resolução!', 'Catálogo Exportado')
         } catch (err) {
             console.error('Falha ao exportar encarte:', err)
-            alert('Não foi possível gerar a imagem do encarte. Tente novamente.')
+            toast.error('Não foi possível gerar a imagem do encarte. Tente novamente.', 'Erro ao Exportar')
         } finally {
             setIsExporting(false)
         }
