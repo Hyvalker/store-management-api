@@ -1,15 +1,19 @@
-import {useState} from 'react'
-import type {SubmitEvent} from 'react'
+import {useState, useRef, useEffect} from 'react'
+import type {SubmitEvent, KeyboardEvent} from 'react'
 import {
     PlusCircle,
     CheckCircle2,
     AlertCircle,
     Percent,
     DollarSign,
-    Layers
+    Layers,
+    Sparkles,
+    Check
 } from 'lucide-react'
 import {createProduct} from '../../services/productService'
 import type {CreateProductRequest, ProductType} from '../../types/product'
+import {searchMasterSpecies, type MasterSpecies} from '../../data/speciesMasterCatalog'
+import {getSubCategoryLabel} from '../../utils/animalImages'
 import {useToast} from '../../contexts/ToastContext'
 
 interface ProductFormProps {
@@ -25,6 +29,71 @@ function ProductForm({onSuccess}: ProductFormProps) {
     const [salePrice, setSalePrice] = useState('')
     const [profitMargin, setProfitMargin] = useState('')
     const [barcode, setBarcode] = useState('')
+
+    // Catálogo Mestre e Autocomplete
+    const [speciesSuggestions, setSpeciesSuggestions] = useState<MasterSpecies[]>([])
+    const [showSuggestions, setShowSuggestions] = useState(false)
+    const [selectedSpecies, setSelectedSpecies] = useState<MasterSpecies | null>(null)
+    const [highlightedIndex, setHighlightedIndex] = useState(0)
+    const suggestionsRef = useRef<HTMLDivElement>(null)
+
+    useEffect(() => {
+        function handleClickOutside(evt: MouseEvent) {
+            if (suggestionsRef.current && !suggestionsRef.current.contains(evt.target as Node)) {
+                setShowSuggestions(false)
+            }
+        }
+        document.addEventListener('mousedown', handleClickOutside)
+        return () => document.removeEventListener('mousedown', handleClickOutside)
+    }, [])
+
+    function handleNameChange(val: string) {
+        setName(val)
+        if (selectedSpecies && val !== selectedSpecies.name) {
+            setSelectedSpecies(null)
+        }
+        if (val.trim().length >= 2) {
+            const results = searchMasterSpecies(val, 8)
+            setSpeciesSuggestions(results)
+            setShowSuggestions(results.length > 0)
+            setHighlightedIndex(0)
+        } else {
+            setSpeciesSuggestions([])
+            setShowSuggestions(false)
+        }
+    }
+
+    function handleSelectSpecies(sp: MasterSpecies) {
+        setName(sp.name)
+        setType('LIVING')
+        setSelectedSpecies(sp)
+        setShowSuggestions(false)
+        toast.info(
+            `Espécie selecionada: ${sp.commonName} (${getSubCategoryLabel(sp.subCategory)})`,
+            'Catálogo Mestre'
+        )
+    }
+
+    function handleKeyDown(e: KeyboardEvent<HTMLInputElement>) {
+        if (!showSuggestions || speciesSuggestions.length === 0) return
+
+        if (e.key === 'ArrowDown') {
+            e.preventDefault()
+            setHighlightedIndex((prev) => (prev + 1) % speciesSuggestions.length)
+        } else if (e.key === 'ArrowUp') {
+            e.preventDefault()
+            setHighlightedIndex(
+                (prev) => (prev - 1 + speciesSuggestions.length) % speciesSuggestions.length
+            )
+        } else if (e.key === 'Enter') {
+            if (showSuggestions && speciesSuggestions[highlightedIndex]) {
+                e.preventDefault()
+                handleSelectSpecies(speciesSuggestions[highlightedIndex])
+            }
+        } else if (e.key === 'Escape') {
+            setShowSuggestions(false)
+        }
+    }
 
     const [lastEditedPriceField, setLastEditedPriceField] = useState<
         'salePrice' | 'profitMargin' | null
@@ -48,6 +117,8 @@ function ProductForm({onSuccess}: ProductFormProps) {
                 quantity: Number(quantity),
                 costPrice: Number(costPrice),
                 barcode: barcode.trim() || null,
+                subCategory: selectedSpecies?.subCategory,
+                imageSlug: selectedSpecies?.imageSlug,
             }
 
             const cost = Number(costPrice)
@@ -69,6 +140,9 @@ function ProductForm({onSuccess}: ProductFormProps) {
 
             setName('')
             setType('PRODUCT')
+            setSelectedSpecies(null)
+            setSpeciesSuggestions([])
+            setShowSuggestions(false)
             setQuantity('')
             setCostPrice('')
             setSalePrice('')
@@ -159,19 +233,93 @@ function ProductForm({onSuccess}: ProductFormProps) {
             <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Bloco 1: Identificação */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div className="md:col-span-2">
-                        <label htmlFor="new-name" className="block text-xs font-semibold text-slate-700 mb-1.5">
-                            Nome Completo do Item <span className="text-rose-500">*</span>
-                        </label>
-                        <input
-                            id="new-name"
-                            type="text"
-                            required
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
-                            placeholder="Ex.: Peixe-palhaço (Amphiprion ocellaris) ou Ração Marine 100g"
-                            className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:bg-white focus:border-sky-500 focus:ring-2 focus:ring-sky-100 transition-all font-medium placeholder:text-slate-400"
-                        />
+                    <div className="md:col-span-2 relative" ref={suggestionsRef}>
+                        <div className="flex items-center justify-between mb-1.5">
+                            <label htmlFor="new-name" className="block text-xs font-semibold text-slate-700">
+                                Nome Completo do Item <span className="text-rose-500">*</span>
+                            </label>
+                            <span className="text-[10px] text-slate-600 flex items-center gap-1 font-medium">
+                                <Sparkles className="h-3 w-3 text-amber-500" />
+                                Sugestões do Catálogo Mestre ativas
+                            </span>
+                        </div>
+
+                        <div className="relative">
+                            <input
+                                id="new-name"
+                                type="text"
+                                required
+                                value={name}
+                                onChange={(e) => handleNameChange(e.target.value)}
+                                onKeyDown={handleKeyDown}
+                                onFocus={() => {
+                                    if (name.trim().length >= 2 && speciesSuggestions.length > 0) {
+                                        setShowSuggestions(true)
+                                    }
+                                }}
+                                placeholder="Digite para buscar ex.: 'Storm Black', 'Discus', 'Zoanthus', 'Ração'..."
+                                autoComplete="off"
+                                className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:bg-white focus:border-sky-500 focus:ring-2 focus:ring-sky-100 transition-all font-medium placeholder:text-slate-400"
+                            />
+
+                            {/* Dropdown de Autocomplete */}
+                            {showSuggestions && speciesSuggestions.length > 0 && (
+                                <div className="absolute z-50 left-0 right-0 top-full mt-1.5 bg-white border border-slate-200 rounded-xl shadow-xl overflow-hidden max-h-72 overflow-y-auto">
+                                    <div className="px-3 py-1.5 bg-slate-50 border-b border-slate-100 text-[10px] font-bold text-slate-500 uppercase tracking-wider flex items-center justify-between">
+                                        <span>Sugestões da Base de Espécies</span>
+                                        <span>Pressione Enter para selecionar</span>
+                                    </div>
+                                    <div className="divide-y divide-slate-50">
+                                        {speciesSuggestions.map((sp, idx) => (
+                                            <button
+                                                key={sp.id}
+                                                type="button"
+                                                onClick={() => handleSelectSpecies(sp)}
+                                                onMouseEnter={() => setHighlightedIndex(idx)}
+                                                className={`w-full text-left px-3.5 py-2.5 flex items-center justify-between transition-colors ${
+                                                    idx === highlightedIndex
+                                                        ? 'bg-amber-500/10 text-slate-900'
+                                                        : 'hover:bg-slate-50 text-slate-700'
+                                                }`}
+                                            >
+                                                <div className="flex flex-col pr-2">
+                                                    <div className="flex items-center gap-2">
+                                                        <span className="text-xs font-bold text-slate-900">
+                                                            {sp.commonName}
+                                                        </span>
+                                                        <span className="text-[11px] italic text-slate-500">
+                                                            ({sp.scientificName})
+                                                        </span>
+                                                    </div>
+                                                    <span className="text-[10px] text-slate-600 mt-0.5">
+                                                        {sp.familyGroup} • {sp.section}
+                                                    </span>
+                                                </div>
+                                                <span className="shrink-0 px-2 py-0.5 rounded-full text-[10px] font-bold bg-slate-100 text-slate-700 border border-slate-200/60">
+                                                    {getSubCategoryLabel(sp.subCategory)}
+                                                </span>
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+
+                        {/* Badge de Reconhecimento */}
+                        {selectedSpecies && (
+                            <div className="mt-2 p-2 bg-emerald-50 border border-emerald-200 rounded-lg flex items-center justify-between text-xs text-emerald-800">
+                                <div className="flex items-center gap-2">
+                                    <Check className="h-4 w-4 text-emerald-600" />
+                                    <span>
+                                        <strong>Espécie Oficial Reconhecida:</strong> {selectedSpecies.commonName} •{' '}
+                                        {getSubCategoryLabel(selectedSpecies.subCategory)}
+                                    </span>
+                                </div>
+                                <span className="text-[11px] text-emerald-700 font-mono">
+                                    Imagem: {selectedSpecies.imageSlug}
+                                </span>
+                            </div>
+                        )}
                     </div>
 
                     <div>

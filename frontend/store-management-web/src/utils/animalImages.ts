@@ -22,7 +22,8 @@ export function getAnimalImage(itemOrName: ItemImageSource | string): string {
     const subCategory = typeof itemOrName === 'object' ? itemOrName.subCategory : undefined
 
     if (imageSlug && imageSlug.trim().length > 0) {
-        return `/images/animals/${imageSlug.trim()}`
+        const slug = imageSlug.trim()
+        return slug.includes('.') ? `/images/animals/${slug}` : `/images/animals/${slug}.jpg`
     }
 
     const norm = (name || '')
