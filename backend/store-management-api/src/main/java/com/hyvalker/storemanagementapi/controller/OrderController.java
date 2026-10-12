@@ -5,6 +5,7 @@ import com.hyvalker.storemanagementapi.dto.CreateOrderRequest;
 import com.hyvalker.storemanagementapi.dto.OrderResponseDTO;
 import com.hyvalker.storemanagementapi.exception.ApiError;
 import com.hyvalker.storemanagementapi.exception.OrderNotFoundException;
+import com.hyvalker.storemanagementapi.model.OrderStatus;
 import com.hyvalker.storemanagementapi.service.OrderService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -16,6 +17,8 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -78,9 +81,14 @@ public class OrderController {
 
         return ResponseEntity.ok(response);
     }
-    @Operation(summary = "Cancela um pedido pelo ID.")
+    @Operation(summary = "Cancela um pedido pelo ID. Estornar um pedido já PAGO exige papel ADMIN.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Pedido cancelado com sucesso."),
+            @ApiResponse(responseCode = "403", description = "Somente administradores podem estornar pedidos pagos.",
+                    content = @Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = ApiError.class)
+                    )),
             @ApiResponse(responseCode = "404", description = "Pedido não encontrado.",
                     content = @Content(
                             mediaType = "application/json",
@@ -93,7 +101,19 @@ public class OrderController {
                     ))
     })
     @PatchMapping("/{id}/cancel")
-    public ResponseEntity<OrderResponseDTO> cancelOrder(@PathVariable Long id) {
+    public ResponseEntity<OrderResponseDTO> cancelOrder(@PathVariable Long id, Authentication authentication) {
+
+        // Autorização "fina": a regra depende do ESTADO do pedido, não só da URL.
+        // Pedido pendente -> qualquer operador cancela. Pedido pago (estorno) -> só ADMIN.
+        OrderResponseDTO current = orderService.findById(id)
+                .orElseThrow(() -> new OrderNotFoundException("Pedido não encontrado."));
+
+        boolean isAdmin = authentication.getAuthorities().stream()
+                .anyMatch(authority -> "ROLE_ADMIN".equals(authority.getAuthority()));
+
+        if (current.getStatus() == OrderStatus.PAID && !isAdmin) {
+            throw new AccessDeniedException("Somente administradores podem estornar pedidos já pagos.");
+        }
 
         OrderResponseDTO response = orderService.cancelOrder(id);
 
