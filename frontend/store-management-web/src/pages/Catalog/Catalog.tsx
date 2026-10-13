@@ -1,5 +1,6 @@
 import {useState, useEffect, useRef, useMemo} from 'react'
 import {toJpeg} from 'html-to-image'
+import {jsPDF} from 'jspdf'
 import {
     Download,
     Sparkles,
@@ -10,8 +11,12 @@ import {
     Layers,
     Share2,
     Info,
-    RefreshCw,
-    Package
+    Package,
+    FileText,
+    ChevronLeft,
+    ChevronRight,
+    Image as ImageIcon,
+    Eye
 } from 'lucide-react'
 import {getProducts} from '../../services/productService'
 import {getPaymentDiscounts} from '../../services/settingsService'
@@ -59,10 +64,13 @@ function Catalog() {
     const [numInstallments, setNumInstallments] = useState(10)
     const [pixDiscountPercent, setPixDiscountPercent] = useState(10)
     const [groupByCategory, setGroupByCategory] = useState(false)
+    const [itemsPerPage, setItemsPerPage] = useState<number>(9)
+    const [activePreviewPage, setActivePreviewPage] = useState<number>(0)
+    const [viewMode, setViewMode] = useState<'single' | 'all'>('single')
     const [isExporting, setIsExporting] = useState(false)
 
-    const catalogRef = useRef<HTMLDivElement>(null)
     const searchInputRef = useRef<HTMLInputElement>(null)
+    const offscreenPageRefs = useRef<(HTMLDivElement | null)[]>([])
 
     function toCatalogItem(p: Product): CatalogItem {
         return {
@@ -81,27 +89,34 @@ function Catalog() {
         }
     }
 
-    const groupedItems = useMemo(() => {
-        if (!groupByCategory) return null
-        const map = new Map<string, CatalogItem[]>()
-        selectedItems.forEach((item) => {
-            const cat = item.subCategory || 'OTHER_LIVING'
-            if (!map.has(cat)) map.set(cat, [])
-            map.get(cat)!.push(item)
-        })
-        return map
-    }, [groupByCategory, selectedItems])
-
-    const orderedGroupCategories = useMemo(() => {
-        if (!groupedItems) return []
-        return Array.from(groupedItems.keys()).sort((a, b) => {
-            const indexA = CATEGORY_ORDER.indexOf(a as SubCategory)
-            const indexB = CATEGORY_ORDER.indexOf(b as SubCategory)
+    // Sorted items respecting category order when groupByCategory is true
+    const sortedSelectedItems = useMemo(() => {
+        if (!groupByCategory) return selectedItems
+        return [...selectedItems].sort((a, b) => {
+            const indexA = CATEGORY_ORDER.indexOf(a.subCategory as SubCategory)
+            const indexB = CATEGORY_ORDER.indexOf(b.subCategory as SubCategory)
             const posA = indexA === -1 ? 999 : indexA
             const posB = indexB === -1 ? 999 : indexB
             return posA - posB
         })
-    }, [groupedItems])
+    }, [groupByCategory, selectedItems])
+
+    // Chunk items into fixed-size pages (e.g., 9 items per A4 page)
+    const pages = useMemo(() => {
+        if (sortedSelectedItems.length === 0) return []
+        const result: CatalogItem[][] = []
+        for (let i = 0; i < sortedSelectedItems.length; i += itemsPerPage) {
+            result.push(sortedSelectedItems.slice(i, i + itemsPerPage))
+        }
+        return result
+    }, [sortedSelectedItems, itemsPerPage])
+
+    // Adjust active page if items were removed
+    useEffect(() => {
+        if (activePreviewPage >= pages.length && pages.length > 0) {
+            setActivePreviewPage(pages.length - 1)
+        }
+    }, [pages.length, activePreviewPage])
 
     async function loadData() {
         setLoading(true)
@@ -131,6 +146,7 @@ function Catalog() {
 
         setSelectedItems(allLiving)
         setGroupByCategory(true)
+        setActivePreviewPage(0)
     }
 
     // Selecionar por subcategoria específica
@@ -141,6 +157,7 @@ function Catalog() {
 
         setSelectedItems(filtered)
         setGroupByCategory(false)
+        setActivePreviewPage(0)
     }
 
     // Selecionar todos os equipamentos e insumos com estoque
@@ -151,6 +168,7 @@ function Catalog() {
 
         setSelectedItems(allProducts)
         setGroupByCategory(true)
+        setActivePreviewPage(0)
     }
 
     // Add specific product from search
@@ -161,7 +179,6 @@ function Catalog() {
         }
 
         const newItem = toCatalogItem(product)
-
         setSelectedItems((prev) => [...prev, newItem])
         setSearchTerm('')
         setHighlightedIndex(0)
@@ -175,9 +192,10 @@ function Catalog() {
     // Clear all
     function handleClearAll() {
         setSelectedItems([])
+        setActivePreviewPage(0)
     }
 
-    // Autocomplete filter with smart accent, hyphen and multi-word normalization
+    // Autocomplete filter with smart search
     const matchingProducts = searchTerm.trim()
         ? products.filter((p) => matchesSearch(p.name, searchTerm, p.barcode))
         : []
@@ -199,7 +217,7 @@ function Catalog() {
                 className="flex flex-col items-center bg-[#070a16] rounded-2xl p-2.5 border border-slate-800/80 shadow-md transition-all"
             >
                 {/* Photo Container */}
-                <div className="w-full aspect-4/3 rounded-xl overflow-hidden bg-slate-900 border border-slate-800/50 mb-2.5 flex items-center justify-center">
+                <div className="w-full aspect-4/3 rounded-xl overflow-hidden bg-slate-900 border border-slate-800/50 mb-2 flex items-center justify-center">
                     {item.image ? (
                         <img
                             src={item.image}
@@ -226,7 +244,7 @@ function Catalog() {
                     )}
                 </div>
 
-                {/* Amber / Orange Badge matching the user reference */}
+                {/* Amber / Orange Badge */}
                 <div
                     style={{backgroundColor: '#f39c12'}}
                     className="w-full py-2 px-1.5 rounded-xl text-center text-slate-950 font-bold shadow-xs flex flex-col justify-center"
@@ -234,7 +252,7 @@ function Catalog() {
                     <p className="text-[11px] font-black leading-tight truncate px-1 text-slate-950">
                         {item.name}
                     </p>
-                    <p className="text-[11px] font-bold text-slate-950 mt-0.5">
+                    <p className="text-[12px] font-black text-slate-950 mt-0.5">
                         Pix: R$ {getPixPrice(item.salePrice)}
                     </p>
                     <p className="text-[10px] font-semibold text-slate-900/90 leading-tight">
@@ -251,17 +269,180 @@ function Catalog() {
         )
     }
 
-    // Export to JPEG
-    async function handleExportJpeg() {
-        if (!catalogRef.current || selectedItems.length === 0) return
+    function renderPageContent(pageItems: CatalogItem[]) {
+        if (!groupByCategory) {
+            return (
+                <div className="grid grid-cols-3 gap-3">
+                    {pageItems.map(renderCatalogCard)}
+                </div>
+            )
+        }
+
+        const map = new Map<string, CatalogItem[]>()
+        pageItems.forEach((item) => {
+            const cat = item.subCategory || 'OTHER_LIVING'
+            if (!map.has(cat)) map.set(cat, [])
+            map.get(cat)!.push(item)
+        })
+
+        const cats = Array.from(map.keys()).sort((a, b) => {
+            const indexA = CATEGORY_ORDER.indexOf(a as SubCategory)
+            const indexB = CATEGORY_ORDER.indexOf(b as SubCategory)
+            return (indexA === -1 ? 999 : indexA) - (indexB === -1 ? 999 : indexB)
+        })
+
+        return (
+            <div className="space-y-4">
+                {cats.map((catKey) => {
+                    const catItems = map.get(catKey) || []
+                    return (
+                        <div key={catKey}>
+                            <div className="flex items-center gap-2 mb-2 pb-1 border-b border-slate-800/80">
+                                <span className="text-[11px] font-black uppercase tracking-wider text-amber-400">
+                                    {getSubCategoryLabel(catKey)}
+                                </span>
+                                <span className="text-[10px] text-slate-400 font-semibold">
+                                    ({catItems.length} {catItems.length === 1 ? 'item' : 'itens'})
+                                </span>
+                            </div>
+                            <div className="grid grid-cols-3 gap-3">
+                                {catItems.map(renderCatalogCard)}
+                            </div>
+                        </div>
+                    )
+                })}
+            </div>
+        )
+    }
+
+    function renderSinglePage(pageItems: CatalogItem[], pageIndex: number, isOffscreen = false) {
+        return (
+            <div
+                key={pageIndex}
+                ref={(el) => {
+                    if (isOffscreen) {
+                        offscreenPageRefs.current[pageIndex] = el
+                    }
+                }}
+                style={{
+                    backgroundColor: '#0c1022',
+                    width: '740px',
+                    minHeight: '1046px',
+                }}
+                className="p-6 text-white flex flex-col justify-between rounded-2xl shadow-2xl border border-slate-800 mx-auto"
+            >
+                <div>
+                    {/* Header Banner */}
+                    <div className="text-center pb-4 mb-4 border-b border-slate-800/80">
+                        <div className="inline-flex items-center gap-2 px-3 py-1 bg-amber-500/10 border border-amber-500/30 rounded-full text-amber-400 text-[11px] font-bold tracking-widest uppercase mb-1.5">
+                            <Fish className="h-3 w-3" />
+                            <span>BAMBA AQUA</span>
+                        </div>
+                        <h2 className="text-xl font-black tracking-wide text-white uppercase">
+                            {catalogTitle || 'DISPONÍVEIS NA LOJA'}
+                        </h2>
+                        <p className="text-xs text-slate-400 mt-0.5">
+                            {catalogSubtitle || 'Consulte disponibilidade'}
+                        </p>
+                    </div>
+
+                    {/* Content */}
+                    {renderPageContent(pageItems)}
+                </div>
+
+                {/* Footer with Page Pagination */}
+                <div className="pt-4 mt-6 border-t border-slate-800/80 text-[10px] text-slate-400 flex items-center justify-between">
+                    <span className="font-semibold text-slate-400">
+                        Bamba Aqua • Qualidade em Aquarismo
+                    </span>
+                    <span className="font-bold text-amber-400 font-mono text-xs px-2.5 py-0.5 bg-amber-500/10 rounded-full border border-amber-500/20">
+                        Página {pageIndex + 1} de {pages.length}
+                    </span>
+                    <span className="text-slate-400">
+                        Atualizado em {new Date().toLocaleDateString('pt-BR')}
+                    </span>
+                </div>
+            </div>
+        )
+    }
+
+    // Export entire catalog as Multi-Page PDF
+    async function handleExportPdf() {
+        if (selectedItems.length === 0 || pages.length === 0) return
 
         setIsExporting(true)
         try {
-            // Small pause to ensure rendering stabilizes
-            await new Promise((r) => setTimeout(r, 200))
+            toast.info(
+                `Preparando catálogo em PDF com ${pages.length} página(s)...`,
+                'Exportando PDF'
+            )
+            await new Promise((r) => setTimeout(r, 250))
 
-            // Ensure all loaded images inside catalogRef are decoded before drawing to canvas
-            const images = catalogRef.current.querySelectorAll('img')
+            // Ensure all offscreen images are decoded
+            const offscreenElements = offscreenPageRefs.current
+            for (const el of offscreenElements) {
+                if (!el) continue
+                const images = el.querySelectorAll('img')
+                await Promise.all(
+                    Array.from(images).map((img) => {
+                        if (img.complete && img.naturalHeight !== 0) return Promise.resolve()
+                        return img.decode().catch(() => Promise.resolve())
+                    })
+                )
+            }
+
+            const pdf = new jsPDF({
+                orientation: 'portrait',
+                unit: 'mm',
+                format: 'a4',
+            })
+
+            for (let i = 0; i < pages.length; i++) {
+                const el = offscreenPageRefs.current[i]
+                if (!el) continue
+
+                const dataUrl = await toJpeg(el, {
+                    quality: 0.95,
+                    pixelRatio: 2,
+                    backgroundColor: '#0c1022',
+                    cacheBust: false,
+                })
+
+                if (i > 0) pdf.addPage()
+                // A4 dimensions: 210 x 297 mm
+                pdf.addImage(dataUrl, 'JPEG', 0, 0, 210, 297, undefined, 'FAST')
+            }
+
+            const dateStr = new Date().toISOString().slice(0, 10)
+            pdf.save(`bamba-aqua-catalogo-${dateStr}.pdf`)
+
+            toast.success(
+                `Catálogo PDF baixado com sucesso (${pages.length} páginas padronizadas A4)!`,
+                'PDF Concluído'
+            )
+        } catch (err: unknown) {
+            console.error('Falha ao exportar catálogo em PDF:', err)
+            const errorMsg = err instanceof Error ? err.message : String(err)
+            toast.error(
+                `Não foi possível gerar o catálogo em PDF (${errorMsg}). Tente novamente.`,
+                'Erro ao Exportar PDF'
+            )
+        } finally {
+            setIsExporting(false)
+        }
+    }
+
+    // Export currently selected preview page as JPEG
+    async function handleExportCurrentPageJpeg() {
+        if (selectedItems.length === 0 || pages.length === 0) return
+
+        setIsExporting(true)
+        try {
+            await new Promise((r) => setTimeout(r, 200))
+            const el = offscreenPageRefs.current[activePreviewPage]
+            if (!el) return
+
+            const images = el.querySelectorAll('img')
             await Promise.all(
                 Array.from(images).map((img) => {
                     if (img.complete && img.naturalHeight !== 0) return Promise.resolve()
@@ -269,7 +450,7 @@ function Catalog() {
                 })
             )
 
-            const dataUrl = await toJpeg(catalogRef.current, {
+            const dataUrl = await toJpeg(el, {
                 quality: 0.95,
                 pixelRatio: 2,
                 backgroundColor: '#0c1022',
@@ -278,18 +459,60 @@ function Catalog() {
 
             const link = document.createElement('a')
             const dateStr = new Date().toISOString().slice(0, 10)
-            link.download = `bamba-aqua-catalogo-${dateStr}.jpg`
+            link.download = `bamba-aqua-catalogo-${dateStr}-pagina-${activePreviewPage + 1}.jpg`
             link.href = dataUrl
             link.click()
 
-            toast.success('Catálogo de ofertas gerado e baixado com sucesso em alta resolução!', 'Catálogo Exportado')
-        } catch (err: unknown) {
-            console.error('Falha ao exportar catálogo:', err)
-            const errorMsg = err instanceof Error ? err.message : String(err)
-            toast.error(
-                `Não foi possível gerar a imagem do catálogo (${errorMsg}). Tente novamente.`,
-                'Erro ao Exportar'
+            toast.success(
+                `Imagem da Página ${activePreviewPage + 1} baixada em alta resolução!`,
+                'Imagem Exportada'
             )
+        } catch (err: unknown) {
+            console.error('Falha ao exportar imagem:', err)
+            const errorMsg = err instanceof Error ? err.message : String(err)
+            toast.error(`Não foi possível gerar a imagem (${errorMsg}).`, 'Erro ao Exportar')
+        } finally {
+            setIsExporting(false)
+        }
+    }
+
+    // Export all pages as individual JPEGs
+    async function handleExportAllPagesJpeg() {
+        if (selectedItems.length === 0 || pages.length === 0) return
+
+        setIsExporting(true)
+        try {
+            toast.info(`Baixando ${pages.length} imagem(ns)...`, 'Exportando Imagens')
+            await new Promise((r) => setTimeout(r, 200))
+
+            const dateStr = new Date().toISOString().slice(0, 10)
+            for (let i = 0; i < pages.length; i++) {
+                const el = offscreenPageRefs.current[i]
+                if (!el) continue
+
+                const dataUrl = await toJpeg(el, {
+                    quality: 0.95,
+                    pixelRatio: 2,
+                    backgroundColor: '#0c1022',
+                    cacheBust: false,
+                })
+
+                const link = document.createElement('a')
+                link.download = `bamba-aqua-catalogo-${dateStr}-pagina-${i + 1}.jpg`
+                link.href = dataUrl
+                link.click()
+
+                await new Promise((r) => setTimeout(r, 300))
+            }
+
+            toast.success(
+                `Todas as ${pages.length} páginas foram baixadas em imagens individuais!`,
+                'Imagens Exportadas'
+            )
+        } catch (err: unknown) {
+            console.error('Falha ao exportar imagens:', err)
+            const errorMsg = err instanceof Error ? err.message : String(err)
+            toast.error(`Não foi possível baixar as imagens (${errorMsg}).`, 'Erro ao Exportar')
         } finally {
             setIsExporting(false)
         }
@@ -305,33 +528,50 @@ function Catalog() {
                         <span>Catálogo & Encarte de Ofertas</span>
                     </h1>
                     <p className="text-xs text-slate-500 mt-1">
-                        Crie imagens profissionais com os animais e produtos da loja para divulgação em WhatsApp, Stories e redes sociais.
+                        Gere catálogos em formato padrão PDF (multi-páginas A4) ou imagens otimizadas para envio nítido no WhatsApp.
                     </p>
                 </div>
 
-                <div className="flex items-center gap-2">
+                {/* Primary Export Actions */}
+                <div className="flex flex-wrap items-center gap-2">
                     <button
                         type="button"
                         disabled={isExporting || selectedItems.length === 0}
-                        onClick={handleExportJpeg}
-                        className="flex items-center gap-2 px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold transition-all shadow-md disabled:opacity-50 cursor-pointer"
+                        onClick={handleExportPdf}
+                        className="flex items-center gap-2 px-4 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold transition-all shadow-md disabled:opacity-50 cursor-pointer"
+                        title="Baixar todo o catálogo em formato PDF padrão A4 com páginas numeradas"
                     >
-                        {isExporting ? (
-                            <>
-                                <RefreshCw className="h-4 w-4 animate-spin" />
-                                <span>Gerando Imagem...</span>
-                            </>
-                        ) : (
-                            <>
-                                <Download className="h-4 w-4" />
-                                <span>Baixar Imagem JPEG ({selectedItems.length} itens)</span>
-                            </>
-                        )}
+                        <FileText className="h-4 w-4" />
+                        <span>Baixar PDF ({pages.length} {pages.length === 1 ? 'pág' : 'págs'})</span>
                     </button>
+
+                    <button
+                        type="button"
+                        disabled={isExporting || selectedItems.length === 0}
+                        onClick={handleExportCurrentPageJpeg}
+                        className="flex items-center gap-2 px-3.5 py-2.5 bg-sky-600 hover:bg-sky-700 text-white rounded-xl text-xs font-bold transition-all shadow-md disabled:opacity-50 cursor-pointer"
+                        title="Baixar imagem JPEG da página atualmente visualizada"
+                    >
+                        <ImageIcon className="h-4 w-4" />
+                        <span>Baixar JPEG (Pág. {activePreviewPage + 1})</span>
+                    </button>
+
+                    {pages.length > 1 && (
+                        <button
+                            type="button"
+                            disabled={isExporting || selectedItems.length === 0}
+                            onClick={handleExportAllPagesJpeg}
+                            className="flex items-center gap-1.5 px-3 py-2.5 bg-slate-800 hover:bg-slate-900 text-white rounded-xl text-xs font-semibold transition-all shadow-xs disabled:opacity-50 cursor-pointer"
+                            title="Baixar todas as páginas como imagens individuais separadas"
+                        >
+                            <Download className="h-3.5 w-3.5" />
+                            <span>Todas em JPEG</span>
+                        </button>
+                    )}
                 </div>
             </div>
 
-            {/* Main Layout: Configuration & Selection Left / Real-Time Catalog Preview Right */}
+            {/* Main Layout: Configuration Left / Paged Preview Right */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
                 {/* Control Panel (5 Cols) */}
                 <div className="lg:col-span-5 space-y-4">
@@ -343,7 +583,7 @@ function Catalog() {
                                 Seleção dos Itens do Catálogo
                             </span>
                             <span className="text-xs text-sky-700 font-semibold bg-sky-50 px-2 py-0.5 rounded-full">
-                                {selectedItems.length} selecionados
+                                {selectedItems.length} selecionados ({pages.length} pág{pages.length === 1 ? '' : 's'})
                             </span>
                         </div>
 
@@ -439,7 +679,7 @@ function Catalog() {
                                     onKeyDown={(e) => {
                                         if (matchingProducts.length === 0) return
                                         if (e.key === 'ArrowDown') {
-                                            e.preventDefault()
+                                             e.preventDefault()
                                             setHighlightedIndex((prev) => (prev + 1) % matchingProducts.length)
                                         } else if (e.key === 'ArrowUp') {
                                             e.preventDefault()
@@ -565,7 +805,7 @@ function Catalog() {
                     <div className="bg-white rounded-2xl border border-slate-200/80 p-5 shadow-xs space-y-4">
                         <div className="flex items-center gap-2 pb-3 border-b border-slate-100 text-xs font-bold uppercase tracking-wider text-slate-800">
                             <Sliders className="h-4 w-4 text-sky-600" />
-                            <span>Opções de Exibição do Catálogo</span>
+                            <span>Opções de Formatação & Encarte</span>
                         </div>
 
                         <div className="space-y-3 text-xs">
@@ -643,6 +883,25 @@ function Catalog() {
                                 </div>
                             )}
 
+                            {/* Items per Page selector */}
+                            <div>
+                                <label className="block text-[11px] font-semibold text-slate-600 mb-1">
+                                    Itens por Página de PDF (Semear Páginas)
+                                </label>
+                                <select
+                                    value={itemsPerPage}
+                                    onChange={(e) => {
+                                        setItemsPerPage(Number(e.target.value))
+                                        setActivePreviewPage(0)
+                                    }}
+                                    className="w-full px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs font-semibold focus:bg-white focus:border-sky-500 focus:outline-hidden"
+                                >
+                                    <option value={6}>6 itens por página (3x2 - Destaque Ampliado)</option>
+                                    <option value={9}>9 itens por página (3x3 - Padrão Ideal A4)</option>
+                                    <option value={12}>12 itens por página (3x4 - Mais Compacto)</option>
+                                </select>
+                            </div>
+
                             {/* Group by category toggle */}
                             <div className="pt-2 border-t border-slate-100 flex items-center justify-between">
                                 <div>
@@ -668,7 +927,7 @@ function Catalog() {
                         <div className="p-3 bg-sky-50 text-sky-800 rounded-xl text-[11px] flex items-start gap-2">
                             <Info className="h-4 w-4 shrink-0 text-sky-600 mt-0.5" />
                             <span>
-                                As fotos exibidas vêm salvas localmente no sistema para garantir carregamento instantâneo e exportação limpa em alta resolução para divulgação.
+                                O catálogo gera páginas padronizadas na proporção A4. Ao enviar o PDF pelo WhatsApp, os preços e nomes permanecem 100% nítidos sem perda de compressão.
                             </span>
                         </div>
                     </div>
@@ -676,86 +935,110 @@ function Catalog() {
 
                 {/* Catalog Visual Canvas Preview (7 Cols) */}
                 <div className="lg:col-span-7 space-y-3">
-                    <div className="flex items-center justify-between">
-                        <span className="text-xs font-bold uppercase tracking-wider text-slate-600 flex items-center gap-1.5">
-                            <Layers className="h-4 w-4 text-sky-600" />
-                            Visualização Real do Catálogo (Pronto para Exportar)
-                        </span>
-                        <span className="text-[11px] text-slate-400">
-                            Fundo Navy Escuro • Badges Âmbar
-                        </span>
+                    {/* Preview Controls Bar */}
+                    <div className="bg-white rounded-2xl border border-slate-200/80 p-3 shadow-xs flex flex-wrap items-center justify-between gap-2">
+                        <div className="flex items-center gap-1.5">
+                            <span className="text-xs font-bold uppercase tracking-wider text-slate-700 flex items-center gap-1.5">
+                                <Layers className="h-4 w-4 text-sky-600" />
+                                Páginas do Encarte
+                            </span>
+                            {pages.length > 0 && (
+                                <span className="text-[11px] font-semibold text-sky-700 bg-sky-50 px-2 py-0.5 rounded-full">
+                                    {pages.length} página{pages.length === 1 ? '' : 's'}
+                                </span>
+                            )}
+                        </div>
+
+                        {pages.length > 1 && (
+                            <div className="flex items-center gap-2">
+                                {/* Page switcher */}
+                                {viewMode === 'single' && (
+                                    <div className="flex items-center gap-1 bg-slate-100 p-0.5 rounded-lg text-xs">
+                                        <button
+                                            type="button"
+                                            disabled={activePreviewPage === 0}
+                                            onClick={() => setActivePreviewPage((prev) => Math.max(0, prev - 1))}
+                                            className="p-1 text-slate-600 hover:text-slate-900 disabled:opacity-30 cursor-pointer"
+                                            title="Página Anterior"
+                                        >
+                                            <ChevronLeft className="h-3.5 w-3.5" />
+                                        </button>
+                                        <span className="px-2 font-bold font-mono text-slate-800 text-[11px]">
+                                            {activePreviewPage + 1} / {pages.length}
+                                        </span>
+                                        <button
+                                            type="button"
+                                            disabled={activePreviewPage === pages.length - 1}
+                                            onClick={() =>
+                                                setActivePreviewPage((prev) =>
+                                                    Math.min(pages.length - 1, prev + 1)
+                                                )
+                                            }
+                                            className="p-1 text-slate-600 hover:text-slate-900 disabled:opacity-30 cursor-pointer"
+                                            title="Próxima Página"
+                                        >
+                                            <ChevronRight className="h-3.5 w-3.5" />
+                                        </button>
+                                    </div>
+                                )}
+
+                                {/* Mode toggle: Single page vs All pages */}
+                                <button
+                                    type="button"
+                                    onClick={() =>
+                                        setViewMode((prev) => (prev === 'single' ? 'all' : 'single'))
+                                    }
+                                    className="flex items-center gap-1 px-2.5 py-1 text-[11px] font-semibold bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg transition-colors cursor-pointer"
+                                >
+                                    <Eye className="h-3 w-3" />
+                                    <span>{viewMode === 'single' ? 'Ver Todas' : 'Página a Página'}</span>
+                                </button>
+                            </div>
+                        )}
                     </div>
 
-                    {/* Canvas Container that gets downloaded */}
-                    <div className="overflow-x-auto rounded-2xl shadow-xl border border-slate-800">
-                        <div
-                            ref={catalogRef}
-                            style={{backgroundColor: '#0c1022'}}
-                            className="w-full min-w-[580px] p-6 text-white"
-                        >
-                            {/* Catalog Header Banner */}
-                            <div className="text-center pb-6 mb-6 border-b border-slate-800/80">
-                                <div className="inline-flex items-center gap-2 px-3 py-1 bg-amber-500/10 border border-amber-500/30 rounded-full text-amber-400 text-[11px] font-bold tracking-widest uppercase mb-1.5">
-                                    <Fish className="h-3 w-3" />
-                                    <span>BAMBA AQUA</span>
-                                </div>
-                                <h2 className="text-xl font-black tracking-wide text-white uppercase">
-                                    {catalogTitle || 'DISPONÍVEIS NA LOJA'}
-                                </h2>
-                                <p className="text-xs text-slate-400 mt-0.5">
-                                    {catalogSubtitle || 'Consulte disponibilidade'}
-                                </p>
+                    {/* Canvas Container that gets displayed */}
+                    <div className="overflow-x-auto rounded-2xl shadow-xl border border-slate-800 p-2 bg-slate-950">
+                        {loading ? (
+                            <div className="py-24 text-center text-slate-500 text-xs">
+                                Carregando dados do estoque...
                             </div>
-
-                            {/* Grid of Animals - 3 Columns matching reference */}
-                            {loading ? (
-                                <div className="py-20 text-center text-slate-500 text-xs">
-                                    Carregando animais do estoque...
-                                </div>
-                            ) : selectedItems.length === 0 ? (
-                                <div className="py-20 text-center text-slate-500 text-xs">
-                                    Nenhum item selecionado para o catálogo.
-                                </div>
-                            ) : groupByCategory && groupedItems ? (
-                                <div className="space-y-6">
-                                    {orderedGroupCategories.map((catKey) => {
-                                        const items = groupedItems.get(catKey) || []
-                                        if (items.length === 0) return null
-                                        return (
-                                            <div key={catKey}>
-                                                <div className="flex items-center gap-2 mb-3 pb-1 border-b border-slate-800/80">
-                                                    <span className="text-xs font-black uppercase tracking-wider text-amber-400">
-                                                        {getSubCategoryLabel(catKey)}
-                                                    </span>
-                                                    <span className="text-[10px] text-slate-400 font-semibold">
-                                                        ({items.length} {items.length === 1 ? 'item' : 'itens'})
-                                                    </span>
-                                                </div>
-                                                <div className="grid grid-cols-3 gap-4">
-                                                    {items.map(renderCatalogCard)}
-                                                </div>
-                                            </div>
-                                        )
-                                    })}
-                                </div>
-                            ) : (
-                                <div className="grid grid-cols-3 gap-4">
-                                    {selectedItems.map(renderCatalogCard)}
-                                </div>
-                            )}
-
-                            {/* Catalog Footer */}
-                            <div className="pt-6 mt-6 border-t border-slate-800/80 text-center text-[10px] text-slate-400 flex items-center justify-between">
-                                <span className="font-semibold text-slate-400">
-                                    Bamba Aqua • Qualidade em Aquarismo
-                                </span>
-                                <span className="text-slate-400">
-                                    Atualizado em {new Date().toLocaleDateString('pt-BR')}
-                                </span>
+                        ) : selectedItems.length === 0 ? (
+                            <div className="py-24 text-center text-slate-500 text-xs">
+                                Nenhum item selecionado para o catálogo. Clique em &quot;Todos os Seres Vivos&quot; ou use a busca para semear as páginas.
                             </div>
-                        </div>
+                        ) : viewMode === 'single' ? (
+                            <div className="py-2">
+                                {renderSinglePage(pages[activePreviewPage] || [], activePreviewPage, false)}
+                            </div>
+                        ) : (
+                            <div className="space-y-6 py-2">
+                                {pages.map((pItems, idx) => (
+                                    <div key={idx}>
+                                        <div className="text-center pb-2 text-[10px] uppercase font-bold tracking-widest text-slate-500">
+                                            — Folha {idx + 1} de {pages.length} —
+                                        </div>
+                                        {renderSinglePage(pItems, idx, false)}
+                                    </div>
+                                ))}
+                            </div>
+                        )}
                     </div>
                 </div>
+            </div>
+
+            {/* Hidden Offscreen Container: Pre-renders ALL pages at exact A4 proportions for 100% reliable capture */}
+            <div
+                aria-hidden="true"
+                style={{
+                    position: 'absolute',
+                    left: '-9999px',
+                    top: 0,
+                    pointerEvents: 'none',
+                    opacity: 1,
+                }}
+            >
+                {pages.map((pItems, idx) => renderSinglePage(pItems, idx, true))}
             </div>
         </div>
     )
