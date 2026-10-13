@@ -2587,7 +2587,10 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Leather Umbrella",
     "scientificName": "Sarcophyton sp.",
     "synonyms": [
-      "Couro Cogumelo"
+      "Couro Cogumelo",
+      "Leather Umbrella",
+      "Couro Guarda Chuva",
+      "Toadstool Leather"
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
@@ -2615,7 +2618,11 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Leather Devil Hand Green",
     "scientificName": "Lobophytum sp.",
     "synonyms": [
-      "Mão do Diabo"
+      "Mão do Diabo",
+      "Leather Devil Hand Green",
+      "Leather Devils Hand Green",
+      "Devil's Hand",
+      "Devils Hand"
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
@@ -3208,7 +3215,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Torch Coral 24k Gold",
     "scientificName": "Euphyllia glabrescens",
     "synonyms": [
-      "Tocha Ouro"
+      "Tocha Ouro",
+      "Coral Torch Gold Dourado",
+      "Torch Gold Dourado",
+      "Torch Gold",
+      "Coral Torch Gold",
+      "Torch Dourado",
+      "Torch 24k Gold"
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
@@ -3248,7 +3261,12 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Hammer Coral Toxic Green",
     "scientificName": "Fimbriaphyllia ancora",
     "synonyms": [
-      "Martelo Verde"
+      "Martelo Verde",
+      "Coral Hammer Verde Metálico",
+      "Hammer Verde Metálico",
+      "Martelo Verde Metálico",
+      "Hammer Toxic Green",
+      "Coral Hammer Verde Metalico"
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
@@ -3318,7 +3336,11 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Frogspawn Coral Green",
     "scientificName": "Euphyllia divisa",
     "synonyms": [
-      "Verde"
+      "Verde",
+      "Coral Frogspawn Ultra Green",
+      "Frogspawn Ultra Green",
+      "Coral Frogspan Ultra Green",
+      "Frogspan Ultra Green"
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
@@ -3438,7 +3460,11 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Blastomussa Wellsi Red",
     "scientificName": "Blastomussa wellsi",
     "synonyms": [
-      "Vermelha"
+      "Vermelha",
+      "Blastomussa Wellsi Red",
+      "Blastomussa Red",
+      "Crimson Blastomussa",
+      "Ironman Blastomussa"
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
@@ -3598,7 +3624,10 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Plate Coral Green",
     "scientificName": "Fungia sp.",
     "synonyms": [
-      "Prato Verde"
+      "Prato Verde",
+      "Plate Coral Green",
+      "Plate Coral",
+      "Coral Plate"
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
@@ -3969,7 +3998,12 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Anêmona Bubble Tip Rose",
     "scientificName": "Entacmaea quadricolor",
     "synonyms": [
-      "Ponta de Bolha Rosa"
+      "Ponta de Bolha Rosa",
+      "Bubble Tip Rose",
+      "Bubbletip Rose",
+      "Anêmona Bubbletip Rose",
+      "Rose BTA",
+      "RBTA"
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
@@ -3983,7 +4017,11 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Anêmona Bubble Tip Rainbow",
     "scientificName": "Entacmaea quadricolor",
     "synonyms": [
-      "Arco-Íris"
+      "Arco-Íris",
+      "Bubble Tip Rainbow",
+      "Bubbletip Rainbow",
+      "Anêmona Bubbletip Rainbow",
+      "Rainbow BTA"
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
@@ -3997,7 +4035,11 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Anêmona Bubble Tip Green",
     "scientificName": "Entacmaea quadricolor",
     "synonyms": [
-      "Verde Metálica"
+      "Verde Metálica",
+      "Bubble Tip Green",
+      "Bubbletip Green",
+      "Anêmona Bubbletip Green",
+      "Green BTA"
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
@@ -10600,7 +10642,10 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "synonyms": [
       "Carpet Green",
       "Haddon Green",
-      "Anêmona Tapete Verde"
+      "Anêmona Tapete Verde",
+      "Anemona Carpet Green",
+      "Anêmona Carpet Green",
+      "Haddoni Green"
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
@@ -10650,7 +10695,9 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
       "Carpet Green",
       "GSP",
       "Green Star Polyps",
-      "Pachyclavularia violacea"
+      "Pachyclavularia violacea",
+      "Coral Carpet Green",
+      "Carpet Green Coral"
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
@@ -10666,7 +10713,9 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "synonyms": [
       "Carpet Brown",
       "Brown Star Polyps",
-      "Clavularia Brown"
+      "Clavularia Brown",
+      "Coral Carpet Brown",
+      "Carpet Brown Coral"
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
@@ -10683,7 +10732,8 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
       "Rhodactis Superman",
       "Superman Mushroom",
       "Bullseye Mushroom",
-      "Rhodactis Azul e Vermelho"
+      "Rhodactis Azul e Vermelho",
+      "Mushroom Rhodactis Superman"
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
@@ -10720,6 +10770,25 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "imageSlug": "zoanthus-candy-apple-red.webp",
     "section": "Corais e Anêmonas",
     "familyGroup": "Zoanthus e Palythoas"
+  },
+  {
+    "id": "805",
+    "name": "Alga Atomic Broccoli (Hypnea pannosa)",
+    "commonName": "Alga Atomic Broccoli",
+    "scientificName": "Hypnea pannosa",
+    "synonyms": [
+      "Atomic Broccoli",
+      "Alga Atomic Brocolli",
+      "Macroalga Atomic Broccoli",
+      "Atomic Brocolli",
+      "Alga Vermelha Ornamental",
+      "Hypnea Atomic Broccoli"
+    ],
+    "type": "LIVING",
+    "subCategory": "PLANT",
+    "imageSlug": "alga-atomic-broccoli.png",
+    "section": "Plantas e Macroalgas",
+    "familyGroup": "Macroalgas Marinhas"
   }
 ] as const
 

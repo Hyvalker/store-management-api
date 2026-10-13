@@ -164,7 +164,29 @@ export function getAnimalImage(itemOrName: ItemImageSource | string): string | n
         return verifyImageExists('camarao-stenopus.jpg')
     }
 
-    // 7. Corais e Anêmonas (Morfos Específicos & Cultivares)
+    // 7. Corais, Anêmonas e Macroalgas (Morfos Específicos & Cultivares)
+    // Macroalga / Alga Atomic Broccoli
+    if (norm.includes('atomic') && (norm.includes('brocol') || norm.includes('broccoli') || norm.includes('alga') || norm.includes('leather'))) {
+        return verifyImageExists('alga-atomic-broccoli.png') || verifyImageExists('alga-atomic-broccoli.jpg') || verifyImageExists('leather-atomic-brocolis.jpg')
+    }
+
+    // Anêmonas Bubble Tip (BTA)
+    if (norm.includes('bubble tip') || norm.includes('bubbletip') || norm.includes('bubble-tip') || (norm.includes('anemon') && (norm.includes('bta') || norm.includes('bolha')))) {
+        if (norm.includes('rainbow') || norm.includes('arco-iris') || norm.includes('arco iris')) {
+            return verifyImageExists('anemona-bubble-tip-rainbow.jpg')
+        }
+        if (norm.includes('green') || norm.includes('verd')) {
+            return verifyImageExists('anemona-bubble-tip-green.jpg')
+        }
+        if (norm.includes('rose') || norm.includes('rosa') || norm.includes('vermelh') || norm.includes('red') || norm.includes('rbta') || norm.includes('black widow')) {
+            return verifyImageExists('anemona-bubble-tip-rose.jpg')
+        }
+        if (norm.includes('sunburst')) {
+            return verifyImageExists('anemona-bubble-tip-sunburst.jpg')
+        }
+        return verifyImageExists('anemona-bubble-tip-rose.jpg')
+    }
+
     // Carpet Anemones
     if (norm.includes('mini carpet')) {
         return verifyImageExists('anemona-mini-carpet.jpg')
@@ -172,7 +194,7 @@ export function getAnimalImage(itemOrName: ItemImageSource | string): string | n
     if (norm.includes('carpet red') || (norm.includes('carpet') && (norm.includes('vermelh') || norm.includes('red')))) {
         return verifyImageExists('anemona-carpet-red.jpg')
     }
-    if (norm.includes('coral carpet green') || (norm.includes('carpet green') && !norm.includes('anemon')) || norm.includes('green star polyps') || norm.includes('gsp')) {
+    if (norm.includes('coral carpet green') || (norm.includes('carpet green') && !norm.includes('anemon')) || norm.includes('green star polyps') || /\bgsp\b/.test(norm)) {
         return verifyImageExists('coral-carpet-green.jpg')
     }
     if (norm.includes('coral carpet brown') || norm.includes('carpet brown')) {
@@ -185,9 +207,12 @@ export function getAnimalImage(itemOrName: ItemImageSource | string): string | n
         return verifyImageExists('anemona-carpet-green.jpg')
     }
 
-    // Rhodactis Superman
+    // Rhodactis Superman & Outros Cogumelos
     if (norm.includes('superman') && (norm.includes('rhodactis') || norm.includes('mushroom') || norm.includes('cogumelo'))) {
         return verifyImageExists('rhodactis-superman.jpg')
+    }
+    if (norm.includes('st thomas') || norm.includes('st. thomas')) {
+        return verifyImageExists('mushroom-rhodactis-st-thomas.jpg')
     }
 
     // Zoanthus & Palythoa Morphs
@@ -231,15 +256,69 @@ export function getAnimalImage(itemOrName: ItemImageSource | string): string | n
         return verifyImageExists('zoanthus-candy-apple-red.webp')
     }
 
-    if (norm.includes('hammer') || norm.includes('ancora')) {
+    // Leather Corals
+    if (norm.includes('leather umbrella') || norm.includes('umbrella') || norm.includes('toadstool') || norm.includes('guarda-chuva')) {
+        return verifyImageExists('leather-umbrella.jpg')
+    }
+    if (norm.includes('devil hand') || norm.includes('devils hand') || norm.includes('mao do diabo') || norm.includes('lobophytum')) {
+        return verifyImageExists('leather-devil-hand-green.jpg')
+    }
+    if (norm.includes('leather lettuce') || norm.includes('sinularia dura') || norm.includes('couro alface')) {
+        return verifyImageExists('leather-lettuce.jpg')
+    }
+
+    // Plate Coral (Fungia)
+    if (norm.includes('plate') || norm.includes('fungia')) {
+        if (norm.includes('purple') || norm.includes('rox')) {
+            return verifyImageExists('plate-coral-purple.jpg')
+        }
+        return verifyImageExists('plate-coral-green.jpg')
+    }
+
+    // Blastomussa
+    if (norm.includes('blastomussa') || norm.includes('blasto')) {
+        if (norm.includes('merletti') || (norm.includes('green') && !norm.includes('wellsi'))) {
+            return verifyImageExists('blastomussa-merletti-green.jpg')
+        }
+        return verifyImageExists('blastomussa-wellsi-red.jpg')
+    }
+
+    // Hammer Coral
+    if (norm.includes('hammer') || norm.includes('ancora') || norm.includes('martelo')) {
+        if (norm.includes('toxic') || norm.includes('metalic') || norm.includes('green') || norm.includes('verd')) {
+            return verifyImageExists('hammer-coral-toxic-green.jpg')
+        }
+        if (norm.includes('gold') || norm.includes('dourad') || norm.includes('ouro')) {
+            return verifyImageExists('hammer-coral-gold.jpg')
+        }
+        if (norm.includes('orange') || norm.includes('laranj')) {
+            return verifyImageExists('hammer-coral-orange.jpg')
+        }
         return verifyImageExists('hammer-coral-branching.jpg')
     }
-    if (norm.includes('frogspawn') || norm.includes('divisa')) {
+
+    // Frogspawn Coral
+    if (norm.includes('frogspawn') || norm.includes('frogspan') || norm.includes('divisa')) {
+        if (norm.includes('bicolor')) {
+            return verifyImageExists('frogspawn-coral-bicolor.jpg')
+        }
         return verifyImageExists('frogspawn-coral-green.jpg')
     }
-    if (norm.includes('torch') || norm.includes('glabrescens')) {
+
+    // Torch Coral
+    if (norm.includes('torch') || norm.includes('glabrescens') || norm.includes('tocha')) {
+        if (norm.includes('gold') || norm.includes('dourad') || norm.includes('ouro') || norm.includes('24k') || norm.includes('dragon soul')) {
+            return verifyImageExists('torch-coral-24k-gold.jpg')
+        }
+        if (norm.includes('holy grail')) {
+            return verifyImageExists('torch-coral-holy-grail.jpg')
+        }
+        if (norm.includes('black')) {
+            return verifyImageExists('torch-coral-black-torch.jpg')
+        }
         return verifyImageExists('torch-coral-green-tip.jpg')
     }
+
     if (norm.includes('cinnamon') || norm.includes('zoanthus grandis')) {
         return verifyImageExists('zoanthus-grandis-cinnamon.jpg')
     }
