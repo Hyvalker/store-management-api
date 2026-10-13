@@ -25,7 +25,11 @@ public class CorsConfig {
             @Value("${app.cors.allowed-origins:http://localhost:5173}") List<String> allowedOrigins) {
 
         CorsConfiguration config = new CorsConfiguration();
-        config.setAllowedOrigins(allowedOrigins);
+        if (allowedOrigins.contains("*") || allowedOrigins.stream().anyMatch(o -> o.contains("*"))) {
+            config.setAllowedOriginPatterns(List.of("*"));
+        } else {
+            config.setAllowedOrigins(allowedOrigins);
+        }
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"));
         config.setAllowedHeaders(List.of("Authorization", "Content-Type", "Accept"));
         config.setMaxAge(3600L); // navegador pode cachear o preflight por 1h
