@@ -39,6 +39,7 @@ import {
 import {useAuth} from '../../contexts/AuthContext'
 import {useToast} from '../../contexts/ToastContext'
 import type {Operator, OperatorRole} from '../../types/auth'
+import {WaterParametersSettingsCard} from '../../components/settings/WaterParametersSettingsCard'
 
 function Settings() {
     const {toast} = useToast()
@@ -516,6 +517,9 @@ function Settings() {
                     </button>
                 </div>
             </div>
+
+            {/* Water Parameters Alerts & Thresholds Card */}
+            <WaterParametersSettingsCard />
 
             {/* Change My Password Card */}
             <div className="bg-white rounded-2xl border border-slate-200/80 p-6 shadow-xs space-y-5">

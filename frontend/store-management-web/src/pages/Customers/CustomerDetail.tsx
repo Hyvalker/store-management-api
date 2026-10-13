@@ -58,6 +58,13 @@ import type {
 } from '../../types/aquarium'
 import type {OrderResponse} from '../../types/order'
 import {useToast} from '../../contexts/ToastContext'
+import {ParameterBadge} from '../../components/aquarium/ParameterBadge'
+import {ParameterTestSummaryAlert} from '../../components/aquarium/ParameterTestSummaryAlert'
+import {
+    evaluateParameter,
+    getWaterParameterRules,
+    type WaterParameterKey
+} from '../../services/waterParameterRulesService'
 
 function CustomerDetail() {
     const {toast} = useToast()
@@ -453,6 +460,40 @@ function CustomerDetail() {
         }
     }
 
+    function renderInputFeedback(paramKey: WaterParameterKey, valueStr: string) {
+        if (!selectedAquarium) return null
+        const rules = selectedAquarium.type === 'MARINE' ? getWaterParameterRules().MARINE : getWaterParameterRules().FRESHWATER
+        const rule = rules[paramKey]
+        if (!rule || !rule.enabled) return null
+
+        if (!valueStr || isNaN(Number(valueStr))) {
+            const unitSuffix = rule.unit ? ` ${rule.unit}` : ''
+            return (
+                <span className="block text-[9px] text-slate-400 mt-0.5 truncate font-medium">
+                    {rule.isUpperOnly ? `Meta: ≤ ${rule.idealMax}${unitSuffix}` : `Ideal: ${rule.idealMin} a ${rule.idealMax}${unitSuffix}`}
+                </span>
+            )
+        }
+
+        const res = evaluateParameter(selectedAquarium.type, paramKey, Number(valueStr))
+        if (!res || res.status === 'DISABLED') return null
+
+        const color =
+            res.status === 'IDEAL'
+                ? 'text-emerald-600 font-bold'
+                : res.status === 'WARNING_LOW'
+                ? 'text-amber-600 font-bold'
+                : res.status === 'WARNING_HIGH'
+                ? 'text-orange-600 font-bold'
+                : 'text-rose-600 font-extrabold animate-pulse'
+
+        return (
+            <span className={`block text-[9px] mt-0.5 truncate ${color}`}>
+                {res.tag}
+            </span>
+        )
+    }
+
     // Format & Copy Report to WhatsApp
     function copyReportToClipboard(t: WaterParameterTest) {
         if (!customer || !selectedAquarium) return
@@ -466,18 +507,38 @@ function CustomerDetail() {
         })
 
         const paramsList: string[] = []
-        if (t.ph !== undefined && t.ph !== null) paramsList.push(`• pH: ${t.ph}`)
-        if (t.temperature !== undefined && t.temperature !== null) paramsList.push(`• Temperatura: ${t.temperature}°C`)
-        if (t.salinity !== undefined && t.salinity !== null) paramsList.push(`• Salinidade / Densidade: ${t.salinity}`)
-        if (t.ammonia !== undefined && t.ammonia !== null) paramsList.push(`• Amônia (NH3): ${t.ammonia} ppm`)
-        if (t.nitrite !== undefined && t.nitrite !== null) paramsList.push(`• Nitrito (NO2): ${t.nitrite} ppm`)
-        if (t.nitrate !== undefined && t.nitrate !== null) paramsList.push(`• Nitrato (NO3): ${t.nitrate} ppm`)
-        if (t.phosphate !== undefined && t.phosphate !== null) paramsList.push(`• Fosfato (PO4): ${t.phosphate} ppm`)
-        if (t.kh !== undefined && t.kh !== null) paramsList.push(`• KH: ${t.kh} dKH`)
-        if (t.gh !== undefined && t.gh !== null) paramsList.push(`• GH: ${t.gh} dGH`)
-        if (t.calcium !== undefined && t.calcium !== null) paramsList.push(`• Cálcio (Ca): ${t.calcium} ppm`)
-        if (t.magnesium !== undefined && t.magnesium !== null) paramsList.push(`• Magnésio (Mg): ${t.magnesium} ppm`)
-        if (t.silicate !== undefined && t.silicate !== null) paramsList.push(`• Silicato (SiO2): ${t.silicate} ppm`)
+        const addParamLine = (key: WaterParameterKey, label: string, val: number | undefined | null, unit: string) => {
+            if (val === undefined || val === null) return
+            const evaluation = evaluateParameter(selectedAquarium.type, key, val)
+            let statusSuffix = ''
+            if (evaluation && evaluation.status !== 'DISABLED') {
+                if (evaluation.status === 'IDEAL') {
+                    statusSuffix = ' ✅ (Ideal)'
+                } else if (evaluation.status === 'WARNING_LOW') {
+                    statusSuffix = ` ⚠️ (Abaixo do Ideal • ${evaluation.targetRangeText})`
+                } else if (evaluation.status === 'CRITICAL_LOW') {
+                    statusSuffix = ` 🚨 (CRÍTICO: Muito Baixo! • ${evaluation.targetRangeText})`
+                } else if (evaluation.status === 'WARNING_HIGH') {
+                    statusSuffix = ` ⚠️ (Acima do Ideal • ${evaluation.targetRangeText})`
+                } else if (evaluation.status === 'CRITICAL_HIGH') {
+                    statusSuffix = ` 🚨 (CRÍTICO: Muito Alto! • ${evaluation.targetRangeText})`
+                }
+            }
+            paramsList.push(`• ${label}: ${val}${unit ? ` ${unit}` : ''}${statusSuffix}`)
+        }
+
+        addParamLine('ph', 'pH', t.ph, '')
+        addParamLine('temperature', 'Temperatura', t.temperature, '°C')
+        addParamLine('salinity', 'Salinidade / Densidade', t.salinity, '')
+        addParamLine('ammonia', 'Amônia (NH3)', t.ammonia, 'ppm')
+        addParamLine('nitrite', 'Nitrito (NO2)', t.nitrite, 'ppm')
+        addParamLine('nitrate', 'Nitrato (NO3)', t.nitrate, 'ppm')
+        addParamLine('phosphate', 'Fosfato (PO4)', t.phosphate, 'ppm')
+        addParamLine('kh', 'Reserva Alcalina (KH)', t.kh, 'dKH')
+        addParamLine('gh', 'Dureza (GH)', t.gh, 'dGH')
+        addParamLine('calcium', 'Cálcio (Ca)', t.calcium, 'ppm')
+        addParamLine('magnesium', 'Magnésio (Mg)', t.magnesium, 'ppm')
+        addParamLine('silicate', 'Silicato (SiO2)', t.silicate, 'ppm')
 
         let text = `🌊 *LAUDO TÉCNICO DE PARÂMETROS - BAMBA AQUA*\n`
         text += `👤 *Cliente:* ${customer.name}\n`
@@ -1080,83 +1141,97 @@ function CustomerDetail() {
                                                     </div>
                                                 )}
 
-                                                {/* Parameters Grid: Badges */}
+                                                {/* Parameter Test Summary Alert */}
+                                                <ParameterTestSummaryAlert
+                                                    test={t}
+                                                    aquariumType={selectedAquarium.type}
+                                                />
+
+                                                {/* Parameters Grid: Intelligent Badges */}
                                                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 text-xs">
                                                     {t.ph !== undefined && t.ph !== null && (
-                                                        <div className="p-2.5 rounded-xl bg-white border border-slate-200">
-                                                            <span className="text-[10px] text-slate-400 block font-semibold">pH</span>
-                                                            <span className="text-sm font-bold text-slate-900 font-mono">{t.ph}</span>
-                                                        </div>
+                                                        <ParameterBadge
+                                                            paramKey="ph"
+                                                            value={t.ph}
+                                                            aquariumType={selectedAquarium.type}
+                                                        />
                                                     )}
                                                     {t.temperature !== undefined && t.temperature !== null && (
-                                                        <div className="p-2.5 rounded-xl bg-white border border-slate-200">
-                                                            <span className="text-[10px] text-slate-400 block font-semibold">Temperatura</span>
-                                                            <span className="text-sm font-bold text-slate-900 font-mono">{t.temperature}°C</span>
-                                                        </div>
+                                                        <ParameterBadge
+                                                            paramKey="temperature"
+                                                            value={t.temperature}
+                                                            aquariumType={selectedAquarium.type}
+                                                        />
                                                     )}
                                                     {t.salinity !== undefined && t.salinity !== null && (
-                                                        <div className="p-2.5 rounded-xl bg-white border border-slate-200">
-                                                            <span className="text-[10px] text-slate-400 block font-semibold">Salinidade</span>
-                                                            <span className="text-sm font-bold text-slate-900 font-mono">{t.salinity}</span>
-                                                        </div>
+                                                        <ParameterBadge
+                                                            paramKey="salinity"
+                                                            value={t.salinity}
+                                                            aquariumType={selectedAquarium.type}
+                                                        />
                                                     )}
                                                     {t.ammonia !== undefined && t.ammonia !== null && (
-                                                        <div className="p-2.5 rounded-xl bg-white border border-slate-200">
-                                                            <span className="text-[10px] text-slate-400 block font-semibold">Amônia (NH₃)</span>
-                                                            <span className={`text-sm font-bold font-mono ${t.ammonia > 0 ? 'text-rose-600' : 'text-emerald-600'}`}>
-                                                                {t.ammonia} ppm
-                                                            </span>
-                                                        </div>
+                                                        <ParameterBadge
+                                                            paramKey="ammonia"
+                                                            value={t.ammonia}
+                                                            aquariumType={selectedAquarium.type}
+                                                        />
                                                     )}
                                                     {t.nitrite !== undefined && t.nitrite !== null && (
-                                                        <div className="p-2.5 rounded-xl bg-white border border-slate-200">
-                                                            <span className="text-[10px] text-slate-400 block font-semibold">Nitrito (NO₂)</span>
-                                                            <span className={`text-sm font-bold font-mono ${t.nitrite > 0 ? 'text-rose-600' : 'text-emerald-600'}`}>
-                                                                {t.nitrite} ppm
-                                                            </span>
-                                                        </div>
+                                                        <ParameterBadge
+                                                            paramKey="nitrite"
+                                                            value={t.nitrite}
+                                                            aquariumType={selectedAquarium.type}
+                                                        />
                                                     )}
                                                     {t.nitrate !== undefined && t.nitrate !== null && (
-                                                        <div className="p-2.5 rounded-xl bg-white border border-slate-200">
-                                                            <span className="text-[10px] text-slate-400 block font-semibold">Nitrato (NO₃)</span>
-                                                            <span className="text-sm font-bold text-slate-900 font-mono">{t.nitrate} ppm</span>
-                                                        </div>
+                                                        <ParameterBadge
+                                                            paramKey="nitrate"
+                                                            value={t.nitrate}
+                                                            aquariumType={selectedAquarium.type}
+                                                        />
                                                     )}
                                                     {t.phosphate !== undefined && t.phosphate !== null && (
-                                                        <div className="p-2.5 rounded-xl bg-white border border-slate-200">
-                                                            <span className="text-[10px] text-slate-400 block font-semibold">Fosfato (PO₄)</span>
-                                                            <span className="text-sm font-bold text-slate-900 font-mono">{t.phosphate} ppm</span>
-                                                        </div>
+                                                        <ParameterBadge
+                                                            paramKey="phosphate"
+                                                            value={t.phosphate}
+                                                            aquariumType={selectedAquarium.type}
+                                                        />
                                                     )}
                                                     {t.kh !== undefined && t.kh !== null && (
-                                                        <div className="p-2.5 rounded-xl bg-white border border-slate-200">
-                                                            <span className="text-[10px] text-slate-400 block font-semibold">Reserva (KH)</span>
-                                                            <span className="text-sm font-bold text-slate-900 font-mono">{t.kh} dKH</span>
-                                                        </div>
+                                                        <ParameterBadge
+                                                            paramKey="kh"
+                                                            value={t.kh}
+                                                            aquariumType={selectedAquarium.type}
+                                                        />
                                                     )}
                                                     {t.gh !== undefined && t.gh !== null && (
-                                                        <div className="p-2.5 rounded-xl bg-white border border-slate-200">
-                                                            <span className="text-[10px] text-slate-400 block font-semibold">Dureza (GH)</span>
-                                                            <span className="text-sm font-bold text-slate-900 font-mono">{t.gh} dGH</span>
-                                                        </div>
+                                                        <ParameterBadge
+                                                            paramKey="gh"
+                                                            value={t.gh}
+                                                            aquariumType={selectedAquarium.type}
+                                                        />
                                                     )}
                                                     {t.calcium !== undefined && t.calcium !== null && (
-                                                        <div className="p-2.5 rounded-xl bg-white border border-slate-200">
-                                                            <span className="text-[10px] text-slate-400 block font-semibold">Cálcio (Ca)</span>
-                                                            <span className="text-sm font-bold text-slate-900 font-mono">{t.calcium} ppm</span>
-                                                        </div>
+                                                        <ParameterBadge
+                                                            paramKey="calcium"
+                                                            value={t.calcium}
+                                                            aquariumType={selectedAquarium.type}
+                                                        />
                                                     )}
                                                     {t.magnesium !== undefined && t.magnesium !== null && (
-                                                        <div className="p-2.5 rounded-xl bg-white border border-slate-200">
-                                                            <span className="text-[10px] text-slate-400 block font-semibold">Magnésio (Mg)</span>
-                                                            <span className="text-sm font-bold text-slate-900 font-mono">{t.magnesium} ppm</span>
-                                                        </div>
+                                                        <ParameterBadge
+                                                            paramKey="magnesium"
+                                                            value={t.magnesium}
+                                                            aquariumType={selectedAquarium.type}
+                                                        />
                                                     )}
                                                     {t.silicate !== undefined && t.silicate !== null && (
-                                                        <div className="p-2.5 rounded-xl bg-white border border-slate-200">
-                                                            <span className="text-[10px] text-slate-400 block font-semibold">Silicato (SiO₂)</span>
-                                                            <span className="text-sm font-bold text-slate-900 font-mono">{t.silicate} ppm</span>
-                                                        </div>
+                                                        <ParameterBadge
+                                                            paramKey="silicate"
+                                                            value={t.silicate}
+                                                            aquariumType={selectedAquarium.type}
+                                                        />
                                                     )}
                                                 </div>
 
@@ -1778,6 +1853,7 @@ function CustomerDetail() {
                                             onChange={(e) => setTestPh(e.target.value)}
                                             className="w-full px-2.5 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs font-mono font-bold focus:bg-white focus:border-sky-500 focus:outline-hidden"
                                         />
+                                        {renderInputFeedback('ph', testPh)}
                                     </div>
 
                                     {/* Salinidade */}
@@ -1793,6 +1869,7 @@ function CustomerDetail() {
                                             onChange={(e) => setTestSalinity(e.target.value)}
                                             className="w-full px-2.5 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs font-mono font-bold focus:bg-white focus:border-sky-500 focus:outline-hidden"
                                         />
+                                        {renderInputFeedback('salinity', testSalinity)}
                                     </div>
 
                                     {/* Temperatura */}
@@ -1808,6 +1885,7 @@ function CustomerDetail() {
                                             onChange={(e) => setTestTemperature(e.target.value)}
                                             className="w-full px-2.5 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs font-mono font-bold focus:bg-white focus:border-sky-500 focus:outline-hidden"
                                         />
+                                        {renderInputFeedback('temperature', testTemperature)}
                                     </div>
 
                                     {/* Amônia */}
@@ -1823,6 +1901,7 @@ function CustomerDetail() {
                                             onChange={(e) => setTestAmmonia(e.target.value)}
                                             className="w-full px-2.5 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs font-mono font-bold focus:bg-white focus:border-sky-500 focus:outline-hidden"
                                         />
+                                        {renderInputFeedback('ammonia', testAmmonia)}
                                     </div>
 
                                     {/* Nitrito */}
@@ -1838,6 +1917,7 @@ function CustomerDetail() {
                                             onChange={(e) => setTestNitrite(e.target.value)}
                                             className="w-full px-2.5 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs font-mono font-bold focus:bg-white focus:border-sky-500 focus:outline-hidden"
                                         />
+                                        {renderInputFeedback('nitrite', testNitrite)}
                                     </div>
 
                                     {/* Nitrato */}
@@ -1853,6 +1933,7 @@ function CustomerDetail() {
                                             onChange={(e) => setTestNitrate(e.target.value)}
                                             className="w-full px-2.5 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs font-mono font-bold focus:bg-white focus:border-sky-500 focus:outline-hidden"
                                         />
+                                        {renderInputFeedback('nitrate', testNitrate)}
                                     </div>
 
                                     {/* Fosfato */}
@@ -1868,6 +1949,7 @@ function CustomerDetail() {
                                             onChange={(e) => setTestPhosphate(e.target.value)}
                                             className="w-full px-2.5 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs font-mono font-bold focus:bg-white focus:border-sky-500 focus:outline-hidden"
                                         />
+                                        {renderInputFeedback('phosphate', testPhosphate)}
                                     </div>
 
                                     {/* KH */}
@@ -1883,6 +1965,7 @@ function CustomerDetail() {
                                             onChange={(e) => setTestKh(e.target.value)}
                                             className="w-full px-2.5 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs font-mono font-bold focus:bg-white focus:border-sky-500 focus:outline-hidden"
                                         />
+                                        {renderInputFeedback('kh', testKh)}
                                     </div>
 
                                     {/* GH */}
@@ -1898,6 +1981,7 @@ function CustomerDetail() {
                                             onChange={(e) => setTestGh(e.target.value)}
                                             className="w-full px-2.5 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs font-mono font-bold focus:bg-white focus:border-sky-500 focus:outline-hidden"
                                         />
+                                        {renderInputFeedback('gh', testGh)}
                                     </div>
 
                                     {/* Cálcio */}
@@ -1913,6 +1997,7 @@ function CustomerDetail() {
                                             onChange={(e) => setTestCalcium(e.target.value)}
                                             className="w-full px-2.5 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs font-mono font-bold focus:bg-white focus:border-sky-500 focus:outline-hidden"
                                         />
+                                        {renderInputFeedback('calcium', testCalcium)}
                                     </div>
 
                                     {/* Magnésio */}
@@ -1928,6 +2013,7 @@ function CustomerDetail() {
                                             onChange={(e) => setTestMagnesium(e.target.value)}
                                             className="w-full px-2.5 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs font-mono font-bold focus:bg-white focus:border-sky-500 focus:outline-hidden"
                                         />
+                                        {renderInputFeedback('magnesium', testMagnesium)}
                                     </div>
 
                                     {/* Silicato */}
@@ -1943,6 +2029,7 @@ function CustomerDetail() {
                                             onChange={(e) => setTestSilicate(e.target.value)}
                                             className="w-full px-2.5 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs font-mono font-bold focus:bg-white focus:border-sky-500 focus:outline-hidden"
                                         />
+                                        {renderInputFeedback('silicate', testSilicate)}
                                     </div>
                                 </div>
                             </div>
