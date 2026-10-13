@@ -406,7 +406,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "synonyms": [],
     "type": "LIVING",
     "subCategory": "MARINE_FISH",
-    "imageSlug": "palhaco-davinci.jpg",
+    "imageSlug": "palhaco-fancy-gladiator.jpg",
     "section": "Peixes Marinhos",
     "familyGroup": "Peixes-Palhaço e Morfotipos"
   },
@@ -418,7 +418,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "synonyms": [],
     "type": "LIVING",
     "subCategory": "MARINE_FISH",
-    "imageSlug": "palhaco-gladiator.jpg",
+    "imageSlug": "palhaco-fancy-gladiator.jpg",
     "section": "Peixes Marinhos",
     "familyGroup": "Peixes-Palhaço e Morfotipos"
   },
@@ -430,7 +430,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "synonyms": [],
     "type": "LIVING",
     "subCategory": "MARINE_FISH",
-    "imageSlug": "palhaco-midnight.jpg",
+    "imageSlug": "palhaco-black-extreme-misbar.jpg",
     "section": "Peixes Marinhos",
     "familyGroup": "Peixes-Palhaço e Morfotipos"
   },
@@ -495,7 +495,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "synonyms": [],
     "type": "LIVING",
     "subCategory": "MARINE_FISH",
-    "imageSlug": "palhaco-picasso.jpg",
+    "imageSlug": "peixe-palhaco-picasso.jpg",
     "section": "Peixes Marinhos",
     "familyGroup": "Peixes-Palhaço e Morfotipos"
   },
@@ -594,7 +594,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "MARINE_FISH",
-    "imageSlug": "palhaco-maroon-faixa-dourada.jpg",
+    "imageSlug": "palhaco-maroon-goldstripe.jpg",
     "section": "Peixes Marinhos",
     "familyGroup": "Peixes-Palhaço e Morfotipos"
   },
@@ -2913,7 +2913,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "synonyms": [],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "zoanthus-fire-and-ice.jpg",
+    "imageSlug": "zoanthus-fire-and-ice.webp",
     "section": "Corais e Anêmonas",
     "familyGroup": "Zoanthus e Palythoas"
   },
@@ -2923,11 +2923,12 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Zoanthus Radioactive Dragon Eye",
     "scientificName": "Zoanthus sp.",
     "synonyms": [
-      "Verde Radioativo"
+      "Verde Radioativo",
+      "Dragon Eye"
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "zoanthus-radioactive-dragon-eye.jpg",
+    "imageSlug": "zoanthus-radioactive-dragon-eye.webp",
     "section": "Corais e Anêmonas",
     "familyGroup": "Zoanthus e Palythoas"
   },
@@ -2936,10 +2937,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "name": "Zoanthus Rasta (Zoanthus sp.)",
     "commonName": "Zoanthus Rasta",
     "scientificName": "Zoanthus sp.",
-    "synonyms": [],
+    "synonyms": [
+      "Rastafari",
+      "Rastas"
+    ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "zoanthus-rasta.jpg",
+    "imageSlug": "zoanthus-rasta.webp",
     "section": "Corais e Anêmonas",
     "familyGroup": "Zoanthus e Palythoas"
   },
@@ -2953,7 +2957,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "zoanthus-king-midas.jpg",
+    "imageSlug": "zoanthus-king-midas.webp",
     "section": "Corais e Anêmonas",
     "familyGroup": "Zoanthus e Palythoas"
   },
@@ -2965,7 +2969,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "synonyms": [],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "zoanthus-utter-chaos.jpg",
+    "imageSlug": "zoanthus-utter-chaos.webp",
     "section": "Corais e Anêmonas",
     "familyGroup": "Zoanthus e Palythoas"
   },
@@ -2975,11 +2979,12 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Zoanthus Watermelon",
     "scientificName": "Zoanthus sp.",
     "synonyms": [
-      "Melancia"
+      "Melancia",
+      "Whammin Watermelon"
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "zoanthus-watermelon.jpg",
+    "imageSlug": "zoanthus-watermelon.webp",
     "section": "Corais e Anêmonas",
     "familyGroup": "Zoanthus e Palythoas"
   },
@@ -2991,7 +2996,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "synonyms": [],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "zoanthus-scrambled-eggs.jpg",
+    "imageSlug": "zoanthus-scrambled-eggs.webp",
     "section": "Corais e Anêmonas",
     "familyGroup": "Zoanthus e Palythoas"
   },
@@ -3051,7 +3056,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "synonyms": [],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "zoanthus-blue-hornet.jpg",
+    "imageSlug": "zoanthus-blue-hornet.webp",
     "section": "Corais e Anêmonas",
     "familyGroup": "Zoanthus e Palythoas"
   },
@@ -3072,10 +3077,12 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "name": "Zoanthus Sunny D (Zoanthus sp.)",
     "commonName": "Zoanthus Sunny D",
     "scientificName": "Zoanthus sp.",
-    "synonyms": [],
+    "synonyms": [
+      "Sunny Delight"
+    ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "zoanthus-sunny-d.jpg",
+    "imageSlug": "zoanthus-sunny-d.webp",
     "section": "Corais e Anêmonas",
     "familyGroup": "Zoanthus e Palythoas"
   },
@@ -3099,7 +3106,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "synonyms": [],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "zoanthus-fruit-loops.jpg",
+    "imageSlug": "zoanthus-fruit-loops.webp",
     "section": "Corais e Anêmonas",
     "familyGroup": "Zoanthus e Palythoas"
   },
@@ -3149,7 +3156,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "synonyms": [],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "palythoa-captain-america.jpg",
+    "imageSlug": "palythoa-captain-america.webp",
     "section": "Corais e Anêmonas",
     "familyGroup": "Zoanthus e Palythoas"
   },
@@ -4018,11 +4025,12 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Anêmona Carpet",
     "scientificName": "Stichodactyla haddoni",
     "synonyms": [
-      "Haddoni Verde"
+      "Haddoni Verde",
+      "Carpet Green"
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "anemona-carpet.jpg",
+    "imageSlug": "anemona-carpet-green.jpg",
     "section": "Corais e Anêmonas",
     "familyGroup": "Anêmonas Marinhas"
   },
@@ -10583,6 +10591,135 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "imageSlug": "dottyback-springeri.jpg",
     "section": "Peixes Marinhos",
     "familyGroup": "Pseudochromis e Dottybacks"
+  },
+  {
+    "id": "797",
+    "name": "Anêmona Carpet Green (Stichodactyla haddoni)",
+    "commonName": "Anêmona Carpet Green",
+    "scientificName": "Stichodactyla haddoni",
+    "synonyms": [
+      "Carpet Green",
+      "Haddon Green",
+      "Anêmona Tapete Verde"
+    ],
+    "type": "LIVING",
+    "subCategory": "CORAL",
+    "imageSlug": "anemona-carpet-green.jpg",
+    "section": "Corais e Anêmonas",
+    "familyGroup": "Anêmonas Marinhas"
+  },
+  {
+    "id": "798",
+    "name": "Anêmona Carpet Red (Stichodactyla haddoni)",
+    "commonName": "Anêmona Carpet Red",
+    "scientificName": "Stichodactyla haddoni",
+    "synonyms": [
+      "Carpet Red",
+      "Haddon Red",
+      "Anêmona Tapete Vermelha",
+      "Red Carpet"
+    ],
+    "type": "LIVING",
+    "subCategory": "CORAL",
+    "imageSlug": "anemona-carpet-red.jpg",
+    "section": "Corais e Anêmonas",
+    "familyGroup": "Anêmonas Marinhas"
+  },
+  {
+    "id": "799",
+    "name": "Anêmona Mini Carpet (Stichodactyla tapetum)",
+    "commonName": "Anêmona Mini Carpet",
+    "scientificName": "Stichodactyla tapetum",
+    "synonyms": [
+      "Mini Carpet",
+      "Mini Tapete",
+      "Maxi Mini"
+    ],
+    "type": "LIVING",
+    "subCategory": "CORAL",
+    "imageSlug": "anemona-mini-carpet.jpg",
+    "section": "Corais e Anêmonas",
+    "familyGroup": "Anêmonas Marinhas"
+  },
+  {
+    "id": "800",
+    "name": "Coral Carpet Green (Briareum hamrum)",
+    "commonName": "Coral Carpet Green",
+    "scientificName": "Briareum hamrum",
+    "synonyms": [
+      "Carpet Green",
+      "GSP",
+      "Green Star Polyps",
+      "Pachyclavularia violacea"
+    ],
+    "type": "LIVING",
+    "subCategory": "CORAL",
+    "imageSlug": "coral-carpet-green.jpg",
+    "section": "Corais e Anêmonas",
+    "familyGroup": "Corais Soft e Pólipos Estrela"
+  },
+  {
+    "id": "801",
+    "name": "Coral Carpet Brown (Clavularia sp.)",
+    "commonName": "Coral Carpet Brown",
+    "scientificName": "Clavularia sp.",
+    "synonyms": [
+      "Carpet Brown",
+      "Brown Star Polyps",
+      "Clavularia Brown"
+    ],
+    "type": "LIVING",
+    "subCategory": "CORAL",
+    "imageSlug": "coral-carpet-brown.jpg",
+    "section": "Corais e Anêmonas",
+    "familyGroup": "Corais Soft e Pólipos Estrela"
+  },
+  {
+    "id": "802",
+    "name": "Mushroom Rhodactis Superman (Rhodactis inchoata)",
+    "commonName": "Mushroom Rhodactis Superman",
+    "scientificName": "Rhodactis inchoata",
+    "synonyms": [
+      "Rhodactis Superman",
+      "Superman Mushroom",
+      "Bullseye Mushroom",
+      "Rhodactis Azul e Vermelho"
+    ],
+    "type": "LIVING",
+    "subCategory": "CORAL",
+    "imageSlug": "rhodactis-superman.jpg",
+    "section": "Corais e Anêmonas",
+    "familyGroup": "Mushrooms e Corallimorphs"
+  },
+  {
+    "id": "803",
+    "name": "Zoanthus Red Bam Bam (Zoanthus sp.)",
+    "commonName": "Zoanthus Red Bam Bam",
+    "scientificName": "Zoanthus sp.",
+    "synonyms": [
+      "Red Bam Bam",
+      "Bam Bam",
+      "Bam Bam Orange"
+    ],
+    "type": "LIVING",
+    "subCategory": "CORAL",
+    "imageSlug": "zoanthus-red-bam-bam.webp",
+    "section": "Corais e Anêmonas",
+    "familyGroup": "Zoanthus e Palythoas"
+  },
+  {
+    "id": "804",
+    "name": "Zoanthus Candy Apple Red (Zoanthus sp.)",
+    "commonName": "Zoanthus Candy Apple Red",
+    "scientificName": "Zoanthus sp.",
+    "synonyms": [
+      "Candy Apple Red"
+    ],
+    "type": "LIVING",
+    "subCategory": "CORAL",
+    "imageSlug": "zoanthus-candy-apple-red.webp",
+    "section": "Corais e Anêmonas",
+    "familyGroup": "Zoanthus e Palythoas"
   }
 ] as const
 

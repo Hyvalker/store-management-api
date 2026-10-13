@@ -20,9 +20,19 @@ function verifyImageExists(pathOrSlug?: string | null): string | null {
     if (filename.startsWith('/images/animals/')) {
         filename = filename.slice('/images/animals/'.length)
     }
-    const cleanFilename = filename.includes('.') ? filename : `${filename}.jpg`
-    if (EXISTING_ANIMAL_IMAGES.has(cleanFilename)) {
-        return `/images/animals/${cleanFilename}`
+    if (EXISTING_ANIMAL_IMAGES.has(filename)) {
+        return `/images/animals/${filename}`
+    }
+    if (!filename.includes('.')) {
+        if (EXISTING_ANIMAL_IMAGES.has(`${filename}.jpg`)) {
+            return `/images/animals/${filename}.jpg`
+        }
+        if (EXISTING_ANIMAL_IMAGES.has(`${filename}.webp`)) {
+            return `/images/animals/${filename}.webp`
+        }
+        if (EXISTING_ANIMAL_IMAGES.has(`${filename}.png`)) {
+            return `/images/animals/${filename}.png`
+        }
     }
     return null
 }
@@ -81,8 +91,17 @@ export function getAnimalImage(itemOrName: ItemImageSource | string): string | n
         const matchesIdentity =
             norm === normBestName ||
             norm === normBestCommon ||
-            norm.includes(normBestCommon) ||
-            normSynonyms.some((syn) => norm === syn || norm.includes(syn))
+            norm.startsWith(normBestCommon) ||
+            (normBestCommon.length >= 5 && norm.includes(normBestCommon)) ||
+            normSynonyms.some((syn) => {
+                if (norm === syn) return true
+                if (syn.length >= 4) {
+                    const escaped = syn.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+                    const regex = new RegExp(`(^|\\s)${escaped}(\\s|$)`)
+                    return regex.test(norm)
+                }
+                return false
+            })
 
         if (matchesIdentity) {
             const verified = verifyImageExists(best.imageSlug)
@@ -145,7 +164,73 @@ export function getAnimalImage(itemOrName: ItemImageSource | string): string | n
         return verifyImageExists('camarao-stenopus.jpg')
     }
 
-    // 7. Corais
+    // 7. Corais e Anêmonas (Morfos Específicos & Cultivares)
+    // Carpet Anemones
+    if (norm.includes('mini carpet')) {
+        return verifyImageExists('anemona-mini-carpet.jpg')
+    }
+    if (norm.includes('carpet red') || (norm.includes('carpet') && (norm.includes('vermelh') || norm.includes('red')))) {
+        return verifyImageExists('anemona-carpet-red.jpg')
+    }
+    if (norm.includes('coral carpet green') || (norm.includes('carpet green') && !norm.includes('anemon')) || norm.includes('green star polyps') || norm.includes('gsp')) {
+        return verifyImageExists('coral-carpet-green.jpg')
+    }
+    if (norm.includes('coral carpet brown') || norm.includes('carpet brown')) {
+        return verifyImageExists('coral-carpet-brown.jpg')
+    }
+    if (norm.includes('carpet green') || (norm.includes('carpet') && norm.includes('verd'))) {
+        return verifyImageExists('anemona-carpet-green.jpg')
+    }
+    if (norm.includes('anemona carpet') || (norm.includes('anemona') && norm.includes('haddoni'))) {
+        return verifyImageExists('anemona-carpet-green.jpg')
+    }
+
+    // Rhodactis Superman
+    if (norm.includes('superman') && (norm.includes('rhodactis') || norm.includes('mushroom') || norm.includes('cogumelo'))) {
+        return verifyImageExists('rhodactis-superman.jpg')
+    }
+
+    // Zoanthus & Palythoa Morphs
+    if (norm.includes('rasta') || norm.includes('rastafari')) {
+        return verifyImageExists('zoanthus-rastafari.webp')
+    }
+    if (norm.includes('bam bam') || norm.includes('bambam')) {
+        return verifyImageExists('zoanthus-red-bam-bam.webp')
+    }
+    if (norm.includes('utter chaos')) {
+        return verifyImageExists('zoanthus-utter-chaos.webp')
+    }
+    if (norm.includes('dragon eye') || norm.includes('radioactive')) {
+        return verifyImageExists('zoanthus-radioactive-dragon-eye.webp')
+    }
+    if (norm.includes('sunny d') || norm.includes('sunny delight')) {
+        return verifyImageExists('zoanthus-sunny-d.webp')
+    }
+    if (norm.includes('scrambled egg')) {
+        return verifyImageExists('zoanthus-scrambled-eggs.webp')
+    }
+    if (norm.includes('fire and ice') || norm.includes('fire & ice')) {
+        return verifyImageExists('zoanthus-fire-and-ice.webp')
+    }
+    if (norm.includes('fruit loop')) {
+        return verifyImageExists('zoanthus-fruit-loops.webp')
+    }
+    if (norm.includes('king midas')) {
+        return verifyImageExists('zoanthus-king-midas.webp')
+    }
+    if (norm.includes('captain america')) {
+        return verifyImageExists('palythoa-captain-america.webp')
+    }
+    if (norm.includes('watermelon')) {
+        return verifyImageExists('zoanthus-watermelon.webp')
+    }
+    if (norm.includes('blue hornet')) {
+        return verifyImageExists('zoanthus-blue-hornet.webp')
+    }
+    if (norm.includes('candy apple')) {
+        return verifyImageExists('zoanthus-candy-apple-red.webp')
+    }
+
     if (norm.includes('hammer') || norm.includes('ancora')) {
         return verifyImageExists('hammer-coral-branching.jpg')
     }
@@ -155,7 +240,7 @@ export function getAnimalImage(itemOrName: ItemImageSource | string): string | n
     if (norm.includes('torch') || norm.includes('glabrescens')) {
         return verifyImageExists('torch-coral-green-tip.jpg')
     }
-    if (norm.includes('zoanthus')) {
+    if (norm.includes('cinnamon') || norm.includes('zoanthus grandis')) {
         return verifyImageExists('zoanthus-grandis-cinnamon.jpg')
     }
 
