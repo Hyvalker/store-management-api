@@ -25,7 +25,7 @@ export interface CatalogItem {
     name: string
     salePrice: number
     quantity: number
-    image: string
+    image?: string | null
     subCategory?: SubCategory
     type?: ProductType
 }
@@ -111,16 +111,7 @@ function Catalog() {
 
             const prods = await getProducts()
             setProducts(prods)
-
-            // Initial preselection: all LIVING animals with stock > 0
-            const livingWithStock = prods
-                .filter((p) => p.type === 'LIVING' && p.quantity > 0)
-                .map(toCatalogItem)
-
-            // If found living animals, pre-select up to 9 for a quick instant preview
-            if (livingWithStock.length > 0) {
-                setSelectedItems(livingWithStock.slice(0, 9))
-            }
+            // Catálogo inicia 100% vazio conforme solicitação
         } catch (err) {
             console.error('Erro ao carregar produtos para catálogo', err)
         } finally {
@@ -132,31 +123,34 @@ function Catalog() {
         loadData()
     }, [])
 
-    // Select all living animals with stock
+    // Selecionar todos os seres vivos com estoque e agrupar automaticamente por categoria
     function handleSelectAllLiving() {
         const allLiving = products
             .filter((p) => p.type === 'LIVING' && p.quantity > 0)
             .map(toCatalogItem)
 
         setSelectedItems(allLiving)
+        setGroupByCategory(true)
     }
 
-    // Select by specific subcategory
+    // Selecionar por subcategoria específica
     function handleSelectSubCategory(subCategory: SubCategory) {
         const filtered = products
             .filter((p) => p.subCategory === subCategory && p.quantity > 0)
             .map(toCatalogItem)
 
         setSelectedItems(filtered)
+        setGroupByCategory(false)
     }
 
-    // Select all equipment and supplies products with stock
+    // Selecionar todos os equipamentos e insumos com estoque
     function handleSelectAllProducts() {
         const allProducts = products
             .filter((p) => p.type === 'PRODUCT' && p.quantity > 0)
             .map(toCatalogItem)
 
         setSelectedItems(allProducts)
+        setGroupByCategory(true)
     }
 
     // Add specific product from search
@@ -206,12 +200,28 @@ function Catalog() {
             >
                 {/* Photo Container */}
                 <div className="w-full aspect-4/3 rounded-xl overflow-hidden bg-slate-900 border border-slate-800/50 mb-2.5 flex items-center justify-center">
-                    <img
-                        src={item.image}
-                        alt={item.name}
-                        crossOrigin="anonymous"
-                        className="w-full h-full object-cover"
-                    />
+                    {item.image ? (
+                        <img
+                            src={item.image}
+                            alt={item.name}
+                            crossOrigin="anonymous"
+                            className="w-full h-full object-cover"
+                        />
+                    ) : (
+                        <div className="w-full h-full flex flex-col items-center justify-center p-3 text-center bg-slate-950/80">
+                            {item.type === 'PRODUCT' ? (
+                                <Package className="h-7 w-7 text-slate-500 mb-1" />
+                            ) : (
+                                <Fish className="h-7 w-7 text-slate-500 mb-1" />
+                            )}
+                            <p className="text-[10px] font-bold text-slate-300 line-clamp-2 px-1 leading-tight">
+                                {item.name}
+                            </p>
+                            <span className="text-[9px] text-amber-500/80 mt-1 uppercase tracking-wider font-semibold">
+                                (Sem foto)
+                            </span>
+                        </div>
+                    )}
                 </div>
 
                 {/* Amber / Orange Badge matching the user reference */}
@@ -499,11 +509,21 @@ function Catalog() {
                                             <span className="text-[10px] text-slate-400 font-mono font-bold w-4">
                                                 {idx + 1}.
                                             </span>
-                                            <img
-                                                src={item.image}
-                                                alt={item.name}
-                                                className="h-7 w-7 rounded-md object-cover border border-slate-300 shrink-0"
-                                            />
+                                            {item.image ? (
+                                                <img
+                                                    src={item.image}
+                                                    alt={item.name}
+                                                    className="h-7 w-7 rounded-md object-cover border border-slate-300 shrink-0"
+                                                />
+                                            ) : (
+                                                <div className="h-7 w-7 rounded-md bg-slate-200 border border-slate-300 flex items-center justify-center shrink-0 text-slate-400">
+                                                    {item.type === 'PRODUCT' ? (
+                                                        <Package className="h-3.5 w-3.5" />
+                                                    ) : (
+                                                        <Fish className="h-3.5 w-3.5" />
+                                                    )}
+                                                </div>
+                                            )}
                                             <div className="truncate">
                                                 <p className="font-semibold text-slate-800 truncate">{item.name}</p>
                                                 <p className="text-[10px] text-slate-500 font-mono">

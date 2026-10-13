@@ -111,14 +111,20 @@ function ProductForm({onSuccess}: ProductFormProps) {
         setSuccess(false)
 
         try {
+            // Auto-resolução da espécie pelo catálogo mestre se o operador digitou o nome diretamente
+            const matchedSpecies = selectedSpecies || searchMasterSpecies(name.trim(), 1)[0]
+            const resolvedType = matchedSpecies ? matchedSpecies.type : type
+            const resolvedSubCategory = matchedSpecies?.subCategory || (type === 'LIVING' ? 'OTHER_LIVING' : undefined)
+            const resolvedImageSlug = matchedSpecies?.imageSlug
+
             const data: CreateProductRequest = {
                 name: name.trim(),
-                type,
+                type: resolvedType,
                 quantity: Number(quantity),
                 costPrice: Number(costPrice),
                 barcode: barcode.trim() || null,
-                subCategory: selectedSpecies?.subCategory,
-                imageSlug: selectedSpecies?.imageSlug,
+                subCategory: resolvedSubCategory,
+                imageSlug: resolvedImageSlug,
             }
 
             const cost = Number(costPrice)

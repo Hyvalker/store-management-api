@@ -1,57 +1,99 @@
 import type {SubCategory} from '../types/product'
+import {searchMasterSpecies} from '../data/speciesMasterCatalog'
 
 export interface ItemImageSource {
     name: string
-    imageSlug?: string
+    imageSlug?: string | null
     subCategory?: SubCategory
     type?: string
 }
 
 /**
- * Retorna o caminho da melhor imagem para o produto ou ser vivo.
- * Prioridade:
- * 1. imageSlug direto do produto (se informado)
- * 2. Variação/morfo específico no nome (ex: Storm Black, Snowflake, Picasso)
- * 3. Espécie ou gênero no nome
- * 4. Subcategoria (Coral -> coral-hammer, Peixe Marinho -> ocellaris, etc.)
- * 5. Fallback limpo
+ * Retorna o caminho da imagem verificada para o produto ou ser vivo.
+ * Retorna null se não houver foto oficial comprovada para o item,
+ * garantindo que nenhum produto sem foto receba uma imagem incorreta.
  */
-export function getAnimalImage(itemOrName: ItemImageSource | string): string {
+export function getAnimalImage(itemOrName: ItemImageSource | string): string | null {
     const name = typeof itemOrName === 'string' ? itemOrName : itemOrName.name
     const imageSlug = typeof itemOrName === 'object' ? itemOrName.imageSlug : undefined
-    const subCategory = typeof itemOrName === 'object' ? itemOrName.subCategory : undefined
 
-    if (imageSlug && imageSlug.trim().length > 0) {
-        const slug = imageSlug.trim()
-        return slug.includes('.') ? `/images/animals/${slug}` : `/images/animals/${slug}.jpg`
-    }
+    if (!name || name.trim().length < 2) return null
 
-    const norm = (name || '')
+    const norm = name
         .normalize('NFD')
         .replace(/[\u0300-\u036f]/g, '')
         .toLowerCase()
 
-    // 1. Morfos de Peixe-Palhaço (EcoReef)
-    if (norm.includes('storm')) {
-        if (norm.includes('orange')) return '/images/animals/palhaco-orange-storm.jpg'
-        if (norm.includes('snow')) return '/images/animals/palhaco-snow-storm.jpg'
-        if (norm.includes('mocha')) return '/images/animals/palhaco-mocha-storm.jpg'
+    // 1. Morfos específicos de Storm (EcoReef) com prioridade máxima
+    if (norm.includes('orange storm') || (norm.includes('storm') && norm.includes('orange'))) {
+        return '/images/animals/palhaco-orange-storm.jpg'
+    }
+    if (norm.includes('snow storm') || (norm.includes('storm') && norm.includes('snow') && !norm.includes('flake'))) {
+        return '/images/animals/palhaco-snow-storm.jpg'
+    }
+    if (norm.includes('mocha storm') || (norm.includes('storm') && norm.includes('mocha'))) {
+        return '/images/animals/palhaco-mocha-storm.jpg'
+    }
+    if (norm.includes('black storm') || (norm.includes('storm') && norm.includes('black'))) {
         return '/images/animals/palhaco-black-storm.jpg'
     }
+
+    // 2. imageSlug direto informado no cadastro (sanitizado contra fallbacks legados)
+    if (imageSlug && imageSlug.trim().length > 0) {
+        const slug = imageSlug.trim()
+        const isClownSlug = slug.includes('palhaco') || slug.includes('ocellaris')
+        const isClownName = norm.includes('palhaco') || norm.includes('clown') || norm.includes('ocellaris') || norm.includes('percula')
+        if (!isClownSlug || isClownName) {
+            return slug.includes('.') ? `/images/animals/${slug}` : `/images/animals/${slug}.jpg`
+        }
+    }
+
+    // 3. Consulta pelo Catálogo Mestre de Espécies (correspondência estrita de identidade)
+    const masterMatches = searchMasterSpecies(name, 1)
+    if (masterMatches.length > 0) {
+        const best = masterMatches[0]
+        const normBestName = best.name.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
+        const normBestCommon = best.commonName.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
+        const normSynonyms = (best.synonyms || []).map((s) =>
+            s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
+        )
+
+        const matchesIdentity =
+            norm === normBestName ||
+            norm === normBestCommon ||
+            norm.includes(normBestCommon) ||
+            normSynonyms.some((syn) => norm === syn || norm.includes(syn))
+
+        if (matchesIdentity) {
+            return `/images/animals/${best.imageSlug}`
+        }
+    }
+
+    // 4. Outros morfos certificados
     if (norm.includes('snowflake')) {
         if (norm.includes('maroon')) return '/images/animals/palhaco-maroon-snowflake.jpg'
+        if (norm.includes('black')) return '/images/animals/palhaco-black-snowflake.jpg'
         return '/images/animals/palhaco-snowflake.jpg'
     }
     if (norm.includes('picasso')) return '/images/animals/palhaco-premium-picasso.jpg'
     if (norm.includes('lightning')) return '/images/animals/palhaco-maroon-lightning.jpg'
-    if (norm.includes('nugget')) return '/images/animals/palhaco-maroon-golden-nugget.jpg'
+    if (norm.includes('golden nugget')) return '/images/animals/palhaco-maroon-golden-nugget.jpg'
+    if (norm.includes('goldstripe') || norm.includes('gold stripe')) return '/images/animals/palhaco-maroon-goldstripe.jpg'
     if (norm.includes('maroon')) return '/images/animals/palhaco-maroon-espinho.jpg'
     if (norm.includes('black ocellaris')) return '/images/animals/palhaco-black-ocellaris.jpg'
-    if (norm.includes('palhaco') || norm.includes('ocellaris') || norm.includes('clownfish')) {
+    if (norm.includes('true percula')) return '/images/animals/palhaco-percula-true.jpg'
+
+    // Peixe palhaço comum somente se o nome indicar especificamente
+    if (
+        norm.includes('palhaco ocellaris') ||
+        norm.includes('palhaco comum') ||
+        norm.includes('peixe palhaco') ||
+        norm.includes('peixe-palhaco')
+    ) {
         return '/images/animals/palhaco-ocellaris-comum.jpg'
     }
 
-    // 2. Cirurgiões / Tangs Marinhos
+    // 5. Cirurgiões / Tangs Marinhos
     if (norm.includes('blue tang') || norm.includes('hepatus')) {
         return '/images/animals/tang-hepatus.jpg'
     }
@@ -71,7 +113,7 @@ export function getAnimalImage(itemOrName: ItemImageSource | string): string {
         return '/images/animals/gramma-loreto.jpg'
     }
 
-    // 3. Invertebrados (Camarões e Equipe de Limpeza)
+    // 6. Invertebrados
     if (norm.includes('bailarino') || norm.includes('wurdemanni')) {
         return '/images/animals/camarao-bailarino-comedor-de-aiptasia.jpg'
     }
@@ -82,7 +124,7 @@ export function getAnimalImage(itemOrName: ItemImageSource | string): string {
         return '/images/animals/camarao-stenopus.jpg'
     }
 
-    // 4. Corais
+    // 7. Corais
     if (norm.includes('hammer') || norm.includes('ancora')) {
         return '/images/animals/hammer-coral-branching.jpg'
     }
@@ -96,7 +138,7 @@ export function getAnimalImage(itemOrName: ItemImageSource | string): string {
         return '/images/animals/zoanthus-grandis-cinnamon.jpg'
     }
 
-    // 5. Peixes de Água Doce
+    // 8. Peixes de Água Doce
     if (norm.includes('cardinal') || (norm.includes('neon') && !norm.includes('goby'))) {
         return '/images/animals/tetra-neon-cardinal.jpg'
     }
@@ -113,23 +155,9 @@ export function getAnimalImage(itemOrName: ItemImageSource | string): string {
         return '/images/animals/platy-variatus-arco-iris.jpg'
     }
 
-    // 6. Fallback limpo por subcategoria (somente se não bater por nenhuma espécie)
-    if (subCategory) {
-        switch (subCategory) {
-            case 'CORAL':
-                return '/images/animals/hammer-coral-branching.jpg'
-            case 'INVERTEBRATE':
-                return '/images/animals/camarao-bailarino-comedor-de-aiptasia.jpg'
-            case 'FRESHWATER_FISH':
-                return '/images/animals/tetra-neon-cardinal.jpg'
-            case 'MARINE_FISH':
-                return '/images/animals/tang-hepatus.jpg'
-            default:
-                break
-        }
-    }
-
-    return '/images/animals/palhaco-ocellaris-comum.jpg'
+    // NENHUMA correspondência comprovada: retorna null
+    // O sistema exibirá o card limpo com o nome do item e sem foto falsa
+    return null
 }
 
 /**
@@ -137,14 +165,14 @@ export function getAnimalImage(itemOrName: ItemImageSource | string): string {
  */
 export function getSubCategoryLabel(subCategory?: SubCategory | string): string {
     switch (subCategory) {
-        case 'CORAL':
-            return 'Corais & Anêmonas'
         case 'MARINE_FISH':
             return 'Peixes Marinhos'
-        case 'FRESHWATER_FISH':
-            return 'Peixes de Água Doce'
+        case 'CORAL':
+            return 'Corais & Anêmonas'
         case 'INVERTEBRATE':
             return 'Invertebrados & Equipe de Limpeza'
+        case 'FRESHWATER_FISH':
+            return 'Peixes de Água Doce'
         case 'PLANT':
             return 'Plantas Aquáticas'
         case 'OTHER_LIVING':
