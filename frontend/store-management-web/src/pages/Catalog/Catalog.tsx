@@ -204,8 +204,10 @@ function Catalog() {
                         <img
                             src={item.image}
                             alt={item.name}
-                            crossOrigin="anonymous"
                             className="w-full h-full object-cover"
+                            onError={(e) => {
+                                (e.currentTarget as HTMLImageElement).style.display = 'none'
+                            }}
                         />
                     ) : (
                         <div className="w-full h-full flex flex-col items-center justify-center p-3 text-center bg-slate-950/80">
@@ -256,12 +258,22 @@ function Catalog() {
         setIsExporting(true)
         try {
             // Small pause to ensure rendering stabilizes
-            await new Promise((r) => setTimeout(r, 150))
+            await new Promise((r) => setTimeout(r, 200))
+
+            // Ensure all loaded images inside catalogRef are decoded before drawing to canvas
+            const images = catalogRef.current.querySelectorAll('img')
+            await Promise.all(
+                Array.from(images).map((img) => {
+                    if (img.complete && img.naturalHeight !== 0) return Promise.resolve()
+                    return img.decode().catch(() => Promise.resolve())
+                })
+            )
 
             const dataUrl = await toJpeg(catalogRef.current, {
                 quality: 0.95,
                 pixelRatio: 2,
                 backgroundColor: '#0c1022',
+                cacheBust: false,
             })
 
             const link = document.createElement('a')
@@ -271,9 +283,13 @@ function Catalog() {
             link.click()
 
             toast.success('Catálogo de ofertas gerado e baixado com sucesso em alta resolução!', 'Catálogo Exportado')
-        } catch (err) {
+        } catch (err: unknown) {
             console.error('Falha ao exportar catálogo:', err)
-            toast.error('Não foi possível gerar a imagem do catálogo. Tente novamente.', 'Erro ao Exportar')
+            const errorMsg = err instanceof Error ? err.message : String(err)
+            toast.error(
+                `Não foi possível gerar a imagem do catálogo (${errorMsg}). Tente novamente.`,
+                'Erro ao Exportar'
+            )
         } finally {
             setIsExporting(false)
         }

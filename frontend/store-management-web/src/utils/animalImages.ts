@@ -1,11 +1,30 @@
 import type {SubCategory} from '../types/product'
 import {searchMasterSpecies} from '../data/speciesMasterCatalog'
+import {EXISTING_ANIMAL_IMAGES} from './existingAnimalImages'
 
 export interface ItemImageSource {
     name: string
     imageSlug?: string | null
     subCategory?: SubCategory
     type?: string
+}
+
+/**
+ * Valida se o arquivo de imagem realmente existe no diretório public/images/animals/.
+ * Se o arquivo não estiver salvo no disco, retorna null para garantir que o encarte
+ * nunca tente carregar um recurso inexistente ou quebre a exportação em JPEG.
+ */
+function verifyImageExists(pathOrSlug?: string | null): string | null {
+    if (!pathOrSlug) return null
+    let filename = pathOrSlug.trim()
+    if (filename.startsWith('/images/animals/')) {
+        filename = filename.slice('/images/animals/'.length)
+    }
+    const cleanFilename = filename.includes('.') ? filename : `${filename}.jpg`
+    if (EXISTING_ANIMAL_IMAGES.has(cleanFilename)) {
+        return `/images/animals/${cleanFilename}`
+    }
+    return null
 }
 
 /**
@@ -26,16 +45,16 @@ export function getAnimalImage(itemOrName: ItemImageSource | string): string | n
 
     // 1. Morfos específicos de Storm (EcoReef) com prioridade máxima
     if (norm.includes('orange storm') || (norm.includes('storm') && norm.includes('orange'))) {
-        return '/images/animals/palhaco-orange-storm.jpg'
+        return verifyImageExists('palhaco-orange-storm.jpg')
     }
     if (norm.includes('snow storm') || (norm.includes('storm') && norm.includes('snow') && !norm.includes('flake'))) {
-        return '/images/animals/palhaco-snow-storm.jpg'
+        return verifyImageExists('palhaco-snow-storm.jpg')
     }
     if (norm.includes('mocha storm') || (norm.includes('storm') && norm.includes('mocha'))) {
-        return '/images/animals/palhaco-mocha-storm.jpg'
+        return verifyImageExists('palhaco-mocha-storm.jpg')
     }
     if (norm.includes('black storm') || (norm.includes('storm') && norm.includes('black'))) {
-        return '/images/animals/palhaco-black-storm.jpg'
+        return verifyImageExists('palhaco-black-storm.jpg')
     }
 
     // 2. imageSlug direto informado no cadastro (sanitizado contra fallbacks legados)
@@ -44,7 +63,8 @@ export function getAnimalImage(itemOrName: ItemImageSource | string): string | n
         const isClownSlug = slug.includes('palhaco') || slug.includes('ocellaris')
         const isClownName = norm.includes('palhaco') || norm.includes('clown') || norm.includes('ocellaris') || norm.includes('percula')
         if (!isClownSlug || isClownName) {
-            return slug.includes('.') ? `/images/animals/${slug}` : `/images/animals/${slug}.jpg`
+            const verified = verifyImageExists(slug)
+            if (verified) return verified
         }
     }
 
@@ -65,23 +85,24 @@ export function getAnimalImage(itemOrName: ItemImageSource | string): string | n
             normSynonyms.some((syn) => norm === syn || norm.includes(syn))
 
         if (matchesIdentity) {
-            return `/images/animals/${best.imageSlug}`
+            const verified = verifyImageExists(best.imageSlug)
+            if (verified) return verified
         }
     }
 
     // 4. Outros morfos certificados
     if (norm.includes('snowflake')) {
-        if (norm.includes('maroon')) return '/images/animals/palhaco-maroon-snowflake.jpg'
-        if (norm.includes('black')) return '/images/animals/palhaco-black-snowflake.jpg'
-        return '/images/animals/palhaco-snowflake.jpg'
+        if (norm.includes('maroon')) return verifyImageExists('palhaco-maroon-snowflake.jpg')
+        if (norm.includes('black')) return verifyImageExists('palhaco-black-snowflake.jpg')
+        return verifyImageExists('palhaco-snowflake.jpg')
     }
-    if (norm.includes('picasso')) return '/images/animals/palhaco-premium-picasso.jpg'
-    if (norm.includes('lightning')) return '/images/animals/palhaco-maroon-lightning.jpg'
-    if (norm.includes('golden nugget')) return '/images/animals/palhaco-maroon-golden-nugget.jpg'
-    if (norm.includes('goldstripe') || norm.includes('gold stripe')) return '/images/animals/palhaco-maroon-goldstripe.jpg'
-    if (norm.includes('maroon')) return '/images/animals/palhaco-maroon-espinho.jpg'
-    if (norm.includes('black ocellaris')) return '/images/animals/palhaco-black-ocellaris.jpg'
-    if (norm.includes('true percula')) return '/images/animals/palhaco-percula-true.jpg'
+    if (norm.includes('picasso')) return verifyImageExists('palhaco-premium-picasso.jpg')
+    if (norm.includes('lightning')) return verifyImageExists('palhaco-maroon-lightning.jpg')
+    if (norm.includes('golden nugget')) return verifyImageExists('palhaco-maroon-golden-nugget.jpg')
+    if (norm.includes('goldstripe') || norm.includes('gold stripe')) return verifyImageExists('palhaco-maroon-goldstripe.jpg')
+    if (norm.includes('maroon')) return verifyImageExists('palhaco-maroon-espinho.jpg')
+    if (norm.includes('black ocellaris')) return verifyImageExists('palhaco-black-ocellaris.jpg')
+    if (norm.includes('true percula')) return verifyImageExists('palhaco-percula-true.jpg')
 
     // Peixe palhaço comum somente se o nome indicar especificamente
     if (
@@ -90,73 +111,72 @@ export function getAnimalImage(itemOrName: ItemImageSource | string): string | n
         norm.includes('peixe palhaco') ||
         norm.includes('peixe-palhaco')
     ) {
-        return '/images/animals/palhaco-ocellaris-comum.jpg'
+        return verifyImageExists('palhaco-ocellaris-comum.jpg')
     }
 
     // 5. Cirurgiões / Tangs Marinhos
     if (norm.includes('blue tang') || norm.includes('hepatus')) {
-        return '/images/animals/tang-hepatus.jpg'
+        return verifyImageExists('tang-hepatus.jpg')
     }
     if (norm.includes('yellow tang') || norm.includes('flavescens')) {
-        return '/images/animals/tang-amarelo.jpg'
+        return verifyImageExists('tang-amarelo.jpg')
     }
     if (norm.includes('purple') && norm.includes('tang')) {
-        return '/images/animals/tang-purple.jpg'
+        return verifyImageExists('tang-purple.jpg')
     }
     if (norm.includes('powder blue')) {
-        return '/images/animals/tang-powder-blue.jpg'
+        return verifyImageExists('tang-powder-blue.jpg')
     }
     if (norm.includes('leao') || norm.includes('volitans')) {
-        return '/images/animals/peixe-leao.jpg'
+        return verifyImageExists('peixe-leao.jpg')
     }
     if (norm.includes('gramma') || norm.includes('loreto')) {
-        return '/images/animals/gramma-loreto.jpg'
+        return verifyImageExists('gramma-loreto.jpg')
     }
 
     // 6. Invertebrados
     if (norm.includes('bailarino') || norm.includes('wurdemanni')) {
-        return '/images/animals/camarao-bailarino-comedor-de-aiptasia.jpg'
+        return verifyImageExists('camarao-bailarino-comedor-de-aiptasia.jpg')
     }
     if (norm.includes('cleaner') || norm.includes('amboinensis')) {
-        return '/images/animals/camarao-skunk-cleaner.jpg'
+        return verifyImageExists('camarao-skunk-cleaner.jpg')
     }
     if (norm.includes('stenopus')) {
-        return '/images/animals/camarao-stenopus.jpg'
+        return verifyImageExists('camarao-stenopus.jpg')
     }
 
     // 7. Corais
     if (norm.includes('hammer') || norm.includes('ancora')) {
-        return '/images/animals/hammer-coral-branching.jpg'
+        return verifyImageExists('hammer-coral-branching.jpg')
     }
     if (norm.includes('frogspawn') || norm.includes('divisa')) {
-        return '/images/animals/frogspawn-coral-green.jpg'
+        return verifyImageExists('frogspawn-coral-green.jpg')
     }
     if (norm.includes('torch') || norm.includes('glabrescens')) {
-        return '/images/animals/torch-coral-green-tip.jpg'
+        return verifyImageExists('torch-coral-green-tip.jpg')
     }
     if (norm.includes('zoanthus')) {
-        return '/images/animals/zoanthus-grandis-cinnamon.jpg'
+        return verifyImageExists('zoanthus-grandis-cinnamon.jpg')
     }
 
     // 8. Peixes de Água Doce
     if (norm.includes('cardinal') || (norm.includes('neon') && !norm.includes('goby'))) {
-        return '/images/animals/tetra-neon-cardinal.jpg'
+        return verifyImageExists('tetra-neon-cardinal.jpg')
     }
     if (norm.includes('disco') || norm.includes('discus')) {
-        return '/images/animals/acara-disco-selvagem-azul.jpg'
+        return verifyImageExists('acara-disco-selvagem-azul.jpg')
     }
     if (norm.includes('coridora') || norm.includes('corydora') || norm.includes('sterbai')) {
-        return '/images/animals/coridora-sterbai.jpg'
+        return verifyImageExists('coridora-sterbai.jpg')
     }
     if (norm.includes('betta')) {
-        return '/images/animals/betta-splendens.jpg'
+        return verifyImageExists('betta-splendens.jpg')
     }
     if (norm.includes('platy')) {
-        return '/images/animals/platy-variatus-arco-iris.jpg'
+        return verifyImageExists('platy-variatus-arco-iris.jpg')
     }
 
-    // NENHUMA correspondência comprovada: retorna null
-    // O sistema exibirá o card limpo com o nome do item e sem foto falsa
+    // NENHUMA correspondência comprovada ou arquivo ausente: retorna null
     return null
 }
 
