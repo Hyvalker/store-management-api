@@ -2,7 +2,10 @@
 
 Diretrizes e padrões arquiteturais consolidados para o projeto Store Management:
 
-## 1. Padrão de Nomenclatura e Idiomas
+## 1. Padrão de Nomenclatura, Idiomas e Mensagens de Commit Git
+- **Mensagens de Commit Git em Inglês (MANDATÓRIO)**:
+  - Todas as mensagens de commit no Git **DEVEM SER REDIGIDAS ESTRITAMENTE EM INGLÊS**, seguindo o padrão Conventional Commits (ex.: `feat: add product image upload`, `fix: handle dismembered morph duplicates in database seed`, `refactor: extract catalog parser`).
+  - **NUNCA** faça commits em português, a menos que o usuário solicite explicitamente o contrário naquele comando específico. O padrão permanente do repositório é 100% em inglês.
 - **Código em Inglês (Developer-facing)**:
   - Todas as entidades, modelos, DTOs, controllers, services, repositories, tabelas de banco de dados, colunas, variáveis, funções, tipos TypeScript, rotas e nomes de componentes/arquivos **DEVEM ser nomeados estritamente em inglês** (ex: `CatalogItem`, `cardPriceLabel`, `installments`, `costPrice`, `/catalog`, etc.).
 - **Interface em Português Brasileiro (User-facing)**:
