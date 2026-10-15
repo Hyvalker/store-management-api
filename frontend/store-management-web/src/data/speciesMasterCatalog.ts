@@ -280,7 +280,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "zoanthus-king-midas.webp",
+    "imageSlug": "",
     "section": "Corais & Anêmonas",
     "familyGroup": "Zoanthídeos"
   },
@@ -381,7 +381,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "zoanthus-grandis-cinnamon.jpg",
+    "imageSlug": "",
     "section": "Corais & Anêmonas",
     "familyGroup": "Palythoas"
   },
@@ -577,7 +577,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "rhodactis-superman.jpg",
+    "imageSlug": "",
     "section": "Corais & Anêmonas",
     "familyGroup": "Mushrooms & Ricordeas"
   },
@@ -670,7 +670,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "ricordea-florida-rainbow.jpg",
+    "imageSlug": "",
     "section": "Corais & Anêmonas",
     "familyGroup": "Mushrooms & Ricordeas"
   },
@@ -702,7 +702,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "ricordea-florida-azul.jpg",
+    "imageSlug": "",
     "section": "Corais & Anêmonas",
     "familyGroup": "Mushrooms & Ricordeas"
   },
@@ -955,7 +955,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "anemona-bubble-tip-rainbow.jpg",
+    "imageSlug": "",
     "section": "Corais & Anêmonas",
     "familyGroup": "Geral"
   },
@@ -1114,7 +1114,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "octospawn-coral.jpg",
+    "imageSlug": "",
     "section": "Corais & Anêmonas",
     "familyGroup": "Geral"
   },
@@ -1273,7 +1273,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "trumpet-blue.jpg",
+    "imageSlug": "",
     "section": "Corais & Anêmonas",
     "familyGroup": "Geral"
   },
@@ -1322,7 +1322,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "acanthastrea-micromussa-orange.jpg",
+    "imageSlug": "",
     "section": "Corais & Anêmonas",
     "familyGroup": "Geral"
   },
@@ -1572,7 +1572,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "montipora-sunset.jpg",
+    "imageSlug": "",
     "section": "Corais & Anêmonas",
     "familyGroup": "SPS (Pólipos Pequenos)"
   },
@@ -1670,7 +1670,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "acropora-valida.jpg",
+    "imageSlug": "",
     "section": "Corais & Anêmonas",
     "familyGroup": "SPS (Pólipos Pequenos)"
   },
@@ -1686,7 +1686,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "acropora-millepora-blue.jpg",
+    "imageSlug": "",
     "section": "Corais & Anêmonas",
     "familyGroup": "SPS (Pólipos Pequenos)"
   },
@@ -1769,7 +1769,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "MARINE_FISH",
-    "imageSlug": "palhaco-black-ice.jpg",
+    "imageSlug": "",
     "section": "Peixes Marinhos",
     "familyGroup": "Palhaços (Amphiprioninae)"
   },
@@ -1816,7 +1816,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "MARINE_FISH",
-    "imageSlug": "palhaco-black-gladiator.jpg",
+    "imageSlug": "",
     "section": "Peixes Marinhos",
     "familyGroup": "Palhaços (Amphiprioninae)"
   },
@@ -1847,7 +1847,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "MARINE_FISH",
-    "imageSlug": "palhaco-flurry.jpg",
+    "imageSlug": "",
     "section": "Peixes Marinhos",
     "familyGroup": "Palhaços (Amphiprioninae)"
   },
@@ -1878,7 +1878,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "MARINE_FISH",
-    "imageSlug": "palhaco-black-storm.jpg",
+    "imageSlug": "",
     "section": "Peixes Marinhos",
     "familyGroup": "Palhaços (Amphiprioninae)"
   },
@@ -1942,7 +1942,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "MARINE_FISH",
-    "imageSlug": "tang-scopas.jpg",
+    "imageSlug": "",
     "section": "Peixes Marinhos",
     "familyGroup": "Tangs e Cirurgiões (Acanthuridae)"
   },
@@ -1974,7 +1974,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "MARINE_FISH",
-    "imageSlug": "tang-naso-elegans.jpg",
+    "imageSlug": "",
     "section": "Peixes Marinhos",
     "familyGroup": "Tangs e Cirurgiões (Acanthuridae)"
   },
@@ -2005,7 +2005,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "MARINE_FISH",
-    "imageSlug": "gramma-brasileiro.jpg",
+    "imageSlug": "",
     "section": "Peixes Marinhos",
     "familyGroup": "Geral"
   },
@@ -2072,7 +2072,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "MARINE_FISH",
-    "imageSlug": "wrasse-yellow-coris.jpg",
+    "imageSlug": "",
     "section": "Peixes Marinhos",
     "familyGroup": "Bodiões e Wrasses (Labridae)"
   },
@@ -2121,7 +2121,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "MARINE_FISH",
-    "imageSlug": "blenio-bicolor.jpg",
+    "imageSlug": "",
     "section": "Peixes Marinhos",
     "familyGroup": "Gobies e Blênios"
   },
@@ -2137,7 +2137,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "MARINE_FISH",
-    "imageSlug": "blenio-midas.jpg",
+    "imageSlug": "",
     "section": "Peixes Marinhos",
     "familyGroup": "Gobies e Blênios"
   },
@@ -2186,7 +2186,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "MARINE_FISH",
-    "imageSlug": "cardinal-pijama.jpg",
+    "imageSlug": "",
     "section": "Peixes Marinhos",
     "familyGroup": "Geral"
   },
@@ -2217,7 +2217,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "MARINE_FISH",
-    "imageSlug": "anjo-coral-beauty.jpg",
+    "imageSlug": "",
     "section": "Peixes Marinhos",
     "familyGroup": "Geral"
   },
@@ -2248,7 +2248,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "MARINE_INVERTEBRATE",
-    "imageSlug": "camarao-bailarino.jpg",
+    "imageSlug": "",
     "section": "Invertebrados Marinhos",
     "familyGroup": "Equipe de Limpeza & Invertebrados"
   },
@@ -2264,7 +2264,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "MARINE_INVERTEBRATE",
-    "imageSlug": "camarao-blood.jpg",
+    "imageSlug": "",
     "section": "Invertebrados Marinhos",
     "familyGroup": "Equipe de Limpeza & Invertebrados"
   },
@@ -2295,7 +2295,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "MARINE_INVERTEBRATE",
-    "imageSlug": "turbo-snail.jpg",
+    "imageSlug": "",
     "section": "Invertebrados Marinhos",
     "familyGroup": "Geral"
   },
@@ -2944,7 +2944,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "tricogaster-azul.jpg",
+    "imageSlug": "",
     "section": "Peixes de Água Doce",
     "familyGroup": "Geral"
   },
@@ -3056,7 +3056,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "tetra-negro-veu.jpg",
+    "imageSlug": "",
     "section": "Peixes de Água Doce",
     "familyGroup": "Caracídeos (Tetras e Cardumes)"
   },
@@ -3389,7 +3389,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "acara-bandeira-comum-listrado.jpg",
+    "imageSlug": "",
     "section": "Peixes de Água Doce",
     "familyGroup": "Ciclídeos (Americanos e Africanos)"
   },
@@ -3607,7 +3607,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "acara-disco-selvagem-verde.jpg",
+    "imageSlug": "",
     "section": "Peixes de Água Doce",
     "familyGroup": "Ciclídeos (Americanos e Africanos)"
   },
@@ -3623,7 +3623,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "acara-disco-selvagem-azul.jpg",
+    "imageSlug": "",
     "section": "Peixes de Água Doce",
     "familyGroup": "Ciclídeos (Americanos e Africanos)"
   },
@@ -3654,7 +3654,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "ramirezi-ouro.jpg",
+    "imageSlug": "",
     "section": "Peixes de Água Doce",
     "familyGroup": "Ciclídeos (Americanos e Africanos)"
   },
@@ -3685,7 +3685,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "ramirezi-black.jpg",
+    "imageSlug": "",
     "section": "Peixes de Água Doce",
     "familyGroup": "Ciclídeos (Americanos e Africanos)"
   },
@@ -3716,7 +3716,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "apistogramma-agassizii-double-red.jpg",
+    "imageSlug": "",
     "section": "Peixes de Água Doce",
     "familyGroup": "Ciclídeos (Americanos e Africanos)"
   },
@@ -3747,7 +3747,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "ciclideo-pseudotropheus-socolofi.jpg",
+    "imageSlug": "",
     "section": "Peixes de Água Doce",
     "familyGroup": "Ciclídeos (Americanos e Africanos)"
   },
@@ -3913,7 +3913,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "kinguio-ranchu.jpg",
+    "imageSlug": "",
     "section": "Peixes de Água Doce",
     "familyGroup": "Ciprinídeos (Kinguios & Carpas)"
   },
@@ -3944,7 +3944,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "coridora-aeneus.jpg",
+    "imageSlug": "",
     "section": "Peixes de Água Doce",
     "familyGroup": "Coridoras (Callichthyidae)"
   },
@@ -4006,7 +4006,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "coridora-sterbai.jpg",
+    "imageSlug": "",
     "section": "Peixes de Água Doce",
     "familyGroup": "Coridoras (Callichthyidae)"
   },
@@ -4115,7 +4115,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "cascudo-abacaxi.jpg",
+    "imageSlug": "",
     "section": "Peixes de Água Doce",
     "familyGroup": "Cascudos & Loricariídeos"
   },
@@ -4131,7 +4131,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "cascudo-pletomado.jpg",
+    "imageSlug": "",
     "section": "Peixes de Água Doce",
     "familyGroup": "Cascudos & Loricariídeos"
   },
@@ -4260,7 +4260,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_INVERTEBRATE",
-    "imageSlug": "caracol-neritina-zebra.jpg",
+    "imageSlug": "",
     "section": "Invertebrados de Água Doce",
     "familyGroup": "Equipe de Limpeza & Invertebrados"
   },
@@ -5231,7 +5231,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "anemona-sebae.jpg",
+    "imageSlug": "",
     "section": "Corais & Anêmonas",
     "familyGroup": "Geral"
   },
@@ -6062,7 +6062,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "acropora-millepora-rosa.jpg",
+    "imageSlug": "",
     "section": "Corais & Anêmonas",
     "familyGroup": "SPS (Pólipos Pequenos)"
   },
@@ -6093,7 +6093,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "acropora-tortuosa.jpg",
+    "imageSlug": "",
     "section": "Corais & Anêmonas",
     "familyGroup": "SPS (Pólipos Pequenos)"
   },
@@ -6173,7 +6173,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "MARINE_FISH",
-    "imageSlug": "palhaco-orange-skunk.jpg",
+    "imageSlug": "",
     "section": "Peixes Marinhos",
     "familyGroup": "Palhaços (Amphiprioninae)"
   },
@@ -6572,7 +6572,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "MARINE_FISH",
-    "imageSlug": "anthias-dispar.jpg",
+    "imageSlug": "",
     "section": "Peixes Marinhos",
     "familyGroup": "Geral"
   },
@@ -6742,7 +6742,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "MARINE_FISH",
-    "imageSlug": "blenio-tailspot.jpg",
+    "imageSlug": "",
     "section": "Peixes Marinhos",
     "familyGroup": "Gobies e Blênios"
   },
@@ -6773,7 +6773,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "MARINE_FISH",
-    "imageSlug": "hawkfish-longnose.jpg",
+    "imageSlug": "",
     "section": "Peixes Marinhos",
     "familyGroup": "Geral"
   },
@@ -6851,7 +6851,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "MARINE_FISH",
-    "imageSlug": "firefish-helfrichi.jpg",
+    "imageSlug": "",
     "section": "Peixes Marinhos",
     "familyGroup": "Geral"
   },
@@ -6913,7 +6913,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "MARINE_INVERTEBRATE",
-    "imageSlug": "camarao-stenopus.jpg",
+    "imageSlug": "",
     "section": "Invertebrados Marinhos",
     "familyGroup": "Equipe de Limpeza & Invertebrados"
   },
@@ -6990,7 +6990,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "MARINE_INVERTEBRATE",
-    "imageSlug": "tridacna-crocea.jpg",
+    "imageSlug": "",
     "section": "Invertebrados Marinhos",
     "familyGroup": "Equipe de Limpeza & Invertebrados"
   },
@@ -7022,7 +7022,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "MARINE_INVERTEBRATE",
-    "imageSlug": "ourico-tuxedo.jpg",
+    "imageSlug": "",
     "section": "Invertebrados Marinhos",
     "familyGroup": "Geral"
   },
@@ -7349,7 +7349,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "molinesia-velifera.jpg",
+    "imageSlug": "",
     "section": "Peixes de Água Doce",
     "familyGroup": "Poecilídeos (Ovivíparos)"
   },
@@ -7491,7 +7491,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "tetra-fantasma-vermelho.jpg",
+    "imageSlug": "",
     "section": "Peixes de Água Doce",
     "familyGroup": "Caracídeos (Tetras e Cardumes)"
   },
@@ -7540,7 +7540,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "tetra-olho-de-fogo.jpg",
+    "imageSlug": "",
     "section": "Peixes de Água Doce",
     "familyGroup": "Caracídeos (Tetras e Cardumes)"
   },
@@ -7618,7 +7618,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "tetra-glowlight.jpg",
+    "imageSlug": "",
     "section": "Peixes de Água Doce",
     "familyGroup": "Caracídeos (Tetras e Cardumes)"
   },
@@ -7634,7 +7634,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "tetra-buenos-aires.jpg",
+    "imageSlug": "",
     "section": "Peixes de Água Doce",
     "familyGroup": "Caracídeos (Tetras e Cardumes)"
   },
@@ -7665,7 +7665,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "peixe-borboleta-carnegiella.jpg",
+    "imageSlug": "",
     "section": "Peixes de Água Doce",
     "familyGroup": "Geral"
   },
@@ -7696,7 +7696,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "rasbora-espei.jpg",
+    "imageSlug": "",
     "section": "Peixes de Água Doce",
     "familyGroup": "Geral"
   },
@@ -7883,7 +7883,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "acara-altum-verdadeiro.jpg",
+    "imageSlug": "",
     "section": "Peixes de Água Doce",
     "familyGroup": "Ciclídeos (Americanos e Africanos)"
   },
@@ -8101,7 +8101,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "apistogramma-borellii.jpg",
+    "imageSlug": "",
     "section": "Peixes de Água Doce",
     "familyGroup": "Ciclídeos (Americanos e Africanos)"
   },
@@ -8148,7 +8148,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "acara-severo-green.jpg",
+    "imageSlug": "",
     "section": "Peixes de Água Doce",
     "familyGroup": "Ciclídeos (Americanos e Africanos)"
   },
@@ -8179,7 +8179,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "acara-geophagus-sveni.jpg",
+    "imageSlug": "",
     "section": "Peixes de Água Doce",
     "familyGroup": "Geral"
   },
@@ -8320,7 +8320,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "coridora-adolfoi.jpg",
+    "imageSlug": "",
     "section": "Peixes de Água Doce",
     "familyGroup": "Coridoras (Callichthyidae)"
   },
@@ -8351,7 +8351,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "coridora-ana-hastatus.jpg",
+    "imageSlug": "",
     "section": "Peixes de Água Doce",
     "familyGroup": "Coridoras (Callichthyidae)"
   },
@@ -8367,7 +8367,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "coridora-ana-habrosus.jpg",
+    "imageSlug": "",
     "section": "Peixes de Água Doce",
     "familyGroup": "Coridoras (Callichthyidae)"
   },
@@ -9397,7 +9397,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "PLANT",
-    "imageSlug": "musgo-christmas.jpg",
+    "imageSlug": "",
     "section": "Plantas Aquáticas",
     "familyGroup": "Flora e Macroalgas"
   },
@@ -9661,7 +9661,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "PLANT",
-    "imageSlug": "bacopa-monnieri.jpg",
+    "imageSlug": "",
     "section": "Plantas Aquáticas",
     "familyGroup": "Geral"
   },
@@ -9755,7 +9755,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "PLANT",
-    "imageSlug": "rotala-wallichii.jpg",
+    "imageSlug": "",
     "section": "Plantas Aquáticas",
     "familyGroup": "Flora e Macroalgas"
   },
@@ -9802,7 +9802,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "PLANT",
-    "imageSlug": "ludwigia-glandulosa.jpg",
+    "imageSlug": "",
     "section": "Plantas Aquáticas",
     "familyGroup": "Geral"
   },
@@ -10054,7 +10054,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "PLANT",
-    "imageSlug": "cryptocoryne-parva.jpg",
+    "imageSlug": "",
     "section": "Plantas Aquáticas",
     "familyGroup": "Geral"
   },
@@ -10182,7 +10182,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "PLANT",
-    "imageSlug": "glossostigma-elatinoides.jpg",
+    "imageSlug": "",
     "section": "Plantas Aquáticas",
     "familyGroup": "Geral"
   },
@@ -10244,7 +10244,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "PLANT",
-    "imageSlug": "pogostemon-helferi.jpg",
+    "imageSlug": "",
     "section": "Plantas Aquáticas",
     "familyGroup": "Geral"
   },

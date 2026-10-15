@@ -128,11 +128,11 @@
   {
     "id": "15",
     "name": "Zoanthus King Midas (Zoanthus sp.)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#014",
-    "detail": "Foto reaproveitada do banco existente (zoanthus-king-midas.webp)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "CORAL",
-    "imageFile": "zoanthus-king-midas.webp"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "16",
@@ -182,11 +182,11 @@
   {
     "id": "21",
     "name": "Palythoa Cinnamon (Palythoa sp.)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#019",
-    "detail": "Foto reaproveitada do banco existente (zoanthus-grandis-cinnamon.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "CORAL",
-    "imageFile": "zoanthus-grandis-cinnamon.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "22",
@@ -290,11 +290,11 @@
   {
     "id": "33",
     "name": "Mushroom Rhodactis Superman (Rhodactis sp.)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#027",
-    "detail": "Foto reaproveitada do banco existente (rhodactis-superman.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "CORAL",
-    "imageFile": "rhodactis-superman.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "34",
@@ -344,11 +344,11 @@
   {
     "id": "39",
     "name": "Ricordea Florida Rainbow (Ricordea florida)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#030",
-    "detail": "Foto reaproveitada do banco existente (ricordea-florida-rainbow.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "CORAL",
-    "imageFile": "ricordea-florida-rainbow.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "40",
@@ -362,11 +362,11 @@
   {
     "id": "41",
     "name": "Ricordea Florida Azul (Ricordea florida)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#031",
-    "detail": "Foto reaproveitada do banco existente (ricordea-florida-azul.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "CORAL",
-    "imageFile": "ricordea-florida-azul.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "42",
@@ -506,11 +506,11 @@
   {
     "id": "57",
     "name": "Anêmona Bubble Tip Rainbow (Entacmaea quadricolor var. Rainbow)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#041",
-    "detail": "Foto reaproveitada do banco existente (anemona-bubble-tip-rainbow.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "CORAL",
-    "imageFile": "anemona-bubble-tip-rainbow.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "58",
@@ -596,11 +596,11 @@
   {
     "id": "67",
     "name": "Coral Octospawn Verde (Fimbriaphyllia paradivisa)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#048",
-    "detail": "Foto reaproveitada do banco existente (octospawn-coral.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "CORAL",
-    "imageFile": "octospawn-coral.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "68",
@@ -686,11 +686,11 @@
   {
     "id": "77",
     "name": "Coral Trumpet Azul (Caulastrea furcata)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#054",
-    "detail": "Foto reaproveitada do banco existente (trumpet-blue.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "CORAL",
-    "imageFile": "trumpet-blue.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "78",
@@ -713,11 +713,11 @@
   {
     "id": "80",
     "name": "Coral Acanthastrea Green (Micromussa lordhowensis)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#056",
-    "detail": "Foto reaproveitada do banco existente (acanthastrea-micromussa-orange.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "CORAL",
-    "imageFile": "acanthastrea-micromussa-orange.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "81",
@@ -857,11 +857,11 @@
   {
     "id": "96",
     "name": "Coral Montipora Incrustante Sunset (Montipora danae)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#064",
-    "detail": "Foto reaproveitada do banco existente (montipora-sunset.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "CORAL",
-    "imageFile": "montipora-sunset.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "97",
@@ -911,20 +911,20 @@
   {
     "id": "102",
     "name": "Coral Acropora Valida Tricolor (Acropora valida)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#068",
-    "detail": "Foto reaproveitada do banco existente (acropora-valida.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "CORAL",
-    "imageFile": "acropora-valida.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "103",
     "name": "Coral Acropora Millepora Azul (Acropora millepora)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#068",
-    "detail": "Foto reaproveitada do banco existente (acropora-millepora-blue.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "CORAL",
-    "imageFile": "acropora-millepora-blue.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "104",
@@ -965,11 +965,11 @@
   {
     "id": "108",
     "name": "Peixe-palhaço Black Ice (Amphiprion ocellaris)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#072",
-    "detail": "Foto reaproveitada do banco existente (palhaco-black-ice.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "MARINE_FISH",
-    "imageFile": "palhaco-black-ice.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "109",
@@ -992,11 +992,11 @@
   {
     "id": "111",
     "name": "Peixe-palhaço Gladiator (Amphiprion ocellaris)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#073",
-    "detail": "Foto reaproveitada do banco existente (palhaco-black-gladiator.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "MARINE_FISH",
-    "imageFile": "palhaco-black-gladiator.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "112",
@@ -1010,11 +1010,11 @@
   {
     "id": "113",
     "name": "Peixe-palhaço Flurry (Amphiprion ocellaris)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#074",
-    "detail": "Foto reaproveitada do banco existente (palhaco-flurry.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "MARINE_FISH",
-    "imageFile": "palhaco-flurry.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "114",
@@ -1028,11 +1028,11 @@
   {
     "id": "115",
     "name": "Peixe-palhaço Black Storm (Amphiprion ocellaris)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#075",
-    "detail": "Foto reaproveitada do banco existente (palhaco-black-storm.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "MARINE_FISH",
-    "imageFile": "palhaco-black-storm.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "116",
@@ -1064,11 +1064,11 @@
   {
     "id": "119",
     "name": "Scopas Tang (Zebrasoma scopas)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#078",
-    "detail": "Foto reaproveitada do banco existente (tang-scopas.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "MARINE_FISH",
-    "imageFile": "tang-scopas.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "120",
@@ -1082,11 +1082,11 @@
   {
     "id": "121",
     "name": "Naso Tang (Naso lituratus)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#079",
-    "detail": "Foto reaproveitada do banco existente (tang-naso-elegans.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "MARINE_FISH",
-    "imageFile": "tang-naso-elegans.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "122",
@@ -1100,11 +1100,11 @@
   {
     "id": "123",
     "name": "Gramma Brasileiro (Gramma brasiliensis)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#080",
-    "detail": "Foto reaproveitada do banco existente (gramma-brasileiro.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "MARINE_FISH",
-    "imageFile": "gramma-brasileiro.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "124",
@@ -1136,11 +1136,11 @@
   {
     "id": "127",
     "name": "Yellow Coris Wrasse (Halichoeres chrysus)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#083",
-    "detail": "Foto reaproveitada do banco existente (wrasse-yellow-coris.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "MARINE_FISH",
-    "imageFile": "wrasse-yellow-coris.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "128",
@@ -1163,20 +1163,20 @@
   {
     "id": "130",
     "name": "Blênio Bicolor (Ecsenius bicolor)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#085",
-    "detail": "Foto reaproveitada do banco existente (blenio-bicolor.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "MARINE_FISH",
-    "imageFile": "blenio-bicolor.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "131",
     "name": "Blênio Midas (Ecsenius midas)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#085",
-    "detail": "Foto reaproveitada do banco existente (blenio-midas.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "MARINE_FISH",
-    "imageFile": "blenio-midas.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "132",
@@ -1199,11 +1199,11 @@
   {
     "id": "134",
     "name": "Cardinal Pijama (Sphaeramia nematoptera)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#087",
-    "detail": "Foto reaproveitada do banco existente (cardinal-pijama.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "MARINE_FISH",
-    "imageFile": "cardinal-pijama.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "135",
@@ -1217,11 +1217,11 @@
   {
     "id": "136",
     "name": "Coral Beauty (Centropyge bispinosa)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#088",
-    "detail": "Foto reaproveitada do banco existente (anjo-coral-beauty.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "MARINE_FISH",
-    "imageFile": "anjo-coral-beauty.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "137",
@@ -1235,20 +1235,20 @@
   {
     "id": "138",
     "name": "Camarão Bailarino (Lysmata boggessi)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#089",
-    "detail": "Foto reaproveitada do banco existente (camarao-bailarino.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "MARINE_INVERTEBRATE",
-    "imageFile": "camarao-bailarino.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "139",
     "name": "Camarão Blood Fire (Lysmata debelius)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#089",
-    "detail": "Foto reaproveitada do banco existente (camarao-blood.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "MARINE_INVERTEBRATE",
-    "imageFile": "camarao-blood.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "140",
@@ -1262,11 +1262,11 @@
   {
     "id": "141",
     "name": "Caracol Turbo Snail (Turbo fluctuosus)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#090",
-    "detail": "Foto reaproveitada do banco existente (turbo-snail.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "MARINE_INVERTEBRATE",
-    "imageFile": "turbo-snail.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "142",
@@ -1631,11 +1631,11 @@
   {
     "id": "182",
     "name": "Tricogaster Azul (Trichopodus trichopterus)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#111",
-    "detail": "Foto reaproveitada do banco existente (tricogaster-azul.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "FRESHWATER_FISH",
-    "imageFile": "tricogaster-azul.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "183",
@@ -1694,11 +1694,11 @@
   {
     "id": "189",
     "name": "Tetra Negro Véu (Gymnocorymbus ternetzi var. Longfin)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#114",
-    "detail": "Foto reaproveitada do banco existente (tetra-negro-veu.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "FRESHWATER_FISH",
-    "imageFile": "tetra-negro-veu.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "190",
@@ -1883,11 +1883,11 @@
   {
     "id": "210",
     "name": "Acará Bandeira Zebra (Pterophyllum scalare var. Zebra)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#125",
-    "detail": "Foto reaproveitada do banco existente (acara-bandeira-comum-listrado.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "FRESHWATER_FISH",
-    "imageFile": "acara-bandeira-comum-listrado.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "211",
@@ -2009,20 +2009,20 @@
   {
     "id": "224",
     "name": "Acará Disco Selvagem Verde Tefé (Symphysodon tarzoo)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#131",
-    "detail": "Foto reaproveitada do banco existente (acara-disco-selvagem-verde.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "FRESHWATER_FISH",
-    "imageFile": "acara-disco-selvagem-verde.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "225",
     "name": "Acará Disco Selvagem Azul (Symphysodon aequifasciatus)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#131",
-    "detail": "Foto reaproveitada do banco existente (acara-disco-selvagem-azul.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "FRESHWATER_FISH",
-    "imageFile": "acara-disco-selvagem-azul.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "226",
@@ -2036,11 +2036,11 @@
   {
     "id": "227",
     "name": "Ramirezi Ouro (Mikrogeophagus ramirezi var. Gold)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#132",
-    "detail": "Foto reaproveitada do banco existente (ramirezi-ouro.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "FRESHWATER_FISH",
-    "imageFile": "ramirezi-ouro.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "228",
@@ -2054,11 +2054,11 @@
   {
     "id": "229",
     "name": "Ramirezi Black German (Mikrogeophagus ramirezi var. Black)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#133",
-    "detail": "Foto reaproveitada do banco existente (ramirezi-black.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "FRESHWATER_FISH",
-    "imageFile": "ramirezi-black.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "230",
@@ -2072,11 +2072,11 @@
   {
     "id": "231",
     "name": "Apistogramma Agassizii Fire Red (Apistogramma agassizii)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#134",
-    "detail": "Foto reaproveitada do banco existente (apistogramma-agassizii-double-red.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "FRESHWATER_FISH",
-    "imageFile": "apistogramma-agassizii-double-red.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "232",
@@ -2090,11 +2090,11 @@
   {
     "id": "233",
     "name": "Ciclídeo Pseudotropheus Socolofi (Chindongo socolofi)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#135",
-    "detail": "Foto reaproveitada do banco existente (ciclideo-pseudotropheus-socolofi.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "FRESHWATER_FISH",
-    "imageFile": "ciclideo-pseudotropheus-socolofi.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "234",
@@ -2180,11 +2180,11 @@
   {
     "id": "243",
     "name": "Kinguio Ranchu Lionhead (Carassius auratus var. Ranchu)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#141",
-    "detail": "Foto reaproveitada do banco existente (kinguio-ranchu.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "FRESHWATER_FISH",
-    "imageFile": "kinguio-ranchu.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "244",
@@ -2198,11 +2198,11 @@
   {
     "id": "245",
     "name": "Coridora Albina (Corydoras aeneus var. Albino)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#142",
-    "detail": "Foto reaproveitada do banco existente (coridora-aeneus.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "FRESHWATER_FISH",
-    "imageFile": "coridora-aeneus.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "246",
@@ -2234,11 +2234,11 @@
   {
     "id": "249",
     "name": "Coridora Sterbai (Corydoras sterbai)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#144",
-    "detail": "Foto reaproveitada do banco existente (coridora-sterbai.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "FRESHWATER_FISH",
-    "imageFile": "coridora-sterbai.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "250",
@@ -2297,20 +2297,20 @@
   {
     "id": "256",
     "name": "Cascudo Abacaxi (Megalancistrus parananus)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#147",
-    "detail": "Foto reaproveitada do banco existente (cascudo-abacaxi.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "FRESHWATER_FISH",
-    "imageFile": "cascudo-abacaxi.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "257",
     "name": "Cascudo Comum Plet (Hypostomus plecostomus)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#147",
-    "detail": "Foto reaproveitada do banco existente (cascudo-pletomado.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "FRESHWATER_FISH",
-    "imageFile": "cascudo-pletomado.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "258",
@@ -2378,11 +2378,11 @@
   {
     "id": "265",
     "name": "Caramujo Neritina Mosaico (Neritina virginea)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#150",
-    "detail": "Foto reaproveitada do banco existente (caracol-neritina-zebra.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "FRESHWATER_INVERTEBRATE",
-    "imageFile": "caracol-neritina-zebra.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "266",
@@ -2909,11 +2909,11 @@
   {
     "id": "324",
     "name": "Anêmona Sebae (Heteractis crispa)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#190",
-    "detail": "Foto reaproveitada do banco existente (anemona-sebae.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "CORAL",
-    "imageFile": "anemona-sebae.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "325",
@@ -3386,11 +3386,11 @@
   {
     "id": "377",
     "name": "Coral Acropora Pink Millepora (Acropora millepora)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#219",
-    "detail": "Foto reaproveitada do banco existente (acropora-millepora-rosa.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "CORAL",
-    "imageFile": "acropora-millepora-rosa.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "378",
@@ -3404,11 +3404,11 @@
   {
     "id": "379",
     "name": "Coral Acropora Cali Tort (Acropora tortuosa)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#220",
-    "detail": "Foto reaproveitada do banco existente (acropora-tortuosa.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "CORAL",
-    "imageFile": "acropora-tortuosa.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "380",
@@ -3449,11 +3449,11 @@
   {
     "id": "384",
     "name": "Peixe-palhaço Orange Skunk (Amphiprion sandaracinos)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#223",
-    "detail": "Foto reaproveitada do banco existente (palhaco-orange-skunk.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "MARINE_FISH",
-    "imageFile": "palhaco-orange-skunk.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "385",
@@ -3674,11 +3674,11 @@
   {
     "id": "409",
     "name": "Anthias Dispar (Pseudanthias dispar)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#236",
-    "detail": "Foto reaproveitada do banco existente (anthias-dispar.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "MARINE_FISH",
-    "imageFile": "anthias-dispar.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "410",
@@ -3773,11 +3773,11 @@
   {
     "id": "420",
     "name": "Tailspot Blenny (Ecsenius stigmatura)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#242",
-    "detail": "Foto reaproveitada do banco existente (blenio-tailspot.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "MARINE_FISH",
-    "imageFile": "blenio-tailspot.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "421",
@@ -3791,11 +3791,11 @@
   {
     "id": "422",
     "name": "Longnose Hawkfish (Oxycirrhites typus)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#243",
-    "detail": "Foto reaproveitada do banco existente (hawkfish-longnose.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "MARINE_FISH",
-    "imageFile": "hawkfish-longnose.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "423",
@@ -3836,11 +3836,11 @@
   {
     "id": "427",
     "name": "Firefish Helfrichi (Nemateleotris helfrichi)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#245",
-    "detail": "Foto reaproveitada do banco existente (firefish-helfrichi.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "MARINE_FISH",
-    "imageFile": "firefish-helfrichi.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "428",
@@ -3872,11 +3872,11 @@
   {
     "id": "431",
     "name": "Camarão Stenopus Coral Banded (Stenopus hispidus)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#247",
-    "detail": "Foto reaproveitada do banco existente (camarao-stenopus.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "MARINE_INVERTEBRATE",
-    "imageFile": "camarao-stenopus.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "432",
@@ -3917,11 +3917,11 @@
   {
     "id": "436",
     "name": "Ostra Tridacna Crocea (Tridacna crocea)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#250",
-    "detail": "Foto reaproveitada do banco existente (tridacna-crocea.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "MARINE_INVERTEBRATE",
-    "imageFile": "tridacna-crocea.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "437",
@@ -3935,11 +3935,11 @@
   {
     "id": "438",
     "name": "Ouriço Pincushion Tuxedo (Mespilia globulus)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#250",
-    "detail": "Foto reaproveitada do banco existente (ourico-tuxedo.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "MARINE_INVERTEBRATE",
-    "imageFile": "ourico-tuxedo.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "439",
@@ -4124,11 +4124,11 @@
   {
     "id": "459",
     "name": "Molinésia Velífera Verde (Poecilia velifera)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#259",
-    "detail": "Foto reaproveitada do banco existente (molinesia-velifera.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "FRESHWATER_FISH",
-    "imageFile": "molinesia-velifera.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "460",
@@ -4205,11 +4205,11 @@
   {
     "id": "468",
     "name": "Tetra Fantasma Vermelho (Hyphessobrycon sweglesi)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#264",
-    "detail": "Foto reaproveitada do banco existente (tetra-fantasma-vermelho.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "FRESHWATER_FISH",
-    "imageFile": "tetra-fantasma-vermelho.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "469",
@@ -4232,11 +4232,11 @@
   {
     "id": "471",
     "name": "Tetra Olho-de-Fogo (Hemigrammus ocellifer)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#266",
-    "detail": "Foto reaproveitada do banco existente (tetra-olho-de-fogo.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "FRESHWATER_FISH",
-    "imageFile": "tetra-olho-de-fogo.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "472",
@@ -4277,20 +4277,20 @@
   {
     "id": "476",
     "name": "Tetra Glowlight (Hemigrammus erythrozonus)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#268",
-    "detail": "Foto reaproveitada do banco existente (tetra-glowlight.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "FRESHWATER_FISH",
-    "imageFile": "tetra-glowlight.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "477",
     "name": "Tetra Buenos Aires (Hyphessobrycon anisitsi)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#268",
-    "detail": "Foto reaproveitada do banco existente (tetra-buenos-aires.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "FRESHWATER_FISH",
-    "imageFile": "tetra-buenos-aires.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "478",
@@ -4304,11 +4304,11 @@
   {
     "id": "479",
     "name": "Peixe-Borboleta de Água Doce (Carnegiella strigata)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#269",
-    "detail": "Foto reaproveitada do banco existente (peixe-borboleta-carnegiella.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "FRESHWATER_FISH",
-    "imageFile": "peixe-borboleta-carnegiella.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "480",
@@ -4322,11 +4322,11 @@
   {
     "id": "481",
     "name": "Rásbora Espei Lambchop (Trigonostigma espei)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#270",
-    "detail": "Foto reaproveitada do banco existente (rasbora-espei.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "FRESHWATER_FISH",
-    "imageFile": "rasbora-espei.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "482",
@@ -4430,11 +4430,11 @@
   {
     "id": "493",
     "name": "Acará Altum Peruano (Pterophyllum scalare var. Peru Altum)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#275",
-    "detail": "Foto reaproveitada do banco existente (acara-altum-verdadeiro.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "FRESHWATER_FISH",
-    "imageFile": "acara-altum-verdadeiro.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "494",
@@ -4556,11 +4556,11 @@
   {
     "id": "507",
     "name": "Apistogramma Borellii Opal (Apistogramma borellii)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#281",
-    "detail": "Foto reaproveitada do banco existente (apistogramma-borellii.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "FRESHWATER_FISH",
-    "imageFile": "apistogramma-borellii.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "508",
@@ -4583,11 +4583,11 @@
   {
     "id": "510",
     "name": "Acará Severo Red Spotted (Heros efasciatus var. Red Spotted)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#282",
-    "detail": "Foto reaproveitada do banco existente (acara-severo-green.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "FRESHWATER_FISH",
-    "imageFile": "acara-severo-green.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "511",
@@ -4601,11 +4601,11 @@
   {
     "id": "512",
     "name": "Geophagus Sveni Tronco (Geophagus sveni)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#283",
-    "detail": "Foto reaproveitada do banco existente (acara-geophagus-sveni.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "FRESHWATER_FISH",
-    "imageFile": "acara-geophagus-sveni.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "513",
@@ -4682,11 +4682,11 @@
   {
     "id": "521",
     "name": "Coridora Adolfoi (Corydoras adolfoi)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#286",
-    "detail": "Foto reaproveitada do banco existente (coridora-adolfoi.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "FRESHWATER_FISH",
-    "imageFile": "coridora-adolfoi.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "522",
@@ -4700,20 +4700,20 @@
   {
     "id": "523",
     "name": "Coridora Hastatus (Corydoras hastatus)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#287",
-    "detail": "Foto reaproveitada do banco existente (coridora-ana-hastatus.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "FRESHWATER_FISH",
-    "imageFile": "coridora-ana-hastatus.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "524",
     "name": "Coridora Habrosus (Corydoras habrosus)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#287",
-    "detail": "Foto reaproveitada do banco existente (coridora-ana-habrosus.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "FRESHWATER_FISH",
-    "imageFile": "coridora-ana-habrosus.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "525",
@@ -5303,11 +5303,11 @@
   {
     "id": "590",
     "name": "Musgo Christmas Moss (Vesicularia montagnei)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#325",
-    "detail": "Foto reaproveitada do banco existente (musgo-christmas.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "PLANT",
-    "imageFile": "musgo-christmas.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "591",
@@ -5456,11 +5456,11 @@
   {
     "id": "607",
     "name": "Bacopa Monnieri Moneywort (Bacopa monnieri)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#333",
-    "detail": "Foto reaproveitada do banco existente (bacopa-monnieri.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "PLANT",
-    "imageFile": "bacopa-monnieri.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "608",
@@ -5510,11 +5510,11 @@
   {
     "id": "613",
     "name": "Rotala Wallichii Vermelha (Rotala wallichii)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#335",
-    "detail": "Foto reaproveitada do banco existente (rotala-wallichii.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "PLANT",
-    "imageFile": "rotala-wallichii.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "614",
@@ -5537,11 +5537,11 @@
   {
     "id": "616",
     "name": "Ludwigia Glandulosa (Ludwigia glandulosa)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#336",
-    "detail": "Foto reaproveitada do banco existente (ludwigia-glandulosa.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "PLANT",
-    "imageFile": "ludwigia-glandulosa.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "617",
@@ -5681,11 +5681,11 @@
   {
     "id": "632",
     "name": "Cryptocoryne Parva Mini (Cryptocoryne parva)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#345",
-    "detail": "Foto reaproveitada do banco existente (cryptocoryne-parva.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "PLANT",
-    "imageFile": "cryptocoryne-parva.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "633",
@@ -5753,11 +5753,11 @@
   {
     "id": "640",
     "name": "Carpete Glossostigma Elatinoides (Glossostigma elatinoides)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#349",
-    "detail": "Foto reaproveitada do banco existente (glossostigma-elatinoides.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "PLANT",
-    "imageFile": "glossostigma-elatinoides.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "641",
@@ -5789,11 +5789,11 @@
   {
     "id": "644",
     "name": "Pogostemon Helferi Downoi (Pogostemon helferi)",
-    "source": "EXISTING_REPOSITORY_FALLBACK",
+    "source": "NO_IMAGE_PLACEHOLDER",
     "slot": "#351",
-    "detail": "Foto reaproveitada do banco existente (pogostemon-helferi.jpg)",
+    "detail": "Card sem foto / fallback elegante SVG",
     "subCategory": "PLANT",
-    "imageFile": "pogostemon-helferi.jpg"
+    "imageFile": "Nenhum (Fallback Card SVG)"
   },
   {
     "id": "645",
