@@ -556,7 +556,7 @@ export function getAnimalImage(itemOrName: ItemImageSource | string): string | n
     }
     if (norm.includes('ramirezi') || norm.includes('mikrogeophagus')) {
         if (norm.includes('boliviano') || norm.includes('altispinosus')) return verifyImageExists('ramirezi-boliviano.jpg')
-        return verifyImageExists('ramirezi-comum-alemao.jpg')
+        return verifyImageExists('ramirezi-german-comum.jpg')
     }
     if (norm.includes('geophagus')) {
         if (norm.includes('sveni')) return verifyImageExists('acara-geophagus-sveni.jpg')

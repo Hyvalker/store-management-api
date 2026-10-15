@@ -4,6 +4,8 @@ public enum SubCategory {
     CORAL("Corais & Anêmonas"),
     MARINE_FISH("Peixes Marinhos"),
     FRESHWATER_FISH("Peixes de Água Doce"),
+    MARINE_INVERTEBRATE("Invertebrados Marinhos"),
+    FRESHWATER_INVERTEBRATE("Invertebrados de Água Doce"),
     INVERTEBRATE("Invertebrados & Equipe de Limpeza"),
     PLANT("Plantas Aquáticas"),
     OTHER_LIVING("Outros Seres Vivos"),

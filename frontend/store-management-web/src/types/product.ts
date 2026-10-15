@@ -4,6 +4,8 @@ export type SubCategory =
     | 'CORAL'
     | 'MARINE_FISH'
     | 'FRESHWATER_FISH'
+    | 'MARINE_INVERTEBRATE'
+    | 'FRESHWATER_INVERTEBRATE'
     | 'INVERTEBRATE'
     | 'PLANT'
     | 'OTHER_LIVING'

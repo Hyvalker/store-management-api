@@ -87,12 +87,6 @@ public class ProductService {
             );
         }
 
-        if (name.matches(".*\\s-.*|-\\s.*")) {
-            throw new InvalidProductException(
-                    "O nome do produto não pode conter espaços ao redor de hífens"
-            );
-        }
-
         if (name.matches(".*\\(\\s.*|.*\\s\\).*")) {
             throw new InvalidProductException(
                     "O nome do produto não pode conter espaços imediatamente dentro de parênteses"

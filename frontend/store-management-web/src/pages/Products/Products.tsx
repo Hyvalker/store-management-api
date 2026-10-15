@@ -10,7 +10,8 @@ import {
     ChevronLeft,
     ChevronRight,
     ChevronsLeft,
-    ChevronsRight
+    ChevronsRight,
+    Pencil
 } from 'lucide-react'
 import {getProducts} from '../../services/productService'
 import type {Product} from '../../types/product'
@@ -18,6 +19,7 @@ import {matchesSearch} from '../../utils/searchUtils'
 import {useAuth} from '../../contexts/AuthContext'
 import ReplenishmentForm from './ReplenishmentForm'
 import ProductForm from './ProductForm'
+import EditProductModal from './EditProductModal'
 
 function Products() {
     const {isAdmin} = useAuth()
@@ -30,6 +32,7 @@ function Products() {
     const [typeFilter, setTypeFilter] = useState<'ALL' | 'LIVING' | 'PRODUCT'>('ALL')
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState<string | null>(null)
+    const [editingProduct, setEditingProduct] = useState<Product | null>(null)
 
     // Paginação Profissional
     const [currentPage, setCurrentPage] = useState(1)
@@ -240,12 +243,13 @@ function Products() {
                                     <th className="py-3 px-4 font-semibold text-right">Preço Custo</th>
                                     <th className="py-3 px-4 font-semibold text-right">Margem %</th>
                                     <th className="py-3 px-4 font-semibold text-right">Preço Venda</th>
+                                    <th className="py-3 px-4 font-semibold text-center">Ações</th>
                                 </tr>
                             </thead>
                             <tbody className="divide-y divide-slate-100">
                                 {filtered.length === 0 ? (
                                     <tr>
-                                        <td colSpan={7} className="py-8 text-center text-slate-400">
+                                        <td colSpan={8} className="py-8 text-center text-slate-400">
                                             Nenhum produto encontrado.
                                         </td>
                                     </tr>
@@ -290,6 +294,17 @@ function Products() {
                                             </td>
                                             <td className="py-3 px-4 text-right font-bold text-slate-900 font-mono">
                                                 R$ {Number(p.salePrice || 0).toFixed(2)}
+                                            </td>
+                                            <td className="py-3 px-4 text-center">
+                                                <button
+                                                    type="button"
+                                                    onClick={() => setEditingProduct(p)}
+                                                    className="inline-flex items-center gap-1.5 px-2.5 py-1 text-slate-600 hover:text-sky-700 hover:bg-sky-50 rounded-lg transition-colors cursor-pointer border border-transparent hover:border-sky-200"
+                                                    title="Editar este produto / ser-vivo"
+                                                >
+                                                    <Pencil className="h-3.5 w-3.5 text-sky-600" />
+                                                    <span className="font-semibold text-[11px]">Editar</span>
+                                                </button>
                                             </td>
                                         </tr>
                                     ))
@@ -404,6 +419,16 @@ function Products() {
                     </div>
                 )}
             </div>
+
+            {/* Modal de Edição de Produto & Curadoria Visual */}
+            <EditProductModal
+                product={editingProduct}
+                isOpen={!!editingProduct}
+                onClose={() => setEditingProduct(null)}
+                onSaved={(updated) => {
+                    setProducts((prev) => prev.map((item) => (item.id === updated.id ? updated : item)))
+                }}
+            />
         </div>
     )
 }

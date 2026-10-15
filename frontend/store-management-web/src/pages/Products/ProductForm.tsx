@@ -8,12 +8,15 @@ import {
     DollarSign,
     Layers,
     Sparkles,
-    Check
+    Check,
+    Upload,
+    Image as ImageIcon,
+    Trash2
 } from 'lucide-react'
 import {createProduct} from '../../services/productService'
 import type {CreateProductRequest, ProductType} from '../../types/product'
 import {searchMasterSpecies, type MasterSpecies} from '../../data/speciesMasterCatalog'
-import {getSubCategoryLabel} from '../../utils/animalImages'
+import {getSubCategoryLabel, getAnimalImage} from '../../utils/animalImages'
 import {useToast} from '../../contexts/ToastContext'
 
 interface ProductFormProps {
@@ -29,6 +32,8 @@ function ProductForm({onSuccess}: ProductFormProps) {
     const [salePrice, setSalePrice] = useState('')
     const [profitMargin, setProfitMargin] = useState('')
     const [barcode, setBarcode] = useState('')
+    const [customImageSlug, setCustomImageSlug] = useState('')
+    const [customImagePreview, setCustomImagePreview] = useState<string | null>(null)
 
     // Catálogo Mestre e Autocomplete
     const [speciesSuggestions, setSpeciesSuggestions] = useState<MasterSpecies[]>([])
@@ -115,7 +120,7 @@ function ProductForm({onSuccess}: ProductFormProps) {
             const matchedSpecies = selectedSpecies || searchMasterSpecies(name.trim(), 1)[0]
             const resolvedType = matchedSpecies ? matchedSpecies.type : type
             const resolvedSubCategory = matchedSpecies?.subCategory || (type === 'LIVING' ? 'OTHER_LIVING' : undefined)
-            const resolvedImageSlug = matchedSpecies?.imageSlug
+            const resolvedImageSlug = customImageSlug.trim() || matchedSpecies?.imageSlug
 
             const data: CreateProductRequest = {
                 name: name.trim(),
@@ -154,6 +159,8 @@ function ProductForm({onSuccess}: ProductFormProps) {
             setSalePrice('')
             setProfitMargin('')
             setBarcode('')
+            setCustomImageSlug('')
+            setCustomImagePreview(null)
             setLastEditedPriceField(null)
 
             if (onSuccess) {
@@ -211,6 +218,32 @@ function ProductForm({onSuccess}: ProductFormProps) {
 
         const sale = cost * (1 + margin / 100)
         setSalePrice(sale.toFixed(2))
+    }
+
+    function handlePhotoUpload(e: React.ChangeEvent<HTMLInputElement>) {
+        const file = e.target.files?.[0]
+        if (!file) return
+
+        if (!file.type.startsWith('image/')) {
+            toast.error('O arquivo selecionado deve ser uma imagem válida (JPG, PNG, WEBP).', 'Arquivo Inválido')
+            return
+        }
+
+        const reader = new FileReader()
+        reader.onload = (event) => {
+            const dataUrl = event.target?.result as string
+            setCustomImagePreview(dataUrl)
+            const cleanFileName = file.name.replace(/[^a-zA-Z0-9._-]/g, '_')
+            const slugIdentifier = `loja_${Date.now()}_${cleanFileName}`
+            setCustomImageSlug(slugIdentifier)
+            toast.success('Foto carregada para o novo item!', 'Curadoria de Imagem')
+        }
+        reader.readAsDataURL(file)
+    }
+
+    function handleRemovePhoto() {
+        setCustomImageSlug('')
+        setCustomImagePreview(null)
     }
 
     const calculatedProfitReais =
@@ -462,6 +495,75 @@ function ProductForm({onSuccess}: ProductFormProps) {
                             </span>
                         </div>
                     )}
+                </div>
+
+                {/* Bloco 4: Foto do Produto & Curadoria Visual */}
+                <div className="p-4 bg-slate-50/80 rounded-xl border border-slate-200/80 space-y-3">
+                    <div className="flex items-center justify-between">
+                        <span className="flex items-center gap-1.5 text-xs font-semibold text-slate-700 uppercase tracking-wider">
+                            <ImageIcon className="h-4 w-4 text-sky-600" />
+                            <span>Foto do Produto (Opcional / Curadoria)</span>
+                        </span>
+                        <span className="text-[10px] text-slate-500 font-normal">
+                            Autonomia do Operador
+                        </span>
+                    </div>
+
+                    <div className="flex items-center gap-4 bg-white p-3 rounded-xl border border-slate-200">
+                        <div className="h-16 w-20 rounded-lg bg-slate-900 overflow-hidden shrink-0 border border-slate-800 flex items-center justify-center">
+                            {customImagePreview || (selectedSpecies?.imageSlug && getAnimalImage({name, imageSlug: selectedSpecies.imageSlug})) ? (
+                                <img
+                                    src={customImagePreview || getAnimalImage({name, imageSlug: selectedSpecies?.imageSlug}) || ''}
+                                    alt={name}
+                                    className="w-full h-full object-cover"
+                                />
+                            ) : (
+                                <div className="text-center p-1 text-[10px] text-slate-400">
+                                    Card padrão
+                                </div>
+                            )}
+                        </div>
+
+                        <div className="flex-1 space-y-1.5">
+                            <div className="text-xs text-slate-600">
+                                {customImageSlug ? (
+                                    <span>Foto personalizada: <code className="font-mono text-[11px] text-slate-800 bg-slate-50 px-1 py-0.5 rounded-md border border-slate-200">{customImageSlug}</code></span>
+                                ) : selectedSpecies?.imageSlug ? (
+                                    <span>Foto do Catálogo Mestre vinculada automaticamente.</span>
+                                ) : (
+                                    <span className="text-slate-400 italic">Nenhuma foto (renderiza card visual elegante com ícone).</span>
+                                )}
+                            </div>
+
+                            <div className="flex items-center gap-2">
+                                <input
+                                    type="file"
+                                    accept="image/png,image/jpeg,image/webp"
+                                    onChange={handlePhotoUpload}
+                                    className="hidden"
+                                    id="new-photo-upload"
+                                />
+                                <label
+                                    htmlFor="new-photo-upload"
+                                    className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-xs font-semibold cursor-pointer transition-colors"
+                                >
+                                    <Upload className="h-3.5 w-3.5 text-sky-600" />
+                                    <span>Subir Foto</span>
+                                </label>
+
+                                {customImageSlug && (
+                                    <button
+                                        type="button"
+                                        onClick={handleRemovePhoto}
+                                        className="inline-flex items-center gap-1 px-2.5 py-1.5 bg-rose-50 hover:bg-rose-100 text-rose-700 rounded-lg text-xs font-semibold transition-colors"
+                                    >
+                                        <Trash2 className="h-3.5 w-3.5" />
+                                        <span>Remover</span>
+                                    </button>
+                                )}
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 {error && (

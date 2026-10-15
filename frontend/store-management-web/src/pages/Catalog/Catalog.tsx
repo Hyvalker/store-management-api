@@ -2,7 +2,6 @@ import {useState, useEffect, useRef, useMemo} from 'react'
 import {toJpeg} from 'html-to-image'
 import {jsPDF} from 'jspdf'
 import {
-    Download,
     Sparkles,
     Trash2,
     Search,
@@ -450,50 +449,6 @@ function Catalog() {
         }
     }
 
-    // Export currently selected preview page as JPEG
-    async function handleExportCurrentPageJpeg() {
-        if (selectedItems.length === 0 || pages.length === 0) return
-
-        setIsExporting(true)
-        try {
-            await new Promise((r) => setTimeout(r, 200))
-            const el = offscreenPageRefs.current[activePreviewPage]
-            if (!el) return
-
-            const images = el.querySelectorAll('img')
-            await Promise.all(
-                Array.from(images).map((img) => {
-                    if (img.complete && img.naturalHeight !== 0) return Promise.resolve()
-                    return img.decode().catch(() => Promise.resolve())
-                })
-            )
-
-            const dataUrl = await toJpeg(el, {
-                quality: 0.95,
-                pixelRatio: 2,
-                backgroundColor: '#0c1022',
-                cacheBust: false,
-            })
-
-            const link = document.createElement('a')
-            const dateStr = new Date().toISOString().slice(0, 10)
-            link.download = `bamba-aqua-catalogo-${dateStr}-pagina-${activePreviewPage + 1}.jpg`
-            link.href = dataUrl
-            link.click()
-
-            toast.success(
-                `Imagem da Página ${activePreviewPage + 1} baixada em alta resolução!`,
-                'Imagem Exportada'
-            )
-        } catch (err: unknown) {
-            console.error('Falha ao exportar imagem:', err)
-            const errorMsg = err instanceof Error ? err.message : String(err)
-            toast.error(`Não foi possível gerar a imagem (${errorMsg}).`, 'Erro ao Exportar')
-        } finally {
-            setIsExporting(false)
-        }
-    }
-
     // Export all pages as individual JPEGs
     async function handleExportAllPagesJpeg() {
         if (selectedItems.length === 0 || pages.length === 0) return
@@ -560,32 +515,19 @@ function Catalog() {
                         title="Baixar todo o catálogo em formato PDF padrão A4 com páginas numeradas"
                     >
                         <FileText className="h-4 w-4" />
-                        <span>Baixar PDF ({pages.length} {pages.length === 1 ? 'pág' : 'págs'})</span>
+                        <span>Baixar Catálogo em PDF ({pages.length} {pages.length === 1 ? 'pág' : 'págs'})</span>
                     </button>
 
                     <button
                         type="button"
                         disabled={isExporting || selectedItems.length === 0}
-                        onClick={handleExportCurrentPageJpeg}
-                        className="flex items-center gap-2 px-3.5 py-2.5 bg-sky-600 hover:bg-sky-700 text-white rounded-xl text-xs font-bold transition-all shadow-md disabled:opacity-50 cursor-pointer"
-                        title="Baixar imagem JPEG da página atualmente visualizada"
+                        onClick={handleExportAllPagesJpeg}
+                        className="flex items-center gap-2 px-4 py-2.5 bg-sky-600 hover:bg-sky-700 text-white rounded-xl text-xs font-bold transition-all shadow-md disabled:opacity-50 cursor-pointer"
+                        title="Baixar todas as páginas do catálogo em formato JPEG de alta definição"
                     >
                         <ImageIcon className="h-4 w-4" />
-                        <span>Baixar JPEG (Pág. {activePreviewPage + 1})</span>
+                        <span>Baixar Catálogo em JPEG ({pages.length} {pages.length === 1 ? 'pág' : 'págs'})</span>
                     </button>
-
-                    {pages.length > 1 && (
-                        <button
-                            type="button"
-                            disabled={isExporting || selectedItems.length === 0}
-                            onClick={handleExportAllPagesJpeg}
-                            className="flex items-center gap-1.5 px-3 py-2.5 bg-slate-800 hover:bg-slate-900 text-white rounded-xl text-xs font-semibold transition-all shadow-xs disabled:opacity-50 cursor-pointer"
-                            title="Baixar todas as páginas como imagens individuais separadas"
-                        >
-                            <Download className="h-3.5 w-3.5" />
-                            <span>Todas em JPEG</span>
-                        </button>
-                    )}
                 </div>
             </div>
 
