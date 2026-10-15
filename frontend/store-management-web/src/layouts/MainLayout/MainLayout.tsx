@@ -1,8 +1,14 @@
+import { useEffect } from 'react'
 import { Outlet } from 'react-router-dom'
 import Header from '../../components/layout/Header'
 import Sidebar from '../../components/layout/Sidebar'
+import { syncAllStoreSettings } from '../../services/settingsService'
 
 function MainLayout() {
+    useEffect(() => {
+        syncAllStoreSettings()
+    }, [])
+
     return (
         <div className="flex min-h-screen bg-gray-50">
             <Sidebar />

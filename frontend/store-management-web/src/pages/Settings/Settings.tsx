@@ -23,8 +23,10 @@ import {
 } from 'lucide-react'
 import {
     getPaymentDiscounts,
+    fetchPaymentDiscounts,
     savePaymentDiscounts,
     getStockAlertSettings,
+    fetchStockAlertSettings,
     saveStockAlertSettings,
     type PaymentDiscountSettings,
     type StockAlertSettings
@@ -97,20 +99,24 @@ function Settings() {
     useEffect(() => {
         setDiscounts(getPaymentDiscounts())
         setStockAlerts(getStockAlertSettings())
+
+        fetchPaymentDiscounts().then(setDiscounts)
+        fetchStockAlertSettings().then(setStockAlerts)
+
         if (isAdmin) {
             loadOperators()
         }
     }, [isAdmin, loadOperators])
 
-    function handleSubmit(e: SubmitEvent<HTMLFormElement>) {
+    async function handleSubmit(e: SubmitEvent<HTMLFormElement>) {
         e.preventDefault()
-        savePaymentDiscounts(discounts)
+        await savePaymentDiscounts(discounts)
         setSavedSuccess(true)
-        toast.success('Regras de desconto por forma de pagamento salvas!', 'Configuração Salva')
+        toast.success('Regras de desconto por forma de pagamento salvas e sincronizadas!', 'Configuração Salva')
         setTimeout(() => setSavedSuccess(false), 4000)
     }
 
-    function handleSaveStockAlerts() {
+    async function handleSaveStockAlerts() {
         const crit = Math.max(1, Number(stockAlerts.criticalStockThreshold || 2))
         const low = Math.max(crit + 1, Number(stockAlerts.lowStockThreshold || 5))
         const validated: StockAlertSettings = {
@@ -118,16 +124,16 @@ function Settings() {
             lowStockThreshold: low,
         }
         setStockAlerts(validated)
-        saveStockAlertSettings(validated)
+        await saveStockAlertSettings(validated)
         setSavedSuccess(true)
         toast.success(
-            `Parâmetros de estoque salvos (Crítico: ≤ ${crit} un. | Baixo: ≤ ${low} un.)! Já aplicados no Dashboard.`,
+            `Parâmetros de estoque salvos (Crítico: ≤ ${crit} un. | Baixo: ≤ ${low} un.)! Sincronizados com o servidor.`,
             'Alertas de Estoque Salvos'
         )
         setTimeout(() => setSavedSuccess(false), 4000)
     }
 
-    function handleResetDefaults() {
+    async function handleResetDefaults() {
         const defaults: PaymentDiscountSettings = {
             pix: 10,
             money: 5,
@@ -140,10 +146,10 @@ function Settings() {
         }
         setDiscounts(defaults)
         setStockAlerts(defaultStockAlerts)
-        savePaymentDiscounts(defaults)
-        saveStockAlertSettings(defaultStockAlerts)
+        await savePaymentDiscounts(defaults)
+        await saveStockAlertSettings(defaultStockAlerts)
         setSavedSuccess(true)
-        toast.info('Padrões de descontos e alertas de estoque restaurados.', 'Padrões Restaurados')
+        toast.info('Padrões de descontos e alertas de estoque restaurados e sincronizados.', 'Padrões Restaurados')
         setTimeout(() => setSavedSuccess(false), 4000)
     }
 

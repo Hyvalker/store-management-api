@@ -10,4 +10,8 @@ import java.util.List;
 public interface WaterParameterTestRepository extends JpaRepository<WaterParameterTest, Long> {
     List<WaterParameterTest> findByAquariumIdOrderByTestDateDesc(Long aquariumId);
     long countByAquariumId(Long aquariumId);
+
+    @org.springframework.data.jpa.repository.Modifying
+    @org.springframework.data.jpa.repository.Query("DELETE FROM WaterParameterTest w WHERE w.aquarium.id = :aquariumId")
+    void deleteByAquariumId(@org.springframework.data.repository.query.Param("aquariumId") Long aquariumId);
 }

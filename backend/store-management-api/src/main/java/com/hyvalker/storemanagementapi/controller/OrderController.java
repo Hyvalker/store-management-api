@@ -7,6 +7,7 @@ import com.hyvalker.storemanagementapi.exception.ApiError;
 import com.hyvalker.storemanagementapi.exception.OrderNotFoundException;
 import com.hyvalker.storemanagementapi.model.OrderStatus;
 import com.hyvalker.storemanagementapi.service.OrderService;
+import com.hyvalker.storemanagementapi.model.PaymentMethod;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -19,8 +20,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.Authentication;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 
@@ -58,12 +61,31 @@ public class OrderController {
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
-    @Operation(summary = "Lista todos os pedidos.")
+    @Operation(summary = "Lista todos os pedidos. Pode ser filtrado por cliente informando o parâmetro customerId e/ou por período (from e to).")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Pedidos listados com sucesso.")
     })
     @GetMapping
-    public List<OrderResponseDTO> findAll() { return orderService.findAll(); }
+    public List<OrderResponseDTO> findAll(
+            @RequestParam(required = false) Long customerId,
+            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime from,
+            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime to
+    ) {
+        return orderService.findAll(customerId, from, to);
+    }
+
+    @Operation(summary = "Lista todos os pedidos de um cliente específico. Pode ser filtrado por período (from e to).")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Pedidos do cliente listados com sucesso.")
+    })
+    @GetMapping("/customer/{customerId}")
+    public List<OrderResponseDTO> findByCustomerId(
+            @PathVariable Long customerId,
+            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime from,
+            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime to
+    ) {
+        return orderService.findAll(customerId, from, to);
+    }
 
     @Operation(summary = "Encontra um pedido pelo ID.")
     @ApiResponses(value = {
@@ -135,9 +157,11 @@ public class OrderController {
             ))
     })
     @PatchMapping("/{id}/pay")
-    public ResponseEntity<OrderResponseDTO> payOrder(@PathVariable Long id) {
+    public ResponseEntity<OrderResponseDTO> payOrder(
+            @PathVariable Long id,
+            @RequestParam(required = false) PaymentMethod paymentMethod) {
 
-        OrderResponseDTO response = orderService.payOrder(id);
+        OrderResponseDTO response = orderService.payOrder(id, paymentMethod);
 
         return ResponseEntity.ok(response);
     }

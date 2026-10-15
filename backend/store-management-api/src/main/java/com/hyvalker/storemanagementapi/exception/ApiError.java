@@ -14,6 +14,9 @@ public class ApiError {
     @Schema(description = "Mensagem descritiva do erro.", example = "Produto não encontrado.")
     private String error;
 
+    @Schema(description = "Mensagem descritiva do erro (campo message para compatibilidade universal).", example = "Produto não encontrado.")
+    private String message;
+
     @Schema(description = "Data e hora em que o erro ocorreu.", example = "2026-05-19t23:40:38")
     private LocalDateTime timestamp;
 
@@ -21,5 +24,6 @@ public class ApiError {
         this.timestamp = LocalDateTime.now();
         this.status = status;
         this.error = error;
+        this.message = error;
     }
 }

@@ -14,13 +14,15 @@ import {
     AlertCircle,
     X,
     RefreshCw,
-    Fish
+    Fish,
+    RotateCcw
 } from 'lucide-react'
 import {
     getUsers,
     createUser,
     updateUser,
-    deleteUser
+    deleteUser,
+    reactivateUser
 } from '../../services/userService'
 import type {User, CreateUserRequest} from '../../types/user'
 import {matchesSearch} from '../../utils/searchUtils'
@@ -32,6 +34,7 @@ function Customers() {
     const {isAdmin} = useAuth()
     const [customers, setCustomers] = useState<User[]>([])
     const [searchTerm, setSearchTerm] = useState('')
+    const [statusFilter, setStatusFilter] = useState<'ACTIVE' | 'INACTIVE' | 'ALL'>('ACTIVE')
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState<string | null>(null)
 
@@ -53,21 +56,24 @@ function Customers() {
         setLoading(true)
         setError(null)
         try {
-            const data = await getUsers()
+            const data = await getUsers(isAdmin)
             setCustomers(data)
         } catch {
             setError('Não foi possível carregar a lista de clientes.')
         } finally {
             setLoading(false)
         }
-    }, [])
+    }, [isAdmin])
 
     useEffect(() => {
         loadCustomers()
     }, [loadCustomers])
 
-    // Filter customers by search term with smart accent and hyphen normalization
+    // Filter customers by search term and active status
     const filteredCustomers = customers.filter((c) => {
+        if (statusFilter === 'ACTIVE' && c.active === false) return false
+        if (statusFilter === 'INACTIVE' && c.active !== false) return false
+
         if (!searchTerm.trim()) return true
         return (
             matchesSearch(c.name, searchTerm) ||
@@ -76,6 +82,9 @@ function Customers() {
             matchesSearch(c.address || '', searchTerm)
         )
     })
+
+    const activeCount = customers.filter((c) => c.active !== false).length
+    const inactiveCount = customers.filter((c) => c.active === false).length
 
     // Open Modal for New Customer
     function handleOpenNewModal() {
@@ -117,6 +126,24 @@ function Customers() {
         }
     }
 
+    // Handle Reactivate Customer
+    async function handleReactivate(customer: User) {
+        const confirmed = window.confirm(
+            `Deseja realmente reativar o cliente "${customer.name}"?`
+        )
+        if (!confirmed) return
+
+        try {
+            await reactivateUser(customer.id)
+            const msg = `Cliente "${customer.name}" reativado com sucesso!`
+            setSuccessMessage(msg)
+            toast.success(msg, 'Cliente Reativado')
+            loadCustomers()
+        } catch {
+            toast.error('Não foi possível reativar o cliente.', 'Erro ao Reativar')
+        }
+    }
+
     // Handle Form Submit (Create or Update)
     async function handleSubmit(e: SubmitEvent<HTMLFormElement>) {
         e.preventDefault()
@@ -150,8 +177,9 @@ function Customers() {
 
             setIsModalOpen(false)
             loadCustomers()
-        } catch {
-            const errText = 'Erro ao salvar cliente. Verifique se o e-mail já não está cadastrado.'
+        } catch (err: unknown) {
+            const apiError = (err as { response?: { data?: { message?: string; error?: string } } })?.response?.data
+            const errText = apiError?.message || apiError?.error || 'Erro ao salvar cliente. Verifique os dados informados.'
             setFormError(errText)
             toast.error(errText, 'Erro no Formulário')
         } finally {
@@ -222,9 +250,49 @@ function Customers() {
                     />
                 </div>
 
-                <div className="flex items-center gap-2 text-xs text-slate-500">
-                    <span className="font-semibold text-slate-800">{filteredCustomers.length}</span>
-                    <span>de {customers.length} clientes encontrados</span>
+                <div className="flex flex-wrap items-center gap-3">
+                    {isAdmin && (
+                        <div className="flex items-center bg-slate-100 p-1 rounded-xl border border-slate-200 text-xs">
+                            <button
+                                type="button"
+                                onClick={() => setStatusFilter('ACTIVE')}
+                                className={`px-3 py-1.5 rounded-lg font-bold transition-all cursor-pointer ${
+                                    statusFilter === 'ACTIVE'
+                                        ? 'bg-white text-sky-700 shadow-2xs'
+                                        : 'text-slate-600 hover:text-slate-900'
+                                }`}
+                            >
+                                Ativos ({activeCount})
+                            </button>
+                            <button
+                                type="button"
+                                onClick={() => setStatusFilter('INACTIVE')}
+                                className={`px-3 py-1.5 rounded-lg font-bold transition-all cursor-pointer ${
+                                    statusFilter === 'INACTIVE'
+                                        ? 'bg-white text-slate-900 shadow-2xs'
+                                        : 'text-slate-600 hover:text-slate-900'
+                                }`}
+                            >
+                                Inativos ({inactiveCount})
+                            </button>
+                            <button
+                                type="button"
+                                onClick={() => setStatusFilter('ALL')}
+                                className={`px-3 py-1.5 rounded-lg font-bold transition-all cursor-pointer ${
+                                    statusFilter === 'ALL'
+                                        ? 'bg-white text-slate-900 shadow-2xs'
+                                        : 'text-slate-600 hover:text-slate-900'
+                                }`}
+                            >
+                                Todos ({customers.length})
+                            </button>
+                        </div>
+                    )}
+
+                    <div className="flex items-center gap-2 text-xs text-slate-500">
+                        <span className="font-semibold text-slate-800">{filteredCustomers.length}</span>
+                        <span>de {customers.length} clientes</span>
+                    </div>
                 </div>
             </div>
 
@@ -280,9 +348,20 @@ function Customers() {
                                                         {initials || 'C'}
                                                     </div>
                                                     <div>
-                                                        <p className="font-bold text-slate-900 group-hover:text-sky-700 text-sm transition-colors">
-                                                            {customer.name}
-                                                        </p>
+                                                        <div className="flex items-center gap-2">
+                                                            <p className={`font-bold text-sm transition-colors ${
+                                                                customer.active === false
+                                                                    ? 'text-slate-500 line-through'
+                                                                    : 'text-slate-900 group-hover:text-sky-700'
+                                                            }`}>
+                                                                {customer.name}
+                                                            </p>
+                                                            {customer.active === false && (
+                                                                <span className="px-1.5 py-0.5 rounded-md text-[10px] font-semibold bg-slate-100 text-slate-500 border border-slate-200">
+                                                                    Inativo
+                                                                </span>
+                                                            )}
+                                                        </div>
                                                         <p className="text-[11px] text-slate-400">
                                                             ID #{customer.id} • Clique para ver aquários
                                                         </p>
@@ -330,23 +409,36 @@ function Customers() {
                                                         <span>Aquários & Parâmetros</span>
                                                     </Link>
 
-                                                    <button
-                                                        type="button"
-                                                        onClick={() => handleOpenEditModal(customer)}
-                                                        className="p-1.5 text-slate-500 hover:text-sky-700 hover:bg-sky-50 rounded-lg transition-colors cursor-pointer"
-                                                        title="Editar cliente"
-                                                    >
-                                                        <Edit2 className="h-3.5 w-3.5" />
-                                                    </button>
-                                                    {isAdmin && (
+                                                    {customer.active !== false && (
                                                         <button
                                                             type="button"
-                                                            onClick={() => handleDelete(customer)}
-                                                            className="p-1.5 text-slate-500 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition-colors cursor-pointer"
-                                                            title="Desativar cliente"
+                                                            onClick={() => handleOpenEditModal(customer)}
+                                                            className="p-1.5 text-slate-500 hover:text-sky-700 hover:bg-sky-50 rounded-lg transition-colors cursor-pointer"
+                                                            title="Editar cliente"
                                                         >
-                                                            <Trash2 className="h-3.5 w-3.5" />
+                                                            <Edit2 className="h-3.5 w-3.5" />
                                                         </button>
+                                                    )}
+                                                    {isAdmin && (
+                                                        customer.active === false ? (
+                                                            <button
+                                                                type="button"
+                                                                onClick={() => handleReactivate(customer)}
+                                                                className="p-1.5 text-emerald-600 hover:text-emerald-700 hover:bg-emerald-50 rounded-lg transition-colors cursor-pointer"
+                                                                title="Reativar cliente"
+                                                            >
+                                                                <RotateCcw className="h-3.5 w-3.5" />
+                                                            </button>
+                                                        ) : (
+                                                            <button
+                                                                type="button"
+                                                                onClick={() => handleDelete(customer)}
+                                                                className="p-1.5 text-slate-500 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition-colors cursor-pointer"
+                                                                title="Desativar cliente"
+                                                            >
+                                                                <Trash2 className="h-3.5 w-3.5" />
+                                                            </button>
+                                                        )
                                                     )}
                                                 </div>
                                             </td>

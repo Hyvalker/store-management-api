@@ -195,10 +195,8 @@ function ReplenishmentForm({onSuccess, initialProduct}: ReplenishmentFormProps) 
             }
         } catch (err: unknown) {
             console.error(err)
-            const backendMsg =
-                err && typeof err === 'object' && 'response' in err
-                    ? (err as {response?: {data?: {message?: string}}}).response?.data?.message
-                    : null
+            const data = (err as {response?: {data?: {message?: string; error?: string}}})?.response?.data
+            const backendMsg = data?.message || data?.error || null
             const errorText = backendMsg || 'Não foi possível registrar a entrada de estoque. Verifique os dados.'
             setError(errorText)
             toast.error(errorText, 'Erro na Entrada')

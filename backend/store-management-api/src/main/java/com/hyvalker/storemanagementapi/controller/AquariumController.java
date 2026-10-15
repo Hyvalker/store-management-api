@@ -66,7 +66,7 @@ public class AquariumController {
     @PostMapping("/{id}/tests")
     public ResponseEntity<WaterParameterTestResponseDTO> createTest(
             @PathVariable Long id,
-            @RequestBody CreateWaterParameterTestRequest request) {
+            @Valid @RequestBody CreateWaterParameterTestRequest request) {
         request.setAquariumId(id);
         WaterParameterTestResponseDTO response = aquariumService.createTest(request);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
@@ -76,7 +76,7 @@ public class AquariumController {
     @PutMapping("/tests/{testId}")
     public WaterParameterTestResponseDTO updateTest(
             @PathVariable Long testId,
-            @RequestBody CreateWaterParameterTestRequest request) {
+            @Valid @RequestBody CreateWaterParameterTestRequest request) {
         return aquariumService.updateTest(testId, request);
     }
 

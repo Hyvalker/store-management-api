@@ -1,7 +1,10 @@
 package com.hyvalker.storemanagementapi.service;
 
 import com.hyvalker.storemanagementapi.dto.*;
+import com.hyvalker.storemanagementapi.exception.AquariumNotFoundException;
+import com.hyvalker.storemanagementapi.exception.AquariumNoteNotFoundException;
 import com.hyvalker.storemanagementapi.exception.UserNotFoundException;
+import com.hyvalker.storemanagementapi.exception.WaterParameterTestNotFoundException;
 import com.hyvalker.storemanagementapi.model.*;
 import com.hyvalker.storemanagementapi.repository.*;
 import org.springframework.stereotype.Service;
@@ -44,7 +47,7 @@ public class AquariumService {
     @Transactional(readOnly = true)
     public AquariumResponseDTO findById(Long id) {
         Aquarium aquarium = aquariumRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Aquário não encontrado com ID: " + id));
+                .orElseThrow(() -> new AquariumNotFoundException("Aquário não encontrado com ID: " + id));
         long testCount = testRepository.countByAquariumId(id);
         long noteCount = noteRepository.countByAquariumId(id);
         return new AquariumResponseDTO(aquarium, testCount, noteCount);
@@ -55,6 +58,10 @@ public class AquariumService {
         User user = userRepository.findById(request.getUserId())
                 .orElseThrow(() -> new UserNotFoundException("Cliente não encontrado com ID: " + request.getUserId()));
 
+        if (!Boolean.TRUE.equals(user.getActive())) {
+            throw new IllegalArgumentException("Não é possível cadastrar aquário para um cliente inativo: " + user.getName());
+        }
+
         Aquarium aquarium = new Aquarium();
         aquarium.setUser(user);
         aquarium.setName(request.getName());
@@ -64,13 +71,13 @@ public class AquariumService {
         aquarium.setCreatedAt(LocalDateTime.now());
 
         Aquarium saved = aquariumRepository.save(aquarium);
-        return new AquariumResponseDTO(saved, 0);
+        return new AquariumResponseDTO(saved, 0, 0);
     }
 
     @Transactional
     public AquariumResponseDTO update(Long id, CreateAquariumRequest request) {
         Aquarium aquarium = aquariumRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Aquário não encontrado com ID: " + id));
+                .orElseThrow(() -> new AquariumNotFoundException("Aquário não encontrado com ID: " + id));
 
         aquarium.setName(request.getName());
         if (request.getType() != null) {
@@ -80,15 +87,18 @@ public class AquariumService {
         aquarium.setDescription(request.getDescription());
 
         Aquarium saved = aquariumRepository.save(aquarium);
-        long count = testRepository.countByAquariumId(id);
-        return new AquariumResponseDTO(saved, count);
+        long testCount = testRepository.countByAquariumId(id);
+        long noteCount = noteRepository.countByAquariumId(id);
+        return new AquariumResponseDTO(saved, testCount, noteCount);
     }
 
     @Transactional
     public void delete(Long id) {
         if (!aquariumRepository.existsById(id)) {
-            throw new IllegalArgumentException("Aquário não encontrado com ID: " + id);
+            throw new AquariumNotFoundException("Aquário não encontrado com ID: " + id);
         }
+        testRepository.deleteByAquariumId(id);
+        noteRepository.deleteByAquariumId(id);
         aquariumRepository.deleteById(id);
     }
 
@@ -104,8 +114,15 @@ public class AquariumService {
 
     @Transactional
     public WaterParameterTestResponseDTO createTest(CreateWaterParameterTestRequest request) {
+        if (request.getAquariumId() == null) {
+            throw new IllegalArgumentException("O ID do aquário é obrigatório.");
+        }
         Aquarium aquarium = aquariumRepository.findById(request.getAquariumId())
-                .orElseThrow(() -> new IllegalArgumentException("Aquário não encontrado com ID: " + request.getAquariumId()));
+                .orElseThrow(() -> new AquariumNotFoundException("Aquário não encontrado com ID: " + request.getAquariumId()));
+
+        if (aquarium.getUser() != null && Boolean.FALSE.equals(aquarium.getUser().getActive())) {
+            throw new IllegalArgumentException("Não é possível registrar parâmetros de água para um cliente inativo.");
+        }
 
         WaterParameterTest test = new WaterParameterTest();
         test.setAquarium(aquarium);
@@ -133,7 +150,7 @@ public class AquariumService {
     @Transactional
     public WaterParameterTestResponseDTO updateTest(Long testId, CreateWaterParameterTestRequest request) {
         WaterParameterTest test = testRepository.findById(testId)
-                .orElseThrow(() -> new IllegalArgumentException("Registro de medição não encontrado com ID: " + testId));
+                .orElseThrow(() -> new WaterParameterTestNotFoundException("Registro de medição não encontrado com ID: " + testId));
 
         if (request.getTestDate() != null) {
             test.setTestDate(request.getTestDate());
@@ -160,7 +177,7 @@ public class AquariumService {
     @Transactional
     public void deleteTest(Long testId) {
         if (!testRepository.existsById(testId)) {
-            throw new IllegalArgumentException("Registro de medição não encontrado com ID: " + testId);
+            throw new WaterParameterTestNotFoundException("Registro de medição não encontrado com ID: " + testId);
         }
         testRepository.deleteById(testId);
     }
@@ -177,8 +194,15 @@ public class AquariumService {
 
     @Transactional
     public AquariumNoteResponseDTO createNote(CreateAquariumNoteRequest request) {
+        if (request.getAquariumId() == null) {
+            throw new IllegalArgumentException("O ID do aquário é obrigatório.");
+        }
         Aquarium aquarium = aquariumRepository.findById(request.getAquariumId())
-                .orElseThrow(() -> new IllegalArgumentException("Aquário não encontrado com ID: " + request.getAquariumId()));
+                .orElseThrow(() -> new AquariumNotFoundException("Aquário não encontrado com ID: " + request.getAquariumId()));
+
+        if (aquarium.getUser() != null && Boolean.FALSE.equals(aquarium.getUser().getActive())) {
+            throw new IllegalArgumentException("Não é possível adicionar anotações para um cliente inativo.");
+        }
 
         AquariumNote note = new AquariumNote();
         note.setAquarium(aquarium);
@@ -195,7 +219,7 @@ public class AquariumService {
     @Transactional
     public AquariumNoteResponseDTO updateNote(Long noteId, CreateAquariumNoteRequest request) {
         AquariumNote note = noteRepository.findById(noteId)
-                .orElseThrow(() -> new IllegalArgumentException("Anotação não encontrada com ID: " + noteId));
+                .orElseThrow(() -> new AquariumNoteNotFoundException("Anotação não encontrada com ID: " + noteId));
 
         if (request.getNoteDate() != null) {
             note.setNoteDate(request.getNoteDate());
@@ -213,7 +237,7 @@ public class AquariumService {
     @Transactional
     public void deleteNote(Long noteId) {
         if (!noteRepository.existsById(noteId)) {
-            throw new IllegalArgumentException("Anotação não encontrada com ID: " + noteId);
+            throw new AquariumNoteNotFoundException("Anotação não encontrada com ID: " + noteId);
         }
         noteRepository.deleteById(noteId);
     }

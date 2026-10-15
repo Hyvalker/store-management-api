@@ -6,6 +6,8 @@ import com.hyvalker.storemanagementapi.repository.OrderRepository;
 import com.hyvalker.storemanagementapi.repository.ProductRepository;
 import com.hyvalker.storemanagementapi.repository.StockMovementRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -41,7 +43,7 @@ public class DashboardService {
         response.setGrossProfit(revenue.subtract(salesCost));
         response.setLossCost(lossCost);
         response.setLossSalesValue(lossSalesValue);
-        response.setInventoryCostValue(productRepository.calculateInvetoryCostValue());
+        response.setInventoryCostValue(productRepository.calculateInventoryCostValue());
         response.setInventorySaleValue(productRepository.calculateInventorySaleValue());
 
         return response;
@@ -66,16 +68,12 @@ public class DashboardService {
             );
         }
 
-        List<ProductSalesRankingDTO> list;
+        Pageable pageable = PageRequest.of(0, limit);
         if ("revenue".equalsIgnoreCase(sortBy)) {
-            list = orderRepository.findTopRevenueProducts(from, to);
+            return orderRepository.findTopRevenueProducts(from, to, pageable);
         } else {
-            list = orderRepository.findTopSellingProducts(from, to);
+            return orderRepository.findTopSellingProducts(from, to, pageable);
         }
-
-        return list.stream()
-                .limit(limit)
-                .toList();
     }
 
     public List<ProductSalesRankingDTO> getTopSellingProducts(

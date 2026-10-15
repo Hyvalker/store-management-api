@@ -161,10 +161,8 @@ function ProductForm({onSuccess}: ProductFormProps) {
             }
         } catch (err: unknown) {
             console.error(err)
-            const backendMsg =
-                err && typeof err === 'object' && 'response' in err
-                    ? (err as {response?: {data?: {message?: string}}}).response?.data?.message
-                    : null
+            const data = (err as {response?: {data?: {message?: string; error?: string}}})?.response?.data
+            const backendMsg = data?.message || data?.error || null
             const errorMsg =
                 backendMsg ||
                 'Não foi possível cadastrar o produto. Verifique se o nome já existe no catálogo.'

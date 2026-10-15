@@ -1,8 +1,14 @@
 import {api} from './api'
 import type {CreateOrderRequest, OrderResponse} from '../types/order'
 
-export async function getOrders(): Promise<OrderResponse[]> {
-    const response = await api.get<OrderResponse[]>('/orders')
+export interface GetOrdersParams {
+    customerId?: number
+    from?: string
+    to?: string
+}
+
+export async function getOrders(params?: GetOrdersParams): Promise<OrderResponse[]> {
+    const response = await api.get<OrderResponse[]>('/orders', { params })
     return response.data
 }
 
@@ -11,9 +17,11 @@ export async function getOrder(id: number): Promise<OrderResponse> {
     return response.data
 }
 
-export async function getOrdersByCustomer(customerId: number): Promise<OrderResponse[]> {
-    const all = await getOrders()
-    return all.filter((o) => o.customerId === customerId)
+export async function getOrdersByCustomer(customerId: number, params?: Omit<GetOrdersParams, 'customerId'>): Promise<OrderResponse[]> {
+    const response = await api.get<OrderResponse[]>('/orders', {
+        params: { customerId, ...params }
+    })
+    return response.data
 }
 
 export async function createOrder(data: CreateOrderRequest): Promise<OrderResponse> {
@@ -21,8 +29,9 @@ export async function createOrder(data: CreateOrderRequest): Promise<OrderRespon
     return response.data
 }
 
-export async function payOrder(id: number): Promise<OrderResponse> {
-    const response = await api.patch<OrderResponse>(`/orders/${id}/pay`)
+export async function payOrder(id: number, paymentMethod?: string): Promise<OrderResponse> {
+    const params = paymentMethod ? { paymentMethod } : {}
+    const response = await api.patch<OrderResponse>(`/orders/${id}/pay`, null, { params })
     return response.data
 }
 

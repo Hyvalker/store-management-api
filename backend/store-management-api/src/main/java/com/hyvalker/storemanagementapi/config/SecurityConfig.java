@@ -81,11 +81,16 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST, "/products").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.PUT, "/products/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.DELETE, "/products/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.PATCH, "/products/*/reactivate").hasRole("ADMIN")
 
-                        // Somente ADMIN: desativar clientes
+                        // Somente ADMIN: desativar e reativar clientes
                         .requestMatchers(HttpMethod.DELETE, "/users/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.PATCH, "/users/*/reactivate").hasRole("ADMIN")
 
-                        // Todo o resto (vendas, reposição, clientes, aquários...) exige apenas estar logado.
+                        // Somente ADMIN: salvar/atualizar configurações globais da loja
+                        .requestMatchers(HttpMethod.PUT, "/settings/**").hasRole("ADMIN")
+
+                        // Todo o resto (vendas, reposição, clientes, aquários, leitura de configurações...) exige apenas estar logado.
                         // Obs.: o ESTORNO de pedidos pagos é verificado dentro do OrderController.
                         .anyRequest().authenticated())
 

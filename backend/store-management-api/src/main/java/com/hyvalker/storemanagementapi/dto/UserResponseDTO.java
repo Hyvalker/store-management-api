@@ -22,11 +22,15 @@ public class UserResponseDTO {
     @Schema(description = "Número de celular do usuário.", example = "(21) 99999-9999")
     private String phoneNumber;
 
+    @Schema(description = "Indica se o cliente está ativo no sistema.", example = "true")
+    private Boolean active;
+
     public UserResponseDTO(User user) {
         this.id = user.getId();
         this.name = user.getName();
         this.email = user.getEmail();
         this.address = user.getAddress();
         this.phoneNumber = user.getPhoneNumber();
+        this.active = user.getActive();
     }
 }

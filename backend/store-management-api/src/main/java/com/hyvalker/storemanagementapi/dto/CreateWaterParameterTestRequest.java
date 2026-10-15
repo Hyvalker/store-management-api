@@ -8,7 +8,6 @@ import java.time.LocalDateTime;
 @Data
 public class CreateWaterParameterTestRequest {
 
-    @NotNull(message = "O ID do aquário é obrigatório.")
     private Long aquariumId;
 
     private LocalDateTime testDate = LocalDateTime.now();

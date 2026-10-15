@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -43,10 +44,15 @@ public class OrderService {
                     .orElseThrow(() -> new UserNotFoundException (
                             "Cliente com id " + request.getCustomerId() + " não encontrado."
                     ));
+            if (!Boolean.TRUE.equals(customer.getActive())) {
+                throw new InvalidOrderException("Não é possível criar pedido para um cliente inativo: " + customer.getName());
+            }
             order.setCustomer(customer);
         } else if (request.getCustomerName() != null && !request.getCustomerName().trim().isEmpty()) {
             order.setUnregisteredCustomerName(request.getCustomerName().trim());
         }
+
+        BigDecimal grossTotal = BigDecimal.ZERO;
 
         for (CreateOrderItemRequest itemRequest : request.getItems()) {
 
@@ -91,9 +97,25 @@ public class OrderService {
 
             order.getItems().add(orderItem);
 
-            order.setTotalPrice(order.getTotalPrice().add(subtotal));
+            grossTotal = grossTotal.add(subtotal);
 
         }
+
+        order.setSubtotalPrice(grossTotal);
+
+        BigDecimal discountPct = request.getDiscountPercentage() != null ? request.getDiscountPercentage() : BigDecimal.ZERO;
+        if (discountPct.compareTo(BigDecimal.ZERO) < 0 || discountPct.compareTo(BigDecimal.valueOf(100)) > 0) {
+            throw new InvalidOrderException("O percentual de desconto deve estar entre 0 e 100.");
+        }
+
+        BigDecimal discountAmt = grossTotal.multiply(discountPct)
+                .divide(BigDecimal.valueOf(100), 2, RoundingMode.HALF_UP);
+        BigDecimal netTotal = grossTotal.subtract(discountAmt);
+
+        order.setDiscountPercentage(discountPct);
+        order.setDiscountAmount(discountAmt);
+        order.setTotalPrice(netTotal);
+        order.setPaymentMethod(request.getPaymentMethod());
 
         Order savedOrder = orderRepository.save(order);
         return new OrderResponseDTO(savedOrder);
@@ -101,6 +123,11 @@ public class OrderService {
 
     @Transactional
     public OrderResponseDTO payOrder(Long id) {
+        return payOrder(id, null);
+    }
+
+    @Transactional
+    public OrderResponseDTO payOrder(Long id, PaymentMethod paymentMethod) {
         Order order = orderRepository.findById(id)
                 .orElseThrow(() -> new OrderNotFoundException(
                         "Pedido não encontrado."
@@ -118,8 +145,13 @@ public class OrderService {
             );
         }
 
+        if (paymentMethod != null) {
+            order.setPaymentMethod(paymentMethod);
+        }
+
         for (OrderItem item : order.getItems()) {
-            Product product = item.getProduct();
+            Product product = productRepository.findByIdWithLock(item.getProduct().getId())
+                    .orElse(item.getProduct());
 
             if (!Boolean.TRUE.equals(product.getActive())) {
                 throw new InvalidOrderException(
@@ -158,8 +190,26 @@ public class OrderService {
     }
 
     public List<OrderResponseDTO> findAll() {
-        return orderRepository.findAll()
-                .stream()
+        return findAll(null, null, null);
+    }
+
+    public List<OrderResponseDTO> findByCustomerId(Long customerId) {
+        return findAll(customerId, null, null);
+    }
+
+    public List<OrderResponseDTO> findAll(Long customerId, LocalDateTime from, LocalDateTime to) {
+        List<Order> orders;
+        if (customerId != null && from != null && to != null) {
+            orders = orderRepository.findByCustomerIdAndCreatedAtBetweenOrderByCreatedAtDesc(customerId, from, to);
+        } else if (customerId != null) {
+            orders = orderRepository.findByCustomerIdOrderByCreatedAtDesc(customerId);
+        } else if (from != null && to != null) {
+            orders = orderRepository.findByCreatedAtBetweenOrderByCreatedAtDesc(from, to);
+        } else {
+            orders = orderRepository.findAll();
+        }
+
+        return orders.stream()
                 .map(OrderResponseDTO::new)
                 .toList();
     }
@@ -183,7 +233,8 @@ public class OrderService {
 
             for (OrderItem item : order.getItems()) {
 
-                Product product = item.getProduct();
+                Product product = productRepository.findByIdWithLock(item.getProduct().getId())
+                        .orElse(item.getProduct());
 
                 product.setQuantity(product.getQuantity() + item.getQuantity());
 

@@ -1,4 +1,5 @@
 import type {AquariumType, WaterParameterTest} from '../types/aquarium'
+import {api} from './api'
 
 export type WaterParameterKey =
     | 'ph'
@@ -434,12 +435,40 @@ export function getWaterParameterRules(): WaterParameterSettings {
     }
 }
 
-export function saveWaterParameterRules(settings: WaterParameterSettings): void {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(settings))
+const API_WATER_RULES_KEY = 'WATER_PARAMETER_RULES'
+
+export async function fetchWaterParameterRules(): Promise<WaterParameterSettings> {
+    try {
+        const response = await api.get<{key: string; value: string}>(`/settings/${API_WATER_RULES_KEY}`)
+        if (response.data && response.data.value) {
+            localStorage.setItem(STORAGE_KEY, response.data.value)
+        }
+    } catch {
+        // Fallback gracioso para localStorage
+    }
+    return getWaterParameterRules()
 }
 
-export function resetWaterParameterRules(): WaterParameterSettings {
+export async function saveWaterParameterRules(settings: WaterParameterSettings): Promise<void> {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(settings))
+    try {
+        await api.put(`/settings/${API_WATER_RULES_KEY}`, {
+            value: JSON.stringify(settings)
+        })
+    } catch (e) {
+        console.warn('Falha ao sincronizar parâmetros de água com o servidor, mantido em cache local:', e)
+    }
+}
+
+export async function resetWaterParameterRules(): Promise<WaterParameterSettings> {
     localStorage.removeItem(STORAGE_KEY)
+    try {
+        await api.put(`/settings/${API_WATER_RULES_KEY}`, {
+            value: JSON.stringify(DEFAULT_WATER_PARAMETER_SETTINGS)
+        })
+    } catch (e) {
+        console.warn('Falha ao resetar parâmetros de água no servidor:', e)
+    }
     return DEFAULT_WATER_PARAMETER_SETTINGS
 }
 

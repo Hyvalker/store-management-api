@@ -144,9 +144,18 @@ function Orders() {
 
     // Add product to cart
     function addToCart(product: Product) {
+        const available = product.quantity ?? 0
+        if (available <= 0) {
+            toast.warning(`Produto "${product.name}" sem estoque disponível no momento.`, 'Estoque Zerado')
+            return
+        }
         setCart((prev) => {
             const existing = prev.find((item) => item.product.id === product.id)
             if (existing) {
+                if (existing.quantity >= available) {
+                    toast.warning(`Limite de estoque atingido (${available} un.) para "${product.name}".`, 'Limite de Estoque')
+                    return prev
+                }
                 return prev.map((item) =>
                     item.product.id === product.id
                         ? {...item, quantity: item.quantity + 1}
@@ -167,9 +176,17 @@ function Orders() {
             return
         }
         setCart((prev) =>
-            prev.map((item) =>
-                item.product.id === productId ? {...item, quantity: newQty} : item
-            )
+            prev.map((item) => {
+                if (item.product.id === productId) {
+                    const maxStock = item.product.quantity ?? 0
+                    if (newQty > maxStock) {
+                        toast.warning(`Quantidade máxima em estoque é ${maxStock} un.`, 'Limite de Estoque')
+                        return {...item, quantity: maxStock}
+                    }
+                    return {...item, quantity: newQty}
+                }
+                return item
+            })
         )
     }
 
@@ -223,6 +240,10 @@ function Orders() {
         setOrderSuccess(null)
 
         try {
+            const methodUpper = selectedPaymentMethod
+                ? (selectedPaymentMethod.toUpperCase() as 'PIX' | 'MONEY' | 'DEBIT' | 'CREDIT')
+                : null
+
             const payload: CreateOrderRequest = {
                 customerId: customerType === 'registered' ? selectedCustomerId : null,
                 customerName:
@@ -233,6 +254,8 @@ function Orders() {
                     productId: i.product.id,
                     quantity: i.quantity,
                 })),
+                discountPercentage: activeDiscountPercent > 0 ? activeDiscountPercent : 0,
+                paymentMethod: methodUpper,
             }
 
             // 1. Create order
@@ -247,7 +270,7 @@ function Orders() {
                     : ''
 
             if (asPaid) {
-                await payOrder(created.id)
+                await payOrder(created.id, methodUpper || undefined)
                 const msg = `Venda #${created.id} finalizada e PAGA com sucesso! Total: R$ ${finalToPay.toFixed(2)}${paymentDetail}`
                 setOrderSuccess(msg)
                 toast.success(msg, 'Venda Concluída')
@@ -269,7 +292,9 @@ function Orders() {
             loadInitialData()
         } catch (err: unknown) {
             console.error(err)
-            const errorMsg = 'Erro ao finalizar venda. Verifique se há estoque suficiente.'
+            const data = (err as {response?: {data?: {message?: string; error?: string}}})?.response?.data
+            const backendMsg = data?.message || data?.error || null
+            const errorMsg = backendMsg || 'Erro ao finalizar venda. Verifique se há estoque suficiente.'
             setOrderError(errorMsg)
             toast.error(errorMsg, 'Erro no Caixa')
         } finally {
@@ -312,9 +337,11 @@ function Orders() {
                 setViewingOrder(updated)
             }
             loadInitialData()
-        } catch (err) {
+        } catch (err: unknown) {
             console.error(err)
-            toast.error('Não foi possível registrar o pagamento deste pedido.', 'Erro no Pagamento')
+            const apiError = (err as { response?: { data?: { message?: string; error?: string } } })?.response?.data
+            const errorMsg = apiError?.message || apiError?.error || 'Não foi possível registrar o pagamento deste pedido.'
+            toast.error(errorMsg, 'Erro no Pagamento')
         } finally {
             setPayingOrderId(null)
         }
@@ -332,9 +359,11 @@ function Orders() {
                 setViewingOrder(updated)
             }
             loadInitialData()
-        } catch (err) {
+        } catch (err: unknown) {
             console.error(err)
-            toast.error('Não foi possível cancelar o pedido.', 'Erro ao Cancelar')
+            const apiError = (err as { response?: { data?: { message?: string; error?: string } } })?.response?.data
+            const errorMsg = apiError?.message || apiError?.error || 'Não foi possível cancelar o pedido.'
+            toast.error(errorMsg, 'Erro ao Cancelar')
         } finally {
             setCancelingOrderId(null)
         }
@@ -1248,6 +1277,26 @@ function Orders() {
                                     ))}
                                 </tbody>
                                 <tfoot>
+                                    {Boolean(viewingOrder.discountPercentage && viewingOrder.discountPercentage > 0) && (
+                                        <>
+                                            <tr className="border-t border-slate-200 bg-slate-50/50">
+                                                <td colSpan={3} className="py-2 px-3 font-medium text-slate-600 text-right">
+                                                    Subtotal dos Itens:
+                                                </td>
+                                                <td className="py-2 px-3 font-semibold text-slate-700 text-right font-mono text-xs">
+                                                    R$ {Number(viewingOrder.subtotalPrice || (Number(viewingOrder.totalPrice) + Number(viewingOrder.discountAmount || 0))).toFixed(2)}
+                                                </td>
+                                            </tr>
+                                            <tr className="bg-emerald-50/50 text-emerald-800">
+                                                <td colSpan={3} className="py-2 px-3 font-medium text-right text-xs">
+                                                    Desconto ({viewingOrder.discountPercentage}%):
+                                                </td>
+                                                <td className="py-2 px-3 font-bold text-right font-mono text-xs text-emerald-700">
+                                                    - R$ {Number(viewingOrder.discountAmount || 0).toFixed(2)}
+                                                </td>
+                                            </tr>
+                                        </>
+                                    )}
                                     <tr className="border-t-2 border-slate-200 bg-slate-50/50">
                                         <td colSpan={3} className="py-3 px-3 font-bold text-slate-900 text-right">
                                             Total Geral do Pedido:
@@ -1256,6 +1305,19 @@ function Orders() {
                                             R$ {Number(viewingOrder.totalPrice || 0).toFixed(2)}
                                         </td>
                                     </tr>
+                                    {viewingOrder.paymentMethod && (
+                                        <tr className="border-t border-slate-100 bg-slate-50/30">
+                                            <td colSpan={3} className="py-2 px-3 text-[11px] text-slate-500 text-right">
+                                                Forma de Pagamento:
+                                            </td>
+                                            <td className="py-2 px-3 text-[11px] font-bold text-slate-700 text-right uppercase">
+                                                {viewingOrder.paymentMethod === 'PIX' ? 'PIX' :
+                                                 viewingOrder.paymentMethod === 'MONEY' ? 'Dinheiro' :
+                                                 viewingOrder.paymentMethod === 'DEBIT' ? 'Cartão de Débito' :
+                                                 viewingOrder.paymentMethod === 'CREDIT' ? 'Cartão de Crédito' : viewingOrder.paymentMethod}
+                                            </td>
+                                        </tr>
+                                    )}
                                 </tfoot>
                             </table>
                         </div>

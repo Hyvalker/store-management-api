@@ -23,11 +23,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Yellow Tang",
     "scientificName": "Zebrasoma flavescens",
     "synonyms": [
-      "Tang Amarelo"
+      "Tang Amarelo",
+      "yellow tang",
+      "tang amarelo",
+      "zebrasoma",
+      "Yellow Tang (Zebrasoma flavescens)"
     ],
     "type": "LIVING",
     "subCategory": "MARINE_FISH",
-    "imageSlug": "yellow-tang.jpg",
+    "imageSlug": "077_yellow_tang.webp",
     "section": "Peixes Marinhos",
     "familyGroup": "Tangs e Cirurgiões"
   },
@@ -38,11 +42,16 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "scientificName": "Paracanthurus hepatus",
     "synonyms": [
       "Tang Hepatus",
-      "Regal Tang"
+      "Regal Tang",
+      "hepatus",
+      "blue tang",
+      "dory",
+      "paracanthurus",
+      "Blue Tang / Hepatus (\"Dory\")"
     ],
     "type": "LIVING",
     "subCategory": "MARINE_FISH",
-    "imageSlug": "blue-tang.jpg",
+    "imageSlug": "076_blue_tang_hepatus.webp",
     "section": "Peixes Marinhos",
     "familyGroup": "Tangs e Cirurgiões"
   },
@@ -75,10 +84,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "name": "Tang Scopas (Zebrasoma scopas)",
     "commonName": "Tang Scopas",
     "scientificName": "Zebrasoma scopas",
-    "synonyms": [],
+    "synonyms": [
+      "sailfin tang",
+      "desjardinii",
+      "scopas tang",
+      "Sailfin Tang / Scopas Tang"
+    ],
     "type": "LIVING",
     "subCategory": "MARINE_FISH",
-    "imageSlug": "tang-scopas.jpg",
+    "imageSlug": "078_sailfin_scopas_tang.webp",
     "section": "Peixes Marinhos",
     "familyGroup": "Tangs e Cirurgiões"
   },
@@ -119,11 +133,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "scientificName": "Acanthurus leucosternon",
     "synonyms": [
       "Tang Powder Blue",
-      "Azul Pó"
+      "Azul Pó",
+      "powder blue",
+      "leucosternon",
+      "naso tang",
+      "Powder Blue Tang / Naso Tang"
     ],
     "type": "LIVING",
     "subCategory": "MARINE_FISH",
-    "imageSlug": "tang-powder-blue.jpg",
+    "imageSlug": "079_powder_blue_naso_tang.webp",
     "section": "Peixes Marinhos",
     "familyGroup": "Tangs e Cirurgiões"
   },
@@ -299,11 +317,16 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "synonyms": [
       "Palhaço Comum",
       "Peixe Palhaço",
-      "Nemo"
+      "Nemo",
+      "ocellaris",
+      "peixe palhaco",
+      "nemo",
+      "percula",
+      "Ocellaris Comum (Peixe-Palhaço Laranja)"
     ],
     "type": "LIVING",
     "subCategory": "MARINE_FISH",
-    "imageSlug": "palhaco-ocellaris-comum.jpg",
+    "imageSlug": "069_ocellaris_comum.webp",
     "section": "Peixes Marinhos",
     "familyGroup": "Peixes-Palhaço e Morfotipos"
   },
@@ -315,11 +338,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "synonyms": [
       "Preto",
       "Palhaço Preto",
-      "Black Ocellaris"
+      "Black Ocellaris",
+      "ocellaris black",
+      "nemo preto",
+      "black darwin",
+      "Ocellaris Black (Darwin)"
     ],
     "type": "LIVING",
     "subCategory": "MARINE_FISH",
-    "imageSlug": "palhaco-black-ocellaris.jpg",
+    "imageSlug": "070_ocellaris_black_darwin.webp",
     "section": "Peixes Marinhos",
     "familyGroup": "Peixes-Palhaço e Morfotipos"
   },
@@ -330,11 +357,14 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "scientificName": "Amphiprion ocellaris",
     "synonyms": [
       "Snowflake Ocellaris",
-      "Floco de Neve"
+      "Floco de Neve",
+      "ocellaris snowflake",
+      "snowflake clown",
+      "Ocellaris Snowflake"
     ],
     "type": "LIVING",
     "subCategory": "MARINE_FISH",
-    "imageSlug": "palhaco-snowflake.jpg",
+    "imageSlug": "071_ocellaris_snowflake.jpg",
     "section": "Peixes Marinhos",
     "familyGroup": "Peixes-Palhaço e Morfotipos"
   },
@@ -345,11 +375,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "scientificName": "Amphiprion ocellaris",
     "synonyms": [
       "Black Snow",
-      "Floco Negro"
+      "Floco Negro",
+      "black snowflake",
+      "black ice",
+      "phantom",
+      "Ocellaris Black Snowflake / Black Ice"
     ],
     "type": "LIVING",
     "subCategory": "MARINE_FISH",
-    "imageSlug": "palhaco-black-snowflake.jpg",
+    "imageSlug": "072_ocellaris_black_snowflake.png",
     "section": "Peixes Marinhos",
     "familyGroup": "Peixes-Palhaço e Morfotipos"
   },
@@ -390,11 +424,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Palhaço Frostbite",
     "scientificName": "Amphiprion ocellaris",
     "synonyms": [
-      "Frostbite Ocellaris"
+      "Frostbite Ocellaris",
+      "frostbite",
+      "flurry",
+      "wyoming white",
+      "Ocellaris Frostbite / Flurry"
     ],
     "type": "LIVING",
     "subCategory": "MARINE_FISH",
-    "imageSlug": "palhaco-frostbite.jpg",
+    "imageSlug": "074_ocellaris_frostbite_flurry.jpg",
     "section": "Peixes Marinhos",
     "familyGroup": "Peixes-Palhaço e Morfotipos"
   },
@@ -492,10 +530,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "name": "Palhaço Picasso (Amphiprion percula)",
     "commonName": "Palhaço Picasso",
     "scientificName": "Amphiprion percula",
-    "synonyms": [],
+    "synonyms": [
+      "ocellaris picasso",
+      "davinci",
+      "gladiator",
+      "Ocellaris Picasso / DaVinci / Gladiator"
+    ],
     "type": "LIVING",
     "subCategory": "MARINE_FISH",
-    "imageSlug": "peixe-palhaco-picasso.jpg",
+    "imageSlug": "073_ocellaris_picasso_davinci.jpg",
     "section": "Peixes Marinhos",
     "familyGroup": "Peixes-Palhaço e Morfotipos"
   },
@@ -549,10 +592,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "name": "Palhaço Clarkii True (Amphiprion clarkii)",
     "commonName": "Palhaço Clarkii True",
     "scientificName": "Amphiprion clarkii",
-    "synonyms": [],
+    "synonyms": [
+      "flame angel",
+      "coral beauty",
+      "centropyge",
+      "Anjos Anões (Flame Angel / Coral Beauty)"
+    ],
     "type": "LIVING",
     "subCategory": "MARINE_FISH",
-    "imageSlug": "palhaco-clarkii-true.jpg",
+    "imageSlug": "088_anjos_anoes_flame_coral_beauty.webp",
     "section": "Peixes Marinhos",
     "familyGroup": "Peixes-Palhaço e Morfotipos"
   },
@@ -654,10 +702,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "name": "Anjo Coral Beauty (Centropyge bispinosa)",
     "commonName": "Anjo Coral Beauty",
     "scientificName": "Centropyge bispinosa",
-    "synonyms": [],
+    "synonyms": [
+      "cardinal banggai",
+      "banggai",
+      "cardinal pijama",
+      "Cardinal Banggai & Cardinal Pijama"
+    ],
     "type": "LIVING",
     "subCategory": "MARINE_FISH",
-    "imageSlug": "anjo-coral-beauty.jpg",
+    "imageSlug": "087_cardinal_banggai_pijama.webp",
     "section": "Peixes Marinhos",
     "familyGroup": "Anjos Anões e Grandes Anjos"
   },
@@ -679,11 +732,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Flame Angel",
     "scientificName": "Centropyge loricula",
     "synonyms": [
-      "Anjo Flame"
+      "Anjo Flame",
+      "royal gramma",
+      "gramma loreto",
+      "gramma",
+      "Royal Gramma / Gramma Brasiliensis"
     ],
     "type": "LIVING",
     "subCategory": "MARINE_FISH",
-    "imageSlug": "anjo-flame.jpg",
+    "imageSlug": "080_royal_gramma.webp",
     "section": "Peixes Marinhos",
     "familyGroup": "Anjos Anões e Grandes Anjos"
   },
@@ -692,10 +749,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "name": "Anjo Potteri (Centropyge potteri)",
     "commonName": "Anjo Potteri",
     "scientificName": "Centropyge potteri",
-    "synonyms": [],
+    "synonyms": [
+      "firefish",
+      "nemateleotris",
+      "fire fish",
+      "Firefish Comum (Nemateleotris magnifica)"
+    ],
     "type": "LIVING",
     "subCategory": "MARINE_FISH",
-    "imageSlug": "anjo-potteri.jpg",
+    "imageSlug": "081_firefish_magnifica.jpg",
     "section": "Peixes Marinhos",
     "familyGroup": "Anjos Anões e Grandes Anjos"
   },
@@ -704,10 +766,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "name": "Anjo Eibli (Centropyge eibli)",
     "commonName": "Anjo Eibli",
     "scientificName": "Centropyge eibli",
-    "synonyms": [],
+    "synonyms": [
+      "purple firefish",
+      "firefish roxo",
+      "decora",
+      "Firefish Purple"
+    ],
     "type": "LIVING",
     "subCategory": "MARINE_FISH",
-    "imageSlug": "anjo-eibli.jpg",
+    "imageSlug": "082_purple_firefish.jpg",
     "section": "Peixes Marinhos",
     "familyGroup": "Anjos Anões e Grandes Anjos"
   },
@@ -948,11 +1015,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Borboleta Auriga",
     "scientificName": "Chaetodon auriga",
     "synonyms": [
-      "Threadfin"
+      "Threadfin",
+      "watchman goby",
+      "bicolor blenny",
+      "midas blenny",
+      "Gobies & Blennies (Watchman / Bicolor / Midas)"
     ],
     "type": "LIVING",
     "subCategory": "MARINE_FISH",
-    "imageSlug": "borboleta-auriga.jpg",
+    "imageSlug": "085_gobies_blennies_watchman.webp",
     "section": "Peixes Marinhos",
     "familyGroup": "Borboletas"
   },
@@ -988,11 +1059,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Borboleta Kleins",
     "scientificName": "Chaetodon kleinii",
     "synonyms": [
-      "Sunburst"
+      "Sunburst",
+      "mandarim",
+      "synchiropus",
+      "green mandarin",
+      "Peixe Mandarim (Synchiropus splendidus)"
     ],
     "type": "LIVING",
     "subCategory": "MARINE_FISH",
-    "imageSlug": "borboleta-kleins.jpg",
+    "imageSlug": "086_peixe_mandarim.webp",
     "section": "Peixes Marinhos",
     "familyGroup": "Borboletas"
   },
@@ -1233,10 +1308,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "name": "Donzela Yellow Belly Neon (Pomacentrus auriventris)",
     "commonName": "Donzela Yellow Belly Neon",
     "scientificName": "Pomacentrus auriventris",
-    "synonyms": [],
+    "synonyms": [
+      "kupang",
+      "green chromis",
+      "yellow tail damsel",
+      "Donzelas (Kupang, Green Chromis, Yellow Tail)"
+    ],
     "type": "LIVING",
     "subCategory": "MARINE_FISH",
-    "imageSlug": "donzela-yellow-belly-neon.jpg",
+    "imageSlug": "084_donzelas_blue_devil.jpg",
     "section": "Peixes Marinhos",
     "familyGroup": "Donzelas e Cromis"
   },
@@ -1811,10 +1891,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "name": "Wrasse Melanurus (Halichoeres melanurus)",
     "commonName": "Wrasse Melanurus",
     "scientificName": "Halichoeres melanurus",
-    "synonyms": [],
+    "synonyms": [
+      "six line",
+      "sixline wrasse",
+      "yellow coris",
+      "Six Line Wrasse / Yellow Coris"
+    ],
     "type": "LIVING",
     "subCategory": "MARINE_FISH",
-    "imageSlug": "wrasse-melanurus.jpg",
+    "imageSlug": "083_six_line_wrasse.webp",
     "section": "Peixes Marinhos",
     "familyGroup": "Bodiões e Wrasses"
   },
@@ -2481,11 +2566,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Salema",
     "scientificName": "Anisotremus virginicus",
     "synonyms": [
-      "Anisotremus"
+      "Anisotremus",
+      "xenia pulsante",
+      "pom pom xenia",
+      "xenia",
+      "Xênia Pulsante (Pom Pom / Giant)"
     ],
     "type": "LIVING",
     "subCategory": "MARINE_FISH",
-    "imageSlug": "salema.jpg",
+    "imageSlug": "039_xenia_pulsante.webp",
     "section": "Peixes Marinhos",
     "familyGroup": "Dragonets, Foxfaces, Triggers, Hawkfish e Miscelânea"
   },
@@ -2507,11 +2596,16 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Green Star Polyps",
     "scientificName": "Briareum violaceum",
     "synonyms": [
-      "GSP Metálico"
+      "GSP Metálico",
+      "gsp",
+      "star polyps",
+      "briareum",
+      "grama verde",
+      "Green Star Polyps (GSP Metallic)"
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "green-star-polyps.jpg",
+    "imageSlug": "034_green_star_polyps_gsp.jpg",
     "section": "Corais e Anêmonas",
     "familyGroup": "Corais Moles / Soft Corals"
   },
@@ -2533,11 +2627,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Xênia Giant",
     "scientificName": "Anthelia sp.",
     "synonyms": [
-      "Blue Anthelia"
+      "Blue Anthelia",
+      "cloves papaya",
+      "clavularia",
+      "fireworks cloves",
+      "Cloves Papaya / Tricolor (Clavularia)"
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "xenia-giant.jpg",
+    "imageSlug": "040_cloves_papaya_fireworks.webp",
     "section": "Corais e Anêmonas",
     "familyGroup": "Corais Moles / Soft Corals"
   },
@@ -2604,11 +2702,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Leather Japanese Green",
     "scientificName": "Sarcophyton sp.",
     "synonyms": [
-      "Sarcophyton Verde Japonês"
+      "Sarcophyton Verde Japonês",
+      "leather umbrella",
+      "toadstool",
+      "sarcophyton",
+      "Leather Toadstool / Guarda-Chuva"
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "leather-japanese-green.jpg",
+    "imageSlug": "035_leather_toadstool.webp",
     "section": "Corais e Anêmonas",
     "familyGroup": "Corais Moles / Soft Corals"
   },
@@ -2636,11 +2738,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Leather Colt",
     "scientificName": "Cladiella sp.",
     "synonyms": [
-      "Árvore de Couro"
+      "Árvore de Couro",
+      "devils hand",
+      "mao do diabo",
+      "lobophytum",
+      "Leather Devil's Hand / Lobophytum"
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "leather-colt.jpg",
+    "imageSlug": "036_leather_devils_hand.webp",
     "section": "Corais e Anêmonas",
     "familyGroup": "Corais Moles / Soft Corals"
   },
@@ -2692,11 +2798,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Yellow Polyps",
     "scientificName": "Parazoanthus gracilis",
     "synonyms": [
-      "Pólipos Amarelos"
+      "Pólipos Amarelos",
+      "kenya tree",
+      "arvore do quenia",
+      "capnella",
+      "Kenya Tree (Árvore do Quênia)"
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "yellow-polyps.jpg",
+    "imageSlug": "038_kenya_tree_capnella.jpg",
     "section": "Corais e Anêmonas",
     "familyGroup": "Corais Moles / Soft Corals"
   },
@@ -2761,10 +2871,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "name": "Mushroom Green Tonga (Discosoma sp.)",
     "commonName": "Mushroom Green Tonga",
     "scientificName": "Discosoma sp.",
-    "synonyms": [],
+    "synonyms": [
+      "mush verde",
+      "discosoma green",
+      "green mush",
+      "Mushroom Discosoma Metallic Green"
+    ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "mushroom-green-tonga.jpg",
+    "imageSlug": "025_mushroom_discosoma_green.jpg",
     "section": "Corais e Anêmonas",
     "familyGroup": "Mushrooms e Ricordeas"
   },
@@ -2774,11 +2889,16 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Mushroom Striated",
     "scientificName": "Discosoma sp.",
     "synonyms": [
-      "Listrado Marrom e Azul"
+      "Listrado Marrom e Azul",
+      "mush azul",
+      "mush roxo",
+      "discosoma blue",
+      "purple mush",
+      "Mushroom Discosoma Blue / Purple Spotted"
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "mushroom-striated.jpg",
+    "imageSlug": "023_mushroom_discosoma_blue_purple.jpg",
     "section": "Corais e Anêmonas",
     "familyGroup": "Mushrooms e Ricordeas"
   },
@@ -2787,10 +2907,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "name": "Mushroom Jawbreaker (Discosoma sp. var. Jawbreaker)",
     "commonName": "Mushroom Jawbreaker",
     "scientificName": "Discosoma sp. var. Jawbreaker",
-    "synonyms": [],
+    "synonyms": [
+      "mush superman",
+      "discosoma superman",
+      "red spotted blue",
+      "Mushroom Discosoma Superman"
+    ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "mushroom-jawbreaker.jpg",
+    "imageSlug": "022_mushroom_discosoma_superman.webp",
     "section": "Corais e Anêmonas",
     "familyGroup": "Mushrooms e Ricordeas"
   },
@@ -2800,11 +2925,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Mushroom Rhodactis Green Hair",
     "scientificName": "Rhodactis sp.",
     "synonyms": [
-      "Peludo Verde"
+      "Peludo Verde",
+      "rhodactis hairy",
+      "mush peludo",
+      "green hairy",
+      "Mushroom Rhodactis Green Hairy"
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "mushroom-rhodactis-green-hair.jpg",
+    "imageSlug": "026_rhodactis_green_hairy.jpg",
     "section": "Corais e Anêmonas",
     "familyGroup": "Mushrooms e Ricordeas"
   },
@@ -2814,11 +2943,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Mushroom Rhodactis Orange",
     "scientificName": "Rhodactis sp.",
     "synonyms": [
-      "Laranja"
+      "Laranja",
+      "rhodactis bullseye",
+      "rhodactis laranja",
+      "tequila",
+      "Mushroom Rhodactis Bullseye / Tonga"
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "mushroom-rhodactis-orange.jpg",
+    "imageSlug": "028_rhodactis_bullseye.jpg",
     "section": "Corais e Anêmonas",
     "familyGroup": "Mushrooms e Ricordeas"
   },
@@ -2851,10 +2984,19 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "name": "Ricordea Florida Laranja (Ricordea florida)",
     "commonName": "Ricordea Florida Laranja",
     "scientificName": "Ricordea florida",
-    "synonyms": [],
+    "synonyms": [
+      "mush red",
+      "discosoma vermelho",
+      "deadpool mush",
+      "Mushroom Discosoma Super Red / Deadpool",
+      "ricordea florida",
+      "ricordea laranja",
+      "rainbow",
+      "Ricordea Florida Laranja / Rainbow"
+    ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "ricordea-florida-laranja.jpg",
+    "imageSlug": "030_ricordea_florida_orange.jpg",
     "section": "Corais e Anêmonas",
     "familyGroup": "Mushrooms e Ricordeas"
   },
@@ -2864,11 +3006,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Ricordea Florida Azul",
     "scientificName": "Ricordea florida",
     "synonyms": [
-      "Verde"
+      "Verde",
+      "ricordea verde",
+      "ricordea azul",
+      "florida green",
+      "Ricordea Florida Verde / Azul"
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "ricordea-florida-azul.jpg",
+    "imageSlug": "031_ricordea_florida_green.jpg",
     "section": "Corais e Anêmonas",
     "familyGroup": "Mushrooms e Ricordeas"
   },
@@ -2892,11 +3038,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Ricordea Yuma Rosa",
     "scientificName": "Ricordea yuma",
     "synonyms": [
-      "Laranja"
+      "Laranja",
+      "yuma orange",
+      "yuma pink",
+      "ricordea yuma laranja",
+      "Ricordea Yuma Orange / Pink Rainbow"
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "ricordea-yuma-rosa.jpg",
+    "imageSlug": "033_ricordea_yuma_orange_rainbow.jpg",
     "section": "Corais e Anêmonas",
     "familyGroup": "Mushrooms e Ricordeas"
   },
@@ -2905,10 +3055,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "name": "Ricordea Yuma Verde (Ricordea yuma)",
     "commonName": "Ricordea Yuma Verde",
     "scientificName": "Ricordea yuma",
-    "synonyms": [],
+    "synonyms": [
+      "ricordea yuma",
+      "yuma green",
+      "yuma verde",
+      "Ricordea Yuma Green / Neon"
+    ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "ricordea-yuma-verde.jpg",
+    "imageSlug": "032_ricordea_yuma_green.jpg",
     "section": "Corais e Anêmonas",
     "familyGroup": "Mushrooms e Ricordeas"
   },
@@ -2917,10 +3072,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "name": "Zoanthus Fire and Ice (Zoanthus sp.)",
     "commonName": "Zoanthus Fire and Ice",
     "scientificName": "Zoanthus sp.",
-    "synonyms": [],
+    "synonyms": [
+      "zoa fire and ice",
+      "fire & ice",
+      "zoanthus fire ice",
+      "Zoanthus Fire and Ice"
+    ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "zoanthus-fire-and-ice.webp",
+    "imageSlug": "009_zoanthus_fire_and_ice.webp",
     "section": "Corais e Anêmonas",
     "familyGroup": "Zoanthus e Palythoas"
   },
@@ -2931,11 +3091,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "scientificName": "Zoanthus sp.",
     "synonyms": [
       "Verde Radioativo",
-      "Dragon Eye"
+      "Dragon Eye",
+      "zoa radioactive",
+      "radioactive dragon eye",
+      "green bay packers",
+      "Zoanthus Radioactive Green"
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "zoanthus-radioactive-dragon-eye.webp",
+    "imageSlug": "005_zoanthus_radioactive_green.jpg",
     "section": "Corais e Anêmonas",
     "familyGroup": "Zoanthus e Palythoas"
   },
@@ -2946,11 +3110,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "scientificName": "Zoanthus sp.",
     "synonyms": [
       "Rastafari",
-      "Rastas"
+      "Rastas",
+      "zoa rasta",
+      "rastas",
+      "zoanthus rasta",
+      "Zoanthus Rasta"
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "zoanthus-rasta.webp",
+    "imageSlug": "002_zoanthus_rasta.jpg",
     "section": "Corais e Anêmonas",
     "familyGroup": "Zoanthus e Palythoas"
   },
@@ -2960,11 +3128,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Zoanthus King Midas",
     "scientificName": "Zoanthus sp.",
     "synonyms": [
-      "Ouro"
+      "Ouro",
+      "zoa scrambled eggs",
+      "king midas",
+      "zoa amarelo",
+      "Zoanthus Scrambled Eggs / King Midas"
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "zoanthus-king-midas.webp",
+    "imageSlug": "014_zoanthus_scrambled_eggs.webp",
     "section": "Corais e Anêmonas",
     "familyGroup": "Zoanthus e Palythoas"
   },
@@ -2973,10 +3145,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "name": "Zoanthus Utter Chaos (Zoanthus sp.)",
     "commonName": "Zoanthus Utter Chaos",
     "scientificName": "Zoanthus sp.",
-    "synonyms": [],
+    "synonyms": [
+      "utter chaos",
+      "zoa utter chaos",
+      "paly utter chaos",
+      "Palythoa Utter Chaos"
+    ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "zoanthus-utter-chaos.webp",
+    "imageSlug": "015_palythoa_utter_chaos.webp",
     "section": "Corais e Anêmonas",
     "familyGroup": "Zoanthus e Palythoas"
   },
@@ -2987,11 +3164,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "scientificName": "Zoanthus sp.",
     "synonyms": [
       "Melancia",
-      "Whammin Watermelon"
+      "Whammin Watermelon",
+      "zoa watermelon",
+      "zoa melancia",
+      "whammin watermelon",
+      "Zoanthus Watermelon (Melancia)"
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "zoanthus-watermelon.webp",
+    "imageSlug": "003_zoanthus_watermelon.webp",
     "section": "Corais e Anêmonas",
     "familyGroup": "Zoanthus e Palythoas"
   },
@@ -3060,10 +3241,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "name": "Zoanthus Blue Hornet (Zoanthus sp.)",
     "commonName": "Zoanthus Blue Hornet",
     "scientificName": "Zoanthus sp.",
-    "synonyms": [],
+    "synonyms": [
+      "zoa blue hornet",
+      "hornet azul",
+      "blue hornet",
+      "Zoanthus Blue Hornet"
+    ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "zoanthus-blue-hornet.webp",
+    "imageSlug": "010_zoanthus_blue_hornet.jpg",
     "section": "Corais e Anêmonas",
     "familyGroup": "Zoanthus e Palythoas"
   },
@@ -3072,10 +3258,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "name": "Zoanthus Red Hornet (Zoanthus sp.)",
     "commonName": "Zoanthus Red Hornet",
     "scientificName": "Zoanthus sp.",
-    "synonyms": [],
+    "synonyms": [
+      "zoa red hornet",
+      "hornet vermelho",
+      "red hornet",
+      "Zoanthus Red Hornet"
+    ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "zoanthus-red-hornet.jpg",
+    "imageSlug": "011_zoanthus_red_hornet.webp",
     "section": "Corais e Anêmonas",
     "familyGroup": "Zoanthus e Palythoas"
   },
@@ -3085,11 +3276,16 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Zoanthus Sunny D",
     "scientificName": "Zoanthus sp.",
     "synonyms": [
-      "Sunny Delight"
+      "Sunny Delight",
+      "zoa sunny d",
+      "sunny day",
+      "zoanthus sunny",
+      "sunny d",
+      "Zoanthus Sunny Day (Sunny D)"
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "zoanthus-sunny-d.webp",
+    "imageSlug": "001_zoanthus_sunny_day.jpg",
     "section": "Corais e Anêmonas",
     "familyGroup": "Zoanthus e Palythoas"
   },
@@ -3110,10 +3306,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "name": "Zoanthus Fruit Loops (Zoanthus sp.)",
     "commonName": "Zoanthus Fruit Loops",
     "scientificName": "Zoanthus sp.",
-    "synonyms": [],
+    "synonyms": [
+      "zoa fruit loops",
+      "fruit loop",
+      "zoanthus fruit loops",
+      "Zoanthus Fruit Loops"
+    ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "zoanthus-fruit-loops.webp",
+    "imageSlug": "007_zoanthus_fruit_loops.jpg",
     "section": "Corais e Anêmonas",
     "familyGroup": "Zoanthus e Palythoas"
   },
@@ -3123,11 +3324,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Palythoa Grandis",
     "scientificName": "Palythoa grandis",
     "synonyms": [
-      "Pólipo Gigante"
+      "Pólipo Gigante",
+      "paly grandis",
+      "cinnamon polyp",
+      "sunburn grandis",
+      "Palythoa Grandis / Cinnamon"
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "palythoa-grandis.jpg",
+    "imageSlug": "019_palythoa_grandis.jpg",
     "section": "Corais e Anêmonas",
     "familyGroup": "Zoanthus e Palythoas"
   },
@@ -3160,10 +3365,14 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "name": "Palythoa Captain America (Palythoa sp.)",
     "commonName": "Palythoa Captain America",
     "scientificName": "Palythoa sp.",
-    "synonyms": [],
+    "synonyms": [
+      "paly captain america",
+      "capitao america",
+      "Palythoa Captain America"
+    ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "palythoa-captain-america.webp",
+    "imageSlug": "018_palythoa_captain_america.webp",
     "section": "Corais e Anêmonas",
     "familyGroup": "Zoanthus e Palythoas"
   },
@@ -3201,11 +3410,16 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Torch Coral Dragon Soul",
     "scientificName": "Euphyllia glabrescens",
     "synonyms": [
-      "Alma de Dragão"
+      "Alma de Dragão",
+      "torch gold",
+      "dragon soul",
+      "torch 24k",
+      "hellfire",
+      "Torch Dragon Soul / Indo Gold / 24k"
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "torch-coral-dragon-soul.jpg",
+    "imageSlug": "051_torch_dragon_soul_gold.jpg",
     "section": "Corais e Anêmonas",
     "familyGroup": "Corais Duros LPS"
   },
@@ -3221,11 +3435,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
       "Torch Gold",
       "Coral Torch Gold",
       "Torch Dourado",
-      "Torch 24k Gold"
+      "Torch 24k Gold",
+      "black torch",
+      "torch preto",
+      "euphyllia glabrescens",
+      "Torch Black (Ponta Verde/Branca)"
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "torch-coral-24k-gold.jpg",
+    "imageSlug": "050_torch_gold_24k_holy_grail.jpg",
     "section": "Corais e Anêmonas",
     "familyGroup": "Corais Duros LPS"
   },
@@ -3235,11 +3453,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Torch Coral Green Tip",
     "scientificName": "Euphyllia glabrescens",
     "synonyms": [
-      "Ponta Verde"
+      "Ponta Verde",
+      "torch green",
+      "euphyllia torch",
+      "torch verde",
+      "Torch Green Tip / Metallic Green"
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "torch-coral-green-tip.jpg",
+    "imageSlug": "049_torch_green_tip.webp",
     "section": "Corais e Anêmonas",
     "familyGroup": "Corais Duros LPS"
   },
@@ -3266,11 +3488,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
       "Hammer Verde Metálico",
       "Martelo Verde Metálico",
       "Hammer Toxic Green",
-      "Coral Hammer Verde Metalico"
+      "Coral Hammer Verde Metalico",
+      "hammer green",
+      "hammer verde",
+      "hammer splatter",
+      "Hammer Full Green / Toxic Splatter"
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "hammer-coral-toxic-green.jpg",
+    "imageSlug": "044_hammer_full_green.jpg",
     "section": "Corais e Anêmonas",
     "familyGroup": "Corais Duros LPS"
   },
@@ -3280,11 +3506,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Hammer Coral Gold",
     "scientificName": "Fimbriaphyllia ancora",
     "synonyms": [
-      "Martelo Dourado"
+      "Martelo Dourado",
+      "hammer gold",
+      "hammer dourado",
+      "hammer yellow",
+      "Hammer Gold / Yellow"
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "hammer-coral-gold.jpg",
+    "imageSlug": "046_hammer_gold_yellow.jpg",
     "section": "Corais e Anêmonas",
     "familyGroup": "Corais Duros LPS"
   },
@@ -3308,11 +3538,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Hammer Coral Branching",
     "scientificName": "Fimbriaphyllia paraancora",
     "synonyms": [
-      "Martelo Ramo"
+      "Martelo Ramo",
+      "hammer bicolor",
+      "euphyllia hammer",
+      "martelo bicolor",
+      "Hammer Bicolor (Euphyllia/Fimbriaphyllia)"
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "hammer-coral-branching.jpg",
+    "imageSlug": "043_hammer_bicolor.webp",
     "section": "Corais e Anêmonas",
     "familyGroup": "Corais Duros LPS"
   },
@@ -3322,11 +3556,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Frogspawn Coral Bicolor",
     "scientificName": "Euphyllia divisa",
     "synonyms": [
-      "Ponta Roxa"
+      "Ponta Roxa",
+      "frogspawn",
+      "frog bicolor",
+      "frog ponta roxa",
+      "Frogspawn Green c/ Ponta Roxa / Bicolor"
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "frogspawn-coral-bicolor.jpg",
+    "imageSlug": "047_frogspawn_bicolor.jpg",
     "section": "Corais e Anêmonas",
     "familyGroup": "Corais Duros LPS"
   },
@@ -3340,11 +3578,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
       "Coral Frogspawn Ultra Green",
       "Frogspawn Ultra Green",
       "Coral Frogspan Ultra Green",
-      "Frogspan Ultra Green"
+      "Frogspan Ultra Green",
+      "frog green",
+      "octospawn",
+      "frog verde",
+      "Frogspawn Full Green / Octospawn"
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "frogspawn-coral-green.jpg",
+    "imageSlug": "048_frogspawn_green.jpg",
     "section": "Corais e Anêmonas",
     "familyGroup": "Corais Duros LPS"
   },
@@ -3380,11 +3622,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Trumpet Kryptonita",
     "scientificName": "Caulastraea furcata",
     "synonyms": [
-      "Trompete Verde Neon"
+      "Trompete Verde Neon",
+      "trumpet kryptonita",
+      "kriptonita",
+      "caulastrea",
+      "Trumpet Kryptonita (Caulastrea)"
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "trumpet-kryptonita.jpg",
+    "imageSlug": "053_trumpet_kryptonita.webp",
     "section": "Corais e Anêmonas",
     "familyGroup": "Corais Duros LPS"
   },
@@ -3407,10 +3653,14 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "name": "Trumpet Bicolor (Caulastraea furcata)",
     "commonName": "Trumpet Bicolor",
     "scientificName": "Caulastraea furcata",
-    "synonyms": [],
+    "synonyms": [
+      "trumpet bicolor",
+      "caulastrea furcata",
+      "Trumpet Bicolor / Azul"
+    ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "trumpet-bicolor.jpg",
+    "imageSlug": "054_trumpet_bicolor.jpg",
     "section": "Corais e Anêmonas",
     "familyGroup": "Corais Duros LPS"
   },
@@ -3419,10 +3669,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "name": "Acanthastrea Micromussa Lordhowensis Rainbow (Micromussa lordhowensis)",
     "commonName": "Acanthastrea Micromussa Lordhowensis Rainbow",
     "scientificName": "Micromussa lordhowensis",
-    "synonyms": [],
+    "synonyms": [
+      "duncan",
+      "duncanopsammia",
+      "coral duncan",
+      "Coral Duncan (Duncanopsammia axifuga)"
+    ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "acanthastrea-micromussa-lordhowensis-rainbow.jpg",
+    "imageSlug": "055_coral_duncan.webp",
     "section": "Corais e Anêmonas",
     "familyGroup": "Corais Duros LPS"
   },
@@ -3432,11 +3687,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Acanthastrea Micromussa Orange",
     "scientificName": "Micromussa lordhowensis",
     "synonyms": [
-      "Laranja"
+      "Laranja",
+      "acan rainbow",
+      "acan laranja",
+      "acanthastrea lord",
+      "Acanthastrea Rainbow / Orange Crush"
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "acanthastrea-micromussa-orange.jpg",
+    "imageSlug": "057_acanthastrea_rainbow.jpg",
     "section": "Corais e Anêmonas",
     "familyGroup": "Corais Duros LPS"
   },
@@ -3446,11 +3705,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Acanthastrea Micromussa Ultra Red",
     "scientificName": "Micromussa lordhowensis",
     "synonyms": [
-      "Vermelha"
+      "Vermelha",
+      "acan red",
+      "acanthastrea",
+      "micromussa",
+      "Acanthastrea / Micromussa Red & Green"
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "acanthastrea-micromussa-ultra-red.jpg",
+    "imageSlug": "056_acanthastrea_red_green.jpg",
     "section": "Corais e Anêmonas",
     "familyGroup": "Corais Duros LPS"
   },
@@ -3477,10 +3740,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "name": "Blastomussa Merletti Green (Blastomussa merletti)",
     "commonName": "Blastomussa Merletti Green",
     "scientificName": "Blastomussa merletti",
-    "synonyms": [],
+    "synonyms": [
+      "blastomussa",
+      "favia dragon soul",
+      "chalice",
+      "Blastomussa / Favia / Chalice"
+    ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "blastomussa-merletti-green.jpg",
+    "imageSlug": "060_blastomussa_favia_chalice.webp",
     "section": "Corais e Anêmonas",
     "familyGroup": "Corais Duros LPS"
   },
@@ -3504,11 +3772,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Goniopora Red",
     "scientificName": "Goniopora sp.",
     "synonyms": [
-      "Vermelha"
+      "Vermelha",
+      "goniopora red",
+      "goniopora vermelha",
+      "goniopora rosa",
+      "Goniopora Red / Pink (Centro Azul)"
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "goniopora-red.jpg",
+    "imageSlug": "058_goniopora_red_pink.webp",
     "section": "Corais e Anêmonas",
     "familyGroup": "Corais Duros LPS"
   },
@@ -3518,11 +3790,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Goniopora Green",
     "scientificName": "Goniopora sp.",
     "synonyms": [
-      "Verde"
+      "Verde",
+      "goniopora green",
+      "goniopora verde",
+      "alveopora",
+      "Goniopora Green Neon / Alveopora"
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "goniopora-green.jpg",
+    "imageSlug": "059_goniopora_green_neon.jpg",
     "section": "Corais e Anêmonas",
     "familyGroup": "Corais Duros LPS"
   },
@@ -3781,10 +4057,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "name": "Montipora Digitata Forest Fire (Montipora digitata)",
     "commonName": "Montipora Digitata Forest Fire",
     "scientificName": "Montipora digitata",
-    "synonyms": [],
+    "synonyms": [
+      "montipora digitata",
+      "forest fire",
+      "bubblegum",
+      "Montipora Digitata Red / Forest Fire"
+    ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "montipora-digitata-forest-fire.jpg",
+    "imageSlug": "063_montipora_digitata_forest_fire.webp",
     "section": "Corais e Anêmonas",
     "familyGroup": "Corais Duros SPS"
   },
@@ -3794,11 +4075,14 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Montipora Cap",
     "scientificName": "Montipora capricornis",
     "synonyms": [
-      "Prato Vermelha"
+      "Prato Vermelha",
+      "montipora prato vermelha",
+      "capricornis red",
+      "Montipora Capricornis Vermelha (Prato Red)"
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "montipora-cap.jpg",
+    "imageSlug": "061_montipora_capricornis_red.webp",
     "section": "Corais e Anêmonas",
     "familyGroup": "Corais Duros SPS"
   },
@@ -3836,11 +4120,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Montipora Sunset",
     "scientificName": "Montipora tuberculosa",
     "synonyms": [
-      "Pôr do Sol"
+      "Pôr do Sol",
+      "montipora superman",
+      "montipora sunset",
+      "rainbow",
+      "Montipora Incrustante (Superman / Sunset)"
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "montipora-sunset.jpg",
+    "imageSlug": "064_montipora_superman_incrustante.webp",
     "section": "Corais e Anêmonas",
     "familyGroup": "Corais Duros SPS"
   },
@@ -3849,10 +4137,16 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "name": "Acropora Green Slimer (Acropora yongei)",
     "commonName": "Acropora Green Slimer",
     "scientificName": "Acropora yongei",
-    "synonyms": [],
+    "synonyms": [
+      "acropora",
+      "bali slimer",
+      "valida tricolor",
+      "millepora",
+      "Acropora (Bali Slimer / Valida / Millepora)"
+    ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "acropora-green-slimer.jpg",
+    "imageSlug": "068_acropora_bali_slimer_valida.png",
     "section": "Corais e Anêmonas",
     "familyGroup": "Corais Duros SPS"
   },
@@ -3930,11 +4224,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Acropora Formosa",
     "scientificName": "Acropora formosa",
     "synonyms": [
-      "Staghorn Azul"
+      "Staghorn Azul",
+      "seriatopora hystrix",
+      "birdsnest",
+      "ninho de passaro",
+      "Seriatopora Hystrix (Birdsnest Rosa)"
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "acropora-formosa.jpg",
+    "imageSlug": "066_seriatopora_hystrix_pink.jpg",
     "section": "Corais e Anêmonas",
     "familyGroup": "Corais Duros SPS"
   },
@@ -3972,11 +4270,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Stylophora Milka",
     "scientificName": "Stylophora pistillata",
     "synonyms": [
-      "Estilófora Roxa"
+      "Estilófora Roxa",
+      "stylophora milka",
+      "milka",
+      "stylophora roxa",
+      "Stylophora Milka (Roxa)"
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "stylophora-milka.jpg",
+    "imageSlug": "065_stylophora_milka.jpg",
     "section": "Corais e Anêmonas",
     "familyGroup": "Corais Duros SPS"
   },
@@ -4021,11 +4323,16 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
       "Bubble Tip Rainbow",
       "Bubbletip Rainbow",
       "Anêmona Bubbletip Rainbow",
-      "Rainbow BTA"
+      "Rainbow BTA",
+      "anemona bta",
+      "rbta",
+      "bubble tip rose",
+      "rainbow",
+      "Anêmona Bubble Tip Rose / Rainbow (RBTA)"
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "anemona-bubble-tip-rainbow.jpg",
+    "imageSlug": "041_anemona_bta_rose_rainbow.webp",
     "section": "Corais e Anêmonas",
     "familyGroup": "Anêmonas Marinhas"
   },
@@ -4039,11 +4346,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
       "Bubble Tip Green",
       "Bubbletip Green",
       "Anêmona Bubbletip Green",
-      "Green BTA"
+      "Green BTA",
+      "gbta",
+      "bubble tip green",
+      "anemona verde",
+      "Anêmona Bubble Tip Green (GBTA)"
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "anemona-bubble-tip-green.jpg",
+    "imageSlug": "042_anemona_bta_green.webp",
     "section": "Corais e Anêmonas",
     "familyGroup": "Anêmonas Marinhas"
   },
@@ -4193,11 +4504,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Camarão Stenopus Gold",
     "scientificName": "Stenopus scutellatus",
     "synonyms": [
-      "Barbeiro Dourado"
+      "Barbeiro Dourado",
+      "camarao cleaner",
+      "camarao bailarino",
+      "blood shrimp",
+      "Camarões (Cleaner, Bailarino e Blood Shrimp)"
     ],
     "type": "LIVING",
     "subCategory": "INVERTEBRATE",
-    "imageSlug": "camarao-stenopus-gold.jpg",
+    "imageSlug": "089_camaroes_cleaner_bailarino.webp",
     "section": "Invertebrados Marinhos",
     "familyGroup": "Camarões e Caranguejos Ornamentais e Limpeza"
   },
@@ -4365,11 +4680,16 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Turbo Snail",
     "scientificName": "Turbo fluctuosus",
     "synonyms": [
-      "Caracol Turbo Limpa Vidro"
+      "Caracol Turbo Limpa Vidro",
+      "paguro",
+      "mini paguro",
+      "turbo snail",
+      "nish snail",
+      "Equipe de Limpeza (Mini Paguro & Snails)"
     ],
     "type": "LIVING",
     "subCategory": "INVERTEBRATE",
-    "imageSlug": "turbo-snail.jpg",
+    "imageSlug": "090_equipe_limpeza_paguro_snail.jpg",
     "section": "Invertebrados Marinhos",
     "familyGroup": "Moluscos, Equinodermos e Equipe de Limpeza Recifal"
   },
@@ -4555,11 +4875,16 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Ouriço Satélite",
     "scientificName": "Eucidaris tribuloides",
     "synonyms": [
-      "Lápis"
+      "Lápis",
+      "betta comum",
+      "betta veu",
+      "veiltail",
+      "betta macho",
+      "Betta Veiltail (Cauda de Véu)"
     ],
     "type": "LIVING",
     "subCategory": "INVERTEBRATE",
-    "imageSlug": "ourico-satelite.jpg",
+    "imageSlug": "098_betta_veiltail.webp",
     "section": "Invertebrados Marinhos",
     "familyGroup": "Moluscos, Equinodermos e Equipe de Limpeza Recifal"
   },
@@ -4595,11 +4920,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Pepino do Mar",
     "scientificName": "Holothuria atra",
     "synonyms": [
-      "Holotúria Limpadora"
+      "Holotúria Limpadora",
+      "disco selvagem",
+      "disco heckel",
+      "symphysodon",
+      "Acará Disco Selvagem (Heckel / Verde / Azul)"
     ],
     "type": "LIVING",
     "subCategory": "INVERTEBRATE",
-    "imageSlug": "pepino-do-mar.jpg",
+    "imageSlug": "131_acara_disco_selvagem.jpg",
     "section": "Invertebrados Marinhos",
     "familyGroup": "Moluscos, Equinodermos e Equipe de Limpeza Recifal"
   },
@@ -4608,10 +4937,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "name": "Tetra Neon Cardinal (Paracheirodon axelrodi)",
     "commonName": "Tetra Neon Cardinal",
     "scientificName": "Paracheirodon axelrodi",
-    "synonyms": [],
+    "synonyms": [
+      "neon cardinal",
+      "tetra cardinal",
+      "neon",
+      "Neon Cardinal (Paracheirodon axelrodi)"
+    ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "tetra-neon-cardinal.jpg",
+    "imageSlug": "112_neon_cardinal.webp",
     "section": "Peixes de Água Doce",
     "familyGroup": "Tetras e Pequenos Caracídeos"
   },
@@ -4621,11 +4955,16 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Tetra Neon Innesi",
     "scientificName": "Paracheirodon innesi",
     "synonyms": [
-      "Neon Comum"
+      "Neon Comum",
+      "neon innesi",
+      "neon verde",
+      "simulans",
+      "neon negro",
+      "Neon Innesi / Neon Verde / Neon Negro"
     ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "tetra-neon-innesi.jpg",
+    "imageSlug": "113_neon_innesi_verde_negro.webp",
     "section": "Peixes de Água Doce",
     "familyGroup": "Tetras e Pequenos Caracídeos"
   },
@@ -4659,11 +4998,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Rodóstomus",
     "scientificName": "Hemigrammus bleheri",
     "synonyms": [
-      "Tetra Bêbado"
+      "Tetra Bêbado",
+      "rodostomus",
+      "nariz de bebado",
+      "rummy nose",
+      "Rodóstomus / Nariz-de-Bêbado"
     ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "rodostomus.jpg",
+    "imageSlug": "117_rodostomus_nariz_de_bebado.webp",
     "section": "Peixes de Água Doce",
     "familyGroup": "Tetras e Pequenos Caracídeos"
   },
@@ -4672,10 +5015,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "name": "Tetra Mato Grosso (Hyphessobrycon eques)",
     "commonName": "Tetra Mato Grosso",
     "scientificName": "Hyphessobrycon eques",
-    "synonyms": [],
+    "synonyms": [
+      "mato grosso",
+      "tetra mato grosso",
+      "serpae",
+      "Tetra Mato Grosso (Hyphessobrycon eques)"
+    ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "tetra-mato-grosso.jpg",
+    "imageSlug": "116_tetra_mato_grosso.webp",
     "section": "Peixes de Água Doce",
     "familyGroup": "Tetras e Pequenos Caracídeos"
   },
@@ -4697,11 +5045,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Tetra Negro",
     "scientificName": "Gymnocorymbus ternetzi",
     "synonyms": [
-      "Viuvinha"
+      "Viuvinha",
+      "tetra negro",
+      "tetra preto",
+      "viuvinha",
+      "Tetra Negro Comum & Véu"
     ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "tetra-negro.jpg",
+    "imageSlug": "114_tetra_negro.webp",
     "section": "Peixes de Água Doce",
     "familyGroup": "Tetras e Pequenos Caracídeos"
   },
@@ -4711,11 +5063,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Tetra Negro Véu",
     "scientificName": "Gymnocorymbus ternetzi var. Longfin",
     "synonyms": [
-      "Viuvinha Véu"
+      "Viuvinha Véu",
+      "tetra branco",
+      "white skirt",
+      "tetra color",
+      "Tetra White Skirt / Tetra Color"
     ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "tetra-negro-veu.jpg",
+    "imageSlug": "115_tetra_white_skirt_color.webp",
     "section": "Peixes de Água Doce",
     "familyGroup": "Tetras e Pequenos Caracídeos"
   },
@@ -4773,11 +5129,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Tetra Fogo",
     "scientificName": "Hyphessobrycon amandae",
     "synonyms": [
-      "Ember Tetra"
+      "Ember Tetra",
+      "tetra foguinho",
+      "ember tetra",
+      "amandae",
+      "Tetra Foguinho (Ember Tetra)"
     ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "tetra-fogo.jpg",
+    "imageSlug": "118_tetra_foguinho.jpg",
     "section": "Peixes de Água Doce",
     "familyGroup": "Tetras e Pequenos Caracídeos"
   },
@@ -5213,11 +5573,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Acará Bandeira Ouro",
     "scientificName": "Pterophyllum scalare var. Gold",
     "synonyms": [
-      "Golden"
+      "Golden",
+      "bandeira marmore",
+      "bandeira palhaco",
+      "zebra",
+      "Acará Bandeira Mármore / Palhaço / Zebra"
     ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "acara-bandeira-ouro.jpg",
+    "imageSlug": "125_acara_bandeira_marmore_zebra.webp",
     "section": "Peixes de Água Doce",
     "familyGroup": "Acarás Bandeira e Morfotipos"
   },
@@ -5239,11 +5603,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Acará Bandeira Palhaço",
     "scientificName": "Pterophyllum scalare var. Koi",
     "synonyms": [
-      "Koi Tricolor"
+      "Koi Tricolor",
+      "bandeira koi",
+      "acara bandeira koi",
+      "orange marble",
+      "Acará Bandeira Koi / Orange Marble"
     ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "acara-bandeira-palhaco.jpg",
+    "imageSlug": "124_acara_bandeira_koi.webp",
     "section": "Peixes de Água Doce",
     "familyGroup": "Acarás Bandeira e Morfotipos"
   },
@@ -5253,11 +5621,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Acará Bandeira Blue",
     "scientificName": "Pterophyllum scalare var. Pinoy Blue",
     "synonyms": [
-      "Azul Pinoy"
+      "Azul Pinoy",
+      "bandeira negro",
+      "bandeira fumaca",
+      "pinoy",
+      "Acará Bandeira Negro / Fumaça / Pinoy"
     ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "acara-bandeira-blue.jpg",
+    "imageSlug": "126_acara_bandeira_negro_pinoy.webp",
     "section": "Peixes de Água Doce",
     "familyGroup": "Acarás Bandeira e Morfotipos"
   },
@@ -5267,11 +5639,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Acará Bandeira Smokey",
     "scientificName": "Pterophyllum scalare var. Smokey",
     "synonyms": [
-      "Fumê"
+      "Fumê",
+      "bandeira ouro",
+      "bandeira platina",
+      "albino",
+      "Acará Bandeira Ouro / Platina / Albino"
     ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "acara-bandeira-smokey.jpg",
+    "imageSlug": "127_acara_bandeira_ouro_albino.webp",
     "section": "Peixes de Água Doce",
     "familyGroup": "Acarás Bandeira e Morfotipos"
   },
@@ -5292,10 +5668,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "name": "Acará Bandeira Véu Preto (Pterophyllum scalare var. Longfin Black)",
     "commonName": "Acará Bandeira Véu Preto",
     "scientificName": "Pterophyllum scalare var. Longfin Black",
-    "synonyms": [],
+    "synonyms": [
+      "disco turquesa",
+      "blue turquoise",
+      "disco azul",
+      "Acará Disco Azul Turquesa / Cobalt"
+    ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "acara-bandeira-veu-preto.jpg",
+    "imageSlug": "128_acara_disco_azul_turquesa.webp",
     "section": "Peixes de Água Doce",
     "familyGroup": "Acarás Bandeira e Morfotipos"
   },
@@ -5304,10 +5685,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "name": "Acará Bandeira Véu Branco (Pterophyllum scalare var. Longfin White)",
     "commonName": "Acará Bandeira Véu Branco",
     "scientificName": "Pterophyllum scalare var. Longfin White",
-    "synonyms": [],
+    "synonyms": [
+      "disco pigeon",
+      "pigeon blood",
+      "red marlboro",
+      "Acará Disco Pigeon Blood / Red Marlboro"
+    ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "acara-bandeira-veu-branco.jpg",
+    "imageSlug": "129_acara_disco_pigeon_blood.webp",
     "section": "Peixes de Água Doce",
     "familyGroup": "Acarás Bandeira e Morfotipos"
   },
@@ -5316,10 +5702,14 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "name": "Acará Bandeira Selvagem Santa Isabel (Pterophyllum scalare var. Santa Isabel)",
     "commonName": "Acará Bandeira Selvagem Santa Isabel",
     "scientificName": "Pterophyllum scalare var. Santa Isabel",
-    "synonyms": [],
+    "synonyms": [
+      "disco blue diamond",
+      "white diamond",
+      "Acará Disco Blue Diamond / White Diamond"
+    ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "acara-bandeira-selvagem-santa-isabel.jpg",
+    "imageSlug": "130_acara_disco_blue_diamond.webp",
     "section": "Peixes de Água Doce",
     "familyGroup": "Acarás Bandeira e Morfotipos"
   },
@@ -5367,11 +5757,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Ramirezi Electric Blue",
     "scientificName": "Mikrogeophagus ramirezi var. Electric Blue",
     "synonyms": [
-      "Azul Elétrico"
+      "Azul Elétrico",
+      "ramirezi electric blue",
+      "electric blue",
+      "black ram",
+      "Ramirezi Electric Blue & Black Ram"
     ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "ramirezi-electric-blue.jpg",
+    "imageSlug": "133_ramirezi_electric_blue.webp",
     "section": "Peixes de Água Doce",
     "familyGroup": "Ciclídeos Anões Sul-Americanos"
   },
@@ -5435,11 +5829,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Ramirezi Boliviano",
     "scientificName": "Mikrogeophagus altispinosus",
     "synonyms": [
-      "Altispinosus"
+      "Altispinosus",
+      "apistogramma",
+      "cacatuoides",
+      "agassizii",
+      "Apistogramma (Cacatuoides & Agassizii)"
     ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "ramirezi-boliviano.jpg",
+    "imageSlug": "134_apistogramma_cacatuoides_agassizii.jpg",
     "section": "Peixes de Água Doce",
     "familyGroup": "Ciclídeos Anões Sul-Americanos"
   },
@@ -5584,10 +5982,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "name": "Apistogramma Trifasciata (Apistogramma trifasciata)",
     "commonName": "Apistogramma Trifasciata",
     "scientificName": "Apistogramma trifasciata",
-    "synonyms": [],
+    "synonyms": [
+      "ramirezi",
+      "german blue ram",
+      "ramirezi ouro",
+      "Ramirezi Comum (Alemão) & Ouro"
+    ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "apistogramma-trifasciata.jpg",
+    "imageSlug": "132_ramirezi_comum_alemao.webp",
     "section": "Peixes de Água Doce",
     "familyGroup": "Ciclídeos Anões Sul-Americanos"
   },
@@ -5887,11 +6290,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Peixe Oscar Tigre",
     "scientificName": "Astronotus ocellatus",
     "synonyms": [
-      "Red Tiger"
+      "Red Tiger",
+      "oscar tigre",
+      "oscar albino",
+      "astronotus",
+      "Oscar (Tigre, Red Tiger, Albino Red Ruby, Bronze)"
     ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "peixe-oscar-tigre.jpg",
+    "imageSlug": "137_oscar_tigre_albino_red_ruby.webp",
     "section": "Peixes de Água Doce",
     "familyGroup": "Grandes Ciclídeos Americanos e Ciclídeos de Porte Médio"
   },
@@ -6179,11 +6586,16 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Ciclídeo Aulonocara Baenschi",
     "scientificName": "Aulonocara baenschi",
     "synonyms": [
-      "Amarelo Benga"
+      "Amarelo Benga",
+      "aulonocara",
+      "firefish",
+      "maleri yellow",
+      "hap",
+      "Aulonocaras (Firefish, Maleri, Eureka)"
     ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "ciclideo-aulonocara-baenschi.jpg",
+    "imageSlug": "136_aulonocaras_malawi.webp",
     "section": "Peixes de Água Doce",
     "familyGroup": "Ciclídeos Africanos dos Lagos Malawi e Tanganyika"
   },
@@ -6287,11 +6699,16 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Ciclídeo Neolamprologus Brichardi",
     "scientificName": "Neolamprologus brichardi",
     "synonyms": [
-      "Princesa de Burundi"
+      "Princesa de Burundi",
+      "guppy tuxedo",
+      "half black",
+      "hb red",
+      "hb pastel",
+      "Guppy Tuxedo / Half Black (HB Red/Yellow)"
     ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "ciclideo-neolamprologus-brichardi.jpg",
+    "imageSlug": "092_guppy_tuxedo_half_black.jpg",
     "section": "Peixes de Água Doce",
     "familyGroup": "Ciclídeos Africanos dos Lagos Malawi e Tanganyika"
   },
@@ -6324,10 +6741,16 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "name": "Ciclídeo Conchicola Neolamprologus Multifasciatus (Neolamprologus multifasciatus)",
     "commonName": "Ciclídeo Conchicola Neolamprologus Multifasciatus",
     "scientificName": "Neolamprologus multifasciatus",
-    "synonyms": [],
+    "synonyms": [
+      "guppy cobra",
+      "snakeskin",
+      "king cobra",
+      "japan blue",
+      "Guppy Cobra / Snakeskin (King Cobra)"
+    ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "ciclideo-conchicola-neolamprologus-multifasciatus.jpg",
+    "imageSlug": "093_guppy_cobra_snakeskin.jpg",
     "section": "Peixes de Água Doce",
     "familyGroup": "Ciclídeos Africanos dos Lagos Malawi e Tanganyika"
   },
@@ -6348,10 +6771,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "name": "Ciclídeo Conchicola Neolamprologus Brevis (Neolamprologus brevis)",
     "commonName": "Ciclídeo Conchicola Neolamprologus Brevis",
     "scientificName": "Neolamprologus brevis",
-    "synonyms": [],
+    "synonyms": [
+      "guppy dumbo",
+      "big ear",
+      "guppy mosaico",
+      "Guppy Dumbo (Big Ear) / Mosaico"
+    ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "ciclideo-conchicola-neolamprologus-brevis.jpg",
+    "imageSlug": "094_guppy_dumbo_mosaico.webp",
     "section": "Peixes de Água Doce",
     "familyGroup": "Ciclídeos Africanos dos Lagos Malawi e Tanganyika"
   },
@@ -6374,11 +6802,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "scientificName": "Poecilia reticulata var. Full Black",
     "synonyms": [
       "Lebiste Full Black",
-      "Preto Puro"
+      "Preto Puro",
+      "guppy moscou",
+      "lebiste black",
+      "full black",
+      "Guppy Moscou (Full Black / Azul)"
     ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "guppy.jpg",
+    "imageSlug": "091_guppy_moscou_full_black.webp",
     "section": "Peixes de Água Doce",
     "familyGroup": "Vivíparos e Poecilídeos"
   },
@@ -6388,11 +6820,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Guppy",
     "scientificName": "Poecilia reticulata var. Albino Full Red",
     "synonyms": [
-      "Lebiste Albino Full Red"
+      "Lebiste Albino Full Red",
+      "guppy full red",
+      "lebiste vermelho",
+      "albino red",
+      "Guppy Full Red Albino"
     ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "guppy.jpg",
+    "imageSlug": "095_guppy_full_red_albino.webp",
     "section": "Peixes de Água Doce",
     "familyGroup": "Vivíparos e Poecilídeos"
   },
@@ -6417,11 +6853,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Guppy",
     "scientificName": "Poecilia reticulata var. Dumbo Ear Red",
     "synonyms": [
-      "Lebiste Dumbo Ear Red Tail"
+      "Lebiste Dumbo Ear Red Tail",
+      "paulistinha",
+      "danio rerio",
+      "zebra danio",
+      "Paulistinha (Comum, Véu e Rosa)"
     ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "guppy.jpg",
+    "imageSlug": "119_paulistinha_danio.webp",
     "section": "Peixes de Água Doce",
     "familyGroup": "Vivíparos e Poecilídeos"
   },
@@ -6432,11 +6872,14 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "scientificName": "Poecilia reticulata var. Red Cobra",
     "synonyms": [
       "Lebiste Red Cobra",
-      "Pele de Cobra"
+      "Pele de Cobra",
+      "rasbora arlequim",
+      "harlequin rasbora",
+      "Rásbora Arlequim (T. heteromorpha)"
     ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "guppy.jpg",
+    "imageSlug": "120_rasbora_arlequim.webp",
     "section": "Peixes de Água Doce",
     "familyGroup": "Vivíparos e Poecilídeos"
   },
@@ -6446,11 +6889,16 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Guppy",
     "scientificName": "Poecilia reticulata var. Green Cobra",
     "synonyms": [
-      "Lebiste Green Cobra"
+      "Lebiste Green Cobra",
+      "rasbora galaxy",
+      "cpd",
+      "margaritatus",
+      "kubotai",
+      "Rásbora Galaxy (CPD) & Neon Verde"
     ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "guppy.jpg",
+    "imageSlug": "121_rasbora_galaxy_cpd.webp",
     "section": "Peixes de Água Doce",
     "familyGroup": "Vivíparos e Poecilídeos"
   },
@@ -6488,11 +6936,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Guppy",
     "scientificName": "Poecilia reticulata var. Santa Maria",
     "synonyms": [
-      "Lebiste Santa Maria Bleeding Heart"
+      "Lebiste Santa Maria Bleeding Heart",
+      "plati mickey",
+      "platy mickey",
+      "aurora mickey",
+      "Plati Mickey Mouse / Aurora"
     ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "guppy.jpg",
+    "imageSlug": "104_plati_mickey.webp",
     "section": "Peixes de Água Doce",
     "familyGroup": "Vivíparos e Poecilídeos"
   },
@@ -6516,11 +6968,19 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Guppy",
     "scientificName": "Poecilia wingei",
     "synonyms": [
-      "Lebiste Endler Comum Classe N"
+      "Lebiste Endler Comum Classe N",
+      "endler",
+      "endler black bar",
+      "poecilia wingei",
+      "Guppy Endler Rainbow Black Bar / Tiger",
+      "plati wagtail",
+      "plati sangue",
+      "plati balao",
+      "Plati Wagtail / Sangue / Coral (e Balão)"
     ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "guppy.jpg",
+    "imageSlug": "105_plati_wagtail_sangue.webp",
     "section": "Peixes de Água Doce",
     "familyGroup": "Vivíparos e Poecilídeos"
   },
@@ -6529,10 +6989,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "name": "Platy Mickey Mouse Vermelho (Xiphophorus maculatus var. Red Mickey)",
     "commonName": "Platy Mickey Mouse Vermelho",
     "scientificName": "Xiphophorus maculatus var. Red Mickey",
-    "synonyms": [],
+    "synonyms": [
+      "endler red",
+      "endler vermelho",
+      "scarlet endler",
+      "Guppy Endler Red / Scarlet"
+    ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "platy-mickey-mouse-vermelho.jpg",
+    "imageSlug": "097_guppy_endler_red.webp",
     "section": "Peixes de Água Doce",
     "familyGroup": "Vivíparos e Poecilídeos"
   },
@@ -6592,11 +7057,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Platy Ouro",
     "scientificName": "Xiphophorus maculatus var. Marigold",
     "synonyms": [
-      "Marigold"
+      "Marigold",
+      "espada sangue",
+      "espada vermelho",
+      "xiphophorus",
+      "Espada Sangue / Vermelho (e Lira)"
     ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "platy-ouro.jpg",
+    "imageSlug": "106_espada_sangue.webp",
     "section": "Peixes de Água Doce",
     "familyGroup": "Vivíparos e Poecilídeos"
   },
@@ -6632,11 +7101,16 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Espada Kohaku",
     "scientificName": "Xiphophorus hellerii var. Kohaku",
     "synonyms": [
-      "Branco e Laranja"
+      "Branco e Laranja",
+      "espada koi",
+      "espada kohaku",
+      "espada verde",
+      "ananas",
+      "Espada Kohaku (Koi) / Verde / Preto"
     ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "espada-kohaku.jpg",
+    "imageSlug": "107_espada_kohaku_koi.webp",
     "section": "Peixes de Água Doce",
     "familyGroup": "Vivíparos e Poecilídeos"
   },
@@ -6708,11 +7182,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Molinésia Negra",
     "scientificName": "Poecilia sphenops var. Black",
     "synonyms": [
-      "Black Molly"
+      "Black Molly",
+      "molinesia preta",
+      "black molly",
+      "molinesia negra",
+      "Molinésia Negra (Black Molly / Lira)"
     ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "molinesia-negra.jpg",
+    "imageSlug": "108_molinesia_negra_lira.webp",
     "section": "Peixes de Água Doce",
     "familyGroup": "Vivíparos e Poecilídeos"
   },
@@ -6734,11 +7212,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Molinésia Dálmata",
     "scientificName": "Poecilia sphenops var. Dalmatian",
     "synonyms": [
-      "Pintada"
+      "Pintada",
+      "molinesia dalmata",
+      "molinesia ouro",
+      "balao",
+      "Molinésia Dálmata / Ouro / Balão"
     ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "molinesia-dalmata.jpg",
+    "imageSlug": "109_molinesia_dalmata.jpg",
     "section": "Peixes de Água Doce",
     "familyGroup": "Vivíparos e Poecilídeos"
   },
@@ -6838,10 +7320,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "name": "Cascudo Ancistrus Comum Marrom (Ancistrus sp.)",
     "commonName": "Cascudo Ancistrus Comum Marrom",
     "scientificName": "Ancistrus sp.",
-    "synonyms": [],
+    "synonyms": [
+      "ancistrus",
+      "cascudo ancistrus",
+      "bristlenose",
+      "Cascudo Ancistrus (Comum, Albino/Ouro e Red)"
+    ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "cascudo-ancistrus-comum-marrom.jpg",
+    "imageSlug": "146_cascudo_ancistrus_bristlenose.webp",
     "section": "Peixes de Água Doce",
     "familyGroup": "Cascudos Nobres"
   },
@@ -6939,11 +7426,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Cascudo Pepita de Ouro L018",
     "scientificName": "Baryancistrus xanthellus",
     "synonyms": [
-      "Gold Nugget"
+      "Gold Nugget",
+      "cascudo comum",
+      "cascudo abacaxi",
+      "pepita de ouro",
+      "Cascudo Comum / Abacaxi / Pepita de Ouro (L018)"
     ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "cascudo-pepita-de-ouro-l018.jpg",
+    "imageSlug": "147_cascudo_pepita_de_ouro_abacaxi.jpg",
     "section": "Peixes de Água Doce",
     "familyGroup": "Cascudos Nobres"
   },
@@ -7123,11 +7614,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Coridora Paleatus",
     "scientificName": "Corydoras paleatus",
     "synonyms": [
-      "Coridora Pimenta"
+      "Coridora Pimenta",
+      "coridora pimenta",
+      "coridora schwartzi",
+      "tigre",
+      "Coridora Pimenta (Paleatus) & Schwartzi (Tigre)"
     ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "coridora-paleatus.jpg",
+    "imageSlug": "143_coridora_pimenta_schwartzi.webp",
     "section": "Peixes de Água Doce",
     "familyGroup": "Coridoras e Loricariídeos Limpadores"
   },
@@ -7161,11 +7656,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Coridora Aeneus",
     "scientificName": "Corydoras aeneus",
     "synonyms": [
-      "Bronze"
+      "Bronze",
+      "coridora bronze",
+      "coridora albina",
+      "aeneus",
+      "Coridora Bronze (Aeneus) & Albina"
     ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "coridora-aeneus.jpg",
+    "imageSlug": "142_coridora_bronze_albina.webp",
     "section": "Peixes de Água Doce",
     "familyGroup": "Coridoras e Loricariídeos Limpadores"
   },
@@ -7228,10 +7727,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "name": "Coridora Panda (Corydoras panda)",
     "commonName": "Coridora Panda",
     "scientificName": "Corydoras panda",
-    "synonyms": [],
+    "synonyms": [
+      "coridora panda",
+      "coridora sterbai",
+      "julii",
+      "Coridora Panda & Coridora Sterbai"
+    ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "coridora-panda.jpg",
+    "imageSlug": "144_coridora_panda_sterbai.webp",
     "section": "Peixes de Água Doce",
     "familyGroup": "Coridoras e Loricariídeos Limpadores"
   },
@@ -7377,11 +7881,16 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Otocinclus Comum",
     "scientificName": "Otocinclus vestitus",
     "synonyms": [
-      "Limpa Vidro Nacional"
+      "Limpa Vidro Nacional",
+      "limpa vidro",
+      "otocinclus",
+      "oto",
+      "parotocinclus",
+      "Limpa-Vidro (Otocinclus & Parotocinclus)"
     ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "otocinclus-comum.jpg",
+    "imageSlug": "145_limpa_vidro_otocinclus.webp",
     "section": "Peixes de Água Doce",
     "familyGroup": "Coridoras e Loricariídeos Limpadores"
   },
@@ -7665,11 +8174,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Barbo Sumatra",
     "scientificName": "Puntigrus tetrazona",
     "synonyms": [
-      "Tigre"
+      "Tigre",
+      "barbo sumatra",
+      "barbo tigre",
+      "sumatra verde",
+      "Barbo Sumatra / Tigre (Comum, Verde e Albino)"
     ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "barbo-sumatra.jpg",
+    "imageSlug": "122_barbo_sumatra_tigre.webp",
     "section": "Peixes de Água Doce",
     "familyGroup": "Ciprinídeos, Rasboras e Barbus"
   },
@@ -7719,11 +8232,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Barbo Titteya",
     "scientificName": "Rohanella titteya",
     "synonyms": [
-      "Cereja"
+      "Cereja",
+      "barbo cereja",
+      "cherry barb",
+      "barbo ouro",
+      "Barbo Cereja & Barbo Ouro"
     ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "barbo-titteya.jpg",
+    "imageSlug": "123_barbo_cereja_ouro.webp",
     "section": "Peixes de Água Doce",
     "familyGroup": "Ciprinídeos, Rasboras e Barbus"
   },
@@ -7813,10 +8330,17 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "name": "Peixe Bótia Palhaço (Chromobotia macracanthus)",
     "commonName": "Peixe Bótia Palhaço",
     "scientificName": "Chromobotia macracanthus",
-    "synonyms": [],
+    "synonyms": [
+      "sae",
+      "cac",
+      "labeo bicolor",
+      "botia yoyo",
+      "palhaco",
+      "Algueiros e Bótias (SAE, CAC, Labeo, Bótia Yoyo/Palhaço)"
+    ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "peixe-botia-palhaco.jpg",
+    "imageSlug": "148_algueiros_labeo_botia_sae.jpg",
     "section": "Peixes de Água Doce",
     "familyGroup": "Ciprinídeos, Rasboras e Barbus"
   },
@@ -7882,11 +8406,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Betta Splendens Halfmoon",
     "scientificName": "Betta splendens var. Halfmoon",
     "synonyms": [
-      "Meia Lua"
+      "Meia Lua",
+      "betta halfmoon",
+      "betta hm",
+      "meia lua",
+      "Betta Halfmoon (Meia-Lua 180°)"
     ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "betta-splendens-halfmoon.jpg",
+    "imageSlug": "099_betta_halfmoon.webp",
     "section": "Peixes de Água Doce",
     "familyGroup": "Anabantídeos"
   },
@@ -7896,11 +8424,14 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Betta Splendens Crowntail",
     "scientificName": "Betta splendens var. Crowntail",
     "synonyms": [
-      "Cauda de Coroa"
+      "Cauda de Coroa",
+      "betta crowntail",
+      "betta coroa",
+      "Betta Crowntail (Cauda de Coroa)"
     ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "betta-splendens-crowntail.jpg",
+    "imageSlug": "102_betta_crowntail.webp",
     "section": "Peixes de Água Doce",
     "familyGroup": "Anabantídeos"
   },
@@ -7923,10 +8454,16 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "name": "Betta Splendens Plakat Koi Galaxy (Betta splendens var. Koi Galaxy)",
     "commonName": "Betta Splendens Plakat Koi Galaxy",
     "scientificName": "Betta splendens var. Koi Galaxy",
-    "synonyms": [],
+    "synonyms": [
+      "betta koi",
+      "betta nemo",
+      "betta galaxy",
+      "plakat",
+      "Betta Plakat Koi Galaxy / Candy Nemo"
+    ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "betta-splendens-plakat-koi-galaxy.jpg",
+    "imageSlug": "100_betta_plakat_koi_nemo.webp",
     "section": "Peixes de Água Doce",
     "familyGroup": "Anabantídeos"
   },
@@ -7974,11 +8511,14 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Betta Splendens Dumbo Ear",
     "scientificName": "Betta splendens var. Dumbo Ear",
     "synonyms": [
-      "Orelha de Elefante"
+      "Orelha de Elefante",
+      "betta dumbo",
+      "betta orelha de elefante",
+      "Betta Dumbo (Big Ear)"
     ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "betta-splendens-dumbo-ear.jpg",
+    "imageSlug": "101_betta_dumbo.webp",
     "section": "Peixes de Água Doce",
     "familyGroup": "Anabantídeos"
   },
@@ -8013,10 +8553,14 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "name": "Betta Splendens Fêmea Halfmoon (Betta splendens var. Female Halfmoon)",
     "commonName": "Betta Splendens Fêmea Halfmoon",
     "scientificName": "Betta splendens var. Female Halfmoon",
-    "synonyms": [],
+    "synonyms": [
+      "betta femea",
+      "femea de betta",
+      "Betta Fêmea (Comunitário / Sororidade)"
+    ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "betta-splendens-femea-halfmoon.jpg",
+    "imageSlug": "103_betta_femea.webp",
     "section": "Peixes de Água Doce",
     "familyGroup": "Anabantídeos"
   },
@@ -8038,11 +8582,16 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Colisa Lalia",
     "scientificName": "Trichogaster lalius",
     "synonyms": [
-      "Colisa Anã Macho"
+      "Colisa Anã Macho",
+      "colisa lalia",
+      "colisa sangue",
+      "colisa azul",
+      "mel",
+      "Colisa Lália / Sangue / Azul / Mel"
     ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "colisa-lalia.jpg",
+    "imageSlug": "110_colisa_lalia_sangue_azul.webp",
     "section": "Peixes de Água Doce",
     "familyGroup": "Anabantídeos"
   },
@@ -8120,11 +8669,16 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Tricogaster Leeri",
     "scientificName": "Trichopodus leerii",
     "synonyms": [
-      "Pérola"
+      "Pérola",
+      "tricogaster",
+      "tricogaster azul",
+      "ouro",
+      "perola",
+      "Tricogaster (Azul, Ouro e Pérola Leeri)"
     ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "tricogaster-leeri.jpg",
+    "imageSlug": "111_tricogaster_perola_azul_ouro.jpg",
     "section": "Peixes de Água Doce",
     "familyGroup": "Anabantídeos"
   },
@@ -8240,11 +8794,16 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Aruanã Negra",
     "scientificName": "Osteoglossum ferreirai",
     "synonyms": [
-      "Black Arowana"
+      "Black Arowana",
+      "labidochromis yellow",
+      "demasoni",
+      "saulosi",
+      "mbuna",
+      "Ciclídeos Africanos Malawi (Yellow & Mbunas)"
     ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "aruana-negra.jpg",
+    "imageSlug": "135_ciclideos_malawi_yellow.webp",
     "section": "Peixes de Água Doce",
     "familyGroup": "Peixes Primitivos, Predadores Jumbos e Outros de Água Doce"
   },
@@ -8384,10 +8943,17 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "name": "Peixe Pangasius Albino (Pangasianodon hypophthalmus var. Albino)",
     "commonName": "Peixe Pangasius Albino",
     "scientificName": "Pangasianodon hypophthalmus var. Albino",
-    "synonyms": [],
+    "synonyms": [
+      "aruana",
+      "polypterus",
+      "senegalus",
+      "tucunare",
+      "severo",
+      "Peixes Jumbos (Aruanã Prata, Polypterus, Tucunaré)"
+    ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "peixe-pangasius-albino.jpg",
+    "imageSlug": "138_peixes_jumbos_aruana_polypterus.webp",
     "section": "Peixes de Água Doce",
     "familyGroup": "Peixes Primitivos, Predadores Jumbos e Outros de Água Doce"
   },
@@ -8601,11 +9167,16 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "commonName": "Camarão Red Cherry",
     "scientificName": "Neocaridina davidi var. Red Cherry",
     "synonyms": [
-      "Cereja Vermelho"
+      "Cereja Vermelho",
+      "neocaridina",
+      "red cherry",
+      "blue dream",
+      "red rili",
+      "Camarão Neocaridina (Red Cherry, Blue Dream, Yellow, Rili)"
     ],
     "type": "LIVING",
     "subCategory": "INVERTEBRATE",
-    "imageSlug": "camarao-red-cherry.jpg",
+    "imageSlug": "149_camarao_neocaridina_red_blue_yellow_rili.webp",
     "section": "Invertebrados de Água Doce",
     "familyGroup": "Camarões Neocaridina e Seleções de Cores"
   },
@@ -8886,10 +9457,16 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "name": "Caracol Neritina Zebra (Neritina natalensis)",
     "commonName": "Caracol Neritina Zebra",
     "scientificName": "Neritina natalensis",
-    "synonyms": [],
+    "synonyms": [
+      "ampularia",
+      "neritina",
+      "ramshorn",
+      "caramujo",
+      "Caramujos (Ampulária Ouro/Roxa e Neritina Zebra/Mosaico)"
+    ],
     "type": "LIVING",
     "subCategory": "INVERTEBRATE",
-    "imageSlug": "caracol-neritina-zebra.jpg",
+    "imageSlug": "150_caramujos_ampularia_neritina.webp",
     "section": "Invertebrados de Água Doce",
     "familyGroup": "Caracóis e Moluscos de Água Doce"
   },
@@ -10340,11 +10917,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "scientificName": "Amphiprion ocellaris",
     "synonyms": [
       "Storm Laranja",
-      "Orange Storm Ocellaris"
+      "Orange Storm Ocellaris",
+      "orange storm",
+      "black storm",
+      "mocha storm",
+      "Ocellaris Storm (Orange / Black Storm)"
     ],
     "type": "LIVING",
     "subCategory": "MARINE_FISH",
-    "imageSlug": "palhaco-orange-storm.jpg",
+    "imageSlug": "075_ocellaris_storm.webp",
     "section": "Peixes Marinhos",
     "familyGroup": "Peixes-Palhaço e Donzelas"
   },
@@ -10733,11 +11314,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
       "Superman Mushroom",
       "Bullseye Mushroom",
       "Rhodactis Azul e Vermelho",
-      "Mushroom Rhodactis Superman"
+      "Mushroom Rhodactis Superman",
+      "rhodactis indonesia",
+      "rhodactis superman",
+      "rhodactis bicolor",
+      "Mushroom Rhodactis Indonésia / Superman"
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "rhodactis-superman.jpg",
+    "imageSlug": "027_rhodactis_indonesia_superman.jpg",
     "section": "Corais e Anêmonas",
     "familyGroup": "Mushrooms e Corallimorphs"
   },
@@ -10749,11 +11334,15 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "synonyms": [
       "Red Bam Bam",
       "Bam Bam",
-      "Bam Bam Orange"
+      "Bam Bam Orange",
+      "zoa bam bam",
+      "bambam",
+      "orange bam bam",
+      "Zoanthus Bam Bam (Orange)"
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "zoanthus-red-bam-bam.webp",
+    "imageSlug": "006_zoanthus_bam_bam.jpg",
     "section": "Corais e Anêmonas",
     "familyGroup": "Zoanthus e Palythoas"
   },
@@ -10789,6 +11378,372 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "imageSlug": "alga-atomic-broccoli.png",
     "section": "Plantas e Macroalgas",
     "familyGroup": "Macroalgas Marinhas"
+  },
+  {
+    "id": "190-METALLIC",
+    "name": "Green Star Polyps Metallic (Briareum violaceum)",
+    "commonName": "Green Star Polyps Metallic",
+    "scientificName": "Briareum violaceum",
+    "synonyms": [
+      "GSP Metallic",
+      "Green Star Polyps Metálico",
+      "GSP Metálico",
+      "GSP Ultra Metallic",
+      "Green Star Polyps Ultra Green"
+    ],
+    "type": "LIVING",
+    "subCategory": "CORAL",
+    "imageSlug": "034_green_star_polyps_gsp.jpg",
+    "section": "Corais e Anêmonas",
+    "familyGroup": "Corais Moles / Soft Corals"
+  },
+  {
+    "id": "190-LONG-TENTACLES",
+    "name": "Green Star Polyps Long Tentacles (Briareum violaceum)",
+    "commonName": "Green Star Polyps Long Tentacles",
+    "scientificName": "Briareum violaceum",
+    "synonyms": [
+      "GSP Long Tentacles",
+      "Green Star Polyps Cabelo Longo",
+      "GSP Cabelo Longo",
+      "Green Star Polyps Long Polyp",
+      "GSP Long Polyp"
+    ],
+    "type": "LIVING",
+    "subCategory": "CORAL",
+    "imageSlug": "034_green_star_polyps_gsp.jpg",
+    "section": "Corais e Anêmonas",
+    "familyGroup": "Corais Moles / Soft Corals"
+  },
+  {
+    "id": "806",
+    "name": "Zoanthus Eagle Eye (Zoanthus sp.)",
+    "commonName": "Zoanthus Eagle Eye",
+    "scientificName": "Zoanthus sp.",
+    "synonyms": [
+      "Zoanthus Eagle Eye",
+      "zoa eagle eye",
+      "olho de aguia",
+      "zoanthus eagle eye"
+    ],
+    "type": "LIVING",
+    "subCategory": "CORAL",
+    "imageSlug": "004_zoanthus_eagle_eye.jpg",
+    "section": "Corais e Anêmonas",
+    "familyGroup": "Corais Moles / Soft Corals"
+  },
+  {
+    "id": "807",
+    "name": "Zoanthus LA Lakers (Zoanthus sp.)",
+    "commonName": "Zoanthus LA Lakers",
+    "scientificName": "Zoanthus sp.",
+    "synonyms": [
+      "Zoanthus LA Lakers",
+      "zoa la lakers",
+      "lakers",
+      "zoanthus lakers"
+    ],
+    "type": "LIVING",
+    "subCategory": "CORAL",
+    "imageSlug": "008_zoanthus_la_lakers.jpg",
+    "section": "Corais e Anêmonas",
+    "familyGroup": "Corais Moles / Soft Corals"
+  },
+  {
+    "id": "808",
+    "name": "Zoanthus Purple Hornet (Zoanthus sp.)",
+    "commonName": "Zoanthus Purple Hornet",
+    "scientificName": "Zoanthus sp.",
+    "synonyms": [
+      "Zoanthus Purple Hornet",
+      "zoa purple hornet",
+      "hornet roxo",
+      "purple hornet"
+    ],
+    "type": "LIVING",
+    "subCategory": "CORAL",
+    "imageSlug": "012_zoanthus_purple_hornet.webp",
+    "section": "Corais e Anêmonas",
+    "familyGroup": "Corais Moles / Soft Corals"
+  },
+  {
+    "id": "809",
+    "name": "Zoanthus Armor of God (Zoanthus sp.)",
+    "commonName": "Zoanthus Armor of God (AOG)",
+    "scientificName": "Zoanthus sp.",
+    "synonyms": [
+      "Zoanthus Armor of God (AOG)",
+      "zoa aog",
+      "armor of god",
+      "devils armor"
+    ],
+    "type": "LIVING",
+    "subCategory": "CORAL",
+    "imageSlug": "013_zoanthus_armor_of_god.webp",
+    "section": "Corais e Anêmonas",
+    "familyGroup": "Corais Moles / Soft Corals"
+  },
+  {
+    "id": "810",
+    "name": "Palythoa Nuclear Green (Palythoa sp.)",
+    "commonName": "Palythoa Nuclear Green",
+    "scientificName": "Palythoa sp.",
+    "synonyms": [
+      "Palythoa Nuclear Green",
+      "paly nuclear green",
+      "nuclear green",
+      "protopalythoa"
+    ],
+    "type": "LIVING",
+    "subCategory": "CORAL",
+    "imageSlug": "016_palythoa_nuclear_green.jpg",
+    "section": "Corais e Anêmonas",
+    "familyGroup": "Corais Moles / Soft Corals"
+  },
+  {
+    "id": "811",
+    "name": "Palythoa Purple Death (Palythoa sp.)",
+    "commonName": "Palythoa Purple Death",
+    "scientificName": "Palythoa sp.",
+    "synonyms": [
+      "Palythoa Purple Death",
+      "paly purple death",
+      "purple death"
+    ],
+    "type": "LIVING",
+    "subCategory": "CORAL",
+    "imageSlug": "017_palythoa_purple_death.webp",
+    "section": "Corais e Anêmonas",
+    "familyGroup": "Corais Moles / Soft Corals"
+  },
+  {
+    "id": "812",
+    "name": "Palythoa Nirvana (Palythoa sp.)",
+    "commonName": "Palythoa Nirvana",
+    "scientificName": "Palythoa sp.",
+    "synonyms": [
+      "Palythoa Nirvana",
+      "Palythoa Nirvana / Pandora",
+      "paly nirvana",
+      "paly pandora",
+      "zoa nirvana"
+    ],
+    "type": "LIVING",
+    "subCategory": "CORAL",
+    "imageSlug": "020_palythoa_nirvana.jpg",
+    "section": "Corais e Anêmonas",
+    "familyGroup": "Corais Moles / Soft Corals"
+  },
+  {
+    "id": "813",
+    "name": "Mushroom Discosoma Watermelon (Discosoma sp.)",
+    "commonName": "Mushroom Discosoma Watermelon",
+    "scientificName": "Discosoma sp.",
+    "synonyms": [
+      "Mushroom Discosoma Watermelon",
+      "Mushroom Discosoma Watermelon (Listrado)",
+      "mush melancia",
+      "discosoma striped",
+      "mush listrado"
+    ],
+    "type": "LIVING",
+    "subCategory": "CORAL",
+    "imageSlug": "024_mushroom_discosoma_watermelon.webp",
+    "section": "Corais e Anêmonas",
+    "familyGroup": "Corais Moles / Soft Corals"
+  },
+  {
+    "id": "814",
+    "name": "Mushroom Rhodactis Bounce Sunkist (Rhodactis sp.)",
+    "commonName": "Mushroom Rhodactis Bounce Sunkist",
+    "scientificName": "Rhodactis sp.",
+    "synonyms": [
+      "Mushroom Rhodactis Bounce Sunkist",
+      "Mushroom Rhodactis Bounce (OG / Sunkist)",
+      "bounce mushroom",
+      "sunkist bounce",
+      "og bounce"
+    ],
+    "type": "LIVING",
+    "subCategory": "CORAL",
+    "imageSlug": "029_rhodactis_bounce.jpg",
+    "section": "Corais e Anêmonas",
+    "familyGroup": "Corais Moles / Soft Corals"
+  },
+  {
+    "id": "815",
+    "name": "Sinularia Green Neon (Sinularia dura)",
+    "commonName": "Sinularia Green Neon",
+    "scientificName": "Sinularia dura",
+    "synonyms": [
+      "Sinularia Green Neon",
+      "Sinularia Green Neon / Dura",
+      "sinularia",
+      "sinularia green",
+      "sinularia dura"
+    ],
+    "type": "LIVING",
+    "subCategory": "CORAL",
+    "imageSlug": "037_sinularia_green_neon.jpg",
+    "section": "Corais e Anêmonas",
+    "familyGroup": "Corais Moles / Soft Corals"
+  },
+  {
+    "id": "816",
+    "name": "Hammer Coral Purple Tip (Fimbriaphyllia ancora var. Purple Tip)",
+    "commonName": "Hammer Coral Purple Tip",
+    "scientificName": "Fimbriaphyllia ancora var. Purple Tip",
+    "synonyms": [
+      "Hammer Coral Purple Tip",
+      "Hammer Purple Tip",
+      "hammer purple",
+      "hammer ponta roxa"
+    ],
+    "type": "LIVING",
+    "subCategory": "CORAL",
+    "imageSlug": "045_hammer_purple_tip.jpg",
+    "section": "Corais e Anêmonas",
+    "familyGroup": "Corais Duros LPS"
+  },
+  {
+    "id": "817",
+    "name": "Frammer Coral (Fimbriaphyllia sp.)",
+    "commonName": "Frammer Coral",
+    "scientificName": "Fimbriaphyllia sp.",
+    "synonyms": [
+      "Frammer Coral",
+      "Frammer (Híbrido Frog/Hammer)",
+      "frammer",
+      "euphyllia frammer"
+    ],
+    "type": "LIVING",
+    "subCategory": "CORAL",
+    "imageSlug": "052_frammer_euphyllia.webp",
+    "section": "Corais e Anêmonas",
+    "familyGroup": "Corais Duros LPS"
+  },
+  {
+    "id": "818",
+    "name": "Montipora Grafted Cap (Montipora capricornis var. Grafted)",
+    "commonName": "Montipora Grafted Cap",
+    "scientificName": "Montipora capricornis var. Grafted",
+    "synonyms": [
+      "Montipora Grafted Cap",
+      "Montipora Capricornis Verde / Grafted",
+      "montipora prato verde",
+      "capricornis green",
+      "grafted"
+    ],
+    "type": "LIVING",
+    "subCategory": "CORAL",
+    "imageSlug": "062_montipora_capricornis_grafted.jpg",
+    "section": "Corais e Anêmonas",
+    "familyGroup": "Corais Duros SPS"
+  },
+  {
+    "id": "819",
+    "name": "Seriatopora Caliendrum Green (Seriatopora caliendrum)",
+    "commonName": "Seriatopora Caliendrum Green",
+    "scientificName": "Seriatopora caliendrum",
+    "synonyms": [
+      "Seriatopora Caliendrum Green",
+      "Seriatopora Caliendrum (Green / Bicolor)",
+      "seriatopora caliendrum",
+      "caliendrum green"
+    ],
+    "type": "LIVING",
+    "subCategory": "CORAL",
+    "imageSlug": "067_seriatopora_caliendrum_green.webp",
+    "section": "Corais e Anêmonas",
+    "familyGroup": "Corais Duros SPS"
+  },
+  {
+    "id": "820",
+    "name": "Kinguio Cometa (Carassius auratus var. Comet)",
+    "commonName": "Kinguio Cometa",
+    "scientificName": "Carassius auratus var. Comet",
+    "synonyms": [
+      "Kinguio Cometa",
+      "Kinguio Cometa & Sarasa",
+      "kinguio cometa",
+      "sarasa",
+      "peixe japones"
+    ],
+    "type": "LIVING",
+    "subCategory": "FRESHWATER_FISH",
+    "imageSlug": "139_kinguio_cometa_sarasa.webp",
+    "section": "Peixes de Água Doce",
+    "familyGroup": "Kinguios e Carpas"
+  },
+  {
+    "id": "821",
+    "name": "Kinguio Oranda Red Cap (Carassius auratus var. Oranda Red Cap)",
+    "commonName": "Kinguio Oranda Red Cap",
+    "scientificName": "Carassius auratus var. Oranda Red Cap",
+    "synonyms": [
+      "Kinguio Oranda Red Cap",
+      "Kinguio Oranda (Red Cap / Calico / Panda)",
+      "kinguio oranda",
+      "red cap",
+      "oranda tricolor"
+    ],
+    "type": "LIVING",
+    "subCategory": "FRESHWATER_FISH",
+    "imageSlug": "140_kinguio_oranda_red_cap.webp",
+    "section": "Peixes de Água Doce",
+    "familyGroup": "Kinguios e Carpas"
+  },
+  {
+    "id": "822",
+    "name": "Kinguio Telescópio Black Moor (Carassius auratus var. Telescope Black Moor)",
+    "commonName": "Kinguio Telescópio Black Moor",
+    "scientificName": "Carassius auratus var. Telescope Black Moor",
+    "synonyms": [
+      "Kinguio Telescópio Black Moor",
+      "Kinguio Telescópio (Black Moor) & Ranchu",
+      "kinguio telescopio",
+      "black moor",
+      "ranchu",
+      "perola"
+    ],
+    "type": "LIVING",
+    "subCategory": "FRESHWATER_FISH",
+    "imageSlug": "141_kinguio_telescopio_black_moor.jpg",
+    "section": "Peixes de Água Doce",
+    "familyGroup": "Kinguios e Carpas"
+  },
+  {
+    "id": "823",
+    "name": "Kinguio Ranchu (Carassius auratus var. Ranchu)",
+    "commonName": "Kinguio Ranchu",
+    "scientificName": "Carassius auratus var. Ranchu",
+    "synonyms": [
+      "Kinguio Ranchu",
+      "Lionhead Goldfish",
+      "Cabeça de Leão",
+      "Ranchu"
+    ],
+    "type": "LIVING",
+    "subCategory": "FRESHWATER_FISH",
+    "imageSlug": "kinguio-ranchu.jpg",
+    "section": "Peixes de Água Doce",
+    "familyGroup": "Kinguios e Carpas"
+  },
+  {
+    "id": "824",
+    "name": "Kinguio Pérola (Carassius auratus var. Pearlscale)",
+    "commonName": "Kinguio Pérola",
+    "scientificName": "Carassius auratus var. Pearlscale",
+    "synonyms": [
+      "Kinguio Pérola",
+      "Pearlscale Goldfish",
+      "Pérola Escama"
+    ],
+    "type": "LIVING",
+    "subCategory": "FRESHWATER_FISH",
+    "imageSlug": "kinguio-perola.jpg",
+    "section": "Peixes de Água Doce",
+    "familyGroup": "Kinguios e Carpas"
   }
 ] as const
 

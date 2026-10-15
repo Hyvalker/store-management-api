@@ -10,4 +10,8 @@ import java.util.List;
 public interface AquariumNoteRepository extends JpaRepository<AquariumNote, Long> {
     List<AquariumNote> findByAquariumIdOrderByNoteDateDesc(Long aquariumId);
     long countByAquariumId(Long aquariumId);
+
+    @org.springframework.data.jpa.repository.Modifying
+    @org.springframework.data.jpa.repository.Query("DELETE FROM AquariumNote n WHERE n.aquarium.id = :aquariumId")
+    void deleteByAquariumId(@org.springframework.data.repository.query.Param("aquariumId") Long aquariumId);
 }

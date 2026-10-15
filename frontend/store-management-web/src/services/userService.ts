@@ -1,8 +1,10 @@
 import {api} from './api'
 import type {User, CreateUserRequest} from '../types/user'
 
-export async function getUsers(): Promise<User[]> {
-    const response = await api.get<User[]>('/users')
+export async function getUsers(includeInactive: boolean = false): Promise<User[]> {
+    const response = await api.get<User[]>('/users', {
+        params: includeInactive ? {includeInactive: true} : undefined
+    })
     return response.data
 }
 
@@ -23,4 +25,9 @@ export async function updateUser(id: number, data: CreateUserRequest): Promise<U
 
 export async function deleteUser(id: number): Promise<void> {
     await api.delete(`/users/${id}`)
+}
+
+export async function reactivateUser(id: number): Promise<User> {
+    const response = await api.patch<User>(`/users/${id}/reactivate`)
+    return response.data
 }

@@ -7,7 +7,10 @@ import java.math.BigDecimal;
 
 @Data
 @Entity
-@Table(name = "stock_movements")
+@Table(name = "stock_movements", indexes = {
+        @Index(name = "idx_stock_movements_product_id", columnList = "product_id"),
+        @Index(name = "idx_stock_movements_type_created_at", columnList = "type, created_at")
+})
 public class StockMovement {
 
     @Id

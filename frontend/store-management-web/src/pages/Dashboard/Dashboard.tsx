@@ -127,7 +127,7 @@ function Dashboard() {
                 getDashboardSummary(fromIso, toIso).catch(() => null),
                 getTopProducts(fromIso, toIso, topLimit, sortBy).catch(() => []),
                 getProducts().catch(() => []),
-                getOrders().catch(() => [])
+                getOrders({ from: fromIso, to: toIso }).catch(() => [])
             ])
 
             setSummary(summaryData)

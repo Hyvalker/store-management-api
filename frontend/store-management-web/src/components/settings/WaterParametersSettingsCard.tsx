@@ -13,6 +13,7 @@ import {
 import type {AquariumType} from '../../types/aquarium'
 import {
     getWaterParameterRules,
+    fetchWaterParameterRules,
     saveWaterParameterRules,
     resetWaterParameterRules,
     type WaterParameterSettings,
@@ -29,6 +30,7 @@ export function WaterParametersSettingsCard() {
 
     useEffect(() => {
         setSettings(getWaterParameterRules())
+        fetchWaterParameterRules().then(setSettings)
     }, [])
 
     const currentRules = settings[activeType]
@@ -65,28 +67,28 @@ export function WaterParametersSettingsCard() {
         })
     }
 
-    function handleSave() {
-        saveWaterParameterRules(settings)
+    async function handleSave() {
+        await saveWaterParameterRules(settings)
         setSavedSuccess(true)
         toast.success(
             `Regras de parâmetros para aquário ${
                 activeType === 'MARINE' ? 'Marinho' : 'Água Doce'
-            } salvas com sucesso!`,
+            } salvas e sincronizadas com sucesso!`,
             'Parâmetros Atualizados'
         )
         setTimeout(() => setSavedSuccess(false), 3500)
     }
 
-    function handleReset() {
+    async function handleReset() {
         if (
             window.confirm(
                 'Deseja restaurar todas as faixas e alertas de parâmetros para os valores biológicos recomendados de fábrica?'
             )
         ) {
-            const defaults = resetWaterParameterRules()
+            const defaults = await resetWaterParameterRules()
             setSettings(defaults)
             toast.info(
-                'Faixas de parâmetros restauradas para os padrões recomendados de aquarismo.',
+                'Faixas de parâmetros restauradas para os padrões recomendados de aquarismo e sincronizadas.',
                 'Padrões Restaurados'
             )
         }

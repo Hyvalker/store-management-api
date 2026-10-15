@@ -6,7 +6,9 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "users")
+@Table(name = "users", indexes = {
+        @Index(name = "idx_users_active", columnList = "active")
+})
 public class User {
 
     @Id
@@ -14,7 +16,10 @@ public class User {
     private Long id;
 
     private String name;
+
+    @Column(nullable = false, unique = true)
     private String email;
+
     private String address;
     private String phoneNumber;
 

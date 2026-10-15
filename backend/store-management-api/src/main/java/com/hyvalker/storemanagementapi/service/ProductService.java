@@ -11,7 +11,8 @@ import com.hyvalker.storemanagementapi.model.Product;
 import com.hyvalker.storemanagementapi.model.StockMovementType;
 import com.hyvalker.storemanagementapi.model.SubCategory;
 import com.hyvalker.storemanagementapi.repository.ProductRepository;
-import jakarta.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -23,6 +24,7 @@ import java.util.List;
 
 
 @Service
+@Transactional(readOnly = true)
 public class ProductService {
 
     private final ProductRepository productRepository;
@@ -65,8 +67,10 @@ public class ProductService {
     }
 
     public Optional<ProductResponseDTO> findByBarcode(String barcode) {
-        return productRepository.findByBarcode(barcode)
-                .filter(product -> Boolean.TRUE.equals(product.getActive()))
+        if (barcode == null || barcode.trim().isEmpty()) {
+            return Optional.empty();
+        }
+        return productRepository.findFirstByBarcodeAndActiveTrue(barcode.trim())
                 .map(ProductResponseDTO::new);
     }
 
@@ -232,7 +236,7 @@ public class ProductService {
         product.setNormalizedName(normalizedName);
         product.setType(request.getType());
         product.setQuantity(request.getQuantity());
-        product.setBarcode(request.getBarcode());
+        product.setBarcode(prepareBarcode(request.getBarcode(), null));
 
         SubCategory subCategory = request.getSubCategory();
         if (subCategory == null) {
@@ -263,7 +267,13 @@ public class ProductService {
 
     @Transactional
     public ProductResponseDTO createStockEntry(CreateStockEntryRequest request) {
-        Product product = productRepository.findById(request.getProductId())
+        return createStockEntry(request, true);
+    }
+
+    @Transactional
+    public ProductResponseDTO createStockEntry(CreateStockEntryRequest request, boolean isAdmin) {
+        Product product = productRepository.findByIdWithLock(request.getProductId())
+                .or(() -> productRepository.findById(request.getProductId()))
                 .orElseThrow(() -> new ProductNotFoundException(
                         "Produto não encontrado."
                 ));
@@ -273,12 +283,47 @@ public class ProductService {
             );
         }
 
-        applyPricing(
-                product,
-                request.getCostPrice(),
-                request.getSalePrice(),
-                request.getProfitMargin()
-        );
+        BigDecimal currentSalePrice = product.getSalePrice();
+        BigDecimal newCostPrice = request.getCostPrice();
+
+        if (request.getSalePrice() != null || request.getProfitMargin() != null) {
+            BigDecimal proposedSalePrice = request.getSalePrice();
+            if (proposedSalePrice == null && request.getProfitMargin() != null && newCostPrice != null) {
+                proposedSalePrice = calculateSalePrice(newCostPrice, request.getProfitMargin());
+            }
+
+            if (!isAdmin && proposedSalePrice != null && currentSalePrice != null
+                    && proposedSalePrice.compareTo(currentSalePrice) != 0) {
+                throw new AccessDeniedException(
+                        "Somente administradores podem alterar o preço de venda de produtos na reposição de estoque."
+                );
+            }
+
+            applyPricing(
+                    product,
+                    request.getCostPrice(),
+                    request.getSalePrice(),
+                    request.getProfitMargin()
+            );
+        } else {
+            if (currentSalePrice == null) {
+                throw new InvalidProductException(
+                        "Produto sem preço de venda definido. Um administrador deve informar o preço de venda."
+                );
+            }
+            if (currentSalePrice.compareTo(newCostPrice) < 0) {
+                throw new InvalidProductException(
+                        "O preço de venda atual (R$ " + currentSalePrice + ") não pode ser menor que o novo preço de custo (R$ " + newCostPrice + ")."
+                );
+            }
+            product.setCostPrice(newCostPrice);
+            if (newCostPrice.compareTo(BigDecimal.ZERO) > 0) {
+                BigDecimal profitMarginCalculated = calculateProfitMargin(newCostPrice, currentSalePrice);
+                product.setProfitMargin(profitMarginCalculated);
+            } else {
+                product.setProfitMargin(null);
+            }
+        }
 
         product.setQuantity(product.getQuantity() + request.getQuantity());
 
@@ -300,6 +345,7 @@ public class ProductService {
                 .map(ProductResponseDTO::new);
     }
 
+    @Transactional
     public Optional<ProductResponseDTO> update(Long id, UpdateProductRequest request) {
         return productRepository.findById(id)
                 .map(product -> {
@@ -312,7 +358,7 @@ public class ProductService {
                     product.setName(productName);
                     product.setNormalizedName(normalizeProductName(productName));
                     product.setType(request.getType());
-                    product.setBarcode(request.getBarcode());
+                    product.setBarcode(prepareBarcode(request.getBarcode(), id));
 
                     SubCategory subCategory = request.getSubCategory();
                     if (subCategory != null) {
@@ -340,6 +386,7 @@ public class ProductService {
                 });
     }
 
+    @Transactional
     public void deactivateProduct(Long id) {
         Product product = productRepository.findById(id)
                 .orElseThrow(() -> new ProductNotFoundException("Produto não encontrado."));
@@ -347,6 +394,26 @@ public class ProductService {
         product.setActive(false);
 
         productRepository.save(product);
+    }
+
+    @Transactional
+    public ProductResponseDTO reactivateProduct(Long id) {
+        Product product = productRepository.findById(id)
+                .orElseThrow(() -> new ProductNotFoundException("Produto não encontrado."));
+
+        if (Boolean.TRUE.equals(product.getActive())) {
+            throw new InvalidProductException("O produto já está ativo.");
+        }
+
+        if (productRepository.existsByNormalizedNameAndActiveTrue(product.getNormalizedName())) {
+            throw new InvalidProductException(
+                    "Já existe outro produto ativo com o nome: " + product.getName() + ". Altere o nome do produto antes de reativá-lo."
+            );
+        }
+
+        product.setActive(true);
+        Product savedProduct = productRepository.save(product);
+        return new ProductResponseDTO(savedProduct);
     }
 
     //Normaliza o nome do produto
@@ -362,7 +429,7 @@ public class ProductService {
         String trimmedName = name.trim();
         String normalizedNamed = normalizeProductName(trimmedName);
 
-        if (productRepository.existsByNormalizedName(normalizedNamed)) {
+        if (productRepository.existsByNormalizedNameAndActiveTrue(normalizedNamed)) {
             throw new InvalidProductException(
                     "Já existe um produto cadastrado com esse nome."
             );
@@ -377,7 +444,7 @@ public class ProductService {
         String trimmedName = name.trim();
         String normalizedName = normalizeProductName(trimmedName);
 
-        if (productRepository.existsByNormalizedNameAndIdNot(normalizedName, productId)) {
+        if (productRepository.existsByNormalizedNameAndIdNotAndActiveTrue(normalizedName, productId)) {
             throw new InvalidProductException(
                     "Já existe outro produto cadastrado com esse nome."
             );
@@ -386,10 +453,30 @@ public class ProductService {
         return trimmedName;
     }
 
+    private String prepareBarcode(String barcode, Long excludeProductId) {
+        if (barcode == null || barcode.trim().isEmpty()) {
+            return null;
+        }
+        String trimmed = barcode.trim();
+        boolean exists = excludeProductId == null
+                ? productRepository.existsByBarcodeAndActiveTrue(trimmed)
+                : productRepository.existsByBarcodeAndIdNotAndActiveTrue(trimmed, excludeProductId);
+
+        if (exists) {
+            throw new InvalidProductException(
+                    excludeProductId == null
+                            ? "Já existe um produto ativo cadastrado com esse código de barras."
+                            : "Já existe outro produto ativo cadastrado com esse código de barras."
+            );
+        }
+        return trimmed;
+    }
+
     @Transactional
     public ProductResponseDTO createStockLoss(CreateStockLossRequest request) {
 
-        Product product = productRepository.findById(request.getProductId())
+        Product product = productRepository.findByIdWithLock(request.getProductId())
+                .or(() -> productRepository.findById(request.getProductId()))
                 .orElseThrow(() -> new ProductNotFoundException(
                         "Produto não encontrado."
                 ));
@@ -403,12 +490,6 @@ public class ProductService {
         if (product.getQuantity() < request.getQuantity()) {
             throw new InvalidProductException(
                     "A quantidade de perda não pode ser maior que o estoque disponível."
-            );
-        }
-
-        if (product.getQuantity() < request.getQuantity()) {
-            throw new InvalidProductException(
-                    "A quantidade da perda não pode ser maior que o estoque disponível."
             );
         }
 

@@ -19,6 +19,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -159,11 +160,20 @@ public class ProductController {
         return ResponseEntity.noContent().build();
     }
 
+    @Operation(summary = "Reativa um produto desativado.")
+    @PatchMapping("/{id}/reactivate")
+    public ResponseEntity<ProductResponseDTO> reactivateProduct(@PathVariable Long id) {
+        return ResponseEntity.ok(productService.reactivateProduct(id));
+    }
+
     @PostMapping("/stock-entry")
     public ResponseEntity<ProductResponseDTO> createStockEntry(
-            @Valid @RequestBody CreateStockEntryRequest request
+            @Valid @RequestBody CreateStockEntryRequest request,
+            Authentication authentication
     ) {
-        return ResponseEntity.ok(productService.createStockEntry(request));
+        boolean isAdmin = authentication != null && authentication.getAuthorities().stream()
+                .anyMatch(a -> "ROLE_ADMIN".equals(a.getAuthority()));
+        return ResponseEntity.ok(productService.createStockEntry(request, isAdmin));
     }
 }
 

@@ -49,13 +49,13 @@ public class UserController {
     }
 
 
-    @Operation(summary = "Lista os usuários cadastrados.")
+    @Operation(summary = "Lista os usuários cadastrados. Pode incluir inativos com includeInactive=true.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Usuários listados com sucesso.")
     })
     @GetMapping
-    public List<UserResponseDTO> findAll() {
-        return userService.findAll();
+    public List<UserResponseDTO> findAll(@RequestParam(required = false, defaultValue = "false") boolean includeInactive) {
+        return userService.findAll(includeInactive);
     }
 
     @Operation(summary = "Encontra um usuário pelo ID.")
@@ -110,5 +110,24 @@ public class UserController {
     public ResponseEntity<Void> deactivateUser(@PathVariable Long id) {
         userService.deactivateUser(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @Operation(summary = "Reativa um usuário desativado.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Usuário reativado com sucesso."),
+            @ApiResponse(responseCode = "400", description = "Usuário já está ativo.",
+                    content = @Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = ApiError.class)
+                    )),
+            @ApiResponse(responseCode = "404", description = "Usuário não encontrado.",
+                    content = @Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = ApiError.class)
+                    ))
+    })
+    @PatchMapping("/{id}/reactivate")
+    public ResponseEntity<UserResponseDTO> reactivateUser(@PathVariable Long id) {
+        return ResponseEntity.ok(userService.reactivateUser(id));
     }
 }

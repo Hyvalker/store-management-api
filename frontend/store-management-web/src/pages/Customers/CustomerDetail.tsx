@@ -140,7 +140,7 @@ function CustomerDetail() {
     const [copiedNoteId, setCopiedNoteId] = useState<number | null>(null)
 
     // Helper for notification (local state + floating global toast)
-    const notify = (msg: string, isError: boolean = false) => {
+    const notify = useCallback((msg: string, isError: boolean = false) => {
         if (isError) {
             setErrorMessage(msg)
             toast.error(msg)
@@ -150,7 +150,7 @@ function CustomerDetail() {
             toast.success(msg)
             setTimeout(() => setFeedbackMessage(null), 4000)
         }
-    }
+    }, [toast])
 
     const loadCustomerOrders = useCallback(async () => {
         if (!customerId) return
@@ -163,7 +163,7 @@ function CustomerDetail() {
         } finally {
             setLoadingOrders(false)
         }
-    }, [customerId])
+    }, [customerId, notify])
 
     useEffect(() => {
         loadCustomerOrders()
@@ -178,8 +178,10 @@ function CustomerDetail() {
             if (selectedOrderDetails?.id === orderId) {
                 setSelectedOrderDetails(updated)
             }
-        } catch {
-            toast.error('Não foi possível registrar o pagamento deste pedido.', 'Erro no Pagamento')
+        } catch (err: unknown) {
+            const apiError = (err as { response?: { data?: { message?: string; error?: string } } })?.response?.data
+            const errorMsg = apiError?.message || apiError?.error || 'Não foi possível registrar o pagamento deste pedido.'
+            toast.error(errorMsg, 'Erro no Pagamento')
         } finally {
             setPayingOrderId(null)
         }
@@ -199,8 +201,10 @@ function CustomerDetail() {
             if (selectedOrderDetails?.id === orderId) {
                 setSelectedOrderDetails(updated)
             }
-        } catch {
-            toast.error('Não foi possível cancelar o pedido.', 'Erro ao Cancelar')
+        } catch (err: unknown) {
+            const apiError = (err as { response?: { data?: { message?: string; error?: string } } })?.response?.data
+            const errorMsg = apiError?.message || apiError?.error || 'Não foi possível cancelar o pedido.'
+            toast.error(errorMsg, 'Erro ao Cancelar')
         } finally {
             setCancelingOrderId(null)
         }
@@ -230,15 +234,13 @@ function CustomerDetail() {
             ])
             setCustomer(custData)
             setAquariums(aqList)
-            if (aqList.length > 0 && !selectedAquarium) {
-                setSelectedAquarium(aqList[0])
-            }
+            setSelectedAquarium(prev => prev || (aqList.length > 0 ? aqList[0] : null))
         } catch {
             notify('Erro ao carregar dados do cliente ou aquários.', true)
         } finally {
             setLoadingCustomer(false)
         }
-    }, [customerId, selectedAquarium])
+    }, [customerId, notify])
 
     useEffect(() => {
         loadCustomerData()
@@ -254,7 +256,7 @@ function CustomerDetail() {
         } finally {
             setLoadingTests(false)
         }
-    }, [])
+    }, [notify])
 
     const loadNotesForAquarium = useCallback(async (aquariumId: number) => {
         setLoadingNotes(true)
@@ -266,7 +268,7 @@ function CustomerDetail() {
         } finally {
             setLoadingNotes(false)
         }
-    }, [])
+    }, [notify])
 
     useEffect(() => {
         if (selectedAquarium) {
@@ -326,8 +328,10 @@ function CustomerDetail() {
                 notify('Aquário cadastrado com sucesso!')
             }
             setIsAquariumModalOpen(false)
-        } catch {
-            notify('Erro ao salvar aquário.', true)
+        } catch (err: unknown) {
+            const data = (err as {response?: {data?: {message?: string; error?: string}}})?.response?.data
+            const backendMsg = data?.message || data?.error || 'Erro ao salvar aquário.'
+            notify(backendMsg, true)
         } finally {
             setSubmittingAquarium(false)
         }

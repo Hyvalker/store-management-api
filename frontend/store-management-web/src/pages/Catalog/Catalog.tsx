@@ -219,14 +219,32 @@ function Catalog() {
                 {/* Photo Container */}
                 <div className="w-full aspect-4/3 rounded-xl overflow-hidden bg-slate-900 border border-slate-800/50 mb-2 flex items-center justify-center">
                     {item.image ? (
-                        <img
-                            src={item.image}
-                            alt={item.name}
-                            className="w-full h-full object-cover"
-                            onError={(e) => {
-                                (e.currentTarget as HTMLImageElement).style.display = 'none'
-                            }}
-                        />
+                        <>
+                            <img
+                                src={item.image}
+                                alt={item.name}
+                                className="w-full h-full object-cover"
+                                onError={(e) => {
+                                    const img = e.currentTarget as HTMLImageElement
+                                    img.style.display = 'none'
+                                    const fb = img.parentElement?.querySelector('.image-fallback-placeholder') as HTMLElement
+                                    if (fb) fb.style.display = 'flex'
+                                }}
+                            />
+                            <div className="image-fallback-placeholder w-full h-full hidden flex-col items-center justify-center p-3 text-center bg-slate-950/80">
+                                {item.type === 'PRODUCT' ? (
+                                    <Package className="h-7 w-7 text-slate-500 mb-1" />
+                                ) : (
+                                    <Fish className="h-7 w-7 text-slate-500 mb-1" />
+                                )}
+                                <p className="text-[10px] font-bold text-slate-300 line-clamp-2 px-1 leading-tight">
+                                    {item.name}
+                                </p>
+                                <span className="text-[9px] text-amber-500/80 mt-1 uppercase tracking-wider font-semibold">
+                                    (Sem foto)
+                                </span>
+                            </div>
+                        </>
                     ) : (
                         <div className="w-full h-full flex flex-col items-center justify-center p-3 text-center bg-slate-950/80">
                             {item.type === 'PRODUCT' ? (

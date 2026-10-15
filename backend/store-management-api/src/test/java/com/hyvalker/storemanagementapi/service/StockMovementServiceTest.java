@@ -82,11 +82,13 @@ class StockMovementServiceTest {
     }
 
     @Test
-    @DisplayName("Deve criar movimentação de perda (LOSS) com motivo")
+    @DisplayName("Deve criar movimentação de perda (LOSS) com motivo e preços")
     void shouldCreateLossMovementWithReason() {
         Product product = new Product();
         product.setId(3L);
         product.setName("Guppy Red Dragon");
+        product.setCostPrice(BigDecimal.valueOf(12.50));
+        product.setSalePrice(BigDecimal.valueOf(25.00));
 
         ArgumentCaptor<StockMovement> captor = ArgumentCaptor.forClass(StockMovement.class);
         when(stockMovementRepository.save(captor.capture()))
@@ -101,7 +103,11 @@ class StockMovementServiceTest {
         assertThat(result.getType()).isEqualTo(StockMovementType.LOSS);
         assertThat(result.getProduct()).isEqualTo(product);
         assertThat(result.getQuantity()).isEqualTo(2);
+        assertThat(result.getCostPrice()).isEqualByComparingTo(BigDecimal.valueOf(12.50));
+        assertThat(result.getSalePrice()).isEqualByComparingTo(BigDecimal.valueOf(25.00));
         assertThat(result.getReason()).isEqualTo("Mortalidade natural durante a quarentena");
+        assertThat(captor.getValue().getCostPrice()).isEqualByComparingTo(BigDecimal.valueOf(12.50));
+        assertThat(captor.getValue().getSalePrice()).isEqualByComparingTo(BigDecimal.valueOf(25.00));
         assertThat(captor.getValue().getReason()).isEqualTo("Mortalidade natural durante a quarentena");
     }
 }

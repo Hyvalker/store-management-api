@@ -4,6 +4,7 @@ export interface User {
     email: string
     address?: string | null
     phoneNumber?: string | null
+    active?: boolean
 }
 
 export interface CreateUserRequest {

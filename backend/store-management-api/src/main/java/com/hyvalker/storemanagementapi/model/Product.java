@@ -9,7 +9,12 @@ import java.time.LocalDateTime;
 
 @Data
 @Entity
-@Table(name = "products")
+@Table(name = "products", indexes = {
+        @Index(name = "idx_products_barcode", columnList = "barcode"),
+        @Index(name = "idx_products_normalized_name", columnList = "normalized_name"),
+        @Index(name = "idx_products_active", columnList = "active"),
+        @Index(name = "idx_products_sub_category", columnList = "sub_category")
+})
 public class Product {
 
     @Id
@@ -19,7 +24,7 @@ public class Product {
     @Column (nullable = false)
     private String name;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String normalizedName;
 
     @Enumerated(EnumType.STRING)
@@ -46,6 +51,9 @@ public class Product {
 
     @Column (nullable = false)
     private Boolean active = true;
+
+    @Version
+    private Long version;
 
     @Column (nullable = false, updatable = false)
     private LocalDateTime createdAt;

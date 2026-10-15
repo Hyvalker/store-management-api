@@ -9,7 +9,6 @@ import java.time.LocalDateTime;
 @Data
 public class CreateAquariumNoteRequest {
 
-    @NotNull(message = "O ID do aquário é obrigatório.")
     private Long aquariumId;
 
     private LocalDateTime noteDate = LocalDateTime.now();

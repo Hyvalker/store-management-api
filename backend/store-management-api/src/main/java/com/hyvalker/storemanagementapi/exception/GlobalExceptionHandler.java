@@ -1,5 +1,7 @@
 package com.hyvalker.storemanagementapi.exception;
 
+import org.springframework.context.support.DefaultMessageSourceResolvable;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.AccessDeniedException;
@@ -23,6 +25,24 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(UserNotFoundException.class)
     public ResponseEntity<ApiError> handleUserNotFound(UserNotFoundException ex) {
 
+        ApiError error = new ApiError(HttpStatus.NOT_FOUND.value(), ex.getMessage());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
+    }
+
+    @ExceptionHandler(AquariumNotFoundException.class)
+    public ResponseEntity<ApiError> handleAquariumNotFound(AquariumNotFoundException ex) {
+        ApiError error = new ApiError(HttpStatus.NOT_FOUND.value(), ex.getMessage());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
+    }
+
+    @ExceptionHandler(WaterParameterTestNotFoundException.class)
+    public ResponseEntity<ApiError> handleWaterParameterTestNotFound(WaterParameterTestNotFoundException ex) {
+        ApiError error = new ApiError(HttpStatus.NOT_FOUND.value(), ex.getMessage());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
+    }
+
+    @ExceptionHandler(AquariumNoteNotFoundException.class)
+    public ResponseEntity<ApiError> handleAquariumNoteNotFound(AquariumNoteNotFoundException ex) {
         ApiError error = new ApiError(HttpStatus.NOT_FOUND.value(), ex.getMessage());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
     }
@@ -51,9 +71,12 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ApiError> handleValidationException(MethodArgumentNotValidException ex) {
         String message = ex.getBindingResult()
-                .getFieldErrors()
-                .get(0)
-                .getDefaultMessage();
+                .getAllErrors()
+                .stream()
+                .map(DefaultMessageSourceResolvable::getDefaultMessage)
+                .filter(msg -> msg != null && !msg.isBlank())
+                .findFirst()
+                .orElse("Dados inválidos na requisição.");
 
         ApiError error = new ApiError(HttpStatus.BAD_REQUEST.value(), message);
         return ResponseEntity.badRequest().body(error);
@@ -118,6 +141,24 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(InvalidOperatorOperationException.class)
     public ResponseEntity<ApiError> handleInvalidOperatorOperation(InvalidOperatorOperationException ex) {
         ApiError error = new ApiError(HttpStatus.CONFLICT.value(), ex.getMessage());
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(error);
+    }
+
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public ResponseEntity<ApiError> handleDataIntegrityViolation(DataIntegrityViolationException ex) {
+        ApiError error = new ApiError(
+                HttpStatus.CONFLICT.value(),
+                "Não é possível completar a operação pois o registro possui vínculos ou restrições de integridade ativas."
+        );
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(error);
+    }
+
+    @ExceptionHandler(org.springframework.orm.ObjectOptimisticLockingFailureException.class)
+    public ResponseEntity<ApiError> handleOptimisticLock(org.springframework.orm.ObjectOptimisticLockingFailureException ex) {
+        ApiError error = new ApiError(
+                HttpStatus.CONFLICT.value(),
+                "O registro foi alterado simultaneamente por outra operação. Por favor, tente novamente."
+        );
         return ResponseEntity.status(HttpStatus.CONFLICT).body(error);
     }
 

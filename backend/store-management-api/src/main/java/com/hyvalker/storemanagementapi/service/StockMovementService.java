@@ -61,6 +61,8 @@ public class StockMovementService {
         movement.setProduct(product);
         movement.setQuantity(quantity);
         movement.setType(StockMovementType.LOSS);
+        movement.setCostPrice(product != null ? product.getCostPrice() : null);
+        movement.setSalePrice(product != null ? product.getSalePrice() : null);
         movement.setReason(reason);
         movement.setCreatedAt(LocalDateTime.now());
 

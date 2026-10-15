@@ -29,7 +29,8 @@ class TaxonomyClassifierServiceTest {
         assertThat(classifierService.classifySubCategory("Coral Hammer Gold", Type.LIVING)).isEqualTo(SubCategory.CORAL);
         assertThat(classifierService.classifySubCategory("Torch Dragon Soul", Type.LIVING)).isEqualTo(SubCategory.CORAL);
         assertThat(classifierService.classifySubCategory("Frogspawn Bicolor (Euphyllia)", Type.LIVING)).isEqualTo(SubCategory.CORAL);
-        assertThat(classifierService.classifySubCategory("Muda Zoanthus Utter Chaos", Type.LIVING)).isEqualTo(SubCategory.CORAL);
+        assertThat(classifierService.classifySubCategory("Zoanthus Utter Chaos (Zoanthus sp.)", Type.LIVING)).isEqualTo(SubCategory.CORAL);
+        assertThat(classifierService.classifySubCategory("Zoanthus Red Bam Bam", Type.LIVING)).isEqualTo(SubCategory.CORAL);
         assertThat(classifierService.classifySubCategory("Anêmona Bubble Tip Rose", Type.LIVING)).isEqualTo(SubCategory.CORAL);
         assertThat(classifierService.classifySubCategory("Acropora Millepora Green", Type.LIVING)).isEqualTo(SubCategory.CORAL);
         assertThat(classifierService.classifySubCategory("Mushroom Ricordea Florida", Type.LIVING)).isEqualTo(SubCategory.CORAL);
