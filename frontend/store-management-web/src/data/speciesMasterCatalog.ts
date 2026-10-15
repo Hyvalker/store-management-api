@@ -19,11 +19,12 @@ export interface MasterSpecies {
 export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
   {
     "id": "1",
-    "name": "Zoanthus Sunny Day (Sunny D)",
+    "name": "Zoanthus Sunny Day (Zoanthus sp.)",
     "commonName": "Zoanthus Sunny Day",
-    "scientificName": "Sunny D",
+    "scientificName": "Zoanthus sp.",
     "synonyms": [
       "Zoanthus Sunny Day",
+      "Zoanthus Sunny Day (Zoanthus sp.)",
       "Zoanthus Sunny Day (Sunny D)",
       "zoa sunny d",
       "sunny day",
@@ -38,12 +39,12 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
   },
   {
     "id": "2",
-    "name": "Zoanthus Rasta",
+    "name": "Zoanthus Rasta (Zoanthus sp.)",
     "commonName": "Zoanthus Rasta",
-    "scientificName": "Zoanthus Rasta",
+    "scientificName": "Zoanthus sp.",
     "synonyms": [
       "Zoanthus Rasta",
-      "Zoanthus Rasta",
+      "Zoanthus Rasta (Zoanthus sp.)",
       "zoa rasta",
       "rastas",
       "zoanthus rasta"
@@ -56,11 +57,12 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
   },
   {
     "id": "3",
-    "name": "Zoanthus Watermelon (Melancia)",
+    "name": "Zoanthus Watermelon (Zoanthus sp.)",
     "commonName": "Zoanthus Watermelon",
-    "scientificName": "Melancia",
+    "scientificName": "Zoanthus sp.",
     "synonyms": [
       "Zoanthus Watermelon",
+      "Zoanthus Watermelon (Zoanthus sp.)",
       "Zoanthus Watermelon (Melancia)",
       "zoa watermelon",
       "zoa melancia",
@@ -74,12 +76,12 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
   },
   {
     "id": "4",
-    "name": "Zoanthus Eagle Eye",
+    "name": "Zoanthus Eagle Eye (Zoanthus sp.)",
     "commonName": "Zoanthus Eagle Eye",
-    "scientificName": "Zoanthus Eagle Eye",
+    "scientificName": "Zoanthus sp.",
     "synonyms": [
       "Zoanthus Eagle Eye",
-      "Zoanthus Eagle Eye",
+      "Zoanthus Eagle Eye (Zoanthus sp.)",
       "zoa eagle eye",
       "olho de aguia",
       "zoanthus eagle eye"
@@ -92,12 +94,12 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
   },
   {
     "id": "5",
-    "name": "Zoanthus Radioactive Green",
+    "name": "Zoanthus Radioactive Green (Zoanthus sp.)",
     "commonName": "Zoanthus Radioactive Green",
-    "scientificName": "Zoanthus Radioactive Green",
+    "scientificName": "Zoanthus sp.",
     "synonyms": [
       "Zoanthus Radioactive Green",
-      "Zoanthus Radioactive Green",
+      "Zoanthus Radioactive Green (Zoanthus sp.)",
       "zoa radioactive",
       "radioactive dragon eye",
       "green bay packers"
@@ -110,11 +112,12 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
   },
   {
     "id": "6",
-    "name": "Zoanthus Bam Bam (Orange)",
+    "name": "Zoanthus Bam Bam (Zoanthus sp.)",
     "commonName": "Zoanthus Bam Bam",
-    "scientificName": "Orange",
+    "scientificName": "Zoanthus sp.",
     "synonyms": [
       "Zoanthus Bam Bam",
+      "Zoanthus Bam Bam (Zoanthus sp.)",
       "Zoanthus Bam Bam (Orange)",
       "zoa bam bam",
       "bambam",
@@ -128,12 +131,12 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
   },
   {
     "id": "7",
-    "name": "Zoanthus Fruit Loops",
+    "name": "Zoanthus Fruit Loops (Zoanthus sp.)",
     "commonName": "Zoanthus Fruit Loops",
-    "scientificName": "Zoanthus Fruit Loops",
+    "scientificName": "Zoanthus sp.",
     "synonyms": [
       "Zoanthus Fruit Loops",
-      "Zoanthus Fruit Loops",
+      "Zoanthus Fruit Loops (Zoanthus sp.)",
       "zoa fruit loops",
       "fruit loop",
       "zoanthus fruit loops"
@@ -146,12 +149,12 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
   },
   {
     "id": "8",
-    "name": "Zoanthus LA Lakers",
+    "name": "Zoanthus LA Lakers (Zoanthus sp.)",
     "commonName": "Zoanthus LA Lakers",
-    "scientificName": "Zoanthus LA Lakers",
+    "scientificName": "Zoanthus sp.",
     "synonyms": [
       "Zoanthus LA Lakers",
-      "Zoanthus LA Lakers",
+      "Zoanthus LA Lakers (Zoanthus sp.)",
       "zoa la lakers",
       "lakers",
       "zoanthus lakers"
@@ -164,12 +167,12 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
   },
   {
     "id": "9",
-    "name": "Zoanthus Fire and Ice",
+    "name": "Zoanthus Fire and Ice (Zoanthus sp.)",
     "commonName": "Zoanthus Fire and Ice",
-    "scientificName": "Zoanthus Fire and Ice",
+    "scientificName": "Zoanthus sp.",
     "synonyms": [
       "Zoanthus Fire and Ice",
-      "Zoanthus Fire and Ice",
+      "Zoanthus Fire and Ice (Zoanthus sp.)",
       "zoa fire and ice",
       "fire & ice",
       "zoanthus fire ice"
@@ -182,12 +185,12 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
   },
   {
     "id": "10",
-    "name": "Zoanthus Blue Hornet",
+    "name": "Zoanthus Blue Hornet (Zoanthus sp.)",
     "commonName": "Zoanthus Blue Hornet",
-    "scientificName": "Zoanthus Blue Hornet",
+    "scientificName": "Zoanthus sp.",
     "synonyms": [
       "Zoanthus Blue Hornet",
-      "Zoanthus Blue Hornet",
+      "Zoanthus Blue Hornet (Zoanthus sp.)",
       "zoa blue hornet",
       "hornet azul",
       "blue hornet"
@@ -200,12 +203,12 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
   },
   {
     "id": "11",
-    "name": "Zoanthus Red Hornet",
+    "name": "Zoanthus Red Hornet (Zoanthus sp.)",
     "commonName": "Zoanthus Red Hornet",
-    "scientificName": "Zoanthus Red Hornet",
+    "scientificName": "Zoanthus sp.",
     "synonyms": [
       "Zoanthus Red Hornet",
-      "Zoanthus Red Hornet",
+      "Zoanthus Red Hornet (Zoanthus sp.)",
       "zoa red hornet",
       "hornet vermelho",
       "red hornet"
@@ -218,12 +221,12 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
   },
   {
     "id": "12",
-    "name": "Zoanthus Purple Hornet",
+    "name": "Zoanthus Purple Hornet (Zoanthus sp.)",
     "commonName": "Zoanthus Purple Hornet",
-    "scientificName": "Zoanthus Purple Hornet",
+    "scientificName": "Zoanthus sp.",
     "synonyms": [
       "Zoanthus Purple Hornet",
-      "Zoanthus Purple Hornet",
+      "Zoanthus Purple Hornet (Zoanthus sp.)",
       "zoa purple hornet",
       "hornet roxo",
       "purple hornet"
@@ -236,11 +239,12 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
   },
   {
     "id": "13",
-    "name": "Zoanthus Armor of God (AOG)",
+    "name": "Zoanthus Armor of God (Zoanthus sp.)",
     "commonName": "Zoanthus Armor of God",
-    "scientificName": "AOG",
+    "scientificName": "Zoanthus sp.",
     "synonyms": [
       "Zoanthus Armor of God",
+      "Zoanthus Armor of God (Zoanthus sp.)",
       "Zoanthus Armor of God (AOG)",
       "zoa aog",
       "armor of god",
@@ -286,12 +290,12 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
   },
   {
     "id": "16",
-    "name": "Palythoa Utter Chaos",
+    "name": "Palythoa Utter Chaos (Palythoa sp.)",
     "commonName": "Palythoa Utter Chaos",
-    "scientificName": "Palythoa Utter Chaos",
+    "scientificName": "Palythoa sp.",
     "synonyms": [
       "Palythoa Utter Chaos",
-      "Palythoa Utter Chaos",
+      "Palythoa Utter Chaos (Palythoa sp.)",
       "utter chaos",
       "zoa utter chaos",
       "paly utter chaos"
@@ -304,12 +308,12 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
   },
   {
     "id": "17",
-    "name": "Palythoa Nuclear Green",
+    "name": "Palythoa Nuclear Green (Palythoa sp.)",
     "commonName": "Palythoa Nuclear Green",
-    "scientificName": "Palythoa Nuclear Green",
+    "scientificName": "Palythoa sp.",
     "synonyms": [
       "Palythoa Nuclear Green",
-      "Palythoa Nuclear Green",
+      "Palythoa Nuclear Green (Palythoa sp.)",
       "paly nuclear green",
       "nuclear green",
       "protopalythoa"
@@ -322,12 +326,12 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
   },
   {
     "id": "18",
-    "name": "Palythoa Purple Death",
+    "name": "Palythoa Purple Death (Palythoa sp.)",
     "commonName": "Palythoa Purple Death",
-    "scientificName": "Palythoa Purple Death",
+    "scientificName": "Palythoa sp.",
     "synonyms": [
       "Palythoa Purple Death",
-      "Palythoa Purple Death",
+      "Palythoa Purple Death (Palythoa sp.)",
       "paly purple death",
       "purple death"
     ],
@@ -339,12 +343,12 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
   },
   {
     "id": "19",
-    "name": "Palythoa Captain America",
+    "name": "Palythoa Captain America (Palythoa sp.)",
     "commonName": "Palythoa Captain America",
-    "scientificName": "Palythoa Captain America",
+    "scientificName": "Palythoa sp.",
     "synonyms": [
       "Palythoa Captain America",
-      "Palythoa Captain America",
+      "Palythoa Captain America (Palythoa sp.)",
       "paly captain america",
       "capitao america"
     ],
@@ -449,12 +453,12 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
   },
   {
     "id": "26",
-    "name": "Mushroom Discosoma Superman",
+    "name": "Mushroom Discosoma Superman (Discosoma sp.)",
     "commonName": "Mushroom Discosoma Superman",
-    "scientificName": "Mushroom Discosoma Superman",
+    "scientificName": "Discosoma sp.",
     "synonyms": [
       "Mushroom Discosoma Superman",
-      "Mushroom Discosoma Superman",
+      "Mushroom Discosoma Superman (Discosoma sp.)",
       "mush superman",
       "discosoma superman",
       "red spotted blue"
@@ -498,11 +502,12 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
   },
   {
     "id": "29",
-    "name": "Mushroom Discosoma Watermelon (Listrado)",
+    "name": "Mushroom Discosoma Watermelon (Discosoma sp.)",
     "commonName": "Mushroom Discosoma Watermelon",
-    "scientificName": "Listrado",
+    "scientificName": "Discosoma sp.",
     "synonyms": [
       "Mushroom Discosoma Watermelon",
+      "Mushroom Discosoma Watermelon (Discosoma sp.)",
       "Mushroom Discosoma Watermelon (Listrado)",
       "mush melancia",
       "discosoma striped",
@@ -516,12 +521,12 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
   },
   {
     "id": "30",
-    "name": "Mushroom Discosoma Metallic Green",
+    "name": "Mushroom Discosoma Metallic Green (Discosoma sp.)",
     "commonName": "Mushroom Discosoma Metallic Green",
-    "scientificName": "Mushroom Discosoma Metallic Green",
+    "scientificName": "Discosoma sp.",
     "synonyms": [
       "Mushroom Discosoma Metallic Green",
-      "Mushroom Discosoma Metallic Green",
+      "Mushroom Discosoma Metallic Green (Discosoma sp.)",
       "mush verde",
       "discosoma green",
       "green mush"
@@ -534,12 +539,12 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
   },
   {
     "id": "31",
-    "name": "Mushroom Rhodactis Green Hairy",
+    "name": "Mushroom Rhodactis Green Hairy (Rhodactis sp.)",
     "commonName": "Mushroom Rhodactis Green Hairy",
-    "scientificName": "Mushroom Rhodactis Green Hairy",
+    "scientificName": "Rhodactis sp.",
     "synonyms": [
       "Mushroom Rhodactis Green Hairy",
-      "Mushroom Rhodactis Green Hairy",
+      "Mushroom Rhodactis Green Hairy (Rhodactis sp.)",
       "rhodactis hairy",
       "mush peludo",
       "green hairy"
@@ -691,23 +696,6 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
   },
   {
     "id": "41",
-    "name": "Ricordea Florida Azul (Ricordea florida)",
-    "commonName": "Ricordea Florida Azul",
-    "scientificName": "Ricordea florida",
-    "synonyms": [
-      "Ricordea Florida Azul",
-      "Ricordea Florida Azul (Ricordea florida)",
-      "ricordea-florida-azul.jpg",
-      "ricordea-florida-blue.jpg"
-    ],
-    "type": "LIVING",
-    "subCategory": "CORAL",
-    "imageSlug": "",
-    "section": "Corais & Anêmonas",
-    "familyGroup": "Mushrooms & Ricordeas"
-  },
-  {
-    "id": "42",
     "name": "Ricordea Yuma Verde (Ricordea yuma)",
     "commonName": "Ricordea Yuma Verde",
     "scientificName": "Ricordea yuma",
@@ -722,7 +710,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Mushrooms & Ricordeas"
   },
   {
-    "id": "43",
+    "id": "42",
     "name": "Ricordea Yuma Neon (Ricordea yuma)",
     "commonName": "Ricordea Yuma Neon",
     "scientificName": "Ricordea yuma",
@@ -738,7 +726,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Mushrooms & Ricordeas"
   },
   {
-    "id": "44",
+    "id": "43",
     "name": "Ricordea Yuma Laranja (Ricordea yuma)",
     "commonName": "Ricordea Yuma Laranja",
     "scientificName": "Ricordea yuma",
@@ -748,12 +736,12 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "033_ricordea_yuma_orange_rainbow.jpg",
+    "imageSlug": "",
     "section": "Corais & Anêmonas",
     "familyGroup": "Mushrooms & Ricordeas"
   },
   {
-    "id": "45",
+    "id": "44",
     "name": "Ricordea Yuma Pink Rainbow (Ricordea yuma)",
     "commonName": "Ricordea Yuma Pink Rainbow",
     "scientificName": "Ricordea yuma",
@@ -769,11 +757,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Mushrooms & Ricordeas"
   },
   {
-    "id": "46",
-    "name": "Green Star Polyps (GSP Metallic)",
-    "commonName": "Green Star Polyps",
-    "scientificName": "GSP Metallic",
+    "id": "45",
+    "name": "Green Star Polyps Metallic (Pachyclavularia violacea)",
+    "commonName": "Green Star Polyps Metallic",
+    "scientificName": "Pachyclavularia violacea",
     "synonyms": [
+      "Green Star Polyps Metallic",
+      "Green Star Polyps Metallic (Pachyclavularia violacea)",
       "Green Star Polyps",
       "Green Star Polyps (GSP Metallic)",
       "gsp",
@@ -788,11 +778,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "47",
-    "name": "Leather Toadstool (Sarcophyton sp.)",
-    "commonName": "Leather Toadstool",
+    "id": "46",
+    "name": "Leather Umbrella (Sarcophyton sp.)",
+    "commonName": "Leather Umbrella",
     "scientificName": "Sarcophyton sp.",
     "synonyms": [
+      "Leather Umbrella",
+      "Leather Umbrella (Sarcophyton sp.)",
       "Leather Toadstool",
       "Leather Toadstool (Sarcophyton sp.)"
     ],
@@ -803,7 +795,58 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
+    "id": "47",
+    "name": "Leather Spaghetti (Sinularia flexibilis)",
+    "commonName": "Leather Spaghetti",
+    "scientificName": "Sinularia flexibilis",
+    "synonyms": [
+      "Leather Spaghetti",
+      "Leather Spaghetti (Sinularia flexibilis)",
+      "Leather Toadstool",
+      "Leather Toadstool (Sarcophyton sp.)"
+    ],
+    "type": "LIVING",
+    "subCategory": "CORAL",
+    "imageSlug": "",
+    "section": "Corais & Anêmonas",
+    "familyGroup": "Geral"
+  },
+  {
     "id": "48",
+    "name": "Leather Finger Verde (Sinularia sp.)",
+    "commonName": "Leather Finger Verde",
+    "scientificName": "Sinularia sp.",
+    "synonyms": [
+      "Leather Finger Verde",
+      "Leather Finger Verde (Sinularia sp.)",
+      "Leather Toadstool",
+      "Leather Toadstool (Sarcophyton sp.)"
+    ],
+    "type": "LIVING",
+    "subCategory": "CORAL",
+    "imageSlug": "",
+    "section": "Corais & Anêmonas",
+    "familyGroup": "Geral"
+  },
+  {
+    "id": "49",
+    "name": "Leather ORA Green (Sarcophyton sp.)",
+    "commonName": "Leather ORA Green",
+    "scientificName": "Sarcophyton sp.",
+    "synonyms": [
+      "Leather ORA Green",
+      "Leather ORA Green (Sarcophyton sp.)",
+      "Leather Toadstool",
+      "Leather Toadstool (Sarcophyton sp.)"
+    ],
+    "type": "LIVING",
+    "subCategory": "CORAL",
+    "imageSlug": "",
+    "section": "Corais & Anêmonas",
+    "familyGroup": "Geral"
+  },
+  {
+    "id": "50",
     "name": "Leather Devil's Hand (Lobophytum sp.)",
     "commonName": "Leather Devil's Hand",
     "scientificName": "Lobophytum sp.",
@@ -818,7 +861,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "49",
+    "id": "51",
     "name": "Sinularia Verde Neon (Sinularia sp.)",
     "commonName": "Sinularia Verde Neon",
     "scientificName": "Sinularia sp.",
@@ -833,7 +876,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Caracídeos (Tetras e Cardumes)"
   },
   {
-    "id": "50",
+    "id": "52",
     "name": "Sinularia Dura (Sinularia brassica)",
     "commonName": "Sinularia Dura",
     "scientificName": "Sinularia brassica",
@@ -849,12 +892,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "51",
-    "name": "Kenya Tree (Árvore do Quênia)",
+    "id": "53",
+    "name": "Kenya Tree (Capnella imbricata)",
     "commonName": "Kenya Tree",
-    "scientificName": "Árvore do Quênia",
+    "scientificName": "Capnella imbricata",
     "synonyms": [
       "Kenya Tree",
+      "Kenya Tree (Capnella imbricata)",
       "Kenya Tree (Árvore do Quênia)",
       "kenya tree",
       "arvore do quenia",
@@ -862,12 +906,12 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "038_kenya_tree_capnella.jpg",
+    "imageSlug": "",
     "section": "Corais & Anêmonas",
     "familyGroup": "Geral"
   },
   {
-    "id": "52",
+    "id": "54",
     "name": "Xênia Pulsante Pom Pom (Xenia umbellata)",
     "commonName": "Xênia Pulsante Pom Pom",
     "scientificName": "Xenia umbellata",
@@ -882,7 +926,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "53",
+    "id": "55",
     "name": "Xênia Pulsante Giant (Xenia elongata)",
     "commonName": "Xênia Pulsante Giant",
     "scientificName": "Xenia elongata",
@@ -898,7 +942,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "54",
+    "id": "56",
     "name": "Cloves Papaya (Clavularia sp.)",
     "commonName": "Cloves Papaya",
     "scientificName": "Clavularia sp.",
@@ -913,7 +957,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "55",
+    "id": "57",
     "name": "Cloves Tricolor (Clavularia sp.)",
     "commonName": "Cloves Tricolor",
     "scientificName": "Clavularia sp.",
@@ -929,12 +973,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "56",
-    "name": "Anêmona Bubble Tip Rose (Entacmaea quadricolor var. Rose)",
+    "id": "58",
+    "name": "Anêmona Bubble Tip Rose (Entacmaea quadricolor)",
     "commonName": "Anêmona Bubble Tip Rose",
-    "scientificName": "Entacmaea quadricolor var. Rose",
+    "scientificName": "Entacmaea quadricolor",
     "synonyms": [
       "Anêmona Bubble Tip Rose",
+      "Anêmona Bubble Tip Rose (Entacmaea quadricolor)",
       "Anêmona Bubble Tip Rose (Entacmaea quadricolor var. Rose)"
     ],
     "type": "LIVING",
@@ -944,12 +989,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "57",
-    "name": "Anêmona Bubble Tip Rainbow (Entacmaea quadricolor var. Rainbow)",
+    "id": "59",
+    "name": "Anêmona Bubble Tip Rainbow (Entacmaea quadricolor)",
     "commonName": "Anêmona Bubble Tip Rainbow",
-    "scientificName": "Entacmaea quadricolor var. Rainbow",
+    "scientificName": "Entacmaea quadricolor",
     "synonyms": [
       "Anêmona Bubble Tip Rainbow",
+      "Anêmona Bubble Tip Rainbow (Entacmaea quadricolor)",
       "Anêmona Bubble Tip Rainbow (Entacmaea quadricolor var. Rainbow)",
       "anemona-bubble-tip-rainbow.jpg"
     ],
@@ -960,11 +1006,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "58",
-    "name": "Anêmona Bubble Tip Green (GBTA)",
-    "commonName": "Anêmona Bubble Tip Green",
-    "scientificName": "GBTA",
+    "id": "60",
+    "name": "Anêmona Bubble Tip Verde (Entacmaea quadricolor)",
+    "commonName": "Anêmona Bubble Tip Verde",
+    "scientificName": "Entacmaea quadricolor",
     "synonyms": [
+      "Anêmona Bubble Tip Verde",
+      "Anêmona Bubble Tip Verde (Entacmaea quadricolor)",
       "Anêmona Bubble Tip Green",
       "Anêmona Bubble Tip Green (GBTA)",
       "gbta",
@@ -978,11 +1026,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "59",
-    "name": "Coral Hammer Bicolor (Fimbriaphyllia ancora)",
-    "commonName": "Coral Hammer Bicolor",
+    "id": "61",
+    "name": "Hammer Bicolor (Fimbriaphyllia ancora)",
+    "commonName": "Hammer Bicolor",
     "scientificName": "Fimbriaphyllia ancora",
     "synonyms": [
+      "Hammer Bicolor",
+      "Hammer Bicolor (Fimbriaphyllia ancora)",
       "Coral Hammer Bicolor",
       "Coral Hammer Bicolor (Fimbriaphyllia ancora)"
     ],
@@ -993,11 +1043,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Euphylliidae (LPS Nobres)"
   },
   {
-    "id": "60",
-    "name": "Coral Hammer Full Green (Fimbriaphyllia ancora)",
-    "commonName": "Coral Hammer Full Green",
+    "id": "62",
+    "name": "Hammer Full Green (Fimbriaphyllia ancora)",
+    "commonName": "Hammer Full Green",
     "scientificName": "Fimbriaphyllia ancora",
     "synonyms": [
+      "Hammer Full Green",
+      "Hammer Full Green (Fimbriaphyllia ancora)",
       "Coral Hammer Full Green",
       "Coral Hammer Full Green (Fimbriaphyllia ancora)"
     ],
@@ -1008,11 +1060,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Euphylliidae (LPS Nobres)"
   },
   {
-    "id": "61",
-    "name": "Coral Hammer Toxic Splatter (Fimbriaphyllia ancora)",
-    "commonName": "Coral Hammer Toxic Splatter",
+    "id": "63",
+    "name": "Hammer Toxic Splatter (Fimbriaphyllia ancora)",
+    "commonName": "Hammer Toxic Splatter",
     "scientificName": "Fimbriaphyllia ancora",
     "synonyms": [
+      "Hammer Toxic Splatter",
+      "Hammer Toxic Splatter (Fimbriaphyllia ancora)",
       "Coral Hammer Toxic Splatter",
       "Coral Hammer Toxic Splatter (Fimbriaphyllia ancora)",
       "hammer-toxic-splatter.jpg"
@@ -1024,12 +1078,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Euphylliidae (LPS Nobres)"
   },
   {
-    "id": "62",
-    "name": "Hammer Purple Tip",
-    "commonName": "Hammer Purple Tip",
-    "scientificName": "Hammer Purple Tip",
+    "id": "64",
+    "name": "Hammer Verde Ponta Roxa (Fimbriaphyllia ancora)",
+    "commonName": "Hammer Verde Ponta Roxa",
+    "scientificName": "Fimbriaphyllia ancora",
     "synonyms": [
-      "Hammer Purple Tip",
+      "Hammer Verde Ponta Roxa",
+      "Hammer Verde Ponta Roxa (Fimbriaphyllia ancora)",
       "Hammer Purple Tip",
       "hammer purple",
       "hammer ponta roxa"
@@ -1041,11 +1096,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Euphylliidae (LPS Nobres)"
   },
   {
-    "id": "63",
-    "name": "Coral Hammer Gold (Fimbriaphyllia ancora)",
-    "commonName": "Coral Hammer Gold",
+    "id": "65",
+    "name": "Hammer Gold (Fimbriaphyllia ancora)",
+    "commonName": "Hammer Gold",
     "scientificName": "Fimbriaphyllia ancora",
     "synonyms": [
+      "Hammer Gold",
+      "Hammer Gold (Fimbriaphyllia ancora)",
       "Coral Hammer Gold",
       "Coral Hammer Gold (Fimbriaphyllia ancora)"
     ],
@@ -1056,11 +1113,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Euphylliidae (LPS Nobres)"
   },
   {
-    "id": "64",
-    "name": "Coral Hammer Yellow (Fimbriaphyllia ancora)",
-    "commonName": "Coral Hammer Yellow",
+    "id": "66",
+    "name": "Hammer Yellow (Fimbriaphyllia ancora)",
+    "commonName": "Hammer Yellow",
     "scientificName": "Fimbriaphyllia ancora",
     "synonyms": [
+      "Hammer Yellow",
+      "Hammer Yellow (Fimbriaphyllia ancora)",
       "Coral Hammer Yellow",
       "Coral Hammer Yellow (Fimbriaphyllia ancora)",
       "hammer-yellow.jpg"
@@ -1072,11 +1131,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Euphylliidae (LPS Nobres)"
   },
   {
-    "id": "65",
-    "name": "Coral Frogspawn Verde Ponta Roxa (Fimbriaphyllia divisa)",
-    "commonName": "Coral Frogspawn Verde Ponta Roxa",
+    "id": "67",
+    "name": "Frogspawn Verde Ponta Roxa (Fimbriaphyllia divisa)",
+    "commonName": "Frogspawn Verde Ponta Roxa",
     "scientificName": "Fimbriaphyllia divisa",
     "synonyms": [
+      "Frogspawn Verde Ponta Roxa",
+      "Frogspawn Verde Ponta Roxa (Fimbriaphyllia divisa)",
       "Coral Frogspawn Verde Ponta Roxa",
       "Coral Frogspawn Verde Ponta Roxa (Fimbriaphyllia divisa)"
     ],
@@ -1087,11 +1148,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Euphylliidae (LPS Nobres)"
   },
   {
-    "id": "66",
-    "name": "Coral Frogspawn Full Green (Fimbriaphyllia divisa)",
-    "commonName": "Coral Frogspawn Full Green",
+    "id": "68",
+    "name": "Frogspawn Full Green (Fimbriaphyllia divisa)",
+    "commonName": "Frogspawn Full Green",
     "scientificName": "Fimbriaphyllia divisa",
     "synonyms": [
+      "Frogspawn Full Green",
+      "Frogspawn Full Green (Fimbriaphyllia divisa)",
       "Coral Frogspawn Full Green",
       "Coral Frogspawn Full Green (Fimbriaphyllia divisa)"
     ],
@@ -1102,11 +1165,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Euphylliidae (LPS Nobres)"
   },
   {
-    "id": "67",
-    "name": "Coral Octospawn Verde (Fimbriaphyllia paradivisa)",
-    "commonName": "Coral Octospawn Verde",
+    "id": "69",
+    "name": "Octospawn Verde (Fimbriaphyllia paradivisa)",
+    "commonName": "Octospawn Verde",
     "scientificName": "Fimbriaphyllia paradivisa",
     "synonyms": [
+      "Octospawn Verde",
+      "Octospawn Verde (Fimbriaphyllia paradivisa)",
       "Coral Octospawn Verde",
       "Coral Octospawn Verde (Fimbriaphyllia paradivisa)",
       "octospawn-coral.jpg",
@@ -1119,11 +1184,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "68",
-    "name": "Coral Torch Green Tip (Euphyllia glabrescens)",
-    "commonName": "Coral Torch Green Tip",
+    "id": "70",
+    "name": "Torch Green Tip (Euphyllia glabrescens)",
+    "commonName": "Torch Green Tip",
     "scientificName": "Euphyllia glabrescens",
     "synonyms": [
+      "Torch Green Tip",
+      "Torch Green Tip (Euphyllia glabrescens)",
       "Coral Torch Green Tip",
       "Coral Torch Green Tip (Euphyllia glabrescens)"
     ],
@@ -1134,11 +1201,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Euphylliidae (LPS Nobres)"
   },
   {
-    "id": "69",
-    "name": "Coral Torch Metallic Green (Euphyllia glabrescens)",
-    "commonName": "Coral Torch Metallic Green",
+    "id": "71",
+    "name": "Torch Metallic Green (Euphyllia glabrescens)",
+    "commonName": "Torch Metallic Green",
     "scientificName": "Euphyllia glabrescens",
     "synonyms": [
+      "Torch Metallic Green",
+      "Torch Metallic Green (Euphyllia glabrescens)",
       "Coral Torch Metallic Green",
       "Coral Torch Metallic Green (Euphyllia glabrescens)",
       "torch-metallic-green.jpg"
@@ -1150,11 +1219,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Euphylliidae (LPS Nobres)"
   },
   {
-    "id": "70",
-    "name": "Coral Torch Black Ponta Verde (Euphyllia glabrescens)",
-    "commonName": "Coral Torch Black Ponta Verde",
+    "id": "72",
+    "name": "Torch Black Ponta Verde (Euphyllia glabrescens)",
+    "commonName": "Torch Black Ponta Verde",
     "scientificName": "Euphyllia glabrescens",
     "synonyms": [
+      "Torch Black Ponta Verde",
+      "Torch Black Ponta Verde (Euphyllia glabrescens)",
       "Coral Torch Black Ponta Verde",
       "Coral Torch Black Ponta Verde (Euphyllia glabrescens)"
     ],
@@ -1165,11 +1236,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Euphylliidae (LPS Nobres)"
   },
   {
-    "id": "71",
-    "name": "Coral Torch Black Ponta Branca (Euphyllia glabrescens)",
-    "commonName": "Coral Torch Black Ponta Branca",
+    "id": "73",
+    "name": "Torch Black Ponta Branca (Euphyllia glabrescens)",
+    "commonName": "Torch Black Ponta Branca",
     "scientificName": "Euphyllia glabrescens",
     "synonyms": [
+      "Torch Black Ponta Branca",
+      "Torch Black Ponta Branca (Euphyllia glabrescens)",
       "Coral Torch Black Ponta Branca",
       "Coral Torch Black Ponta Branca (Euphyllia glabrescens)",
       "torch-black-white-tip.jpg",
@@ -1182,11 +1255,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Euphylliidae (LPS Nobres)"
   },
   {
-    "id": "72",
-    "name": "Coral Torch Dragon Soul (Euphyllia glabrescens)",
-    "commonName": "Coral Torch Dragon Soul",
+    "id": "74",
+    "name": "Torch Dragon Soul (Euphyllia glabrescens)",
+    "commonName": "Torch Dragon Soul",
     "scientificName": "Euphyllia glabrescens",
     "synonyms": [
+      "Torch Dragon Soul",
+      "Torch Dragon Soul (Euphyllia glabrescens)",
       "Coral Torch Dragon Soul",
       "Coral Torch Dragon Soul (Euphyllia glabrescens)"
     ],
@@ -1197,11 +1272,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Euphylliidae (LPS Nobres)"
   },
   {
-    "id": "73",
-    "name": "Coral Torch Indo Gold (Euphyllia glabrescens)",
-    "commonName": "Coral Torch Indo Gold",
+    "id": "75",
+    "name": "Torch Indo Gold (Euphyllia glabrescens)",
+    "commonName": "Torch Indo Gold",
     "scientificName": "Euphyllia glabrescens",
     "synonyms": [
+      "Torch Indo Gold",
+      "Torch Indo Gold (Euphyllia glabrescens)",
       "Coral Torch Indo Gold",
       "Coral Torch Indo Gold (Euphyllia glabrescens)",
       "torch-indo-gold.jpg"
@@ -1213,11 +1290,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Euphylliidae (LPS Nobres)"
   },
   {
-    "id": "74",
-    "name": "Coral Frammer Híbrido (Euphyllia sp. Frammer)",
-    "commonName": "Coral Frammer Híbrido",
-    "scientificName": "Euphyllia sp. Frammer",
+    "id": "76",
+    "name": "Frammer Híbrido (Euphyllia sp.)",
+    "commonName": "Frammer Híbrido",
+    "scientificName": "Euphyllia sp.",
     "synonyms": [
+      "Frammer Híbrido",
+      "Frammer Híbrido (Euphyllia sp.)",
       "Coral Frammer Híbrido",
       "Coral Frammer Híbrido (Euphyllia sp. Frammer)"
     ],
@@ -1228,12 +1307,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Euphylliidae (LPS Nobres)"
   },
   {
-    "id": "75",
-    "name": "Trumpet Kryptonita (Caulastrea)",
+    "id": "77",
+    "name": "Trumpet Kryptonita (Caulastrea sp.)",
     "commonName": "Trumpet Kryptonita",
-    "scientificName": "Caulastrea",
+    "scientificName": "Caulastrea sp.",
     "synonyms": [
       "Trumpet Kryptonita",
+      "Trumpet Kryptonita (Caulastrea sp.)",
       "Trumpet Kryptonita (Caulastrea)",
       "trumpet kryptonita",
       "kriptonita",
@@ -1246,11 +1326,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "76",
-    "name": "Coral Trumpet Bicolor (Caulastrea curvata)",
-    "commonName": "Coral Trumpet Bicolor",
+    "id": "78",
+    "name": "Trumpet Bicolor (Caulastrea curvata)",
+    "commonName": "Trumpet Bicolor",
     "scientificName": "Caulastrea curvata",
     "synonyms": [
+      "Trumpet Bicolor",
+      "Trumpet Bicolor (Caulastrea curvata)",
       "Coral Trumpet Bicolor",
       "Coral Trumpet Bicolor (Caulastrea curvata)"
     ],
@@ -1261,11 +1343,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "77",
-    "name": "Coral Trumpet Azul (Caulastrea furcata)",
-    "commonName": "Coral Trumpet Azul",
+    "id": "79",
+    "name": "Trumpet Azul (Caulastrea furcata)",
+    "commonName": "Trumpet Azul",
     "scientificName": "Caulastrea furcata",
     "synonyms": [
+      "Trumpet Azul",
+      "Trumpet Azul (Caulastrea furcata)",
       "Coral Trumpet Azul",
       "Coral Trumpet Azul (Caulastrea furcata)",
       "trumpet-azul.jpg",
@@ -1278,11 +1362,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "78",
-    "name": "Coral Duncan (Duncanopsammia axifuga)",
-    "commonName": "Coral Duncan",
+    "id": "80",
+    "name": "Duncan Clássico (Duncanopsammia axifuga)",
+    "commonName": "Duncan Clássico",
     "scientificName": "Duncanopsammia axifuga",
     "synonyms": [
+      "Duncan Clássico",
+      "Duncan Clássico (Duncanopsammia axifuga)",
       "Coral Duncan",
       "Coral Duncan (Duncanopsammia axifuga)",
       "duncan",
@@ -1296,11 +1382,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "79",
-    "name": "Coral Acanthastrea Red (Micromussa lordhowensis)",
-    "commonName": "Coral Acanthastrea Red",
+    "id": "81",
+    "name": "Acanthastrea Red (Micromussa lordhowensis)",
+    "commonName": "Acanthastrea Red",
     "scientificName": "Micromussa lordhowensis",
     "synonyms": [
+      "Acanthastrea Red",
+      "Acanthastrea Red (Micromussa lordhowensis)",
       "Coral Acanthastrea Red",
       "Coral Acanthastrea Red (Micromussa lordhowensis)"
     ],
@@ -1311,11 +1399,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "80",
-    "name": "Coral Acanthastrea Green (Micromussa lordhowensis)",
-    "commonName": "Coral Acanthastrea Green",
+    "id": "82",
+    "name": "Acanthastrea Green (Micromussa lordhowensis)",
+    "commonName": "Acanthastrea Green",
     "scientificName": "Micromussa lordhowensis",
     "synonyms": [
+      "Acanthastrea Green",
+      "Acanthastrea Green (Micromussa lordhowensis)",
       "Coral Acanthastrea Green",
       "Coral Acanthastrea Green (Micromussa lordhowensis)",
       "acanthastrea-micromussa-orange.jpg"
@@ -1327,11 +1417,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "81",
-    "name": "Coral Acanthastrea Rainbow (Micromussa lordhowensis)",
-    "commonName": "Coral Acanthastrea Rainbow",
+    "id": "83",
+    "name": "Acanthastrea Rainbow (Micromussa lordhowensis)",
+    "commonName": "Acanthastrea Rainbow",
     "scientificName": "Micromussa lordhowensis",
     "synonyms": [
+      "Acanthastrea Rainbow",
+      "Acanthastrea Rainbow (Micromussa lordhowensis)",
       "Coral Acanthastrea Rainbow",
       "Coral Acanthastrea Rainbow (Micromussa lordhowensis)"
     ],
@@ -1342,11 +1434,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "82",
-    "name": "Coral Acanthastrea Orange Crush (Micromussa lordhowensis)",
-    "commonName": "Coral Acanthastrea Orange Crush",
+    "id": "84",
+    "name": "Acanthastrea Orange Crush (Micromussa lordhowensis)",
+    "commonName": "Acanthastrea Orange Crush",
     "scientificName": "Micromussa lordhowensis",
     "synonyms": [
+      "Acanthastrea Orange Crush",
+      "Acanthastrea Orange Crush (Micromussa lordhowensis)",
       "Coral Acanthastrea Orange Crush",
       "Coral Acanthastrea Orange Crush (Micromussa lordhowensis)",
       "acanthastrea-orange-crush.jpg"
@@ -1358,11 +1452,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "83",
-    "name": "Coral Goniopora Red (Goniopora stokesi)",
-    "commonName": "Coral Goniopora Red",
+    "id": "85",
+    "name": "Goniopora Red (Goniopora stokesi)",
+    "commonName": "Goniopora Red",
     "scientificName": "Goniopora stokesi",
     "synonyms": [
+      "Goniopora Red",
+      "Goniopora Red (Goniopora stokesi)",
       "Coral Goniopora Red",
       "Coral Goniopora Red (Goniopora stokesi)"
     ],
@@ -1373,11 +1469,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "84",
-    "name": "Coral Goniopora Pink (Goniopora stokesi)",
-    "commonName": "Coral Goniopora Pink",
+    "id": "86",
+    "name": "Goniopora Pink (Goniopora stokesi)",
+    "commonName": "Goniopora Pink",
     "scientificName": "Goniopora stokesi",
     "synonyms": [
+      "Goniopora Pink",
+      "Goniopora Pink (Goniopora stokesi)",
       "Coral Goniopora Pink",
       "Coral Goniopora Pink (Goniopora stokesi)",
       "goniopora-pink.jpg"
@@ -1389,11 +1487,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "85",
-    "name": "Coral Goniopora Green Neon (Goniopora sp.)",
-    "commonName": "Coral Goniopora Green Neon",
+    "id": "87",
+    "name": "Goniopora Green Neon (Goniopora sp.)",
+    "commonName": "Goniopora Green Neon",
     "scientificName": "Goniopora sp.",
     "synonyms": [
+      "Goniopora Green Neon",
+      "Goniopora Green Neon (Goniopora sp.)",
       "Coral Goniopora Green Neon",
       "Coral Goniopora Green Neon (Goniopora sp.)"
     ],
@@ -1404,11 +1504,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Caracídeos (Tetras e Cardumes)"
   },
   {
-    "id": "86",
-    "name": "Coral Alveopora Verde (Alveopora tizardi)",
-    "commonName": "Coral Alveopora Verde",
+    "id": "88",
+    "name": "Alveopora Verde (Alveopora tizardi)",
+    "commonName": "Alveopora Verde",
     "scientificName": "Alveopora tizardi",
     "synonyms": [
+      "Alveopora Verde",
+      "Alveopora Verde (Alveopora tizardi)",
       "Coral Alveopora Verde",
       "Coral Alveopora Verde (Alveopora tizardi)",
       "alveopora-verde.jpg"
@@ -1420,11 +1522,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "87",
-    "name": "Coral Blastomussa Wellsi (Blastomussa wellsi)",
-    "commonName": "Coral Blastomussa Wellsi",
+    "id": "89",
+    "name": "Blastomussa Wellsi (Blastomussa wellsi)",
+    "commonName": "Blastomussa Wellsi",
     "scientificName": "Blastomussa wellsi",
     "synonyms": [
+      "Blastomussa Wellsi",
+      "Blastomussa Wellsi (Blastomussa wellsi)",
       "Coral Blastomussa Wellsi",
       "Coral Blastomussa Wellsi (Blastomussa wellsi)"
     ],
@@ -1435,11 +1539,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "88",
-    "name": "Coral Favia Dragon Soul (Favia favus)",
-    "commonName": "Coral Favia Dragon Soul",
+    "id": "90",
+    "name": "Favia Dragon Soul (Favia favus)",
+    "commonName": "Favia Dragon Soul",
     "scientificName": "Favia favus",
     "synonyms": [
+      "Favia Dragon Soul",
+      "Favia Dragon Soul (Favia favus)",
       "Coral Favia Dragon Soul",
       "Coral Favia Dragon Soul (Favia favus)",
       "favia-dragon-soul.jpg"
@@ -1451,11 +1557,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "89",
-    "name": "Coral Chalice Hollywood Stunner (Echinopora lamellosa)",
-    "commonName": "Coral Chalice Hollywood Stunner",
+    "id": "91",
+    "name": "Chalice Hollywood Stunner (Echinopora lamellosa)",
+    "commonName": "Chalice Hollywood Stunner",
     "scientificName": "Echinopora lamellosa",
     "synonyms": [
+      "Chalice Hollywood Stunner",
+      "Chalice Hollywood Stunner (Echinopora lamellosa)",
       "Coral Chalice Hollywood Stunner",
       "Coral Chalice Hollywood Stunner (Echinopora lamellosa)",
       "chalice-hollywood-stunner.jpg"
@@ -1467,12 +1575,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "90",
-    "name": "Montipora Capricornis Vermelha (Prato Red)",
+    "id": "92",
+    "name": "Montipora Capricornis Vermelha (Montipora capricornis)",
     "commonName": "Montipora Capricornis Vermelha",
-    "scientificName": "Prato Red",
+    "scientificName": "Montipora capricornis",
     "synonyms": [
       "Montipora Capricornis Vermelha",
+      "Montipora Capricornis Vermelha (Montipora capricornis)",
       "Montipora Capricornis Vermelha (Prato Red)",
       "montipora prato vermelha",
       "capricornis red"
@@ -1484,11 +1593,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "SPS (Pólipos Pequenos)"
   },
   {
-    "id": "91",
-    "name": "Coral Montipora Capricornis Verde (Montipora capricornis)",
-    "commonName": "Coral Montipora Capricornis Verde",
+    "id": "93",
+    "name": "Montipora Capricornis Verde (Montipora capricornis)",
+    "commonName": "Montipora Capricornis Verde",
     "scientificName": "Montipora capricornis",
     "synonyms": [
+      "Montipora Capricornis Verde",
+      "Montipora Capricornis Verde (Montipora capricornis)",
       "Coral Montipora Capricornis Verde",
       "Coral Montipora Capricornis Verde (Montipora capricornis)"
     ],
@@ -1499,11 +1610,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "SPS (Pólipos Pequenos)"
   },
   {
-    "id": "92",
-    "name": "Coral Montipora Capricornis Grafted (Montipora capricornis)",
-    "commonName": "Coral Montipora Capricornis Grafted",
+    "id": "94",
+    "name": "Montipora Capricornis Grafted (Montipora capricornis)",
+    "commonName": "Montipora Capricornis Grafted",
     "scientificName": "Montipora capricornis",
     "synonyms": [
+      "Montipora Capricornis Grafted",
+      "Montipora Capricornis Grafted (Montipora capricornis)",
       "Coral Montipora Capricornis Grafted",
       "Coral Montipora Capricornis Grafted (Montipora capricornis)",
       "montipora-grafted.jpg"
@@ -1515,11 +1628,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "SPS (Pólipos Pequenos)"
   },
   {
-    "id": "93",
-    "name": "Coral Montipora Digitata Forest Fire (Montipora digitata)",
-    "commonName": "Coral Montipora Digitata Forest Fire",
+    "id": "95",
+    "name": "Montipora Digitata Forest Fire (Montipora digitata)",
+    "commonName": "Montipora Digitata Forest Fire",
     "scientificName": "Montipora digitata",
     "synonyms": [
+      "Montipora Digitata Forest Fire",
+      "Montipora Digitata Forest Fire (Montipora digitata)",
       "Coral Montipora Digitata Forest Fire",
       "Coral Montipora Digitata Forest Fire (Montipora digitata)"
     ],
@@ -1530,11 +1645,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "SPS (Pólipos Pequenos)"
   },
   {
-    "id": "94",
-    "name": "Coral Montipora Digitata Red (Montipora digitata)",
-    "commonName": "Coral Montipora Digitata Red",
+    "id": "96",
+    "name": "Montipora Digitata Red (Montipora digitata)",
+    "commonName": "Montipora Digitata Red",
     "scientificName": "Montipora digitata",
     "synonyms": [
+      "Montipora Digitata Red",
+      "Montipora Digitata Red (Montipora digitata)",
       "Coral Montipora Digitata Red",
       "Coral Montipora Digitata Red (Montipora digitata)",
       "montipora-digitata-red.jpg"
@@ -1546,11 +1663,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "SPS (Pólipos Pequenos)"
   },
   {
-    "id": "95",
-    "name": "Coral Montipora Incrustante Superman (Montipora tuberculosa)",
-    "commonName": "Coral Montipora Incrustante Superman",
+    "id": "97",
+    "name": "Montipora Incrustante Superman (Montipora tuberculosa)",
+    "commonName": "Montipora Incrustante Superman",
     "scientificName": "Montipora tuberculosa",
     "synonyms": [
+      "Montipora Incrustante Superman",
+      "Montipora Incrustante Superman (Montipora tuberculosa)",
       "Coral Montipora Incrustante Superman",
       "Coral Montipora Incrustante Superman (Montipora tuberculosa)"
     ],
@@ -1561,11 +1680,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "SPS (Pólipos Pequenos)"
   },
   {
-    "id": "96",
-    "name": "Coral Montipora Incrustante Sunset (Montipora danae)",
-    "commonName": "Coral Montipora Incrustante Sunset",
+    "id": "98",
+    "name": "Montipora Incrustante Sunset (Montipora danae)",
+    "commonName": "Montipora Incrustante Sunset",
     "scientificName": "Montipora danae",
     "synonyms": [
+      "Montipora Incrustante Sunset",
+      "Montipora Incrustante Sunset (Montipora danae)",
       "Coral Montipora Incrustante Sunset",
       "Coral Montipora Incrustante Sunset (Montipora danae)",
       "montipora-sunset.jpg"
@@ -1577,12 +1698,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "SPS (Pólipos Pequenos)"
   },
   {
-    "id": "97",
-    "name": "Stylophora Milka (Roxa)",
+    "id": "99",
+    "name": "Stylophora Milka (Stylophora pistillata)",
     "commonName": "Stylophora Milka",
-    "scientificName": "Roxa",
+    "scientificName": "Stylophora pistillata",
     "synonyms": [
       "Stylophora Milka",
+      "Stylophora Milka (Stylophora pistillata)",
       "Stylophora Milka (Roxa)",
       "stylophora milka",
       "milka",
@@ -1595,12 +1717,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "98",
-    "name": "Seriatopora Hystrix (Birdsnest Rosa)",
+    "id": "100",
+    "name": "Seriatopora Hystrix (Seriatopora hystrix)",
     "commonName": "Seriatopora Hystrix",
-    "scientificName": "Birdsnest Rosa",
+    "scientificName": "Seriatopora hystrix",
     "synonyms": [
       "Seriatopora Hystrix",
+      "Seriatopora Hystrix (Seriatopora hystrix)",
       "Seriatopora Hystrix (Birdsnest Rosa)",
       "seriatopora hystrix",
       "birdsnest",
@@ -1613,11 +1736,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "SPS (Pólipos Pequenos)"
   },
   {
-    "id": "99",
-    "name": "Coral Seriatopora Caliendrum Verde (Seriatopora caliendrum)",
-    "commonName": "Coral Seriatopora Caliendrum Verde",
+    "id": "101",
+    "name": "Seriatopora Caliendrum Verde (Seriatopora caliendrum)",
+    "commonName": "Seriatopora Caliendrum Verde",
     "scientificName": "Seriatopora caliendrum",
     "synonyms": [
+      "Seriatopora Caliendrum Verde",
+      "Seriatopora Caliendrum Verde (Seriatopora caliendrum)",
       "Coral Seriatopora Caliendrum Verde",
       "Coral Seriatopora Caliendrum Verde (Seriatopora caliendrum)"
     ],
@@ -1628,11 +1753,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "SPS (Pólipos Pequenos)"
   },
   {
-    "id": "100",
-    "name": "Coral Seriatopora Caliendrum Bicolor (Seriatopora caliendrum)",
-    "commonName": "Coral Seriatopora Caliendrum Bicolor",
+    "id": "102",
+    "name": "Seriatopora Caliendrum Bicolor (Seriatopora caliendrum)",
+    "commonName": "Seriatopora Caliendrum Bicolor",
     "scientificName": "Seriatopora caliendrum",
     "synonyms": [
+      "Seriatopora Caliendrum Bicolor",
+      "Seriatopora Caliendrum Bicolor (Seriatopora caliendrum)",
       "Coral Seriatopora Caliendrum Bicolor",
       "Coral Seriatopora Caliendrum Bicolor (Seriatopora caliendrum)",
       "seriatopora-caliendrum-bicolor.jpg"
@@ -1644,11 +1771,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "SPS (Pólipos Pequenos)"
   },
   {
-    "id": "101",
-    "name": "Coral Acropora Green Slimer (Acropora yongei)",
-    "commonName": "Coral Acropora Green Slimer",
+    "id": "103",
+    "name": "Acropora Green Slimer (Acropora yongei)",
+    "commonName": "Acropora Green Slimer",
     "scientificName": "Acropora yongei",
     "synonyms": [
+      "Acropora Green Slimer",
+      "Acropora Green Slimer (Acropora yongei)",
       "Coral Acropora Green Slimer",
       "Coral Acropora Green Slimer (Acropora yongei)"
     ],
@@ -1659,11 +1788,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "SPS (Pólipos Pequenos)"
   },
   {
-    "id": "102",
-    "name": "Coral Acropora Valida Tricolor (Acropora valida)",
-    "commonName": "Coral Acropora Valida Tricolor",
+    "id": "104",
+    "name": "Acropora Valida Tricolor (Acropora valida)",
+    "commonName": "Acropora Valida Tricolor",
     "scientificName": "Acropora valida",
     "synonyms": [
+      "Acropora Valida Tricolor",
+      "Acropora Valida Tricolor (Acropora valida)",
       "Coral Acropora Valida Tricolor",
       "Coral Acropora Valida Tricolor (Acropora valida)",
       "acropora-valida.jpg"
@@ -1675,11 +1806,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "SPS (Pólipos Pequenos)"
   },
   {
-    "id": "103",
-    "name": "Coral Acropora Millepora Azul (Acropora millepora)",
-    "commonName": "Coral Acropora Millepora Azul",
+    "id": "105",
+    "name": "Acropora Millepora Azul (Acropora millepora)",
+    "commonName": "Acropora Millepora Azul",
     "scientificName": "Acropora millepora",
     "synonyms": [
+      "Acropora Millepora Azul",
+      "Acropora Millepora Azul (Acropora millepora)",
       "Coral Acropora Millepora Azul",
       "Coral Acropora Millepora Azul (Acropora millepora)",
       "acropora-millepora-blue.jpg"
@@ -1691,11 +1824,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "SPS (Pólipos Pequenos)"
   },
   {
-    "id": "104",
-    "name": "Ocellaris Comum (Peixe-Palhaço Laranja)",
-    "commonName": "Ocellaris Comum",
-    "scientificName": "Peixe-Palhaço Laranja",
+    "id": "106",
+    "name": "Peixe-palhaço Comum (Amphiprion ocellaris)",
+    "commonName": "Peixe-palhaço Comum",
+    "scientificName": "Amphiprion ocellaris",
     "synonyms": [
+      "Peixe-palhaço Comum",
+      "Peixe-palhaço Comum (Amphiprion ocellaris)",
       "Ocellaris Comum",
       "Ocellaris Comum (Peixe-Palhaço Laranja)",
       "ocellaris",
@@ -1710,11 +1845,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Palhaços (Amphiprioninae)"
   },
   {
-    "id": "105",
-    "name": "Ocellaris Black (Darwin)",
-    "commonName": "Ocellaris Black",
-    "scientificName": "Darwin",
+    "id": "107",
+    "name": "Peixe-palhaço Darwin Black (Amphiprion ocellaris)",
+    "commonName": "Peixe-palhaço Darwin Black",
+    "scientificName": "Amphiprion ocellaris",
     "synonyms": [
+      "Peixe-palhaço Darwin Black",
+      "Peixe-palhaço Darwin Black (Amphiprion ocellaris)",
       "Ocellaris Black",
       "Ocellaris Black (Darwin)",
       "ocellaris black",
@@ -1728,7 +1865,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Palhaços (Amphiprioninae)"
   },
   {
-    "id": "106",
+    "id": "108",
     "name": "Peixe-palhaço Snowflake (Amphiprion ocellaris)",
     "commonName": "Peixe-palhaço Snowflake",
     "scientificName": "Amphiprion ocellaris",
@@ -1743,7 +1880,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Palhaços (Amphiprioninae)"
   },
   {
-    "id": "107",
+    "id": "109",
     "name": "Peixe-palhaço Black Snowflake (Amphiprion ocellaris)",
     "commonName": "Peixe-palhaço Black Snowflake",
     "scientificName": "Amphiprion ocellaris",
@@ -1758,7 +1895,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Palhaços (Amphiprioninae)"
   },
   {
-    "id": "108",
+    "id": "110",
     "name": "Peixe-palhaço Black Ice (Amphiprion ocellaris)",
     "commonName": "Peixe-palhaço Black Ice",
     "scientificName": "Amphiprion ocellaris",
@@ -1774,7 +1911,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Palhaços (Amphiprioninae)"
   },
   {
-    "id": "109",
+    "id": "111",
     "name": "Peixe-palhaço Picasso (Amphiprion percula)",
     "commonName": "Peixe-palhaço Picasso",
     "scientificName": "Amphiprion percula",
@@ -1789,7 +1926,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Palhaços (Amphiprioninae)"
   },
   {
-    "id": "110",
+    "id": "112",
     "name": "Peixe-palhaço DaVinci (Amphiprion ocellaris)",
     "commonName": "Peixe-palhaço DaVinci",
     "scientificName": "Amphiprion ocellaris",
@@ -1805,7 +1942,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Palhaços (Amphiprioninae)"
   },
   {
-    "id": "111",
+    "id": "113",
     "name": "Peixe-palhaço Gladiator (Amphiprion ocellaris)",
     "commonName": "Peixe-palhaço Gladiator",
     "scientificName": "Amphiprion ocellaris",
@@ -1821,7 +1958,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Palhaços (Amphiprioninae)"
   },
   {
-    "id": "112",
+    "id": "114",
     "name": "Peixe-palhaço Frostbite (Amphiprion ocellaris)",
     "commonName": "Peixe-palhaço Frostbite",
     "scientificName": "Amphiprion ocellaris",
@@ -1836,7 +1973,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Palhaços (Amphiprioninae)"
   },
   {
-    "id": "113",
+    "id": "115",
     "name": "Peixe-palhaço Flurry (Amphiprion ocellaris)",
     "commonName": "Peixe-palhaço Flurry",
     "scientificName": "Amphiprion ocellaris",
@@ -1852,7 +1989,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Palhaços (Amphiprioninae)"
   },
   {
-    "id": "114",
+    "id": "116",
     "name": "Peixe-palhaço Orange Storm (Amphiprion ocellaris)",
     "commonName": "Peixe-palhaço Orange Storm",
     "scientificName": "Amphiprion ocellaris",
@@ -1867,7 +2004,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Palhaços (Amphiprioninae)"
   },
   {
-    "id": "115",
+    "id": "117",
     "name": "Peixe-palhaço Black Storm (Amphiprion ocellaris)",
     "commonName": "Peixe-palhaço Black Storm",
     "scientificName": "Amphiprion ocellaris",
@@ -1883,7 +2020,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Palhaços (Amphiprioninae)"
   },
   {
-    "id": "116",
+    "id": "118",
     "name": "Blue Tang (Paracanthurus hepatus)",
     "commonName": "Blue Tang",
     "scientificName": "Paracanthurus hepatus",
@@ -1898,7 +2035,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Tangs e Cirurgiões (Acanthuridae)"
   },
   {
-    "id": "117",
+    "id": "119",
     "name": "Yellow Tang (Zebrasoma flavescens)",
     "commonName": "Yellow Tang",
     "scientificName": "Zebrasoma flavescens",
@@ -1916,7 +2053,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Tangs e Cirurgiões (Acanthuridae)"
   },
   {
-    "id": "118",
+    "id": "120",
     "name": "Sailfin Tang (Zebrasoma veliferum)",
     "commonName": "Sailfin Tang",
     "scientificName": "Zebrasoma veliferum",
@@ -1931,7 +2068,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Tangs e Cirurgiões (Acanthuridae)"
   },
   {
-    "id": "119",
+    "id": "121",
     "name": "Scopas Tang (Zebrasoma scopas)",
     "commonName": "Scopas Tang",
     "scientificName": "Zebrasoma scopas",
@@ -1947,7 +2084,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Tangs e Cirurgiões (Acanthuridae)"
   },
   {
-    "id": "120",
+    "id": "122",
     "name": "Powder Blue Tang (Acanthurus leucosternon)",
     "commonName": "Powder Blue Tang",
     "scientificName": "Acanthurus leucosternon",
@@ -1962,7 +2099,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Tangs e Cirurgiões (Acanthuridae)"
   },
   {
-    "id": "121",
+    "id": "123",
     "name": "Naso Tang (Naso lituratus)",
     "commonName": "Naso Tang",
     "scientificName": "Naso lituratus",
@@ -1979,7 +2116,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Tangs e Cirurgiões (Acanthuridae)"
   },
   {
-    "id": "122",
+    "id": "124",
     "name": "Royal Gramma (Gramma loreto)",
     "commonName": "Royal Gramma",
     "scientificName": "Gramma loreto",
@@ -1994,7 +2131,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "123",
+    "id": "125",
     "name": "Gramma Brasileiro (Gramma brasiliensis)",
     "commonName": "Gramma Brasileiro",
     "scientificName": "Gramma brasiliensis",
@@ -2010,7 +2147,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "124",
+    "id": "126",
     "name": "Firefish Comum (Nemateleotris magnifica)",
     "commonName": "Firefish Comum",
     "scientificName": "Nemateleotris magnifica",
@@ -2028,13 +2165,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "125",
-    "name": "Firefish Purple",
+    "id": "127",
+    "name": "Firefish Purple (Nemateleotris decora)",
     "commonName": "Firefish Purple",
-    "scientificName": "Firefish Purple",
+    "scientificName": "Nemateleotris decora",
     "synonyms": [
       "Firefish Purple",
-      "Firefish Purple",
+      "Firefish Purple (Nemateleotris decora)",
       "purple firefish",
       "firefish roxo",
       "decora"
@@ -2046,7 +2183,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "126",
+    "id": "128",
     "name": "Six Line Wrasse (Pseudocheilinus hexataenia)",
     "commonName": "Six Line Wrasse",
     "scientificName": "Pseudocheilinus hexataenia",
@@ -2061,7 +2198,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Bodiões e Wrasses (Labridae)"
   },
   {
-    "id": "127",
+    "id": "129",
     "name": "Yellow Coris Wrasse (Halichoeres chrysus)",
     "commonName": "Yellow Coris Wrasse",
     "scientificName": "Halichoeres chrysus",
@@ -2077,11 +2214,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Bodiões e Wrasses (Labridae)"
   },
   {
-    "id": "128",
-    "name": "Donzelas (Kupang, Green Chromis, Yellow Tail)",
-    "commonName": "Donzelas",
-    "scientificName": "Kupang, Green Chromis, Yellow Tail",
+    "id": "130",
+    "name": "Donzela Kupang (Chrysiptera hemicyanea)",
+    "commonName": "Donzela Kupang",
+    "scientificName": "Chrysiptera hemicyanea",
     "synonyms": [
+      "Donzela Kupang",
+      "Donzela Kupang (Chrysiptera hemicyanea)",
       "Donzelas",
       "Donzelas (Kupang, Green Chromis, Yellow Tail)",
       "kupang",
@@ -2095,7 +2234,47 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "129",
+    "id": "131",
+    "name": "Green Chromis (Chromis viridis)",
+    "commonName": "Green Chromis",
+    "scientificName": "Chromis viridis",
+    "synonyms": [
+      "Green Chromis",
+      "Green Chromis (Chromis viridis)",
+      "Donzelas",
+      "Donzelas (Kupang, Green Chromis, Yellow Tail)",
+      "kupang",
+      "green chromis",
+      "yellow tail damsel"
+    ],
+    "type": "LIVING",
+    "subCategory": "MARINE_FISH",
+    "imageSlug": "",
+    "section": "Peixes Marinhos",
+    "familyGroup": "Geral"
+  },
+  {
+    "id": "132",
+    "name": "Donzela Yellow Tail (Chrysiptera parasema)",
+    "commonName": "Donzela Yellow Tail",
+    "scientificName": "Chrysiptera parasema",
+    "synonyms": [
+      "Donzela Yellow Tail",
+      "Donzela Yellow Tail (Chrysiptera parasema)",
+      "Donzelas",
+      "Donzelas (Kupang, Green Chromis, Yellow Tail)",
+      "kupang",
+      "green chromis",
+      "yellow tail damsel"
+    ],
+    "type": "LIVING",
+    "subCategory": "MARINE_FISH",
+    "imageSlug": "",
+    "section": "Peixes Marinhos",
+    "familyGroup": "Geral"
+  },
+  {
+    "id": "133",
     "name": "Goby Yellow Watchman (Cryptocentrus cinctus)",
     "commonName": "Goby Yellow Watchman",
     "scientificName": "Cryptocentrus cinctus",
@@ -2110,7 +2289,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Gobies e Blênios"
   },
   {
-    "id": "130",
+    "id": "134",
     "name": "Blênio Bicolor (Ecsenius bicolor)",
     "commonName": "Blênio Bicolor",
     "scientificName": "Ecsenius bicolor",
@@ -2126,7 +2305,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Gobies e Blênios"
   },
   {
-    "id": "131",
+    "id": "135",
     "name": "Blênio Midas (Ecsenius midas)",
     "commonName": "Blênio Midas",
     "scientificName": "Ecsenius midas",
@@ -2142,7 +2321,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Gobies e Blênios"
   },
   {
-    "id": "132",
+    "id": "136",
     "name": "Peixe Mandarim (Synchiropus splendidus)",
     "commonName": "Peixe Mandarim",
     "scientificName": "Synchiropus splendidus",
@@ -2160,7 +2339,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "133",
+    "id": "137",
     "name": "Cardinal Banggai (Pterapogon kauderni)",
     "commonName": "Cardinal Banggai",
     "scientificName": "Pterapogon kauderni",
@@ -2170,12 +2349,12 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "MARINE_FISH",
-    "imageSlug": "087_cardinal_banggai_pijama.webp",
+    "imageSlug": "",
     "section": "Peixes Marinhos",
     "familyGroup": "Geral"
   },
   {
-    "id": "134",
+    "id": "138",
     "name": "Cardinal Pijama (Sphaeramia nematoptera)",
     "commonName": "Cardinal Pijama",
     "scientificName": "Sphaeramia nematoptera",
@@ -2191,7 +2370,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "135",
+    "id": "139",
     "name": "Flame Angel (Centropyge loricula)",
     "commonName": "Flame Angel",
     "scientificName": "Centropyge loricula",
@@ -2206,11 +2385,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Peixes-Anjo (Pomacanthidae)"
   },
   {
-    "id": "136",
-    "name": "Coral Beauty (Centropyge bispinosa)",
-    "commonName": "Coral Beauty",
+    "id": "140",
+    "name": "Anjo Coral Beauty (Centropyge bispinosa)",
+    "commonName": "Anjo Coral Beauty",
     "scientificName": "Centropyge bispinosa",
     "synonyms": [
+      "Anjo Coral Beauty",
+      "Anjo Coral Beauty (Centropyge bispinosa)",
       "Coral Beauty",
       "Coral Beauty (Centropyge bispinosa)",
       "anjo-coral-beauty.jpg"
@@ -2222,7 +2403,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "137",
+    "id": "141",
     "name": "Camarão Limpador Cleaner (Lysmata amboinensis)",
     "commonName": "Camarão Limpador Cleaner",
     "scientificName": "Lysmata amboinensis",
@@ -2237,7 +2418,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Equipe de Limpeza & Invertebrados"
   },
   {
-    "id": "138",
+    "id": "142",
     "name": "Camarão Bailarino (Lysmata boggessi)",
     "commonName": "Camarão Bailarino",
     "scientificName": "Lysmata boggessi",
@@ -2253,7 +2434,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Equipe de Limpeza & Invertebrados"
   },
   {
-    "id": "139",
+    "id": "143",
     "name": "Camarão Blood Fire (Lysmata debelius)",
     "commonName": "Camarão Blood Fire",
     "scientificName": "Lysmata debelius",
@@ -2269,7 +2450,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Equipe de Limpeza & Invertebrados"
   },
   {
-    "id": "140",
+    "id": "144",
     "name": "Mini Paguro Patas Amarelas (Clibanarius tricolor)",
     "commonName": "Mini Paguro Patas Amarelas",
     "scientificName": "Clibanarius tricolor",
@@ -2284,7 +2465,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Equipe de Limpeza & Invertebrados"
   },
   {
-    "id": "141",
+    "id": "145",
     "name": "Caracol Turbo Snail (Turbo fluctuosus)",
     "commonName": "Caracol Turbo Snail",
     "scientificName": "Turbo fluctuosus",
@@ -2300,7 +2481,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "142",
+    "id": "146",
     "name": "Caracol Nassarius (Nassarius vibex)",
     "commonName": "Caracol Nassarius",
     "scientificName": "Nassarius vibex",
@@ -2316,7 +2497,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "143",
+    "id": "147",
     "name": "Guppy Moscou Full Black (Poecilia reticulata)",
     "commonName": "Guppy Moscou Full Black",
     "scientificName": "Poecilia reticulata",
@@ -2331,7 +2512,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Poecilídeos (Ovivíparos)"
   },
   {
-    "id": "144",
+    "id": "148",
     "name": "Guppy Moscou Blue (Poecilia reticulata)",
     "commonName": "Guppy Moscou Blue",
     "scientificName": "Poecilia reticulata",
@@ -2347,7 +2528,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Poecilídeos (Ovivíparos)"
   },
   {
-    "id": "145",
+    "id": "149",
     "name": "Guppy Tuxedo Half Black Red (Poecilia reticulata)",
     "commonName": "Guppy Tuxedo Half Black Red",
     "scientificName": "Poecilia reticulata",
@@ -2362,7 +2543,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Poecilídeos (Ovivíparos)"
   },
   {
-    "id": "146",
+    "id": "150",
     "name": "Guppy Tuxedo Yellow (Poecilia reticulata)",
     "commonName": "Guppy Tuxedo Yellow",
     "scientificName": "Poecilia reticulata",
@@ -2378,7 +2559,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Poecilídeos (Ovivíparos)"
   },
   {
-    "id": "147",
+    "id": "151",
     "name": "Guppy King Cobra (Poecilia reticulata)",
     "commonName": "Guppy King Cobra",
     "scientificName": "Poecilia reticulata",
@@ -2393,7 +2574,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Poecilídeos (Ovivíparos)"
   },
   {
-    "id": "148",
+    "id": "152",
     "name": "Guppy Snakeskin Verde (Poecilia reticulata)",
     "commonName": "Guppy Snakeskin Verde",
     "scientificName": "Poecilia reticulata",
@@ -2409,7 +2590,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Poecilídeos (Ovivíparos)"
   },
   {
-    "id": "149",
+    "id": "153",
     "name": "Guppy Dumbo Big Ear (Poecilia reticulata)",
     "commonName": "Guppy Dumbo Big Ear",
     "scientificName": "Poecilia reticulata",
@@ -2424,7 +2605,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Poecilídeos (Ovivíparos)"
   },
   {
-    "id": "150",
+    "id": "154",
     "name": "Guppy Mosaico Red (Poecilia reticulata)",
     "commonName": "Guppy Mosaico Red",
     "scientificName": "Poecilia reticulata",
@@ -2440,12 +2621,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Poecilídeos (Ovivíparos)"
   },
   {
-    "id": "151",
-    "name": "Guppy Full Red Albino",
-    "commonName": "Guppy Full Red Albino",
-    "scientificName": "Guppy Full Red Albino",
+    "id": "155",
+    "name": "Guppy Albino Full Red (Poecilia reticulata)",
+    "commonName": "Guppy Albino Full Red",
+    "scientificName": "Poecilia reticulata",
     "synonyms": [
-      "Guppy Full Red Albino",
+      "Guppy Albino Full Red",
+      "Guppy Albino Full Red (Poecilia reticulata)",
       "Guppy Full Red Albino",
       "guppy full red",
       "lebiste vermelho",
@@ -2458,7 +2640,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Poecilídeos (Ovivíparos)"
   },
   {
-    "id": "152",
+    "id": "156",
     "name": "Guppy Endler Black Bar (Poecilia wingei)",
     "commonName": "Guppy Endler Black Bar",
     "scientificName": "Poecilia wingei",
@@ -2473,7 +2655,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Poecilídeos (Ovivíparos)"
   },
   {
-    "id": "153",
+    "id": "157",
     "name": "Guppy Endler Tiger (Poecilia wingei)",
     "commonName": "Guppy Endler Tiger",
     "scientificName": "Poecilia wingei",
@@ -2489,7 +2671,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Poecilídeos (Ovivíparos)"
   },
   {
-    "id": "154",
+    "id": "158",
     "name": "Guppy Endler Red Scarlet (Poecilia wingei)",
     "commonName": "Guppy Endler Red Scarlet",
     "scientificName": "Poecilia wingei",
@@ -2504,12 +2686,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Poecilídeos (Ovivíparos)"
   },
   {
-    "id": "155",
-    "name": "Betta Veiltail (Cauda de Véu)",
+    "id": "159",
+    "name": "Betta Veiltail (Betta splendens)",
     "commonName": "Betta Veiltail",
-    "scientificName": "Cauda de Véu",
+    "scientificName": "Betta splendens",
     "synonyms": [
       "Betta Veiltail",
+      "Betta Veiltail (Betta splendens)",
       "Betta Veiltail (Cauda de Véu)",
       "betta comum",
       "betta veu",
@@ -2523,12 +2706,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Bettas & Anabantídeos"
   },
   {
-    "id": "156",
-    "name": "Betta Halfmoon (Meia-Lua 180°)",
+    "id": "160",
+    "name": "Betta Halfmoon (Betta splendens)",
     "commonName": "Betta Halfmoon",
-    "scientificName": "Meia-Lua 180°",
+    "scientificName": "Betta splendens",
     "synonyms": [
       "Betta Halfmoon",
+      "Betta Halfmoon (Betta splendens)",
       "Betta Halfmoon (Meia-Lua 180°)",
       "betta halfmoon",
       "betta hm",
@@ -2541,7 +2725,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Bettas & Anabantídeos"
   },
   {
-    "id": "157",
+    "id": "161",
     "name": "Betta Plakat Koi Galaxy (Betta splendens)",
     "commonName": "Betta Plakat Koi Galaxy",
     "scientificName": "Betta splendens",
@@ -2556,7 +2740,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Bettas & Anabantídeos"
   },
   {
-    "id": "158",
+    "id": "162",
     "name": "Betta Plakat Candy Nemo (Betta splendens)",
     "commonName": "Betta Plakat Candy Nemo",
     "scientificName": "Betta splendens",
@@ -2572,11 +2756,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Bettas & Anabantídeos"
   },
   {
-    "id": "159",
-    "name": "Betta Dumbo (Big Ear)",
-    "commonName": "Betta Dumbo",
-    "scientificName": "Big Ear",
+    "id": "163",
+    "name": "Betta Dumbo Big Ear (Betta splendens)",
+    "commonName": "Betta Dumbo Big Ear",
+    "scientificName": "Betta splendens",
     "synonyms": [
+      "Betta Dumbo Big Ear",
+      "Betta Dumbo Big Ear (Betta splendens)",
       "Betta Dumbo",
       "Betta Dumbo (Big Ear)",
       "betta dumbo",
@@ -2589,12 +2775,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Bettas & Anabantídeos"
   },
   {
-    "id": "160",
-    "name": "Betta Crowntail (Cauda de Coroa)",
+    "id": "164",
+    "name": "Betta Crowntail (Betta splendens)",
     "commonName": "Betta Crowntail",
-    "scientificName": "Cauda de Coroa",
+    "scientificName": "Betta splendens",
     "synonyms": [
       "Betta Crowntail",
+      "Betta Crowntail (Betta splendens)",
       "Betta Crowntail (Cauda de Coroa)",
       "betta crowntail",
       "betta coroa"
@@ -2606,7 +2793,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Bettas & Anabantídeos"
   },
   {
-    "id": "161",
+    "id": "165",
     "name": "Betta Fêmea Comum (Betta splendens)",
     "commonName": "Betta Fêmea Comum",
     "scientificName": "Betta splendens",
@@ -2621,7 +2808,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Bettas & Anabantídeos"
   },
   {
-    "id": "162",
+    "id": "166",
     "name": "Plati Mickey Mouse (Xiphophorus maculatus)",
     "commonName": "Plati Mickey Mouse",
     "scientificName": "Xiphophorus maculatus",
@@ -2636,7 +2823,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Poecilídeos (Ovivíparos)"
   },
   {
-    "id": "163",
+    "id": "167",
     "name": "Plati Aurora (Xiphophorus maculatus)",
     "commonName": "Plati Aurora",
     "scientificName": "Xiphophorus maculatus",
@@ -2652,7 +2839,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Poecilídeos (Ovivíparos)"
   },
   {
-    "id": "164",
+    "id": "168",
     "name": "Plati Wagtail Red (Xiphophorus maculatus)",
     "commonName": "Plati Wagtail Red",
     "scientificName": "Xiphophorus maculatus",
@@ -2667,7 +2854,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Poecilídeos (Ovivíparos)"
   },
   {
-    "id": "165",
+    "id": "169",
     "name": "Plati Sangue Coral (Xiphophorus maculatus)",
     "commonName": "Plati Sangue Coral",
     "scientificName": "Xiphophorus maculatus",
@@ -2683,12 +2870,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Poecilídeos (Ovivíparos)"
   },
   {
-    "id": "166",
-    "name": "Plati Balão Red (Xiphophorus maculatus var. Balão)",
+    "id": "170",
+    "name": "Plati Balão Red (Xiphophorus maculatus)",
     "commonName": "Plati Balão Red",
-    "scientificName": "Xiphophorus maculatus var. Balão",
+    "scientificName": "Xiphophorus maculatus",
     "synonyms": [
       "Plati Balão Red",
+      "Plati Balão Red (Xiphophorus maculatus)",
       "Plati Balão Red (Xiphophorus maculatus var. Balão)",
       "plati-balao.jpg"
     ],
@@ -2699,7 +2887,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Poecilídeos (Ovivíparos)"
   },
   {
-    "id": "167",
+    "id": "171",
     "name": "Espada Sangue Vermelho (Xiphophorus hellerii)",
     "commonName": "Espada Sangue Vermelho",
     "scientificName": "Xiphophorus hellerii",
@@ -2714,7 +2902,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Poecilídeos (Ovivíparos)"
   },
   {
-    "id": "168",
+    "id": "172",
     "name": "Espada Lira Vermelho (Xiphophorus hellerii var. Lyretail)",
     "commonName": "Espada Lira Vermelho",
     "scientificName": "Xiphophorus hellerii var. Lyretail",
@@ -2730,7 +2918,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Poecilídeos (Ovivíparos)"
   },
   {
-    "id": "169",
+    "id": "173",
     "name": "Espada Kohaku Koi (Xiphophorus hellerii)",
     "commonName": "Espada Kohaku Koi",
     "scientificName": "Xiphophorus hellerii",
@@ -2745,7 +2933,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Poecilídeos (Ovivíparos)"
   },
   {
-    "id": "170",
+    "id": "174",
     "name": "Espada Verde Selvagem (Xiphophorus hellerii)",
     "commonName": "Espada Verde Selvagem",
     "scientificName": "Xiphophorus hellerii",
@@ -2761,7 +2949,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Poecilídeos (Ovivíparos)"
   },
   {
-    "id": "171",
+    "id": "175",
     "name": "Espada Preto Tuxedo (Xiphophorus hellerii)",
     "commonName": "Espada Preto Tuxedo",
     "scientificName": "Xiphophorus hellerii",
@@ -2777,7 +2965,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Poecilídeos (Ovivíparos)"
   },
   {
-    "id": "172",
+    "id": "176",
     "name": "Molinésia Negra (Poecilia sphenops)",
     "commonName": "Molinésia Negra",
     "scientificName": "Poecilia sphenops",
@@ -2792,7 +2980,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Poecilídeos (Ovivíparos)"
   },
   {
-    "id": "173",
+    "id": "177",
     "name": "Molinésia Negra Lira (Poecilia sphenops var. Lyretail)",
     "commonName": "Molinésia Negra Lira",
     "scientificName": "Poecilia sphenops var. Lyretail",
@@ -2808,7 +2996,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Poecilídeos (Ovivíparos)"
   },
   {
-    "id": "174",
+    "id": "178",
     "name": "Molinésia Dálmata (Poecilia sphenops)",
     "commonName": "Molinésia Dálmata",
     "scientificName": "Poecilia sphenops",
@@ -2823,7 +3011,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Poecilídeos (Ovivíparos)"
   },
   {
-    "id": "175",
+    "id": "179",
     "name": "Molinésia Ouro (Poecilia sphenops)",
     "commonName": "Molinésia Ouro",
     "scientificName": "Poecilia sphenops",
@@ -2839,12 +3027,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Poecilídeos (Ovivíparos)"
   },
   {
-    "id": "176",
-    "name": "Molinésia Balão (Poecilia sphenops var. Balão)",
+    "id": "180",
+    "name": "Molinésia Balão (Poecilia sphenops)",
     "commonName": "Molinésia Balão",
-    "scientificName": "Poecilia sphenops var. Balão",
+    "scientificName": "Poecilia sphenops",
     "synonyms": [
       "Molinésia Balão",
+      "Molinésia Balão (Poecilia sphenops)",
       "Molinésia Balão (Poecilia sphenops var. Balão)",
       "molinesia-balao.jpg"
     ],
@@ -2855,7 +3044,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Poecilídeos (Ovivíparos)"
   },
   {
-    "id": "177",
+    "id": "181",
     "name": "Colisa Lália Clássica (Trichogaster lalius)",
     "commonName": "Colisa Lália Clássica",
     "scientificName": "Trichogaster lalius",
@@ -2870,7 +3059,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "178",
+    "id": "182",
     "name": "Colisa Sangue Red (Trichogaster lalius var. Red)",
     "commonName": "Colisa Sangue Red",
     "scientificName": "Trichogaster lalius var. Red",
@@ -2886,7 +3075,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "179",
+    "id": "183",
     "name": "Colisa Azul Cobalto (Trichogaster lalius var. Cobalt)",
     "commonName": "Colisa Azul Cobalto",
     "scientificName": "Trichogaster lalius var. Cobalt",
@@ -2902,7 +3091,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "180",
+    "id": "184",
     "name": "Colisa Mel (Trichogaster chuna)",
     "commonName": "Colisa Mel",
     "scientificName": "Trichogaster chuna",
@@ -2918,7 +3107,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "181",
+    "id": "185",
     "name": "Tricogaster Pérola Leeri (Trichopodus leerii)",
     "commonName": "Tricogaster Pérola Leeri",
     "scientificName": "Trichopodus leerii",
@@ -2933,7 +3122,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "182",
+    "id": "186",
     "name": "Tricogaster Azul (Trichopodus trichopterus)",
     "commonName": "Tricogaster Azul",
     "scientificName": "Trichopodus trichopterus",
@@ -2949,7 +3138,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "183",
+    "id": "187",
     "name": "Tricogaster Ouro (Trichopodus trichopterus var. Gold)",
     "commonName": "Tricogaster Ouro",
     "scientificName": "Trichopodus trichopterus var. Gold",
@@ -2965,7 +3154,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "184",
+    "id": "188",
     "name": "Neon Cardinal (Paracheirodon axelrodi)",
     "commonName": "Neon Cardinal",
     "scientificName": "Paracheirodon axelrodi",
@@ -2983,7 +3172,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Caracídeos (Tetras e Cardumes)"
   },
   {
-    "id": "185",
+    "id": "189",
     "name": "Neon Innesi (Paracheirodon innesi)",
     "commonName": "Neon Innesi",
     "scientificName": "Paracheirodon innesi",
@@ -2998,7 +3187,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Caracídeos (Tetras e Cardumes)"
   },
   {
-    "id": "186",
+    "id": "190",
     "name": "Neon Verde (Paracheirodon simulans)",
     "commonName": "Neon Verde",
     "scientificName": "Paracheirodon simulans",
@@ -3014,7 +3203,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Caracídeos (Tetras e Cardumes)"
   },
   {
-    "id": "187",
+    "id": "191",
     "name": "Neon Negro (Hyphessobrycon herbertaxelrodi)",
     "commonName": "Neon Negro",
     "scientificName": "Hyphessobrycon herbertaxelrodi",
@@ -3030,7 +3219,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Caracídeos (Tetras e Cardumes)"
   },
   {
-    "id": "188",
+    "id": "192",
     "name": "Tetra Negro Comum (Gymnocorymbus ternetzi)",
     "commonName": "Tetra Negro Comum",
     "scientificName": "Gymnocorymbus ternetzi",
@@ -3045,7 +3234,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Caracídeos (Tetras e Cardumes)"
   },
   {
-    "id": "189",
+    "id": "193",
     "name": "Tetra Negro Véu (Gymnocorymbus ternetzi var. Longfin)",
     "commonName": "Tetra Negro Véu",
     "scientificName": "Gymnocorymbus ternetzi var. Longfin",
@@ -3061,7 +3250,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Caracídeos (Tetras e Cardumes)"
   },
   {
-    "id": "190",
+    "id": "194",
     "name": "Tetra White Skirt (Gymnocorymbus ternetzi var. White)",
     "commonName": "Tetra White Skirt",
     "scientificName": "Gymnocorymbus ternetzi var. White",
@@ -3076,7 +3265,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Caracídeos (Tetras e Cardumes)"
   },
   {
-    "id": "191",
+    "id": "195",
     "name": "Tetra Glow Color (Gymnocorymbus ternetzi var. Glow)",
     "commonName": "Tetra Glow Color",
     "scientificName": "Gymnocorymbus ternetzi var. Glow",
@@ -3092,7 +3281,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Caracídeos (Tetras e Cardumes)"
   },
   {
-    "id": "192",
+    "id": "196",
     "name": "Tetra Mato Grosso (Hyphessobrycon eques)",
     "commonName": "Tetra Mato Grosso",
     "scientificName": "Hyphessobrycon eques",
@@ -3110,7 +3299,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Caracídeos (Tetras e Cardumes)"
   },
   {
-    "id": "193",
+    "id": "197",
     "name": "Rodóstomus Nariz-de-Bêbado (Hemigrammus bleheri)",
     "commonName": "Rodóstomus Nariz-de-Bêbado",
     "scientificName": "Hemigrammus bleheri",
@@ -3125,12 +3314,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Caracídeos (Tetras e Cardumes)"
   },
   {
-    "id": "194",
-    "name": "Tetra Foguinho (Ember Tetra)",
+    "id": "198",
+    "name": "Tetra Foguinho (Hyphessobrycon amandae)",
     "commonName": "Tetra Foguinho",
-    "scientificName": "Ember Tetra",
+    "scientificName": "Hyphessobrycon amandae",
     "synonyms": [
       "Tetra Foguinho",
+      "Tetra Foguinho (Hyphessobrycon amandae)",
       "Tetra Foguinho (Ember Tetra)",
       "tetra foguinho",
       "ember tetra",
@@ -3143,7 +3333,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Caracídeos (Tetras e Cardumes)"
   },
   {
-    "id": "195",
+    "id": "199",
     "name": "Paulistinha Comum (Danio rerio)",
     "commonName": "Paulistinha Comum",
     "scientificName": "Danio rerio",
@@ -3158,7 +3348,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "196",
+    "id": "200",
     "name": "Paulistinha Véu (Danio rerio var. Longfin)",
     "commonName": "Paulistinha Véu",
     "scientificName": "Danio rerio var. Longfin",
@@ -3174,7 +3364,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "197",
+    "id": "201",
     "name": "Paulistinha Rosa (Danio rerio var. Rose)",
     "commonName": "Paulistinha Rosa",
     "scientificName": "Danio rerio var. Rose",
@@ -3190,12 +3380,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "198",
-    "name": "Rásbora Arlequim (T. heteromorpha)",
+    "id": "202",
+    "name": "Rásbora Arlequim (Trigonostigma heteromorpha)",
     "commonName": "Rásbora Arlequim",
-    "scientificName": "T. heteromorpha",
+    "scientificName": "Trigonostigma heteromorpha",
     "synonyms": [
       "Rásbora Arlequim",
+      "Rásbora Arlequim (Trigonostigma heteromorpha)",
       "Rásbora Arlequim (T. heteromorpha)",
       "rasbora arlequim",
       "harlequin rasbora"
@@ -3207,7 +3398,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "199",
+    "id": "203",
     "name": "Rásbora Galaxy CPD (Danio margaritatus)",
     "commonName": "Rásbora Galaxy CPD",
     "scientificName": "Danio margaritatus",
@@ -3222,7 +3413,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "200",
+    "id": "204",
     "name": "Micro Rásbora Esmeralda (Danio erythromicron)",
     "commonName": "Micro Rásbora Esmeralda",
     "scientificName": "Danio erythromicron",
@@ -3238,7 +3429,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "201",
+    "id": "205",
     "name": "Barbo Sumatra Comum (Puntigrus tetrazona)",
     "commonName": "Barbo Sumatra Comum",
     "scientificName": "Puntigrus tetrazona",
@@ -3253,7 +3444,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Caracídeos (Tetras e Cardumes)"
   },
   {
-    "id": "202",
+    "id": "206",
     "name": "Barbo Sumatra Verde (Puntigrus tetrazona var. Green)",
     "commonName": "Barbo Sumatra Verde",
     "scientificName": "Puntigrus tetrazona var. Green",
@@ -3269,7 +3460,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Caracídeos (Tetras e Cardumes)"
   },
   {
-    "id": "203",
+    "id": "207",
     "name": "Barbo Sumatra Albino (Puntigrus tetrazona var. Albino)",
     "commonName": "Barbo Sumatra Albino",
     "scientificName": "Puntigrus tetrazona var. Albino",
@@ -3285,7 +3476,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Caracídeos (Tetras e Cardumes)"
   },
   {
-    "id": "204",
+    "id": "208",
     "name": "Barbo Cereja (Desmopuntius titteya)",
     "commonName": "Barbo Cereja",
     "scientificName": "Desmopuntius titteya",
@@ -3300,7 +3491,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "205",
+    "id": "209",
     "name": "Barbo Ouro (Barbodes semifasciolatus)",
     "commonName": "Barbo Ouro",
     "scientificName": "Barbodes semifasciolatus",
@@ -3316,12 +3507,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "206",
-    "name": "Acará Bandeira Koi (Pterophyllum scalare var. Koi)",
+    "id": "210",
+    "name": "Acará Bandeira Koi (Pterophyllum scalare)",
     "commonName": "Acará Bandeira Koi",
-    "scientificName": "Pterophyllum scalare var. Koi",
+    "scientificName": "Pterophyllum scalare",
     "synonyms": [
       "Acará Bandeira Koi",
+      "Acará Bandeira Koi (Pterophyllum scalare)",
       "Acará Bandeira Koi (Pterophyllum scalare var. Koi)"
     ],
     "type": "LIVING",
@@ -3331,12 +3523,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Ciclídeos (Americanos e Africanos)"
   },
   {
-    "id": "207",
-    "name": "Acará Bandeira Orange Marble (Pterophyllum scalare var. Orange Marble)",
+    "id": "211",
+    "name": "Acará Bandeira Orange Marble (Pterophyllum scalare)",
     "commonName": "Acará Bandeira Orange Marble",
-    "scientificName": "Pterophyllum scalare var. Orange Marble",
+    "scientificName": "Pterophyllum scalare",
     "synonyms": [
       "Acará Bandeira Orange Marble",
+      "Acará Bandeira Orange Marble (Pterophyllum scalare)",
       "Acará Bandeira Orange Marble (Pterophyllum scalare var. Orange Marble)",
       "acara-bandeira-orange-marble.jpg"
     ],
@@ -3347,12 +3540,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Ciclídeos (Americanos e Africanos)"
   },
   {
-    "id": "208",
-    "name": "Acará Bandeira Mármore (Pterophyllum scalare var. Marble)",
+    "id": "212",
+    "name": "Acará Bandeira Mármore (Pterophyllum scalare)",
     "commonName": "Acará Bandeira Mármore",
-    "scientificName": "Pterophyllum scalare var. Marble",
+    "scientificName": "Pterophyllum scalare",
     "synonyms": [
       "Acará Bandeira Mármore",
+      "Acará Bandeira Mármore (Pterophyllum scalare)",
       "Acará Bandeira Mármore (Pterophyllum scalare var. Marble)"
     ],
     "type": "LIVING",
@@ -3362,12 +3556,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Ciclídeos (Americanos e Africanos)"
   },
   {
-    "id": "209",
-    "name": "Acará Bandeira Palhaço (Pterophyllum scalare var. Clown)",
+    "id": "213",
+    "name": "Acará Bandeira Palhaço (Pterophyllum scalare)",
     "commonName": "Acará Bandeira Palhaço",
-    "scientificName": "Pterophyllum scalare var. Clown",
+    "scientificName": "Pterophyllum scalare",
     "synonyms": [
       "Acará Bandeira Palhaço",
+      "Acará Bandeira Palhaço (Pterophyllum scalare)",
       "Acará Bandeira Palhaço (Pterophyllum scalare var. Clown)",
       "acara-bandeira-palhaco.jpg"
     ],
@@ -3378,12 +3573,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Palhaços (Amphiprioninae)"
   },
   {
-    "id": "210",
-    "name": "Acará Bandeira Zebra (Pterophyllum scalare var. Zebra)",
+    "id": "214",
+    "name": "Acará Bandeira Zebra (Pterophyllum scalare)",
     "commonName": "Acará Bandeira Zebra",
-    "scientificName": "Pterophyllum scalare var. Zebra",
+    "scientificName": "Pterophyllum scalare",
     "synonyms": [
       "Acará Bandeira Zebra",
+      "Acará Bandeira Zebra (Pterophyllum scalare)",
       "Acará Bandeira Zebra (Pterophyllum scalare var. Zebra)",
       "acara-bandeira-comum-listrado.jpg"
     ],
@@ -3394,12 +3590,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Ciclídeos (Americanos e Africanos)"
   },
   {
-    "id": "211",
-    "name": "Acará Bandeira Black Negro (Pterophyllum scalare var. Black)",
+    "id": "215",
+    "name": "Acará Bandeira Black Negro (Pterophyllum scalare)",
     "commonName": "Acará Bandeira Black Negro",
-    "scientificName": "Pterophyllum scalare var. Black",
+    "scientificName": "Pterophyllum scalare",
     "synonyms": [
       "Acará Bandeira Black Negro",
+      "Acará Bandeira Black Negro (Pterophyllum scalare)",
       "Acará Bandeira Black Negro (Pterophyllum scalare var. Black)"
     ],
     "type": "LIVING",
@@ -3409,12 +3606,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Ciclídeos (Americanos e Africanos)"
   },
   {
-    "id": "212",
-    "name": "Acará Bandeira Fumaça (Pterophyllum scalare var. Smoke)",
+    "id": "216",
+    "name": "Acará Bandeira Fumaça (Pterophyllum scalare)",
     "commonName": "Acará Bandeira Fumaça",
-    "scientificName": "Pterophyllum scalare var. Smoke",
+    "scientificName": "Pterophyllum scalare",
     "synonyms": [
       "Acará Bandeira Fumaça",
+      "Acará Bandeira Fumaça (Pterophyllum scalare)",
       "Acará Bandeira Fumaça (Pterophyllum scalare var. Smoke)",
       "acara-bandeira-fumaca.jpg"
     ],
@@ -3425,12 +3623,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Ciclídeos (Americanos e Africanos)"
   },
   {
-    "id": "213",
-    "name": "Acará Bandeira Pinoy (Pterophyllum scalare var. Pinoy)",
+    "id": "217",
+    "name": "Acará Bandeira Pinoy (Pterophyllum scalare)",
     "commonName": "Acará Bandeira Pinoy",
-    "scientificName": "Pterophyllum scalare var. Pinoy",
+    "scientificName": "Pterophyllum scalare",
     "synonyms": [
       "Acará Bandeira Pinoy",
+      "Acará Bandeira Pinoy (Pterophyllum scalare)",
       "Acará Bandeira Pinoy (Pterophyllum scalare var. Pinoy)",
       "acara-bandeira-pinoy.jpg"
     ],
@@ -3441,12 +3640,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Ciclídeos (Americanos e Africanos)"
   },
   {
-    "id": "214",
-    "name": "Acará Bandeira Ouro (Pterophyllum scalare var. Gold)",
+    "id": "218",
+    "name": "Acará Bandeira Ouro (Pterophyllum scalare)",
     "commonName": "Acará Bandeira Ouro",
-    "scientificName": "Pterophyllum scalare var. Gold",
+    "scientificName": "Pterophyllum scalare",
     "synonyms": [
       "Acará Bandeira Ouro",
+      "Acará Bandeira Ouro (Pterophyllum scalare)",
       "Acará Bandeira Ouro (Pterophyllum scalare var. Gold)"
     ],
     "type": "LIVING",
@@ -3456,12 +3656,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Ciclídeos (Americanos e Africanos)"
   },
   {
-    "id": "215",
-    "name": "Acará Bandeira Platina (Pterophyllum scalare var. Platinum)",
+    "id": "219",
+    "name": "Acará Bandeira Platina (Pterophyllum scalare)",
     "commonName": "Acará Bandeira Platina",
-    "scientificName": "Pterophyllum scalare var. Platinum",
+    "scientificName": "Pterophyllum scalare",
     "synonyms": [
       "Acará Bandeira Platina",
+      "Acará Bandeira Platina (Pterophyllum scalare)",
       "Acará Bandeira Platina (Pterophyllum scalare var. Platinum)",
       "acara-bandeira-platina.jpg"
     ],
@@ -3472,12 +3673,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Poecilídeos (Ovivíparos)"
   },
   {
-    "id": "216",
-    "name": "Acará Bandeira Albino (Pterophyllum scalare var. Albino)",
+    "id": "220",
+    "name": "Acará Bandeira Albino (Pterophyllum scalare)",
     "commonName": "Acará Bandeira Albino",
-    "scientificName": "Pterophyllum scalare var. Albino",
+    "scientificName": "Pterophyllum scalare",
     "synonyms": [
       "Acará Bandeira Albino",
+      "Acará Bandeira Albino (Pterophyllum scalare)",
       "Acará Bandeira Albino (Pterophyllum scalare var. Albino)",
       "acara-bandeira-albino.jpg"
     ],
@@ -3488,12 +3690,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Ciclídeos (Americanos e Africanos)"
   },
   {
-    "id": "217",
-    "name": "Acará Disco Azul Turquesa (Symphysodon aequifasciatus var. Turquoise)",
+    "id": "221",
+    "name": "Acará Disco Azul Turquesa (Symphysodon aequifasciatus)",
     "commonName": "Acará Disco Azul Turquesa",
-    "scientificName": "Symphysodon aequifasciatus var. Turquoise",
+    "scientificName": "Symphysodon aequifasciatus",
     "synonyms": [
       "Acará Disco Azul Turquesa",
+      "Acará Disco Azul Turquesa (Symphysodon aequifasciatus)",
       "Acará Disco Azul Turquesa (Symphysodon aequifasciatus var. Turquoise)"
     ],
     "type": "LIVING",
@@ -3503,12 +3706,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Ciclídeos (Americanos e Africanos)"
   },
   {
-    "id": "218",
-    "name": "Acará Disco Cobalt Blue (Symphysodon aequifasciatus var. Cobalt)",
+    "id": "222",
+    "name": "Acará Disco Cobalt Blue (Symphysodon aequifasciatus)",
     "commonName": "Acará Disco Cobalt Blue",
-    "scientificName": "Symphysodon aequifasciatus var. Cobalt",
+    "scientificName": "Symphysodon aequifasciatus",
     "synonyms": [
       "Acará Disco Cobalt Blue",
+      "Acará Disco Cobalt Blue (Symphysodon aequifasciatus)",
       "Acará Disco Cobalt Blue (Symphysodon aequifasciatus var. Cobalt)",
       "acara-disco-cobalt-blue.jpg"
     ],
@@ -3519,12 +3723,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Ciclídeos (Americanos e Africanos)"
   },
   {
-    "id": "219",
-    "name": "Acará Disco Pigeon Blood (Symphysodon aequifasciatus var. Pigeon Blood)",
+    "id": "223",
+    "name": "Acará Disco Pigeon Blood (Symphysodon aequifasciatus)",
     "commonName": "Acará Disco Pigeon Blood",
-    "scientificName": "Symphysodon aequifasciatus var. Pigeon Blood",
+    "scientificName": "Symphysodon aequifasciatus",
     "synonyms": [
       "Acará Disco Pigeon Blood",
+      "Acará Disco Pigeon Blood (Symphysodon aequifasciatus)",
       "Acará Disco Pigeon Blood (Symphysodon aequifasciatus var. Pigeon Blood)"
     ],
     "type": "LIVING",
@@ -3534,12 +3739,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Ciclídeos (Americanos e Africanos)"
   },
   {
-    "id": "220",
-    "name": "Acará Disco Red Marlboro (Symphysodon aequifasciatus var. Marlboro)",
+    "id": "224",
+    "name": "Acará Disco Red Marlboro (Symphysodon aequifasciatus)",
     "commonName": "Acará Disco Red Marlboro",
-    "scientificName": "Symphysodon aequifasciatus var. Marlboro",
+    "scientificName": "Symphysodon aequifasciatus",
     "synonyms": [
       "Acará Disco Red Marlboro",
+      "Acará Disco Red Marlboro (Symphysodon aequifasciatus)",
       "Acará Disco Red Marlboro (Symphysodon aequifasciatus var. Marlboro)",
       "acara-disco-red-marlboro.jpg"
     ],
@@ -3550,12 +3756,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Ciclídeos (Americanos e Africanos)"
   },
   {
-    "id": "221",
-    "name": "Acará Disco Blue Diamond (Symphysodon aequifasciatus var. Blue Diamond)",
+    "id": "225",
+    "name": "Acará Disco Blue Diamond (Symphysodon aequifasciatus)",
     "commonName": "Acará Disco Blue Diamond",
-    "scientificName": "Symphysodon aequifasciatus var. Blue Diamond",
+    "scientificName": "Symphysodon aequifasciatus",
     "synonyms": [
       "Acará Disco Blue Diamond",
+      "Acará Disco Blue Diamond (Symphysodon aequifasciatus)",
       "Acará Disco Blue Diamond (Symphysodon aequifasciatus var. Blue Diamond)"
     ],
     "type": "LIVING",
@@ -3565,12 +3772,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Ciclídeos (Americanos e Africanos)"
   },
   {
-    "id": "222",
-    "name": "Acará Disco White Diamond (Symphysodon aequifasciatus var. White Diamond)",
+    "id": "226",
+    "name": "Acará Disco White Diamond (Symphysodon aequifasciatus)",
     "commonName": "Acará Disco White Diamond",
-    "scientificName": "Symphysodon aequifasciatus var. White Diamond",
+    "scientificName": "Symphysodon aequifasciatus",
     "synonyms": [
       "Acará Disco White Diamond",
+      "Acará Disco White Diamond (Symphysodon aequifasciatus)",
       "Acará Disco White Diamond (Symphysodon aequifasciatus var. White Diamond)",
       "acara-disco-white-diamond.jpg"
     ],
@@ -3581,7 +3789,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Ciclídeos (Americanos e Africanos)"
   },
   {
-    "id": "223",
+    "id": "227",
     "name": "Acará Disco Selvagem Heckel (Symphysodon discus)",
     "commonName": "Acará Disco Selvagem Heckel",
     "scientificName": "Symphysodon discus",
@@ -3596,7 +3804,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Ciclídeos (Americanos e Africanos)"
   },
   {
-    "id": "224",
+    "id": "228",
     "name": "Acará Disco Selvagem Verde Tefé (Symphysodon tarzoo)",
     "commonName": "Acará Disco Selvagem Verde Tefé",
     "scientificName": "Symphysodon tarzoo",
@@ -3612,7 +3820,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Ciclídeos (Americanos e Africanos)"
   },
   {
-    "id": "225",
+    "id": "229",
     "name": "Acará Disco Selvagem Azul (Symphysodon aequifasciatus)",
     "commonName": "Acará Disco Selvagem Azul",
     "scientificName": "Symphysodon aequifasciatus",
@@ -3628,7 +3836,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Ciclídeos (Americanos e Africanos)"
   },
   {
-    "id": "226",
+    "id": "230",
     "name": "Ramirezi Comum (Mikrogeophagus ramirezi)",
     "commonName": "Ramirezi Comum",
     "scientificName": "Mikrogeophagus ramirezi",
@@ -3643,12 +3851,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Ciclídeos (Americanos e Africanos)"
   },
   {
-    "id": "227",
-    "name": "Ramirezi Ouro (Mikrogeophagus ramirezi var. Gold)",
+    "id": "231",
+    "name": "Ramirezi Ouro (Mikrogeophagus ramirezi)",
     "commonName": "Ramirezi Ouro",
-    "scientificName": "Mikrogeophagus ramirezi var. Gold",
+    "scientificName": "Mikrogeophagus ramirezi",
     "synonyms": [
       "Ramirezi Ouro",
+      "Ramirezi Ouro (Mikrogeophagus ramirezi)",
       "Ramirezi Ouro (Mikrogeophagus ramirezi var. Gold)",
       "ramirezi-ouro.jpg"
     ],
@@ -3659,12 +3868,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Ciclídeos (Americanos e Africanos)"
   },
   {
-    "id": "228",
-    "name": "Ramirezi Electric Blue (Mikrogeophagus ramirezi var. Electric Blue)",
+    "id": "232",
+    "name": "Ramirezi Electric Blue (Mikrogeophagus ramirezi)",
     "commonName": "Ramirezi Electric Blue",
-    "scientificName": "Mikrogeophagus ramirezi var. Electric Blue",
+    "scientificName": "Mikrogeophagus ramirezi",
     "synonyms": [
       "Ramirezi Electric Blue",
+      "Ramirezi Electric Blue (Mikrogeophagus ramirezi)",
       "Ramirezi Electric Blue (Mikrogeophagus ramirezi var. Electric Blue)"
     ],
     "type": "LIVING",
@@ -3674,12 +3884,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Ciclídeos (Americanos e Africanos)"
   },
   {
-    "id": "229",
-    "name": "Ramirezi Black German (Mikrogeophagus ramirezi var. Black)",
+    "id": "233",
+    "name": "Ramirezi Black German (Mikrogeophagus ramirezi)",
     "commonName": "Ramirezi Black German",
-    "scientificName": "Mikrogeophagus ramirezi var. Black",
+    "scientificName": "Mikrogeophagus ramirezi",
     "synonyms": [
       "Ramirezi Black German",
+      "Ramirezi Black German (Mikrogeophagus ramirezi)",
       "Ramirezi Black German (Mikrogeophagus ramirezi var. Black)",
       "ramirezi-black.jpg"
     ],
@@ -3690,7 +3901,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Ciclídeos (Americanos e Africanos)"
   },
   {
-    "id": "230",
+    "id": "234",
     "name": "Apistogramma Cacatuoides Double Red (Apistogramma cacatuoides)",
     "commonName": "Apistogramma Cacatuoides Double Red",
     "scientificName": "Apistogramma cacatuoides",
@@ -3705,7 +3916,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Ciclídeos (Americanos e Africanos)"
   },
   {
-    "id": "231",
+    "id": "235",
     "name": "Apistogramma Agassizii Fire Red (Apistogramma agassizii)",
     "commonName": "Apistogramma Agassizii Fire Red",
     "scientificName": "Apistogramma agassizii",
@@ -3721,7 +3932,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Ciclídeos (Americanos e Africanos)"
   },
   {
-    "id": "232",
+    "id": "236",
     "name": "Ciclídeo Yellow Lab Caeruleus (Labidochromis caeruleus)",
     "commonName": "Ciclídeo Yellow Lab Caeruleus",
     "scientificName": "Labidochromis caeruleus",
@@ -3736,7 +3947,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Ciclídeos (Americanos e Africanos)"
   },
   {
-    "id": "233",
+    "id": "237",
     "name": "Ciclídeo Pseudotropheus Socolofi (Chindongo socolofi)",
     "commonName": "Ciclídeo Pseudotropheus Socolofi",
     "scientificName": "Chindongo socolofi",
@@ -3752,11 +3963,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Ciclídeos (Americanos e Africanos)"
   },
   {
-    "id": "234",
-    "name": "Aulonocaras (Firefish, Maleri, Eureka)",
-    "commonName": "Aulonocaras",
-    "scientificName": "Firefish, Maleri, Eureka",
+    "id": "238",
+    "name": "Ciclídeo Aulonocara Firefish (Aulonocara sp.)",
+    "commonName": "Ciclídeo Aulonocara Firefish",
+    "scientificName": "Aulonocara sp.",
     "synonyms": [
+      "Ciclídeo Aulonocara Firefish",
+      "Ciclídeo Aulonocara Firefish (Aulonocara sp.)",
       "Aulonocaras",
       "Aulonocaras (Firefish, Maleri, Eureka)",
       "aulonocara",
@@ -3766,16 +3979,60 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "136_aulonocaras_malawi.webp",
+    "imageSlug": "",
     "section": "Peixes de Água Doce",
     "familyGroup": "Geral"
   },
   {
-    "id": "235",
-    "name": "Oscar (Tigre, Red Tiger, Albino Red Ruby, Bronze)",
-    "commonName": "Oscar",
-    "scientificName": "Tigre, Red Tiger, Albino Red Ruby, Bronze",
+    "id": "239",
+    "name": "Ciclídeo Aulonocara Maleri (Aulonocara baenschi)",
+    "commonName": "Ciclídeo Aulonocara Maleri",
+    "scientificName": "Aulonocara baenschi",
     "synonyms": [
+      "Ciclídeo Aulonocara Maleri",
+      "Ciclídeo Aulonocara Maleri (Aulonocara baenschi)",
+      "Aulonocaras",
+      "Aulonocaras (Firefish, Maleri, Eureka)",
+      "aulonocara",
+      "firefish",
+      "maleri yellow",
+      "hap"
+    ],
+    "type": "LIVING",
+    "subCategory": "FRESHWATER_FISH",
+    "imageSlug": "",
+    "section": "Peixes de Água Doce",
+    "familyGroup": "Geral"
+  },
+  {
+    "id": "240",
+    "name": "Ciclídeo Aulonocara Eureka (Aulonocara jacobfreibergi)",
+    "commonName": "Ciclídeo Aulonocara Eureka",
+    "scientificName": "Aulonocara jacobfreibergi",
+    "synonyms": [
+      "Ciclídeo Aulonocara Eureka",
+      "Ciclídeo Aulonocara Eureka (Aulonocara jacobfreibergi)",
+      "Aulonocaras",
+      "Aulonocaras (Firefish, Maleri, Eureka)",
+      "aulonocara",
+      "firefish",
+      "maleri yellow",
+      "hap"
+    ],
+    "type": "LIVING",
+    "subCategory": "FRESHWATER_FISH",
+    "imageSlug": "",
+    "section": "Peixes de Água Doce",
+    "familyGroup": "Geral"
+  },
+  {
+    "id": "241",
+    "name": "Oscar Tigre (Astronotus ocellatus)",
+    "commonName": "Oscar Tigre",
+    "scientificName": "Astronotus ocellatus",
+    "synonyms": [
+      "Oscar Tigre",
+      "Oscar Tigre (Astronotus ocellatus)",
       "Oscar",
       "Oscar (Tigre, Red Tiger, Albino Red Ruby, Bronze)",
       "oscar tigre",
@@ -3784,16 +4041,78 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "137_oscar_tigre_albino_red_ruby.png",
+    "imageSlug": "",
     "section": "Peixes de Água Doce",
     "familyGroup": "Geral"
   },
   {
-    "id": "236",
-    "name": "Peixes Jumbos (Aruanã Prata, Polypterus, Tucunaré)",
-    "commonName": "Peixes Jumbos",
-    "scientificName": "Aruanã Prata, Polypterus, Tucunaré",
+    "id": "242",
+    "name": "Oscar Red Tiger (Astronotus ocellatus)",
+    "commonName": "Oscar Red Tiger",
+    "scientificName": "Astronotus ocellatus",
     "synonyms": [
+      "Oscar Red Tiger",
+      "Oscar Red Tiger (Astronotus ocellatus)",
+      "Oscar",
+      "Oscar (Tigre, Red Tiger, Albino Red Ruby, Bronze)",
+      "oscar tigre",
+      "oscar albino",
+      "astronotus"
+    ],
+    "type": "LIVING",
+    "subCategory": "FRESHWATER_FISH",
+    "imageSlug": "",
+    "section": "Peixes de Água Doce",
+    "familyGroup": "Geral"
+  },
+  {
+    "id": "243",
+    "name": "Oscar Albino Red Ruby (Astronotus ocellatus)",
+    "commonName": "Oscar Albino Red Ruby",
+    "scientificName": "Astronotus ocellatus",
+    "synonyms": [
+      "Oscar Albino Red Ruby",
+      "Oscar Albino Red Ruby (Astronotus ocellatus)",
+      "Oscar",
+      "Oscar (Tigre, Red Tiger, Albino Red Ruby, Bronze)",
+      "oscar tigre",
+      "oscar albino",
+      "astronotus"
+    ],
+    "type": "LIVING",
+    "subCategory": "FRESHWATER_FISH",
+    "imageSlug": "",
+    "section": "Peixes de Água Doce",
+    "familyGroup": "Geral"
+  },
+  {
+    "id": "244",
+    "name": "Oscar Bronze (Astronotus ocellatus)",
+    "commonName": "Oscar Bronze",
+    "scientificName": "Astronotus ocellatus",
+    "synonyms": [
+      "Oscar Bronze",
+      "Oscar Bronze (Astronotus ocellatus)",
+      "Oscar",
+      "Oscar (Tigre, Red Tiger, Albino Red Ruby, Bronze)",
+      "oscar tigre",
+      "oscar albino",
+      "astronotus"
+    ],
+    "type": "LIVING",
+    "subCategory": "FRESHWATER_FISH",
+    "imageSlug": "",
+    "section": "Peixes de Água Doce",
+    "familyGroup": "Geral"
+  },
+  {
+    "id": "245",
+    "name": "Aruanã Prata (Osteoglossum bicirrhosum)",
+    "commonName": "Aruanã Prata",
+    "scientificName": "Osteoglossum bicirrhosum",
+    "synonyms": [
+      "Aruanã Prata",
+      "Aruanã Prata (Osteoglossum bicirrhosum)",
       "Peixes Jumbos",
       "Peixes Jumbos (Aruanã Prata, Polypterus, Tucunaré)",
       "aruana",
@@ -3804,12 +4123,56 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "138_peixes_jumbos_aruana_polypterus.webp",
+    "imageSlug": "",
     "section": "Peixes de Água Doce",
     "familyGroup": "Geral"
   },
   {
-    "id": "237",
+    "id": "246",
+    "name": "Polypterus Senegalus (Polypterus senegalus)",
+    "commonName": "Polypterus Senegalus",
+    "scientificName": "Polypterus senegalus",
+    "synonyms": [
+      "Polypterus Senegalus",
+      "Polypterus Senegalus (Polypterus senegalus)",
+      "Peixes Jumbos",
+      "Peixes Jumbos (Aruanã Prata, Polypterus, Tucunaré)",
+      "aruana",
+      "polypterus",
+      "senegalus",
+      "tucunare",
+      "severo"
+    ],
+    "type": "LIVING",
+    "subCategory": "FRESHWATER_FISH",
+    "imageSlug": "",
+    "section": "Peixes de Água Doce",
+    "familyGroup": "Geral"
+  },
+  {
+    "id": "247",
+    "name": "Tucunaré Amarelo (Cichla ocellaris)",
+    "commonName": "Tucunaré Amarelo",
+    "scientificName": "Cichla ocellaris",
+    "synonyms": [
+      "Tucunaré Amarelo",
+      "Tucunaré Amarelo (Cichla ocellaris)",
+      "Peixes Jumbos",
+      "Peixes Jumbos (Aruanã Prata, Polypterus, Tucunaré)",
+      "aruana",
+      "polypterus",
+      "senegalus",
+      "tucunare",
+      "severo"
+    ],
+    "type": "LIVING",
+    "subCategory": "FRESHWATER_FISH",
+    "imageSlug": "",
+    "section": "Peixes de Água Doce",
+    "familyGroup": "Geral"
+  },
+  {
+    "id": "248",
     "name": "Kinguio Cometa Vermelho (Carassius auratus)",
     "commonName": "Kinguio Cometa Vermelho",
     "scientificName": "Carassius auratus",
@@ -3824,12 +4187,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Ciprinídeos (Kinguios & Carpas)"
   },
   {
-    "id": "238",
-    "name": "Kinguio Cometa Sarasa (Carassius auratus var. Sarasa)",
+    "id": "249",
+    "name": "Kinguio Cometa Sarasa (Carassius auratus)",
     "commonName": "Kinguio Cometa Sarasa",
-    "scientificName": "Carassius auratus var. Sarasa",
+    "scientificName": "Carassius auratus",
     "synonyms": [
       "Kinguio Cometa Sarasa",
+      "Kinguio Cometa Sarasa (Carassius auratus)",
       "Kinguio Cometa Sarasa (Carassius auratus var. Sarasa)",
       "kinguio-cometa-sarasa.jpg"
     ],
@@ -3840,12 +4204,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Ciprinídeos (Kinguios & Carpas)"
   },
   {
-    "id": "239",
-    "name": "Kinguio Oranda Red Cap (Carassius auratus var. Red Cap)",
+    "id": "250",
+    "name": "Kinguio Oranda Red Cap (Carassius auratus)",
     "commonName": "Kinguio Oranda Red Cap",
-    "scientificName": "Carassius auratus var. Red Cap",
+    "scientificName": "Carassius auratus",
     "synonyms": [
       "Kinguio Oranda Red Cap",
+      "Kinguio Oranda Red Cap (Carassius auratus)",
       "Kinguio Oranda Red Cap (Carassius auratus var. Red Cap)"
     ],
     "type": "LIVING",
@@ -3855,12 +4220,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Ciprinídeos (Kinguios & Carpas)"
   },
   {
-    "id": "240",
-    "name": "Kinguio Oranda Cálico (Carassius auratus var. Calico)",
+    "id": "251",
+    "name": "Kinguio Oranda Cálico (Carassius auratus)",
     "commonName": "Kinguio Oranda Cálico",
-    "scientificName": "Carassius auratus var. Calico",
+    "scientificName": "Carassius auratus",
     "synonyms": [
       "Kinguio Oranda Cálico",
+      "Kinguio Oranda Cálico (Carassius auratus)",
       "Kinguio Oranda Cálico (Carassius auratus var. Calico)",
       "kinguio-oranda-calico.jpg"
     ],
@@ -3871,12 +4237,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Ciprinídeos (Kinguios & Carpas)"
   },
   {
-    "id": "241",
-    "name": "Kinguio Oranda Panda (Carassius auratus var. Panda)",
+    "id": "252",
+    "name": "Kinguio Oranda Panda (Carassius auratus)",
     "commonName": "Kinguio Oranda Panda",
-    "scientificName": "Carassius auratus var. Panda",
+    "scientificName": "Carassius auratus",
     "synonyms": [
       "Kinguio Oranda Panda",
+      "Kinguio Oranda Panda (Carassius auratus)",
       "Kinguio Oranda Panda (Carassius auratus var. Panda)",
       "kinguio-oranda-panda.jpg"
     ],
@@ -3887,12 +4254,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Ciprinídeos (Kinguios & Carpas)"
   },
   {
-    "id": "242",
-    "name": "Kinguio Telescópio Black Moor (Carassius auratus var. Black Moor)",
+    "id": "253",
+    "name": "Kinguio Telescópio Black Moor (Carassius auratus)",
     "commonName": "Kinguio Telescópio Black Moor",
-    "scientificName": "Carassius auratus var. Black Moor",
+    "scientificName": "Carassius auratus",
     "synonyms": [
       "Kinguio Telescópio Black Moor",
+      "Kinguio Telescópio Black Moor (Carassius auratus)",
       "Kinguio Telescópio Black Moor (Carassius auratus var. Black Moor)"
     ],
     "type": "LIVING",
@@ -3902,12 +4270,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Ciprinídeos (Kinguios & Carpas)"
   },
   {
-    "id": "243",
-    "name": "Kinguio Ranchu Lionhead (Carassius auratus var. Ranchu)",
+    "id": "254",
+    "name": "Kinguio Ranchu Lionhead (Carassius auratus)",
     "commonName": "Kinguio Ranchu Lionhead",
-    "scientificName": "Carassius auratus var. Ranchu",
+    "scientificName": "Carassius auratus",
     "synonyms": [
       "Kinguio Ranchu Lionhead",
+      "Kinguio Ranchu Lionhead (Carassius auratus)",
       "Kinguio Ranchu Lionhead (Carassius auratus var. Ranchu)",
       "kinguio-ranchu.jpg"
     ],
@@ -3918,7 +4287,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Ciprinídeos (Kinguios & Carpas)"
   },
   {
-    "id": "244",
+    "id": "255",
     "name": "Coridora Bronze Aeneus (Corydoras aeneus)",
     "commonName": "Coridora Bronze Aeneus",
     "scientificName": "Corydoras aeneus",
@@ -3933,7 +4302,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Coridoras (Callichthyidae)"
   },
   {
-    "id": "245",
+    "id": "256",
     "name": "Coridora Albina (Corydoras aeneus var. Albino)",
     "commonName": "Coridora Albina",
     "scientificName": "Corydoras aeneus var. Albino",
@@ -3949,7 +4318,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Coridoras (Callichthyidae)"
   },
   {
-    "id": "246",
+    "id": "257",
     "name": "Coridora Pimenta (Corydoras paleatus)",
     "commonName": "Coridora Pimenta",
     "scientificName": "Corydoras paleatus",
@@ -3964,7 +4333,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Coridoras (Callichthyidae)"
   },
   {
-    "id": "247",
+    "id": "258",
     "name": "Coridora Schwartzi Tigre (Corydoras schwartzi)",
     "commonName": "Coridora Schwartzi Tigre",
     "scientificName": "Corydoras schwartzi",
@@ -3980,7 +4349,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Coridoras (Callichthyidae)"
   },
   {
-    "id": "248",
+    "id": "259",
     "name": "Coridora Panda (Corydoras panda)",
     "commonName": "Coridora Panda",
     "scientificName": "Corydoras panda",
@@ -3995,7 +4364,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Coridoras (Callichthyidae)"
   },
   {
-    "id": "249",
+    "id": "260",
     "name": "Coridora Sterbai (Corydoras sterbai)",
     "commonName": "Coridora Sterbai",
     "scientificName": "Corydoras sterbai",
@@ -4011,7 +4380,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Coridoras (Callichthyidae)"
   },
   {
-    "id": "250",
+    "id": "261",
     "name": "Limpa-Vidro Otocinclus (Otocinclus macrospilus)",
     "commonName": "Limpa-Vidro Otocinclus",
     "scientificName": "Otocinclus macrospilus",
@@ -4026,7 +4395,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Cascudos & Loricariídeos"
   },
   {
-    "id": "251",
+    "id": "262",
     "name": "Limpa-Vidro Pitbull (Parotocinclus jumbo)",
     "commonName": "Limpa-Vidro Pitbull",
     "scientificName": "Parotocinclus jumbo",
@@ -4042,7 +4411,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Cascudos & Loricariídeos"
   },
   {
-    "id": "252",
+    "id": "263",
     "name": "Cascudo Ancistrus Comum (Ancistrus cirrhosus)",
     "commonName": "Cascudo Ancistrus Comum",
     "scientificName": "Ancistrus cirrhosus",
@@ -4057,12 +4426,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Cascudos & Loricariídeos"
   },
   {
-    "id": "253",
-    "name": "Cascudo Ancistrus Albino Ouro (Ancistrus cirrhosus var. Albino)",
+    "id": "264",
+    "name": "Cascudo Ancistrus Albino Ouro (Ancistrus cirrhosus)",
     "commonName": "Cascudo Ancistrus Albino Ouro",
-    "scientificName": "Ancistrus cirrhosus var. Albino",
+    "scientificName": "Ancistrus cirrhosus",
     "synonyms": [
       "Cascudo Ancistrus Albino Ouro",
+      "Cascudo Ancistrus Albino Ouro (Ancistrus cirrhosus)",
       "Cascudo Ancistrus Albino Ouro (Ancistrus cirrhosus var. Albino)",
       "cascudo-ancistrus-albino.jpg"
     ],
@@ -4073,12 +4443,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Cascudos & Loricariídeos"
   },
   {
-    "id": "254",
-    "name": "Cascudo Ancistrus Super Red (Ancistrus cirrhosus var. Super Red)",
+    "id": "265",
+    "name": "Cascudo Ancistrus Super Red (Ancistrus cirrhosus)",
     "commonName": "Cascudo Ancistrus Super Red",
-    "scientificName": "Ancistrus cirrhosus var. Super Red",
+    "scientificName": "Ancistrus cirrhosus",
     "synonyms": [
       "Cascudo Ancistrus Super Red",
+      "Cascudo Ancistrus Super Red (Ancistrus cirrhosus)",
       "Cascudo Ancistrus Super Red (Ancistrus cirrhosus var. Super Red)",
       "cascudo-ancistrus-super-red.jpg"
     ],
@@ -4089,7 +4460,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Cascudos & Loricariídeos"
   },
   {
-    "id": "255",
+    "id": "266",
     "name": "Cascudo Pepita de Ouro L018 (Baryancistrus xanthellus)",
     "commonName": "Cascudo Pepita de Ouro L018",
     "scientificName": "Baryancistrus xanthellus",
@@ -4104,7 +4475,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Cascudos & Loricariídeos"
   },
   {
-    "id": "256",
+    "id": "267",
     "name": "Cascudo Abacaxi (Megalancistrus parananus)",
     "commonName": "Cascudo Abacaxi",
     "scientificName": "Megalancistrus parananus",
@@ -4120,7 +4491,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Cascudos & Loricariídeos"
   },
   {
-    "id": "257",
+    "id": "268",
     "name": "Cascudo Comum Plet (Hypostomus plecostomus)",
     "commonName": "Cascudo Comum Plet",
     "scientificName": "Hypostomus plecostomus",
@@ -4136,7 +4507,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Cascudos & Loricariídeos"
   },
   {
-    "id": "258",
+    "id": "269",
     "name": "Comedor de Alga Siamês SAE (Crossocheilus oblongus)",
     "commonName": "Comedor de Alga Siamês SAE",
     "scientificName": "Crossocheilus oblongus",
@@ -4151,7 +4522,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Flora e Macroalgas"
   },
   {
-    "id": "259",
+    "id": "270",
     "name": "Comedor de Alga Chinês CAC (Gyrinocheilus aymonieri)",
     "commonName": "Comedor de Alga Chinês CAC",
     "scientificName": "Gyrinocheilus aymonieri",
@@ -4167,7 +4538,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Flora e Macroalgas"
   },
   {
-    "id": "260",
+    "id": "271",
     "name": "Labeo Frenatus Red Tail (Epalzeorhynchos frenatum)",
     "commonName": "Labeo Frenatus Red Tail",
     "scientificName": "Epalzeorhynchos frenatum",
@@ -4183,7 +4554,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "261",
+    "id": "272",
     "name": "Bótia Palhaço (Chromobotia macracanthus)",
     "commonName": "Bótia Palhaço",
     "scientificName": "Chromobotia macracanthus",
@@ -4199,7 +4570,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Palhaços (Amphiprioninae)"
   },
   {
-    "id": "262",
+    "id": "273",
     "name": "Bótia Yoyo (Botia almorhae)",
     "commonName": "Bótia Yoyo",
     "scientificName": "Botia almorhae",
@@ -4215,11 +4586,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "263",
-    "name": "Camarão Neocaridina (Red Cherry, Blue Dream, Yellow, Rili)",
-    "commonName": "Camarão Neocaridina",
-    "scientificName": "Red Cherry, Blue Dream, Yellow, Rili",
+    "id": "274",
+    "name": "Camarão Neocaridina Red Cherry (Neocaridina davidi)",
+    "commonName": "Camarão Neocaridina Red Cherry",
+    "scientificName": "Neocaridina davidi",
     "synonyms": [
+      "Camarão Neocaridina Red Cherry",
+      "Camarão Neocaridina Red Cherry (Neocaridina davidi)",
       "Camarão Neocaridina",
       "Camarão Neocaridina (Red Cherry, Blue Dream, Yellow, Rili)",
       "neocaridina",
@@ -4229,12 +4602,75 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "FRESHWATER_FISH",
-    "imageSlug": "149_camarao_neocaridina_red_blue_yellow_rili.webp",
+    "imageSlug": "",
     "section": "Peixes de Água Doce",
     "familyGroup": "Equipe de Limpeza & Invertebrados"
   },
   {
-    "id": "264",
+    "id": "275",
+    "name": "Camarão Neocaridina Blue Dream (Neocaridina davidi)",
+    "commonName": "Camarão Neocaridina Blue Dream",
+    "scientificName": "Neocaridina davidi",
+    "synonyms": [
+      "Camarão Neocaridina Blue Dream",
+      "Camarão Neocaridina Blue Dream (Neocaridina davidi)",
+      "Camarão Neocaridina",
+      "Camarão Neocaridina (Red Cherry, Blue Dream, Yellow, Rili)",
+      "neocaridina",
+      "red cherry",
+      "blue dream",
+      "red rili"
+    ],
+    "type": "LIVING",
+    "subCategory": "FRESHWATER_FISH",
+    "imageSlug": "",
+    "section": "Peixes de Água Doce",
+    "familyGroup": "Equipe de Limpeza & Invertebrados"
+  },
+  {
+    "id": "276",
+    "name": "Camarão Neocaridina Yellow (Neocaridina davidi)",
+    "commonName": "Camarão Neocaridina Yellow",
+    "scientificName": "Neocaridina davidi",
+    "synonyms": [
+      "Camarão Neocaridina Yellow",
+      "Camarão Neocaridina Yellow (Neocaridina davidi)",
+      "Camarão Neocaridina",
+      "Camarão Neocaridina (Red Cherry, Blue Dream, Yellow, Rili)",
+      "neocaridina",
+      "red cherry",
+      "blue dream",
+      "red rili"
+    ],
+    "type": "LIVING",
+    "subCategory": "FRESHWATER_FISH",
+    "imageSlug": "",
+    "section": "Peixes de Água Doce",
+    "familyGroup": "Equipe de Limpeza & Invertebrados"
+  },
+  {
+    "id": "277",
+    "name": "Camarão Neocaridina Rili (Neocaridina davidi)",
+    "commonName": "Camarão Neocaridina Rili",
+    "scientificName": "Neocaridina davidi",
+    "synonyms": [
+      "Camarão Neocaridina Rili",
+      "Camarão Neocaridina Rili (Neocaridina davidi)",
+      "Camarão Neocaridina",
+      "Camarão Neocaridina (Red Cherry, Blue Dream, Yellow, Rili)",
+      "neocaridina",
+      "red cherry",
+      "blue dream",
+      "red rili"
+    ],
+    "type": "LIVING",
+    "subCategory": "FRESHWATER_FISH",
+    "imageSlug": "",
+    "section": "Peixes de Água Doce",
+    "familyGroup": "Equipe de Limpeza & Invertebrados"
+  },
+  {
+    "id": "278",
     "name": "Caramujo Neritina Zebra (Neritina natalensis)",
     "commonName": "Caramujo Neritina Zebra",
     "scientificName": "Neritina natalensis",
@@ -4249,7 +4685,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Equipe de Limpeza & Invertebrados"
   },
   {
-    "id": "265",
+    "id": "279",
     "name": "Caramujo Neritina Mosaico (Neritina virginea)",
     "commonName": "Caramujo Neritina Mosaico",
     "scientificName": "Neritina virginea",
@@ -4265,7 +4701,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Equipe de Limpeza & Invertebrados"
   },
   {
-    "id": "266",
+    "id": "280",
     "name": "Caramujo Ampulária Ouro (Pomacea diffusa var. Gold)",
     "commonName": "Caramujo Ampulária Ouro",
     "scientificName": "Pomacea diffusa var. Gold",
@@ -4281,7 +4717,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Equipe de Limpeza & Invertebrados"
   },
   {
-    "id": "267",
+    "id": "281",
     "name": "Caramujo Ampulária Roxa (Pomacea diffusa var. Purple)",
     "commonName": "Caramujo Ampulária Roxa",
     "scientificName": "Pomacea diffusa var. Purple",
@@ -4297,13 +4733,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Equipe de Limpeza & Invertebrados"
   },
   {
-    "id": "268",
-    "name": "Zoanthus Gorilla Nipples",
+    "id": "282",
+    "name": "Zoanthus Gorilla Nipples (Zoanthus sp.)",
     "commonName": "Zoanthus Gorilla Nipples",
-    "scientificName": "Zoanthus Gorilla Nipples",
+    "scientificName": "Zoanthus sp.",
     "synonyms": [
       "Zoanthus Gorilla Nipples",
-      "Zoanthus Gorilla Nipples",
+      "Zoanthus Gorilla Nipples (Zoanthus sp.)",
       "zoa gorilla nipples",
       "gorilla nipples",
       "zoanthus gorilla"
@@ -4315,13 +4751,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Zoanthídeos"
   },
   {
-    "id": "269",
-    "name": "Zoanthus Blowpop",
+    "id": "283",
+    "name": "Zoanthus Blowpop (Zoanthus sp.)",
     "commonName": "Zoanthus Blowpop",
-    "scientificName": "Zoanthus Blowpop",
+    "scientificName": "Zoanthus sp.",
     "synonyms": [
       "Zoanthus Blowpop",
-      "Zoanthus Blowpop",
+      "Zoanthus Blowpop (Zoanthus sp.)",
       "zoa blowpop",
       "blow pop",
       "zoanthus blowpop"
@@ -4333,13 +4769,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Zoanthídeos"
   },
   {
-    "id": "270",
-    "name": "Zoanthus Tubbs Blue",
+    "id": "284",
+    "name": "Zoanthus Tubbs Blue (Zoanthus sp.)",
     "commonName": "Zoanthus Tubbs Blue",
-    "scientificName": "Zoanthus Tubbs Blue",
+    "scientificName": "Zoanthus sp.",
     "synonyms": [
       "Zoanthus Tubbs Blue",
-      "Zoanthus Tubbs Blue",
+      "Zoanthus Tubbs Blue (Zoanthus sp.)",
       "zoa tubbs blue",
       "tubbs blue",
       "zoanthus azul"
@@ -4351,7 +4787,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Zoanthídeos"
   },
   {
-    "id": "271",
+    "id": "285",
     "name": "Zoanthus AOI Blue (Zoanthus sp.)",
     "commonName": "Zoanthus AOI Blue",
     "scientificName": "Zoanthus sp.",
@@ -4366,13 +4802,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Zoanthídeos"
   },
   {
-    "id": "272",
-    "name": "Zoanthus Dragon Eye",
+    "id": "286",
+    "name": "Zoanthus Dragon Eye (Zoanthus sp.)",
     "commonName": "Zoanthus Dragon Eye",
-    "scientificName": "Zoanthus Dragon Eye",
+    "scientificName": "Zoanthus sp.",
     "synonyms": [
       "Zoanthus Dragon Eye",
-      "Zoanthus Dragon Eye",
+      "Zoanthus Dragon Eye (Zoanthus sp.)",
       "zoa dragon eye",
       "olho de dragao",
       "dragon eye"
@@ -4384,13 +4820,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Zoanthídeos"
   },
   {
-    "id": "273",
-    "name": "Zoanthus Miami Vice",
+    "id": "287",
+    "name": "Zoanthus Miami Vice (Zoanthus sp.)",
     "commonName": "Zoanthus Miami Vice",
-    "scientificName": "Zoanthus Miami Vice",
+    "scientificName": "Zoanthus sp.",
     "synonyms": [
       "Zoanthus Miami Vice",
-      "Zoanthus Miami Vice",
+      "Zoanthus Miami Vice (Zoanthus sp.)",
       "zoa miami vice",
       "miami vice",
       "zoanthus miami"
@@ -4402,13 +4838,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Zoanthídeos"
   },
   {
-    "id": "274",
-    "name": "Zoanthus Gatorade",
+    "id": "288",
+    "name": "Zoanthus Gatorade (Zoanthus sp.)",
     "commonName": "Zoanthus Gatorade",
-    "scientificName": "Zoanthus Gatorade",
+    "scientificName": "Zoanthus sp.",
     "synonyms": [
       "Zoanthus Gatorade",
-      "Zoanthus Gatorade",
+      "Zoanthus Gatorade (Zoanthus sp.)",
       "zoa gatorade",
       "gatorade zoa",
       "zoanthus gatorade"
@@ -4420,7 +4856,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Zoanthídeos"
   },
   {
-    "id": "275",
+    "id": "289",
     "name": "Zoanthus Mohawk (Zoanthus sp.)",
     "commonName": "Zoanthus Mohawk",
     "scientificName": "Zoanthus sp.",
@@ -4435,7 +4871,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Zoanthídeos"
   },
   {
-    "id": "276",
+    "id": "290",
     "name": "Zoanthus Variable Star (Zoanthus sp.)",
     "commonName": "Zoanthus Variable Star",
     "scientificName": "Zoanthus sp.",
@@ -4451,13 +4887,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Zoanthídeos"
   },
   {
-    "id": "277",
-    "name": "Zoanthus Green Bay Packers",
+    "id": "291",
+    "name": "Zoanthus Green Bay Packers (Zoanthus sp.)",
     "commonName": "Zoanthus Green Bay Packers",
-    "scientificName": "Zoanthus Green Bay Packers",
+    "scientificName": "Zoanthus sp.",
     "synonyms": [
       "Zoanthus Green Bay Packers",
-      "Zoanthus Green Bay Packers",
+      "Zoanthus Green Bay Packers (Zoanthus sp.)",
       "zoa green bay packers",
       "green bay",
       "packers zoa"
@@ -4469,7 +4905,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Zoanthídeos"
   },
   {
-    "id": "278",
+    "id": "292",
     "name": "Zoanthus Rainbow Infusion (Zoanthus sp.)",
     "commonName": "Zoanthus Rainbow Infusion",
     "scientificName": "Zoanthus sp.",
@@ -4484,7 +4920,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Zoanthídeos"
   },
   {
-    "id": "279",
+    "id": "293",
     "name": "Zoanthus Kazoo (Zoanthus sp.)",
     "commonName": "Zoanthus Kazoo",
     "scientificName": "Zoanthus sp.",
@@ -4500,13 +4936,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Zoanthídeos"
   },
   {
-    "id": "280",
-    "name": "Zoanthus Wolverine",
+    "id": "294",
+    "name": "Zoanthus Wolverine (Zoanthus sp.)",
     "commonName": "Zoanthus Wolverine",
-    "scientificName": "Zoanthus Wolverine",
+    "scientificName": "Zoanthus sp.",
     "synonyms": [
       "Zoanthus Wolverine",
-      "Zoanthus Wolverine",
+      "Zoanthus Wolverine (Zoanthus sp.)",
       "zoa wolverine",
       "wolverine zoa",
       "zoanthus wolverine"
@@ -4518,13 +4954,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Zoanthídeos"
   },
   {
-    "id": "281",
-    "name": "Zoanthus Darth Maul",
+    "id": "295",
+    "name": "Zoanthus Darth Maul (Zoanthus sp.)",
     "commonName": "Zoanthus Darth Maul",
-    "scientificName": "Zoanthus Darth Maul",
+    "scientificName": "Zoanthus sp.",
     "synonyms": [
       "Zoanthus Darth Maul",
-      "Zoanthus Darth Maul",
+      "Zoanthus Darth Maul (Zoanthus sp.)",
       "zoa darth maul",
       "darth maul",
       "paly darth maul"
@@ -4536,13 +4972,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Zoanthídeos"
   },
   {
-    "id": "282",
-    "name": "Zoanthus Everlasting Gobstopper",
+    "id": "296",
+    "name": "Zoanthus Everlasting Gobstopper (Zoanthus sp.)",
     "commonName": "Zoanthus Everlasting Gobstopper",
-    "scientificName": "Zoanthus Everlasting Gobstopper",
+    "scientificName": "Zoanthus sp.",
     "synonyms": [
       "Zoanthus Everlasting Gobstopper",
-      "Zoanthus Everlasting Gobstopper",
+      "Zoanthus Everlasting Gobstopper (Zoanthus sp.)",
       "zoa gobstopper",
       "everlasting gobstopper",
       "gobstoppers"
@@ -4554,7 +4990,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Zoanthídeos"
   },
   {
-    "id": "283",
+    "id": "297",
     "name": "Zoanthus Magicians (Zoanthus sp.)",
     "commonName": "Zoanthus Magicians",
     "scientificName": "Zoanthus sp.",
@@ -4569,7 +5005,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Zoanthídeos"
   },
   {
-    "id": "284",
+    "id": "298",
     "name": "Palythoa Red People Eater (Palythoa sp.)",
     "commonName": "Palythoa Red People Eater",
     "scientificName": "Palythoa sp.",
@@ -4586,13 +5022,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Palythoas"
   },
   {
-    "id": "285",
-    "name": "Zoanthus Sonic Flare",
+    "id": "299",
+    "name": "Zoanthus Sonic Flare (Zoanthus sp.)",
     "commonName": "Zoanthus Sonic Flare",
-    "scientificName": "Zoanthus Sonic Flare",
+    "scientificName": "Zoanthus sp.",
     "synonyms": [
       "Zoanthus Sonic Flare",
-      "Zoanthus Sonic Flare",
+      "Zoanthus Sonic Flare (Zoanthus sp.)",
       "zoa sonic flare",
       "sonic flare",
       "zoanthus sonic"
@@ -4604,7 +5040,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Zoanthídeos"
   },
   {
-    "id": "286",
+    "id": "300",
     "name": "Zoanthus White Zombie (Zoanthus sp.)",
     "commonName": "Zoanthus White Zombie",
     "scientificName": "Zoanthus sp.",
@@ -4619,7 +5055,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Zoanthídeos"
   },
   {
-    "id": "287",
+    "id": "301",
     "name": "Zoanthus Seduction (Zoanthus sp.)",
     "commonName": "Zoanthus Seduction",
     "scientificName": "Zoanthus sp.",
@@ -4635,13 +5071,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Zoanthídeos"
   },
   {
-    "id": "288",
-    "name": "Zoanthus Salted Agave",
+    "id": "302",
+    "name": "Zoanthus Salted Agave (Zoanthus sp.)",
     "commonName": "Zoanthus Salted Agave",
-    "scientificName": "Zoanthus Salted Agave",
+    "scientificName": "Zoanthus sp.",
     "synonyms": [
       "Zoanthus Salted Agave",
-      "Zoanthus Salted Agave",
+      "Zoanthus Salted Agave (Zoanthus sp.)",
       "zoa salted agave",
       "salted agave",
       "blue agave"
@@ -4653,7 +5089,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Zoanthídeos"
   },
   {
-    "id": "289",
+    "id": "303",
     "name": "Palythoa Lemon Twist (Palythoa sp.)",
     "commonName": "Palythoa Lemon Twist",
     "scientificName": "Palythoa sp.",
@@ -4668,7 +5104,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Palythoas"
   },
   {
-    "id": "290",
+    "id": "304",
     "name": "Palythoa Space Chaos (Palythoa sp.)",
     "commonName": "Palythoa Space Chaos",
     "scientificName": "Palythoa sp.",
@@ -4684,7 +5120,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Palythoas"
   },
   {
-    "id": "291",
+    "id": "305",
     "name": "Zoanthus Little Shop of Horrors (Zoanthus sp.)",
     "commonName": "Zoanthus Little Shop of Horrors",
     "scientificName": "Zoanthus sp.",
@@ -4699,7 +5135,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Zoanthídeos"
   },
   {
-    "id": "292",
+    "id": "306",
     "name": "Zoanthus Grand Master Glazz GMK (Zoanthus sp.)",
     "commonName": "Zoanthus Grand Master Glazz GMK",
     "scientificName": "Zoanthus sp.",
@@ -4715,7 +5151,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Zoanthídeos"
   },
   {
-    "id": "293",
+    "id": "307",
     "name": "Yellow Polyps (Parazoanthus gracilis)",
     "commonName": "Yellow Polyps",
     "scientificName": "Parazoanthus gracilis",
@@ -4733,12 +5169,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Zoanthídeos"
   },
   {
-    "id": "294",
-    "name": "Button Polyps Metallic (Protopalythoa)",
+    "id": "308",
+    "name": "Button Polyps Metallic (Protopalythoa sp.)",
     "commonName": "Button Polyps Metallic",
-    "scientificName": "Protopalythoa",
+    "scientificName": "Protopalythoa sp.",
     "synonyms": [
       "Button Polyps Metallic",
+      "Button Polyps Metallic (Protopalythoa sp.)",
       "Button Polyps Metallic (Protopalythoa)",
       "button polyps",
       "protopalythoa",
@@ -4751,12 +5188,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Palythoas"
   },
   {
-    "id": "295",
-    "name": "Mushroom Discosoma Jawbreaker (Tie-Dye)",
+    "id": "309",
+    "name": "Mushroom Discosoma Jawbreaker (Discosoma sp.)",
     "commonName": "Mushroom Discosoma Jawbreaker",
-    "scientificName": "Tie-Dye",
+    "scientificName": "Discosoma sp.",
     "synonyms": [
       "Mushroom Discosoma Jawbreaker",
+      "Mushroom Discosoma Jawbreaker (Discosoma sp.)",
       "Mushroom Discosoma Jawbreaker (Tie-Dye)",
       "jawbreaker",
       "mush jawbreaker",
@@ -4769,7 +5207,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Mushrooms & Ricordeas"
   },
   {
-    "id": "296",
+    "id": "310",
     "name": "Mushroom Magic Carpet (Rhodactis sp.)",
     "commonName": "Mushroom Magic Carpet",
     "scientificName": "Rhodactis sp.",
@@ -4784,7 +5222,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Mushrooms & Ricordeas"
   },
   {
-    "id": "297",
+    "id": "311",
     "name": "Mushroom Red Velvet (Rhodactis sp.)",
     "commonName": "Mushroom Red Velvet",
     "scientificName": "Rhodactis sp.",
@@ -4800,7 +5238,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Mushrooms & Ricordeas"
   },
   {
-    "id": "298",
+    "id": "312",
     "name": "Mushroom Discosoma Interstellar (Discosoma sp.)",
     "commonName": "Mushroom Discosoma Interstellar",
     "scientificName": "Discosoma sp.",
@@ -4815,7 +5253,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Mushrooms & Ricordeas"
   },
   {
-    "id": "299",
+    "id": "313",
     "name": "Mushroom Discosoma Patchwork Rainbow (Discosoma sp.)",
     "commonName": "Mushroom Discosoma Patchwork Rainbow",
     "scientificName": "Discosoma sp.",
@@ -4831,13 +5269,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Mushrooms & Ricordeas"
   },
   {
-    "id": "300",
-    "name": "Mushroom Discosoma Blue Spotted",
+    "id": "314",
+    "name": "Mushroom Discosoma Blue Spotted (Discosoma sp.)",
     "commonName": "Mushroom Discosoma Blue Spotted",
-    "scientificName": "Mushroom Discosoma Blue Spotted",
+    "scientificName": "Discosoma sp.",
     "synonyms": [
       "Mushroom Discosoma Blue Spotted",
-      "Mushroom Discosoma Blue Spotted",
+      "Mushroom Discosoma Blue Spotted (Discosoma sp.)",
       "blue spotted mushroom",
       "mush pintado azul",
       "discosoma spotted"
@@ -4849,13 +5287,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Mushrooms & Ricordeas"
   },
   {
-    "id": "301",
-    "name": "Mushroom Rhodactis Ultra Superman",
+    "id": "315",
+    "name": "Mushroom Rhodactis Ultra Superman (Rhodactis sp.)",
     "commonName": "Mushroom Rhodactis Ultra Superman",
-    "scientificName": "Mushroom Rhodactis Ultra Superman",
+    "scientificName": "Rhodactis sp.",
     "synonyms": [
       "Mushroom Rhodactis Ultra Superman",
-      "Mushroom Rhodactis Ultra Superman",
+      "Mushroom Rhodactis Ultra Superman (Rhodactis sp.)",
       "rhodactis ultra superman",
       "superman rhodactis",
       "mush superman"
@@ -4867,13 +5305,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Mushrooms & Ricordeas"
   },
   {
-    "id": "302",
-    "name": "Mushroom Rhodactis Frankenstein Bounce",
+    "id": "316",
+    "name": "Mushroom Rhodactis Frankenstein Bounce (Rhodactis sp.)",
     "commonName": "Mushroom Rhodactis Frankenstein Bounce",
-    "scientificName": "Mushroom Rhodactis Frankenstein Bounce",
+    "scientificName": "Rhodactis sp.",
     "synonyms": [
       "Mushroom Rhodactis Frankenstein Bounce",
-      "Mushroom Rhodactis Frankenstein Bounce",
+      "Mushroom Rhodactis Frankenstein Bounce (Rhodactis sp.)",
       "frankenstein bounce",
       "bounce frankenstein",
       "mush bounce"
@@ -4885,7 +5323,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Mushrooms & Ricordeas"
   },
   {
-    "id": "303",
+    "id": "317",
     "name": "Mushroom Rhodactis Powerball Bounce (Rhodactis sp.)",
     "commonName": "Mushroom Rhodactis Powerball Bounce",
     "scientificName": "Rhodactis sp.",
@@ -4900,7 +5338,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Mushrooms & Ricordeas"
   },
   {
-    "id": "304",
+    "id": "318",
     "name": "Mushroom Rhodactis Biohazard Bounce (Rhodactis sp.)",
     "commonName": "Mushroom Rhodactis Biohazard Bounce",
     "scientificName": "Rhodactis sp.",
@@ -4916,13 +5354,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Mushrooms & Ricordeas"
   },
   {
-    "id": "305",
-    "name": "Mushroom Rhodactis Toxic Green Bounce",
+    "id": "319",
+    "name": "Mushroom Rhodactis Toxic Green Bounce (Rhodactis sp.)",
     "commonName": "Mushroom Rhodactis Toxic Green Bounce",
-    "scientificName": "Mushroom Rhodactis Toxic Green Bounce",
+    "scientificName": "Rhodactis sp.",
     "synonyms": [
       "Mushroom Rhodactis Toxic Green Bounce",
-      "Mushroom Rhodactis Toxic Green Bounce",
+      "Mushroom Rhodactis Toxic Green Bounce (Rhodactis sp.)",
       "green bounce",
       "rhodactis bounce verde",
       "toxic bounce"
@@ -4934,7 +5372,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Mushrooms & Ricordeas"
   },
   {
-    "id": "306",
+    "id": "320",
     "name": "Ricordea Florida Azul (Ricordea florida)",
     "commonName": "Ricordea Florida Azul",
     "scientificName": "Ricordea florida",
@@ -4949,7 +5387,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Mushrooms & Ricordeas"
   },
   {
-    "id": "307",
+    "id": "321",
     "name": "Ricordea Florida Teal (Ricordea florida)",
     "commonName": "Ricordea Florida Teal",
     "scientificName": "Ricordea florida",
@@ -4965,7 +5403,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Mushrooms & Ricordeas"
   },
   {
-    "id": "308",
+    "id": "322",
     "name": "Ricordea Yuma Godzilla (Ricordea yuma)",
     "commonName": "Ricordea Yuma Godzilla",
     "scientificName": "Ricordea yuma",
@@ -4980,7 +5418,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Mushrooms & Ricordeas"
   },
   {
-    "id": "309",
+    "id": "323",
     "name": "Ricordea Yuma King Kong (Ricordea yuma)",
     "commonName": "Ricordea Yuma King Kong",
     "scientificName": "Ricordea yuma",
@@ -4996,7 +5434,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Mushrooms & Ricordeas"
   },
   {
-    "id": "310",
+    "id": "324",
     "name": "Ricordea Yuma Laranja e Roxa (Ricordea yuma)",
     "commonName": "Ricordea Yuma Laranja e Roxa",
     "scientificName": "Ricordea yuma",
@@ -5011,11 +5449,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Mushrooms & Ricordeas"
   },
   {
-    "id": "311",
-    "name": "Leather Finger Coral (Sinularia asterolobata)",
-    "commonName": "Leather Finger Coral",
+    "id": "325",
+    "name": "Leather Finger (Sinularia asterolobata)",
+    "commonName": "Leather Finger",
     "scientificName": "Sinularia asterolobata",
     "synonyms": [
+      "Leather Finger",
+      "Leather Finger (Sinularia asterolobata)",
       "Leather Finger Coral",
       "Leather Finger Coral (Sinularia asterolobata)",
       "finger leather",
@@ -5029,7 +5469,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "312",
+    "id": "326",
     "name": "Leather Colt (Cladiella sp.)",
     "commonName": "Leather Colt",
     "scientificName": "Cladiella sp.",
@@ -5044,7 +5484,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "313",
+    "id": "327",
     "name": "Leather Thick Finger (Alcyonium sp.)",
     "commonName": "Leather Thick Finger",
     "scientificName": "Alcyonium sp.",
@@ -5060,11 +5500,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "314",
-    "name": "Coral Blue Sympodium (Sympodium sp.)",
-    "commonName": "Coral Blue Sympodium",
+    "id": "328",
+    "name": "Blue Sympodium (Sympodium sp.)",
+    "commonName": "Blue Sympodium",
     "scientificName": "Sympodium sp.",
     "synonyms": [
+      "Blue Sympodium",
+      "Blue Sympodium (Sympodium sp.)",
       "Coral Blue Sympodium",
       "Coral Blue Sympodium (Sympodium sp.)"
     ],
@@ -5075,11 +5517,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "315",
-    "name": "Coral Sansibia Azul (Sansibia sp.)",
-    "commonName": "Coral Sansibia Azul",
+    "id": "329",
+    "name": "Sansibia Azul (Sansibia sp.)",
+    "commonName": "Sansibia Azul",
     "scientificName": "Sansibia sp.",
     "synonyms": [
+      "Sansibia Azul",
+      "Sansibia Azul (Sansibia sp.)",
       "Coral Sansibia Azul",
       "Coral Sansibia Azul (Sansibia sp.)",
       "coral-sansibia.jpg"
@@ -5091,7 +5535,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "316",
+    "id": "330",
     "name": "Pipe Organ Neon Green (Tubipora musica)",
     "commonName": "Pipe Organ Neon Green",
     "scientificName": "Tubipora musica",
@@ -5109,12 +5553,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Caracídeos (Tetras e Cardumes)"
   },
   {
-    "id": "317",
-    "name": "Pipe Organ Clássico (Tubipora)",
+    "id": "331",
+    "name": "Pipe Organ Clássico (Tubipora musica)",
     "commonName": "Pipe Organ Clássico",
-    "scientificName": "Tubipora",
+    "scientificName": "Tubipora musica",
     "synonyms": [
       "Pipe Organ Clássico",
+      "Pipe Organ Clássico (Tubipora musica)",
       "Pipe Organ Clássico (Tubipora)",
       "tubipora",
       "pipe organ green",
@@ -5127,12 +5572,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "318",
-    "name": "Anêmona Bubble Tip Acid Wash (Entacmaea quadricolor var. Acid Wash)",
+    "id": "332",
+    "name": "Anêmona Bubble Tip Acid Wash (Entacmaea quadricolor)",
     "commonName": "Anêmona Bubble Tip Acid Wash",
-    "scientificName": "Entacmaea quadricolor var. Acid Wash",
+    "scientificName": "Entacmaea quadricolor",
     "synonyms": [
       "Anêmona Bubble Tip Acid Wash",
+      "Anêmona Bubble Tip Acid Wash (Entacmaea quadricolor)",
       "Anêmona Bubble Tip Acid Wash (Entacmaea quadricolor var. Acid Wash)"
     ],
     "type": "LIVING",
@@ -5142,12 +5588,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "319",
-    "name": "Anêmona Bubble Tip Black Widow (Entacmaea quadricolor var. Black Widow)",
+    "id": "333",
+    "name": "Anêmona Bubble Tip Black Widow (Entacmaea quadricolor)",
     "commonName": "Anêmona Bubble Tip Black Widow",
-    "scientificName": "Entacmaea quadricolor var. Black Widow",
+    "scientificName": "Entacmaea quadricolor",
     "synonyms": [
       "Anêmona Bubble Tip Black Widow",
+      "Anêmona Bubble Tip Black Widow (Entacmaea quadricolor)",
       "Anêmona Bubble Tip Black Widow (Entacmaea quadricolor var. Black Widow)",
       "anemona-black-widow.jpg"
     ],
@@ -5158,7 +5605,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "320",
+    "id": "334",
     "name": "Anêmona Carpet Verde (Stichodactyla haddoni)",
     "commonName": "Anêmona Carpet Verde",
     "scientificName": "Stichodactyla haddoni",
@@ -5173,7 +5620,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "321",
+    "id": "335",
     "name": "Anêmona Carpet Azul (Stichodactyla haddoni)",
     "commonName": "Anêmona Carpet Azul",
     "scientificName": "Stichodactyla haddoni",
@@ -5189,7 +5636,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "322",
+    "id": "336",
     "name": "Anêmona Long Tentacle LTA (Macrodactyla doreensis)",
     "commonName": "Anêmona Long Tentacle LTA",
     "scientificName": "Macrodactyla doreensis",
@@ -5204,7 +5651,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "323",
+    "id": "337",
     "name": "Anêmona Condylactis Gigantea (Condylactis gigantea)",
     "commonName": "Anêmona Condylactis Gigantea",
     "scientificName": "Condylactis gigantea",
@@ -5220,7 +5667,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "324",
+    "id": "338",
     "name": "Anêmona Sebae (Heteractis crispa)",
     "commonName": "Anêmona Sebae",
     "scientificName": "Heteractis crispa",
@@ -5236,11 +5683,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "325",
-    "name": "Coral Torch 24K Gold (Euphyllia glabrescens)",
-    "commonName": "Coral Torch 24K Gold",
+    "id": "339",
+    "name": "Torch 24K Gold (Euphyllia glabrescens)",
+    "commonName": "Torch 24K Gold",
     "scientificName": "Euphyllia glabrescens",
     "synonyms": [
+      "Torch 24K Gold",
+      "Torch 24K Gold (Euphyllia glabrescens)",
       "Coral Torch 24K Gold",
       "Coral Torch 24K Gold (Euphyllia glabrescens)"
     ],
@@ -5251,11 +5700,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Euphylliidae (LPS Nobres)"
   },
   {
-    "id": "326",
-    "name": "Coral Torch Aussie Gold (Euphyllia glabrescens)",
-    "commonName": "Coral Torch Aussie Gold",
+    "id": "340",
+    "name": "Torch Aussie Gold (Euphyllia glabrescens)",
+    "commonName": "Torch Aussie Gold",
     "scientificName": "Euphyllia glabrescens",
     "synonyms": [
+      "Torch Aussie Gold",
+      "Torch Aussie Gold (Euphyllia glabrescens)",
       "Coral Torch Aussie Gold",
       "Coral Torch Aussie Gold (Euphyllia glabrescens)",
       "torch-aussie-gold.jpg"
@@ -5267,11 +5718,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Euphylliidae (LPS Nobres)"
   },
   {
-    "id": "327",
-    "name": "Coral Torch Holy Grail (Euphyllia glabrescens)",
-    "commonName": "Coral Torch Holy Grail",
+    "id": "341",
+    "name": "Torch Holy Grail (Euphyllia glabrescens)",
+    "commonName": "Torch Holy Grail",
     "scientificName": "Euphyllia glabrescens",
     "synonyms": [
+      "Torch Holy Grail",
+      "Torch Holy Grail (Euphyllia glabrescens)",
       "Coral Torch Holy Grail",
       "Coral Torch Holy Grail (Euphyllia glabrescens)"
     ],
@@ -5282,11 +5735,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Euphylliidae (LPS Nobres)"
   },
   {
-    "id": "328",
-    "name": "Coral Torch NY Knicks (Euphyllia glabrescens)",
-    "commonName": "Coral Torch NY Knicks",
+    "id": "342",
+    "name": "Torch NY Knicks (Euphyllia glabrescens)",
+    "commonName": "Torch NY Knicks",
     "scientificName": "Euphyllia glabrescens",
     "synonyms": [
+      "Torch NY Knicks",
+      "Torch NY Knicks (Euphyllia glabrescens)",
       "Coral Torch NY Knicks",
       "Coral Torch NY Knicks (Euphyllia glabrescens)",
       "torch-ny-knicks.jpg"
@@ -5298,11 +5753,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Euphylliidae (LPS Nobres)"
   },
   {
-    "id": "329",
-    "name": "Coral Torch Hellfire (Euphyllia glabrescens)",
-    "commonName": "Coral Torch Hellfire",
+    "id": "343",
+    "name": "Torch Hellfire (Euphyllia glabrescens)",
+    "commonName": "Torch Hellfire",
     "scientificName": "Euphyllia glabrescens",
     "synonyms": [
+      "Torch Hellfire",
+      "Torch Hellfire (Euphyllia glabrescens)",
       "Coral Torch Hellfire",
       "Coral Torch Hellfire (Euphyllia glabrescens)",
       "torch-hellfire.jpg"
@@ -5314,11 +5771,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Euphylliidae (LPS Nobres)"
   },
   {
-    "id": "330",
-    "name": "Coral Hammer Laranja (Fimbriaphyllia ancora)",
-    "commonName": "Coral Hammer Laranja",
+    "id": "344",
+    "name": "Hammer Laranja (Fimbriaphyllia ancora)",
+    "commonName": "Hammer Laranja",
     "scientificName": "Fimbriaphyllia ancora",
     "synonyms": [
+      "Hammer Laranja",
+      "Hammer Laranja (Fimbriaphyllia ancora)",
       "Coral Hammer Laranja",
       "Coral Hammer Laranja (Fimbriaphyllia ancora)"
     ],
@@ -5329,11 +5788,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Euphylliidae (LPS Nobres)"
   },
   {
-    "id": "331",
-    "name": "Coral Hammer Copper (Fimbriaphyllia ancora)",
-    "commonName": "Coral Hammer Copper",
+    "id": "345",
+    "name": "Hammer Copper (Fimbriaphyllia ancora)",
+    "commonName": "Hammer Copper",
     "scientificName": "Fimbriaphyllia ancora",
     "synonyms": [
+      "Hammer Copper",
+      "Hammer Copper (Fimbriaphyllia ancora)",
       "Coral Hammer Copper",
       "Coral Hammer Copper (Fimbriaphyllia ancora)",
       "hammer-copper.jpg"
@@ -5345,11 +5806,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Euphylliidae (LPS Nobres)"
   },
   {
-    "id": "332",
-    "name": "Coral Hammer Rose Gold (Fimbriaphyllia ancora)",
-    "commonName": "Coral Hammer Rose Gold",
+    "id": "346",
+    "name": "Hammer Rose Gold (Fimbriaphyllia ancora)",
+    "commonName": "Hammer Rose Gold",
     "scientificName": "Fimbriaphyllia ancora",
     "synonyms": [
+      "Hammer Rose Gold",
+      "Hammer Rose Gold (Fimbriaphyllia ancora)",
       "Coral Hammer Rose Gold",
       "Coral Hammer Rose Gold (Fimbriaphyllia ancora)",
       "hammer-rose-gold.jpg"
@@ -5361,11 +5824,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Euphylliidae (LPS Nobres)"
   },
   {
-    "id": "333",
-    "name": "Coral Hammer Wall Rosa (Fimbriaphyllia ancora)",
-    "commonName": "Coral Hammer Wall Rosa",
+    "id": "347",
+    "name": "Hammer Wall Rosa (Fimbriaphyllia ancora)",
+    "commonName": "Hammer Wall Rosa",
     "scientificName": "Fimbriaphyllia ancora",
     "synonyms": [
+      "Hammer Wall Rosa",
+      "Hammer Wall Rosa (Fimbriaphyllia ancora)",
       "Coral Hammer Wall Rosa",
       "Coral Hammer Wall Rosa (Fimbriaphyllia ancora)"
     ],
@@ -5376,11 +5841,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Euphylliidae (LPS Nobres)"
   },
   {
-    "id": "334",
-    "name": "Coral Hammer Wall Verde (Fimbriaphyllia ancora)",
-    "commonName": "Coral Hammer Wall Verde",
+    "id": "348",
+    "name": "Hammer Wall Verde (Fimbriaphyllia ancora)",
+    "commonName": "Hammer Wall Verde",
     "scientificName": "Fimbriaphyllia ancora",
     "synonyms": [
+      "Hammer Wall Verde",
+      "Hammer Wall Verde (Fimbriaphyllia ancora)",
       "Coral Hammer Wall Verde",
       "Coral Hammer Wall Verde (Fimbriaphyllia ancora)",
       "hammer-wall-green.jpg"
@@ -5392,11 +5859,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Euphylliidae (LPS Nobres)"
   },
   {
-    "id": "335",
-    "name": "Coral Hammer Prince of Darkness (Fimbriaphyllia ancora)",
-    "commonName": "Coral Hammer Prince of Darkness",
+    "id": "349",
+    "name": "Hammer Prince of Darkness (Fimbriaphyllia ancora)",
+    "commonName": "Hammer Prince of Darkness",
     "scientificName": "Fimbriaphyllia ancora",
     "synonyms": [
+      "Hammer Prince of Darkness",
+      "Hammer Prince of Darkness (Fimbriaphyllia ancora)",
       "Coral Hammer Prince of Darkness",
       "Coral Hammer Prince of Darkness (Fimbriaphyllia ancora)"
     ],
@@ -5407,11 +5876,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Euphylliidae (LPS Nobres)"
   },
   {
-    "id": "336",
-    "name": "Coral Bubble Verde (Plerogyra sinuosa)",
-    "commonName": "Coral Bubble Verde",
+    "id": "350",
+    "name": "Bubble Verde (Plerogyra sinuosa)",
+    "commonName": "Bubble Verde",
     "scientificName": "Plerogyra sinuosa",
     "synonyms": [
+      "Bubble Verde",
+      "Bubble Verde (Plerogyra sinuosa)",
       "Coral Bubble Verde",
       "Coral Bubble Verde (Plerogyra sinuosa)"
     ],
@@ -5422,11 +5893,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "337",
-    "name": "Coral Bubble Branco (Plerogyra sinuosa)",
-    "commonName": "Coral Bubble Branco",
+    "id": "351",
+    "name": "Bubble Branco (Plerogyra sinuosa)",
+    "commonName": "Bubble Branco",
     "scientificName": "Plerogyra sinuosa",
     "synonyms": [
+      "Bubble Branco",
+      "Bubble Branco (Plerogyra sinuosa)",
       "Coral Bubble Branco",
       "Coral Bubble Branco (Plerogyra sinuosa)",
       "coral-bubble-white.jpg"
@@ -5438,7 +5911,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "338",
+    "id": "352",
     "name": "Elegance Coral (Catalaphyllia jardinei)",
     "commonName": "Elegance Coral",
     "scientificName": "Catalaphyllia jardinei",
@@ -5456,11 +5929,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "339",
-    "name": "Coral Plate Laranja (Cycloseris sp.)",
-    "commonName": "Coral Plate Laranja",
+    "id": "353",
+    "name": "Plate Laranja (Cycloseris sp.)",
+    "commonName": "Plate Laranja",
     "scientificName": "Cycloseris sp.",
     "synonyms": [
+      "Plate Laranja",
+      "Plate Laranja (Cycloseris sp.)",
       "Coral Plate Laranja",
       "Coral Plate Laranja (Cycloseris sp.)"
     ],
@@ -5471,11 +5946,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "340",
-    "name": "Coral Plate Verde (Fungia repanda)",
-    "commonName": "Coral Plate Verde",
+    "id": "354",
+    "name": "Plate Verde (Fungia repanda)",
+    "commonName": "Plate Verde",
     "scientificName": "Fungia repanda",
     "synonyms": [
+      "Plate Verde",
+      "Plate Verde (Fungia repanda)",
       "Coral Plate Verde",
       "Coral Plate Verde (Fungia repanda)",
       "coral-plate-green.jpg"
@@ -5487,11 +5964,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "341",
-    "name": "Coral Open Brain Rainbow (Trachyphyllia geoffroyi)",
-    "commonName": "Coral Open Brain Rainbow",
+    "id": "355",
+    "name": "Open Brain Rainbow (Trachyphyllia geoffroyi)",
+    "commonName": "Open Brain Rainbow",
     "scientificName": "Trachyphyllia geoffroyi",
     "synonyms": [
+      "Open Brain Rainbow",
+      "Open Brain Rainbow (Trachyphyllia geoffroyi)",
       "Coral Open Brain Rainbow",
       "Coral Open Brain Rainbow (Trachyphyllia geoffroyi)"
     ],
@@ -5502,11 +5981,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "342",
-    "name": "Coral Open Brain Verde (Trachyphyllia geoffroyi)",
-    "commonName": "Coral Open Brain Verde",
+    "id": "356",
+    "name": "Open Brain Verde (Trachyphyllia geoffroyi)",
+    "commonName": "Open Brain Verde",
     "scientificName": "Trachyphyllia geoffroyi",
     "synonyms": [
+      "Open Brain Verde",
+      "Open Brain Verde (Trachyphyllia geoffroyi)",
       "Coral Open Brain Verde",
       "Coral Open Brain Verde (Trachyphyllia geoffroyi)",
       "open-brain-green.jpg"
@@ -5518,26 +5999,30 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "343",
-    "name": "Coral Lobophyllia Red (Lobophyllia hemprichii)",
-    "commonName": "Coral Lobophyllia Red",
+    "id": "357",
+    "name": "Lobophyllia Red (Lobophyllia hemprichii)",
+    "commonName": "Lobophyllia Red",
     "scientificName": "Lobophyllia hemprichii",
     "synonyms": [
+      "Lobophyllia Red",
+      "Lobophyllia Red (Lobophyllia hemprichii)",
       "Coral Lobophyllia Red",
       "Coral Lobophyllia Red (Lobophyllia hemprichii)"
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "200_lobophyllia_red_tricolor.jpg",
+    "imageSlug": "",
     "section": "Corais & Anêmonas",
     "familyGroup": "Geral"
   },
   {
-    "id": "344",
-    "name": "Coral Lobophyllia Tricolor (Lobophyllia hemprichii)",
-    "commonName": "Coral Lobophyllia Tricolor",
+    "id": "358",
+    "name": "Lobophyllia Tricolor (Lobophyllia hemprichii)",
+    "commonName": "Lobophyllia Tricolor",
     "scientificName": "Lobophyllia hemprichii",
     "synonyms": [
+      "Lobophyllia Tricolor",
+      "Lobophyllia Tricolor (Lobophyllia hemprichii)",
       "Coral Lobophyllia Tricolor",
       "Coral Lobophyllia Tricolor (Lobophyllia hemprichii)",
       "lobophyllia-tricolor.jpg"
@@ -5549,11 +6034,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "345",
-    "name": "Coral Scolymia Bleeding Apple (Homophyllia australis)",
-    "commonName": "Coral Scolymia Bleeding Apple",
+    "id": "359",
+    "name": "Scolymia Bleeding Apple (Homophyllia australis)",
+    "commonName": "Scolymia Bleeding Apple",
     "scientificName": "Homophyllia australis",
     "synonyms": [
+      "Scolymia Bleeding Apple",
+      "Scolymia Bleeding Apple (Homophyllia australis)",
       "Coral Scolymia Bleeding Apple",
       "Coral Scolymia Bleeding Apple (Homophyllia australis)"
     ],
@@ -5564,11 +6051,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "346",
-    "name": "Coral Scolymia War Paint (Homophyllia australis)",
-    "commonName": "Coral Scolymia War Paint",
+    "id": "360",
+    "name": "Scolymia War Paint (Homophyllia australis)",
+    "commonName": "Scolymia War Paint",
     "scientificName": "Homophyllia australis",
     "synonyms": [
+      "Scolymia War Paint",
+      "Scolymia War Paint (Homophyllia australis)",
       "Coral Scolymia War Paint",
       "Coral Scolymia War Paint (Homophyllia australis)",
       "scolymia-war-paint.jpg"
@@ -5580,11 +6069,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "347",
-    "name": "Coral Acanthastrea Echinata Rainbow (Acanthastrea echinata)",
-    "commonName": "Coral Acanthastrea Echinata Rainbow",
+    "id": "361",
+    "name": "Acanthastrea Echinata Rainbow (Acanthastrea echinata)",
+    "commonName": "Acanthastrea Echinata Rainbow",
     "scientificName": "Acanthastrea echinata",
     "synonyms": [
+      "Acanthastrea Echinata Rainbow",
+      "Acanthastrea Echinata Rainbow (Acanthastrea echinata)",
       "Coral Acanthastrea Echinata Rainbow",
       "Coral Acanthastrea Echinata Rainbow (Acanthastrea echinata)"
     ],
@@ -5595,11 +6086,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "348",
-    "name": "Coral Acanthastrea Echinata Orange Eye (Acanthastrea echinata)",
-    "commonName": "Coral Acanthastrea Echinata Orange Eye",
+    "id": "362",
+    "name": "Acanthastrea Echinata Orange Eye (Acanthastrea echinata)",
+    "commonName": "Acanthastrea Echinata Orange Eye",
     "scientificName": "Acanthastrea echinata",
     "synonyms": [
+      "Acanthastrea Echinata Orange Eye",
+      "Acanthastrea Echinata Orange Eye (Acanthastrea echinata)",
       "Coral Acanthastrea Echinata Orange Eye",
       "Coral Acanthastrea Echinata Orange Eye (Acanthastrea echinata)",
       "acanthastrea-orange-eye.jpg"
@@ -5611,11 +6104,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "349",
-    "name": "Coral War Vermelho e Roxo (Favites pentagona)",
-    "commonName": "Coral War Vermelho e Roxo",
+    "id": "363",
+    "name": "War Coral Vermelho e Roxo (Favites pentagona)",
+    "commonName": "War Coral Vermelho e Roxo",
     "scientificName": "Favites pentagona",
     "synonyms": [
+      "War Coral Vermelho e Roxo",
+      "War Coral Vermelho e Roxo (Favites pentagona)",
       "Coral War Vermelho e Roxo",
       "Coral War Vermelho e Roxo (Favites pentagona)"
     ],
@@ -5626,11 +6121,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "350",
-    "name": "Coral Favia Dragon Soul (Favia sp.)",
-    "commonName": "Coral Favia Dragon Soul",
+    "id": "364",
+    "name": "Favia Dragon Soul (Favia sp.)",
+    "commonName": "Favia Dragon Soul",
     "scientificName": "Favia sp.",
     "synonyms": [
+      "Favia Dragon Soul",
+      "Favia Dragon Soul (Favia sp.)",
       "Coral Favia Dragon Soul",
       "Coral Favia Dragon Soul (Favia sp.)"
     ],
@@ -5641,11 +6138,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "351",
-    "name": "Coral Favites Lemon Lime (Favites sp.)",
-    "commonName": "Coral Favites Lemon Lime",
+    "id": "365",
+    "name": "Favites Lemon Lime (Favites sp.)",
+    "commonName": "Favites Lemon Lime",
     "scientificName": "Favites sp.",
     "synonyms": [
+      "Favites Lemon Lime",
+      "Favites Lemon Lime (Favites sp.)",
       "Coral Favites Lemon Lime",
       "Coral Favites Lemon Lime (Favites sp.)",
       "favites-lemon-lime.jpg"
@@ -5657,11 +6156,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "352",
-    "name": "Coral Leptastrea Burning Blood (Leptastrea purpurea)",
-    "commonName": "Coral Leptastrea Burning Blood",
+    "id": "366",
+    "name": "Leptastrea Burning Blood (Leptastrea purpurea)",
+    "commonName": "Leptastrea Burning Blood",
     "scientificName": "Leptastrea purpurea",
     "synonyms": [
+      "Leptastrea Burning Blood",
+      "Leptastrea Burning Blood (Leptastrea purpurea)",
       "Coral Leptastrea Burning Blood",
       "Coral Leptastrea Burning Blood (Leptastrea purpurea)"
     ],
@@ -5672,11 +6173,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "353",
-    "name": "Coral Platygyra Maze Cérebro (Platygyra daedalea)",
-    "commonName": "Coral Platygyra Maze Cérebro",
+    "id": "367",
+    "name": "Platygyra Maze Cérebro (Platygyra daedalea)",
+    "commonName": "Platygyra Maze Cérebro",
     "scientificName": "Platygyra daedalea",
     "synonyms": [
+      "Platygyra Maze Cérebro",
+      "Platygyra Maze Cérebro (Platygyra daedalea)",
       "Coral Platygyra Maze Cérebro",
       "Coral Platygyra Maze Cérebro (Platygyra daedalea)",
       "platygyra-maze.jpg"
@@ -5688,11 +6191,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "354",
-    "name": "Coral Cyphastrea Meteor Shower (Cyphastrea ocellina)",
-    "commonName": "Coral Cyphastrea Meteor Shower",
+    "id": "368",
+    "name": "Cyphastrea Meteor Shower (Cyphastrea ocellina)",
+    "commonName": "Cyphastrea Meteor Shower",
     "scientificName": "Cyphastrea ocellina",
     "synonyms": [
+      "Cyphastrea Meteor Shower",
+      "Cyphastrea Meteor Shower (Cyphastrea ocellina)",
       "Coral Cyphastrea Meteor Shower",
       "Coral Cyphastrea Meteor Shower (Cyphastrea ocellina)"
     ],
@@ -5703,11 +6208,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "355",
-    "name": "Coral Cyphastrea Bizarro (Cyphastrea sp.)",
-    "commonName": "Coral Cyphastrea Bizarro",
+    "id": "369",
+    "name": "Cyphastrea Bizarro (Cyphastrea sp.)",
+    "commonName": "Cyphastrea Bizarro",
     "scientificName": "Cyphastrea sp.",
     "synonyms": [
+      "Cyphastrea Bizarro",
+      "Cyphastrea Bizarro (Cyphastrea sp.)",
       "Coral Cyphastrea Bizarro",
       "Coral Cyphastrea Bizarro (Cyphastrea sp.)",
       "cyphastrea-bizarro.jpg"
@@ -5719,26 +6226,30 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "356",
-    "name": "Coral Galaxea Verde (Galaxea fascicularis)",
-    "commonName": "Coral Galaxea Verde",
+    "id": "370",
+    "name": "Galaxea Verde (Galaxea fascicularis)",
+    "commonName": "Galaxea Verde",
     "scientificName": "Galaxea fascicularis",
     "synonyms": [
+      "Galaxea Verde",
+      "Galaxea Verde (Galaxea fascicularis)",
       "Coral Galaxea Verde",
       "Coral Galaxea Verde (Galaxea fascicularis)"
     ],
     "type": "LIVING",
     "subCategory": "CORAL",
-    "imageSlug": "207_galaxea_green_gold.jpg",
+    "imageSlug": "",
     "section": "Corais & Anêmonas",
     "familyGroup": "Geral"
   },
   {
-    "id": "357",
-    "name": "Coral Galaxea Gold (Galaxea fascicularis)",
-    "commonName": "Coral Galaxea Gold",
+    "id": "371",
+    "name": "Galaxea Gold (Galaxea fascicularis)",
+    "commonName": "Galaxea Gold",
     "scientificName": "Galaxea fascicularis",
     "synonyms": [
+      "Galaxea Gold",
+      "Galaxea Gold (Galaxea fascicularis)",
       "Coral Galaxea Gold",
       "Coral Galaxea Gold (Galaxea fascicularis)",
       "galaxea-gold.jpg"
@@ -5750,11 +6261,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "358",
-    "name": "Coral Cynarina Lacrymalis Red (Cynarina lacrymalis)",
-    "commonName": "Coral Cynarina Lacrymalis Red",
+    "id": "372",
+    "name": "Cynarina Lacrymalis Red (Cynarina lacrymalis)",
+    "commonName": "Cynarina Lacrymalis Red",
     "scientificName": "Cynarina lacrymalis",
     "synonyms": [
+      "Cynarina Lacrymalis Red",
+      "Cynarina Lacrymalis Red (Cynarina lacrymalis)",
       "Coral Cynarina Lacrymalis Red",
       "Coral Cynarina Lacrymalis Red (Cynarina lacrymalis)"
     ],
@@ -5765,11 +6278,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "359",
-    "name": "Coral Indophyllia Macassarensis (Indophyllia macassarensis)",
-    "commonName": "Coral Indophyllia Macassarensis",
+    "id": "373",
+    "name": "Indophyllia Macassarensis (Indophyllia macassarensis)",
+    "commonName": "Indophyllia Macassarensis",
     "scientificName": "Indophyllia macassarensis",
     "synonyms": [
+      "Indophyllia Macassarensis",
+      "Indophyllia Macassarensis (Indophyllia macassarensis)",
       "Coral Indophyllia Macassarensis",
       "Coral Indophyllia Macassarensis (Indophyllia macassarensis)",
       "indophyllia-macassarensis.jpg"
@@ -5781,11 +6296,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "360",
-    "name": "Coral Montipora Setosa Laranja (Montipora setosa)",
-    "commonName": "Coral Montipora Setosa Laranja",
+    "id": "374",
+    "name": "Montipora Setosa Laranja (Montipora setosa)",
+    "commonName": "Montipora Setosa Laranja",
     "scientificName": "Montipora setosa",
     "synonyms": [
+      "Montipora Setosa Laranja",
+      "Montipora Setosa Laranja (Montipora setosa)",
       "Coral Montipora Setosa Laranja",
       "Coral Montipora Setosa Laranja (Montipora setosa)"
     ],
@@ -5796,11 +6313,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "SPS (Pólipos Pequenos)"
   },
   {
-    "id": "361",
-    "name": "Coral Montipora Incrustante Rainbow (Montipora sp. Rainbow)",
-    "commonName": "Coral Montipora Incrustante Rainbow",
-    "scientificName": "Montipora sp. Rainbow",
+    "id": "375",
+    "name": "Montipora Incrustante Rainbow (Montipora sp.)",
+    "commonName": "Montipora Incrustante Rainbow",
+    "scientificName": "Montipora sp.",
     "synonyms": [
+      "Montipora Incrustante Rainbow",
+      "Montipora Incrustante Rainbow (Montipora sp.)",
       "Coral Montipora Incrustante Rainbow",
       "Coral Montipora Incrustante Rainbow (Montipora sp. Rainbow)"
     ],
@@ -5811,11 +6330,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "SPS (Pólipos Pequenos)"
   },
   {
-    "id": "362",
-    "name": "Coral Montipora Incrustante Pokerstar (Montipora tuberculosa)",
-    "commonName": "Coral Montipora Incrustante Pokerstar",
+    "id": "376",
+    "name": "Montipora Incrustante Pokerstar (Montipora tuberculosa)",
+    "commonName": "Montipora Incrustante Pokerstar",
     "scientificName": "Montipora tuberculosa",
     "synonyms": [
+      "Montipora Incrustante Pokerstar",
+      "Montipora Incrustante Pokerstar (Montipora tuberculosa)",
       "Coral Montipora Incrustante Pokerstar",
       "Coral Montipora Incrustante Pokerstar (Montipora tuberculosa)",
       "montipora-pokerstar.jpg"
@@ -5827,13 +6348,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "SPS (Pólipos Pequenos)"
   },
   {
-    "id": "363",
-    "name": "Montipora Bubblegum Digitata",
+    "id": "377",
+    "name": "Montipora Bubblegum Digitata (Montipora digitata)",
     "commonName": "Montipora Bubblegum Digitata",
-    "scientificName": "Montipora Bubblegum Digitata",
+    "scientificName": "Montipora digitata",
     "synonyms": [
       "Montipora Bubblegum Digitata",
-      "Montipora Bubblegum Digitata",
+      "Montipora Bubblegum Digitata (Montipora digitata)",
       "bubblegum digitata",
       "montipora bubblegum",
       "digitata bicolor"
@@ -5845,11 +6366,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "SPS (Pólipos Pequenos)"
   },
   {
-    "id": "364",
-    "name": "Coral Montipora Beach Bum (Montipora sp.)",
-    "commonName": "Coral Montipora Beach Bum",
+    "id": "378",
+    "name": "Montipora Beach Bum (Montipora sp.)",
+    "commonName": "Montipora Beach Bum",
     "scientificName": "Montipora sp.",
     "synonyms": [
+      "Montipora Beach Bum",
+      "Montipora Beach Bum (Montipora sp.)",
       "Coral Montipora Beach Bum",
       "Coral Montipora Beach Bum (Montipora sp.)"
     ],
@@ -5860,11 +6383,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "SPS (Pólipos Pequenos)"
   },
   {
-    "id": "365",
-    "name": "Coral Montipora Kung Pao (Montipora sp.)",
-    "commonName": "Coral Montipora Kung Pao",
+    "id": "379",
+    "name": "Montipora Kung Pao (Montipora sp.)",
+    "commonName": "Montipora Kung Pao",
     "scientificName": "Montipora sp.",
     "synonyms": [
+      "Montipora Kung Pao",
+      "Montipora Kung Pao (Montipora sp.)",
       "Coral Montipora Kung Pao",
       "Coral Montipora Kung Pao (Montipora sp.)",
       "montipora-kung-pao.jpg"
@@ -5876,11 +6401,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "SPS (Pólipos Pequenos)"
   },
   {
-    "id": "366",
-    "name": "Coral Montipora Phoenix (Montipora sp.)",
-    "commonName": "Coral Montipora Phoenix",
+    "id": "380",
+    "name": "Montipora Phoenix (Montipora sp.)",
+    "commonName": "Montipora Phoenix",
     "scientificName": "Montipora sp.",
     "synonyms": [
+      "Montipora Phoenix",
+      "Montipora Phoenix (Montipora sp.)",
       "Coral Montipora Phoenix",
       "Coral Montipora Phoenix (Montipora sp.)",
       "montipora-phoenix.jpg"
@@ -5892,11 +6419,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "SPS (Pólipos Pequenos)"
   },
   {
-    "id": "367",
-    "name": "Coral Pavona Cactus Verde (Pavona decussata)",
-    "commonName": "Coral Pavona Cactus Verde",
+    "id": "381",
+    "name": "Pavona Cactus Verde (Pavona decussata)",
+    "commonName": "Pavona Cactus Verde",
     "scientificName": "Pavona decussata",
     "synonyms": [
+      "Pavona Cactus Verde",
+      "Pavona Cactus Verde (Pavona decussata)",
       "Coral Pavona Cactus Verde",
       "Coral Pavona Cactus Verde (Pavona decussata)"
     ],
@@ -5907,11 +6436,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "368",
-    "name": "Coral Stylophora Pistillata Pink (Stylophora pistillata)",
-    "commonName": "Coral Stylophora Pistillata Pink",
+    "id": "382",
+    "name": "Stylophora Pistillata Pink (Stylophora pistillata)",
+    "commonName": "Stylophora Pistillata Pink",
     "scientificName": "Stylophora pistillata",
     "synonyms": [
+      "Stylophora Pistillata Pink",
+      "Stylophora Pistillata Pink (Stylophora pistillata)",
       "Coral Stylophora Pistillata Pink",
       "Coral Stylophora Pistillata Pink (Stylophora pistillata)"
     ],
@@ -5922,11 +6453,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "369",
-    "name": "Coral Stylophora Rainbow (Stylophora sp.)",
-    "commonName": "Coral Stylophora Rainbow",
+    "id": "383",
+    "name": "Stylophora Rainbow (Stylophora sp.)",
+    "commonName": "Stylophora Rainbow",
     "scientificName": "Stylophora sp.",
     "synonyms": [
+      "Stylophora Rainbow",
+      "Stylophora Rainbow (Stylophora sp.)",
       "Coral Stylophora Rainbow",
       "Coral Stylophora Rainbow (Stylophora sp.)",
       "stylophora-rainbow.jpg"
@@ -5938,12 +6471,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "370",
-    "name": "Seriatopora Bird of Paradise (ORA)",
+    "id": "384",
+    "name": "Seriatopora Bird of Paradise (Seriatopora guttatus)",
     "commonName": "Seriatopora Bird of Paradise",
-    "scientificName": "ORA",
+    "scientificName": "Seriatopora guttatus",
     "synonyms": [
       "Seriatopora Bird of Paradise",
+      "Seriatopora Bird of Paradise (Seriatopora guttatus)",
       "Seriatopora Bird of Paradise (ORA)",
       "bird of paradise",
       "seriatopora bird",
@@ -5956,11 +6490,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "SPS (Pólipos Pequenos)"
   },
   {
-    "id": "371",
-    "name": "Coral Pocillopora Damicornis Pink (Pocillopora damicornis)",
-    "commonName": "Coral Pocillopora Damicornis Pink",
+    "id": "385",
+    "name": "Pocillopora Damicornis Pink (Pocillopora damicornis)",
+    "commonName": "Pocillopora Damicornis Pink",
     "scientificName": "Pocillopora damicornis",
     "synonyms": [
+      "Pocillopora Damicornis Pink",
+      "Pocillopora Damicornis Pink (Pocillopora damicornis)",
       "Coral Pocillopora Damicornis Pink",
       "Coral Pocillopora Damicornis Pink (Pocillopora damicornis)"
     ],
@@ -5971,11 +6507,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "372",
-    "name": "Coral Pocillopora Damicornis Verde (Pocillopora damicornis)",
-    "commonName": "Coral Pocillopora Damicornis Verde",
+    "id": "386",
+    "name": "Pocillopora Damicornis Verde (Pocillopora damicornis)",
+    "commonName": "Pocillopora Damicornis Verde",
     "scientificName": "Pocillopora damicornis",
     "synonyms": [
+      "Pocillopora Damicornis Verde",
+      "Pocillopora Damicornis Verde (Pocillopora damicornis)",
       "Coral Pocillopora Damicornis Verde",
       "Coral Pocillopora Damicornis Verde (Pocillopora damicornis)",
       "pocillopora-damicornis-verde.jpg"
@@ -5987,11 +6525,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "373",
-    "name": "Coral Acropora Walt Disney (Acropora tenuis)",
-    "commonName": "Coral Acropora Walt Disney",
+    "id": "387",
+    "name": "Acropora Walt Disney (Acropora tenuis)",
+    "commonName": "Acropora Walt Disney",
     "scientificName": "Acropora tenuis",
     "synonyms": [
+      "Acropora Walt Disney",
+      "Acropora Walt Disney (Acropora tenuis)",
       "Coral Acropora Walt Disney",
       "Coral Acropora Walt Disney (Acropora tenuis)"
     ],
@@ -6002,11 +6542,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "SPS (Pólipos Pequenos)"
   },
   {
-    "id": "374",
-    "name": "Coral Acropora Homewrecker (Acropora tenuis)",
-    "commonName": "Coral Acropora Homewrecker",
+    "id": "388",
+    "name": "Acropora Homewrecker (Acropora tenuis)",
+    "commonName": "Acropora Homewrecker",
     "scientificName": "Acropora tenuis",
     "synonyms": [
+      "Acropora Homewrecker",
+      "Acropora Homewrecker (Acropora tenuis)",
       "Coral Acropora Homewrecker",
       "Coral Acropora Homewrecker (Acropora tenuis)",
       "acropora-homewrecker.jpg"
@@ -6018,12 +6560,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "SPS (Pólipos Pequenos)"
   },
   {
-    "id": "375",
-    "name": "Acropora Strawberry Shortcake (A. microclados)",
+    "id": "389",
+    "name": "Acropora Strawberry Shortcake (Acropora microclados)",
     "commonName": "Acropora Strawberry Shortcake",
-    "scientificName": "A. microclados",
+    "scientificName": "Acropora microclados",
     "synonyms": [
       "Acropora Strawberry Shortcake",
+      "Acropora Strawberry Shortcake (Acropora microclados)",
       "Acropora Strawberry Shortcake (A. microclados)",
       "strawberry shortcake",
       "ssc acropora",
@@ -6036,11 +6579,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "SPS (Pólipos Pequenos)"
   },
   {
-    "id": "376",
-    "name": "Coral Acropora Red Planet (Acropora anthocercis)",
-    "commonName": "Coral Acropora Red Planet",
+    "id": "390",
+    "name": "Acropora Red Planet (Acropora anthocercis)",
+    "commonName": "Acropora Red Planet",
     "scientificName": "Acropora anthocercis",
     "synonyms": [
+      "Acropora Red Planet",
+      "Acropora Red Planet (Acropora anthocercis)",
       "Coral Acropora Red Planet",
       "Coral Acropora Red Planet (Acropora anthocercis)"
     ],
@@ -6051,11 +6596,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "SPS (Pólipos Pequenos)"
   },
   {
-    "id": "377",
-    "name": "Coral Acropora Pink Millepora (Acropora millepora)",
-    "commonName": "Coral Acropora Pink Millepora",
+    "id": "391",
+    "name": "Acropora Pink Millepora (Acropora millepora)",
+    "commonName": "Acropora Pink Millepora",
     "scientificName": "Acropora millepora",
     "synonyms": [
+      "Acropora Pink Millepora",
+      "Acropora Pink Millepora (Acropora millepora)",
       "Coral Acropora Pink Millepora",
       "Coral Acropora Pink Millepora (Acropora millepora)",
       "acropora-millepora-rosa.jpg"
@@ -6067,11 +6614,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "SPS (Pólipos Pequenos)"
   },
   {
-    "id": "378",
-    "name": "Coral Acropora Oregon Tort (Acropora tortuosa)",
-    "commonName": "Coral Acropora Oregon Tort",
+    "id": "392",
+    "name": "Acropora Oregon Tort (Acropora tortuosa)",
+    "commonName": "Acropora Oregon Tort",
     "scientificName": "Acropora tortuosa",
     "synonyms": [
+      "Acropora Oregon Tort",
+      "Acropora Oregon Tort (Acropora tortuosa)",
       "Coral Acropora Oregon Tort",
       "Coral Acropora Oregon Tort (Acropora tortuosa)"
     ],
@@ -6082,11 +6631,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "SPS (Pólipos Pequenos)"
   },
   {
-    "id": "379",
-    "name": "Coral Acropora Cali Tort (Acropora tortuosa)",
-    "commonName": "Coral Acropora Cali Tort",
+    "id": "393",
+    "name": "Acropora Cali Tort (Acropora tortuosa)",
+    "commonName": "Acropora Cali Tort",
     "scientificName": "Acropora tortuosa",
     "synonyms": [
+      "Acropora Cali Tort",
+      "Acropora Cali Tort (Acropora tortuosa)",
       "Coral Acropora Cali Tort",
       "Coral Acropora Cali Tort (Acropora tortuosa)",
       "acropora-tortuosa.jpg"
@@ -6098,7 +6649,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "SPS (Pólipos Pequenos)"
   },
   {
-    "id": "380",
+    "id": "394",
     "name": "Peixe-Palhaço Clarkii (Amphiprion clarkii)",
     "commonName": "Peixe-Palhaço Clarkii",
     "scientificName": "Amphiprion clarkii",
@@ -6111,12 +6662,12 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "MARINE_FISH",
-    "imageSlug": "221_palhaco_clarkii.jpg",
+    "imageSlug": "",
     "section": "Peixes Marinhos",
     "familyGroup": "Palhaços (Amphiprioninae)"
   },
   {
-    "id": "381",
+    "id": "395",
     "name": "Peixe-palhaço Tomato (Amphiprion frenatus)",
     "commonName": "Peixe-palhaço Tomato",
     "scientificName": "Amphiprion frenatus",
@@ -6131,7 +6682,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Palhaços (Amphiprioninae)"
   },
   {
-    "id": "382",
+    "id": "396",
     "name": "Peixe-palhaço Fire Cinela (Amphiprion melanopus)",
     "commonName": "Peixe-palhaço Fire Cinela",
     "scientificName": "Amphiprion melanopus",
@@ -6147,7 +6698,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Palhaços (Amphiprioninae)"
   },
   {
-    "id": "383",
+    "id": "397",
     "name": "Peixe-palhaço Pink Skunk (Amphiprion perideraion)",
     "commonName": "Peixe-palhaço Pink Skunk",
     "scientificName": "Amphiprion perideraion",
@@ -6162,7 +6713,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Palhaços (Amphiprioninae)"
   },
   {
-    "id": "384",
+    "id": "398",
     "name": "Peixe-palhaço Orange Skunk (Amphiprion sandaracinos)",
     "commonName": "Peixe-palhaço Orange Skunk",
     "scientificName": "Amphiprion sandaracinos",
@@ -6178,7 +6729,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Palhaços (Amphiprioninae)"
   },
   {
-    "id": "385",
+    "id": "399",
     "name": "Peixe-palhaço Maroon (Premnas biaculeatus)",
     "commonName": "Peixe-palhaço Maroon",
     "scientificName": "Premnas biaculeatus",
@@ -6193,7 +6744,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Palhaços (Amphiprioninae)"
   },
   {
-    "id": "386",
+    "id": "400",
     "name": "Peixe-palhaço Lightning Maroon (Premnas biaculeatus var. Lightning)",
     "commonName": "Peixe-palhaço Lightning Maroon",
     "scientificName": "Premnas biaculeatus var. Lightning",
@@ -6209,7 +6760,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Palhaços (Amphiprioninae)"
   },
   {
-    "id": "387",
+    "id": "401",
     "name": "Peixe-palhaço Gold Nugget Maroon (Premnas biaculeatus var. Gold)",
     "commonName": "Peixe-palhaço Gold Nugget Maroon",
     "scientificName": "Premnas biaculeatus var. Gold",
@@ -6225,7 +6776,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Palhaços (Amphiprioninae)"
   },
   {
-    "id": "388",
+    "id": "402",
     "name": "Peixe-palhaço Sebae (Amphiprion sebae)",
     "commonName": "Peixe-palhaço Sebae",
     "scientificName": "Amphiprion sebae",
@@ -6240,7 +6791,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Palhaços (Amphiprioninae)"
   },
   {
-    "id": "389",
+    "id": "403",
     "name": "Peixe-palhaço Saddleback (Amphiprion polymnus)",
     "commonName": "Peixe-palhaço Saddleback",
     "scientificName": "Amphiprion polymnus",
@@ -6256,7 +6807,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Palhaços (Amphiprioninae)"
   },
   {
-    "id": "390",
+    "id": "404",
     "name": "Purple Tang (Zebrasoma xanthurum)",
     "commonName": "Purple Tang",
     "scientificName": "Zebrasoma xanthurum",
@@ -6274,7 +6825,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Tangs e Cirurgiões (Acanthuridae)"
   },
   {
-    "id": "391",
+    "id": "405",
     "name": "Achilles Tang (Acanthurus achilles)",
     "commonName": "Achilles Tang",
     "scientificName": "Acanthurus achilles",
@@ -6284,12 +6835,12 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "MARINE_FISH",
-    "imageSlug": "227_achilles_sohal_clown_tang.jpg",
+    "imageSlug": "",
     "section": "Peixes Marinhos",
     "familyGroup": "Tangs e Cirurgiões (Acanthuridae)"
   },
   {
-    "id": "392",
+    "id": "406",
     "name": "Sohal Tang (Acanthurus sohal)",
     "commonName": "Sohal Tang",
     "scientificName": "Acanthurus sohal",
@@ -6305,7 +6856,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Tangs e Cirurgiões (Acanthuridae)"
   },
   {
-    "id": "393",
+    "id": "407",
     "name": "Clown Tang (Acanthurus lineatus)",
     "commonName": "Clown Tang",
     "scientificName": "Acanthurus lineatus",
@@ -6321,7 +6872,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Tangs e Cirurgiões (Acanthuridae)"
   },
   {
-    "id": "394",
+    "id": "408",
     "name": "Kole Tang Olho Amarelo (Ctenochaetus strigosus)",
     "commonName": "Kole Tang Olho Amarelo",
     "scientificName": "Ctenochaetus strigosus",
@@ -6336,7 +6887,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Tangs e Cirurgiões (Acanthuridae)"
   },
   {
-    "id": "395",
+    "id": "409",
     "name": "Tomini Tang (Ctenochaetus tominiensis)",
     "commonName": "Tomini Tang",
     "scientificName": "Ctenochaetus tominiensis",
@@ -6352,7 +6903,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Tangs e Cirurgiões (Acanthuridae)"
   },
   {
-    "id": "396",
+    "id": "410",
     "name": "Foxface Rabbitfish (Siganus vulpinus)",
     "commonName": "Foxface Rabbitfish",
     "scientificName": "Siganus vulpinus",
@@ -6370,7 +6921,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "397",
+    "id": "411",
     "name": "Foxface Bicolor (Siganus uspi)",
     "commonName": "Foxface Bicolor",
     "scientificName": "Siganus uspi",
@@ -6385,7 +6936,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "398",
+    "id": "412",
     "name": "Foxface Magnificent (Siganus magnificus)",
     "commonName": "Foxface Magnificent",
     "scientificName": "Siganus magnificus",
@@ -6401,7 +6952,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "399",
+    "id": "413",
     "name": "Borboleta Copperband (Chelmon rostratus)",
     "commonName": "Borboleta Copperband",
     "scientificName": "Chelmon rostratus",
@@ -6419,7 +6970,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Equipe de Limpeza & Invertebrados"
   },
   {
-    "id": "400",
+    "id": "414",
     "name": "Borboleta Heniochus Acuminatus (Heniochus acuminatus)",
     "commonName": "Borboleta Heniochus Acuminatus",
     "scientificName": "Heniochus acuminatus",
@@ -6434,7 +6985,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "401",
+    "id": "415",
     "name": "Moorish Idol (Zanclus cornutus)",
     "commonName": "Moorish Idol",
     "scientificName": "Zanclus cornutus",
@@ -6450,7 +7001,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "402",
+    "id": "416",
     "name": "Anjo Imperador (Pomacanthus imperator)",
     "commonName": "Anjo Imperador",
     "scientificName": "Pomacanthus imperator",
@@ -6465,7 +7016,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Peixes-Anjo (Pomacanthidae)"
   },
   {
-    "id": "403",
+    "id": "417",
     "name": "Anjo Koran (Pomacanthus semicirculatus)",
     "commonName": "Anjo Koran",
     "scientificName": "Pomacanthus semicirculatus",
@@ -6481,7 +7032,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Peixes-Anjo (Pomacanthidae)"
   },
   {
-    "id": "404",
+    "id": "418",
     "name": "Anjo French (Pomacanthus paru)",
     "commonName": "Anjo French",
     "scientificName": "Pomacanthus paru",
@@ -6497,7 +7048,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Peixes-Anjo (Pomacanthidae)"
   },
   {
-    "id": "405",
+    "id": "419",
     "name": "Anjo Anão Bicolor (Centropyge bicolor)",
     "commonName": "Anjo Anão Bicolor",
     "scientificName": "Centropyge bicolor",
@@ -6512,7 +7063,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Peixes-Anjo (Pomacanthidae)"
   },
   {
-    "id": "406",
+    "id": "420",
     "name": "Anjo Anão Cherub Pigmeu (Centropyge argi)",
     "commonName": "Anjo Anão Cherub Pigmeu",
     "scientificName": "Centropyge argi",
@@ -6528,7 +7079,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Peixes-Anjo (Pomacanthidae)"
   },
   {
-    "id": "407",
+    "id": "421",
     "name": "Anjo Anão Coral Beauty (Centropyge bispinosa)",
     "commonName": "Anjo Anão Coral Beauty",
     "scientificName": "Centropyge bispinosa",
@@ -6546,7 +7097,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Peixes-Anjo (Pomacanthidae)"
   },
   {
-    "id": "408",
+    "id": "422",
     "name": "Anthias Lyretail (Pseudanthias squamipinnis)",
     "commonName": "Anthias Lyretail",
     "scientificName": "Pseudanthias squamipinnis",
@@ -6561,7 +7112,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "409",
+    "id": "423",
     "name": "Anthias Dispar (Pseudanthias dispar)",
     "commonName": "Anthias Dispar",
     "scientificName": "Pseudanthias dispar",
@@ -6577,7 +7128,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "410",
+    "id": "424",
     "name": "Cleaner Wrasse Limpador (Labroides dimidiatus)",
     "commonName": "Cleaner Wrasse Limpador",
     "scientificName": "Labroides dimidiatus",
@@ -6592,7 +7143,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Bodiões e Wrasses (Labridae)"
   },
   {
-    "id": "411",
+    "id": "425",
     "name": "Melanurus Wrasse (Halichoeres melanurus)",
     "commonName": "Melanurus Wrasse",
     "scientificName": "Halichoeres melanurus",
@@ -6607,7 +7158,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Bodiões e Wrasses (Labridae)"
   },
   {
-    "id": "412",
+    "id": "426",
     "name": "Leopard Wrasse (Macropharyngodon meleagris)",
     "commonName": "Leopard Wrasse",
     "scientificName": "Macropharyngodon meleagris",
@@ -6623,7 +7174,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Bodiões e Wrasses (Labridae)"
   },
   {
-    "id": "413",
+    "id": "427",
     "name": "Fairy Wrasse Yellow Flanked (Cirrhilabrus lyukyuensis)",
     "commonName": "Fairy Wrasse Yellow Flanked",
     "scientificName": "Cirrhilabrus lyukyuensis",
@@ -6638,7 +7189,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Bodiões e Wrasses (Labridae)"
   },
   {
-    "id": "414",
+    "id": "428",
     "name": "Flasher Wrasse McCosker (Paracheilinus mccoskeri)",
     "commonName": "Flasher Wrasse McCosker",
     "scientificName": "Paracheilinus mccoskeri",
@@ -6654,7 +7205,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Bodiões e Wrasses (Labridae)"
   },
   {
-    "id": "415",
+    "id": "429",
     "name": "Diamond Watchman Goby (Valenciennea puellaris)",
     "commonName": "Diamond Watchman Goby",
     "scientificName": "Valenciennea puellaris",
@@ -6669,7 +7220,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Gobies e Blênios"
   },
   {
-    "id": "416",
+    "id": "430",
     "name": "Golden Head Sleeper Goby (Valenciennea strigata)",
     "commonName": "Golden Head Sleeper Goby",
     "scientificName": "Valenciennea strigata",
@@ -6685,7 +7236,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Gobies e Blênios"
   },
   {
-    "id": "417",
+    "id": "431",
     "name": "Yellow Clown Goby (Gobiodon okinawae)",
     "commonName": "Yellow Clown Goby",
     "scientificName": "Gobiodon okinawae",
@@ -6700,7 +7251,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Gobies e Blênios"
   },
   {
-    "id": "418",
+    "id": "432",
     "name": "Clown Goby Citrinus (Gobiodon citrinus)",
     "commonName": "Clown Goby Citrinus",
     "scientificName": "Gobiodon citrinus",
@@ -6716,7 +7267,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Gobies e Blênios"
   },
   {
-    "id": "419",
+    "id": "433",
     "name": "Lawnmower Algae Blenny (Salarias fasciatus)",
     "commonName": "Lawnmower Algae Blenny",
     "scientificName": "Salarias fasciatus",
@@ -6731,7 +7282,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Gobies e Blênios"
   },
   {
-    "id": "420",
+    "id": "434",
     "name": "Tailspot Blenny (Ecsenius stigmatura)",
     "commonName": "Tailspot Blenny",
     "scientificName": "Ecsenius stigmatura",
@@ -6747,7 +7298,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Gobies e Blênios"
   },
   {
-    "id": "421",
+    "id": "435",
     "name": "Flame Hawkfish (Neocirrhites armatus)",
     "commonName": "Flame Hawkfish",
     "scientificName": "Neocirrhites armatus",
@@ -6762,7 +7313,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "422",
+    "id": "436",
     "name": "Longnose Hawkfish (Oxycirrhites typus)",
     "commonName": "Longnose Hawkfish",
     "scientificName": "Oxycirrhites typus",
@@ -6778,7 +7329,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "423",
+    "id": "437",
     "name": "Moreia Snowflake (Echidna nebulosa)",
     "commonName": "Moreia Snowflake",
     "scientificName": "Echidna nebulosa",
@@ -6793,7 +7344,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "424",
+    "id": "438",
     "name": "Lionfish Volitans (Pterois volitans)",
     "commonName": "Lionfish Volitans",
     "scientificName": "Pterois volitans",
@@ -6809,7 +7360,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "425",
+    "id": "439",
     "name": "Niger Trigger (Odonus niger)",
     "commonName": "Niger Trigger",
     "scientificName": "Odonus niger",
@@ -6825,7 +7376,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "426",
+    "id": "440",
     "name": "Firefish Exquisite (Nemateleotris decora var. Exquisite)",
     "commonName": "Firefish Exquisite",
     "scientificName": "Nemateleotris decora var. Exquisite",
@@ -6835,12 +7386,12 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "MARINE_FISH",
-    "imageSlug": "245_exquisite_helfrichi_firefish.jpg",
+    "imageSlug": "",
     "section": "Peixes Marinhos",
     "familyGroup": "Geral"
   },
   {
-    "id": "427",
+    "id": "441",
     "name": "Firefish Helfrichi (Nemateleotris helfrichi)",
     "commonName": "Firefish Helfrichi",
     "scientificName": "Nemateleotris helfrichi",
@@ -6856,7 +7407,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "428",
+    "id": "442",
     "name": "Camarão Arlequim (Hymenocera picta)",
     "commonName": "Camarão Arlequim",
     "scientificName": "Hymenocera picta",
@@ -6871,7 +7422,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Equipe de Limpeza & Invertebrados"
   },
   {
-    "id": "429",
+    "id": "443",
     "name": "Camarão Sexy Shrimp (Thor amboinensis)",
     "commonName": "Camarão Sexy Shrimp",
     "scientificName": "Thor amboinensis",
@@ -6887,7 +7438,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Equipe de Limpeza & Invertebrados"
   },
   {
-    "id": "430",
+    "id": "444",
     "name": "Camarão Peppermint (Lysmata wurdemanni)",
     "commonName": "Camarão Peppermint",
     "scientificName": "Lysmata wurdemanni",
@@ -6902,7 +7453,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Equipe de Limpeza & Invertebrados"
   },
   {
-    "id": "431",
+    "id": "445",
     "name": "Camarão Stenopus Coral Banded (Stenopus hispidus)",
     "commonName": "Camarão Stenopus Coral Banded",
     "scientificName": "Stenopus hispidus",
@@ -6918,7 +7469,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Equipe de Limpeza & Invertebrados"
   },
   {
-    "id": "432",
+    "id": "446",
     "name": "Caranguejo Esmeralda Mithrax (Mithraculus sculptus)",
     "commonName": "Caranguejo Esmeralda Mithrax",
     "scientificName": "Mithraculus sculptus",
@@ -6933,7 +7484,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "433",
+    "id": "447",
     "name": "Caranguejo Pom Pom Boxer (Lybia edmondsoni)",
     "commonName": "Caranguejo Pom Pom Boxer",
     "scientificName": "Lybia edmondsoni",
@@ -6948,7 +7499,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "434",
+    "id": "448",
     "name": "Caranguejo Anêmona Porcelana (Neopetrolisthes maculatus)",
     "commonName": "Caranguejo Anêmona Porcelana",
     "scientificName": "Neopetrolisthes maculatus",
@@ -6964,7 +7515,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "435",
+    "id": "449",
     "name": "Ostra Tridacna Maxima Azul (Tridacna maxima)",
     "commonName": "Ostra Tridacna Maxima Azul",
     "scientificName": "Tridacna maxima",
@@ -6979,7 +7530,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Equipe de Limpeza & Invertebrados"
   },
   {
-    "id": "436",
+    "id": "450",
     "name": "Ostra Tridacna Crocea (Tridacna crocea)",
     "commonName": "Ostra Tridacna Crocea",
     "scientificName": "Tridacna crocea",
@@ -6995,7 +7546,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Equipe de Limpeza & Invertebrados"
   },
   {
-    "id": "437",
+    "id": "451",
     "name": "Estrela Vermelha Fromia (Fromia milleporella)",
     "commonName": "Estrela Vermelha Fromia",
     "scientificName": "Fromia milleporella",
@@ -7011,7 +7562,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "438",
+    "id": "452",
     "name": "Ouriço Pincushion Tuxedo (Mespilia globulus)",
     "commonName": "Ouriço Pincushion Tuxedo",
     "scientificName": "Mespilia globulus",
@@ -7027,7 +7578,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "439",
+    "id": "453",
     "name": "Guppy Blue Grass (Poecilia reticulata)",
     "commonName": "Guppy Blue Grass",
     "scientificName": "Poecilia reticulata",
@@ -7042,7 +7593,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Poecilídeos (Ovivíparos)"
   },
   {
-    "id": "440",
+    "id": "454",
     "name": "Guppy Red Grass (Poecilia reticulata)",
     "commonName": "Guppy Red Grass",
     "scientificName": "Poecilia reticulata",
@@ -7058,7 +7609,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Poecilídeos (Ovivíparos)"
   },
   {
-    "id": "441",
+    "id": "455",
     "name": "Guppy Albino Sky Blue (Poecilia reticulata)",
     "commonName": "Guppy Albino Sky Blue",
     "scientificName": "Poecilia reticulata",
@@ -7073,7 +7624,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Poecilídeos (Ovivíparos)"
   },
   {
-    "id": "442",
+    "id": "456",
     "name": "Guppy Albino Topaz (Poecilia reticulata)",
     "commonName": "Guppy Albino Topaz",
     "scientificName": "Poecilia reticulata",
@@ -7089,7 +7640,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Poecilídeos (Ovivíparos)"
   },
   {
-    "id": "443",
+    "id": "457",
     "name": "Guppy Lazuli (Poecilia reticulata)",
     "commonName": "Guppy Lazuli",
     "scientificName": "Poecilia reticulata",
@@ -7105,7 +7656,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Poecilídeos (Ovivíparos)"
   },
   {
-    "id": "444",
+    "id": "458",
     "name": "Guppy Albino Japan Blue (Poecilia reticulata)",
     "commonName": "Guppy Albino Japan Blue",
     "scientificName": "Poecilia reticulata",
@@ -7120,7 +7671,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Poecilídeos (Ovivíparos)"
   },
   {
-    "id": "445",
+    "id": "459",
     "name": "Guppy Red Dragon (Poecilia reticulata)",
     "commonName": "Guppy Red Dragon",
     "scientificName": "Poecilia reticulata",
@@ -7136,7 +7687,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Poecilídeos (Ovivíparos)"
   },
   {
-    "id": "446",
+    "id": "460",
     "name": "Guppy Koi Tuxedo (Poecilia reticulata)",
     "commonName": "Guppy Koi Tuxedo",
     "scientificName": "Poecilia reticulata",
@@ -7152,7 +7703,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Poecilídeos (Ovivíparos)"
   },
   {
-    "id": "447",
+    "id": "461",
     "name": "Betta Mustard Gas (Betta splendens)",
     "commonName": "Betta Mustard Gas",
     "scientificName": "Betta splendens",
@@ -7167,7 +7718,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Bettas & Anabantídeos"
   },
   {
-    "id": "448",
+    "id": "462",
     "name": "Betta Black Orchid (Betta splendens)",
     "commonName": "Betta Black Orchid",
     "scientificName": "Betta splendens",
@@ -7182,7 +7733,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Bettas & Anabantídeos"
   },
   {
-    "id": "449",
+    "id": "463",
     "name": "Betta Black Samurai (Betta splendens)",
     "commonName": "Betta Black Samurai",
     "scientificName": "Betta splendens",
@@ -7198,7 +7749,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Bettas & Anabantídeos"
   },
   {
-    "id": "450",
+    "id": "464",
     "name": "Betta Dragon Scale Red (Betta splendens)",
     "commonName": "Betta Dragon Scale Red",
     "scientificName": "Betta splendens",
@@ -7213,7 +7764,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Bettas & Anabantídeos"
   },
   {
-    "id": "451",
+    "id": "465",
     "name": "Betta Dragon Scale Black (Betta splendens)",
     "commonName": "Betta Dragon Scale Black",
     "scientificName": "Betta splendens",
@@ -7229,7 +7780,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Bettas & Anabantídeos"
   },
   {
-    "id": "452",
+    "id": "466",
     "name": "Betta Super Red Halfmoon (Betta splendens)",
     "commonName": "Betta Super Red Halfmoon",
     "scientificName": "Betta splendens",
@@ -7245,7 +7796,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Bettas & Anabantídeos"
   },
   {
-    "id": "453",
+    "id": "467",
     "name": "Betta Double Tail Dupla Cauda (Betta splendens)",
     "commonName": "Betta Double Tail Dupla Cauda",
     "scientificName": "Betta splendens",
@@ -7260,7 +7811,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Bettas & Anabantídeos"
   },
   {
-    "id": "454",
+    "id": "468",
     "name": "Betta Rosetail Halfmoon (Betta splendens)",
     "commonName": "Betta Rosetail Halfmoon",
     "scientificName": "Betta splendens",
@@ -7276,7 +7827,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Bettas & Anabantídeos"
   },
   {
-    "id": "455",
+    "id": "469",
     "name": "Betta Giant King (Betta splendens var. Giant)",
     "commonName": "Betta Giant King",
     "scientificName": "Betta splendens var. Giant",
@@ -7291,7 +7842,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Bettas & Anabantídeos"
   },
   {
-    "id": "456",
+    "id": "470",
     "name": "Betta Alien Híbrido (Betta imbellis x splendens)",
     "commonName": "Betta Alien Híbrido",
     "scientificName": "Betta imbellis x splendens",
@@ -7307,7 +7858,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Bettas & Anabantídeos"
   },
   {
-    "id": "457",
+    "id": "471",
     "name": "Plati Tiger Bumblebee (Xiphophorus maculatus)",
     "commonName": "Plati Tiger Bumblebee",
     "scientificName": "Xiphophorus maculatus",
@@ -7322,7 +7873,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Poecilídeos (Ovivíparos)"
   },
   {
-    "id": "458",
+    "id": "472",
     "name": "Plati Panda (Xiphophorus maculatus)",
     "commonName": "Plati Panda",
     "scientificName": "Xiphophorus maculatus",
@@ -7338,7 +7889,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Poecilídeos (Ovivíparos)"
   },
   {
-    "id": "459",
+    "id": "473",
     "name": "Molinésia Velífera Verde (Poecilia velifera)",
     "commonName": "Molinésia Velífera Verde",
     "scientificName": "Poecilia velifera",
@@ -7354,7 +7905,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Poecilídeos (Ovivíparos)"
   },
   {
-    "id": "460",
+    "id": "474",
     "name": "Killifish Fundulopanchax Gardneri (Fundulopanchax gardneri)",
     "commonName": "Killifish Fundulopanchax Gardneri",
     "scientificName": "Fundulopanchax gardneri",
@@ -7369,7 +7920,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "461",
+    "id": "475",
     "name": "Killifish Aphyosemion Australe Orange (Aphyosemion australe)",
     "commonName": "Killifish Aphyosemion Australe Orange",
     "scientificName": "Aphyosemion australe",
@@ -7385,7 +7936,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "462",
+    "id": "476",
     "name": "Tetra Imperador (Nematobrycon palmeri)",
     "commonName": "Tetra Imperador",
     "scientificName": "Nematobrycon palmeri",
@@ -7403,7 +7954,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Caracídeos (Tetras e Cardumes)"
   },
   {
-    "id": "463",
+    "id": "477",
     "name": "Tetra Imperador Black (Nematobrycon palmeri var. Black)",
     "commonName": "Tetra Imperador Black",
     "scientificName": "Nematobrycon palmeri var. Black",
@@ -7418,7 +7969,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Caracídeos (Tetras e Cardumes)"
   },
   {
-    "id": "464",
+    "id": "478",
     "name": "Tetra Kerri Super Blue (Inpaichthys kerri)",
     "commonName": "Tetra Kerri Super Blue",
     "scientificName": "Inpaichthys kerri",
@@ -7434,7 +7985,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Caracídeos (Tetras e Cardumes)"
   },
   {
-    "id": "465",
+    "id": "479",
     "name": "Tetra Limão (Hyphessobrycon pulchripinnis)",
     "commonName": "Tetra Limão",
     "scientificName": "Hyphessobrycon pulchripinnis",
@@ -7449,7 +8000,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Caracídeos (Tetras e Cardumes)"
   },
   {
-    "id": "466",
+    "id": "480",
     "name": "Tetra Pristella Raio-X (Pristella maxillaris)",
     "commonName": "Tetra Pristella Raio-X",
     "scientificName": "Pristella maxillaris",
@@ -7465,7 +8016,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Caracídeos (Tetras e Cardumes)"
   },
   {
-    "id": "467",
+    "id": "481",
     "name": "Tetra Fantasma Negro (Hyphessobrycon megalopterus)",
     "commonName": "Tetra Fantasma Negro",
     "scientificName": "Hyphessobrycon megalopterus",
@@ -7480,7 +8031,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Caracídeos (Tetras e Cardumes)"
   },
   {
-    "id": "468",
+    "id": "482",
     "name": "Tetra Fantasma Vermelho (Hyphessobrycon sweglesi)",
     "commonName": "Tetra Fantasma Vermelho",
     "scientificName": "Hyphessobrycon sweglesi",
@@ -7496,7 +8047,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Caracídeos (Tetras e Cardumes)"
   },
   {
-    "id": "469",
+    "id": "483",
     "name": "Tetra do Congo (Phenacogrammus interruptus)",
     "commonName": "Tetra do Congo",
     "scientificName": "Phenacogrammus interruptus",
@@ -7514,7 +8065,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Caracídeos (Tetras e Cardumes)"
   },
   {
-    "id": "470",
+    "id": "484",
     "name": "Tetra Diamante (Moenkhausia pittieri)",
     "commonName": "Tetra Diamante",
     "scientificName": "Moenkhausia pittieri",
@@ -7529,7 +8080,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Caracídeos (Tetras e Cardumes)"
   },
   {
-    "id": "471",
+    "id": "485",
     "name": "Tetra Olho-de-Fogo (Hemigrammus ocellifer)",
     "commonName": "Tetra Olho-de-Fogo",
     "scientificName": "Hemigrammus ocellifer",
@@ -7545,7 +8096,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Caracídeos (Tetras e Cardumes)"
   },
   {
-    "id": "472",
+    "id": "486",
     "name": "Tetra Bleeding Heart Coração Sangrento (Hyphessobrycon erythrostigma)",
     "commonName": "Tetra Bleeding Heart Coração Sangrento",
     "scientificName": "Hyphessobrycon erythrostigma",
@@ -7560,7 +8111,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Caracídeos (Tetras e Cardumes)"
   },
   {
-    "id": "473",
+    "id": "487",
     "name": "Tetra Rosáceo (Hyphessobrycon rosaceus)",
     "commonName": "Tetra Rosáceo",
     "scientificName": "Hyphessobrycon rosaceus",
@@ -7576,7 +8127,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Caracídeos (Tetras e Cardumes)"
   },
   {
-    "id": "474",
+    "id": "488",
     "name": "Tetra Ornatus Branco (Hyphessobrycon bentosi)",
     "commonName": "Tetra Ornatus Branco",
     "scientificName": "Hyphessobrycon bentosi",
@@ -7592,7 +8143,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Caracídeos (Tetras e Cardumes)"
   },
   {
-    "id": "475",
+    "id": "489",
     "name": "Tetra Pinguim (Thayeria boehlkei)",
     "commonName": "Tetra Pinguim",
     "scientificName": "Thayeria boehlkei",
@@ -7607,7 +8158,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Caracídeos (Tetras e Cardumes)"
   },
   {
-    "id": "476",
+    "id": "490",
     "name": "Tetra Glowlight (Hemigrammus erythrozonus)",
     "commonName": "Tetra Glowlight",
     "scientificName": "Hemigrammus erythrozonus",
@@ -7623,7 +8174,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Caracídeos (Tetras e Cardumes)"
   },
   {
-    "id": "477",
+    "id": "491",
     "name": "Tetra Buenos Aires (Hyphessobrycon anisitsi)",
     "commonName": "Tetra Buenos Aires",
     "scientificName": "Hyphessobrycon anisitsi",
@@ -7639,7 +8190,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Caracídeos (Tetras e Cardumes)"
   },
   {
-    "id": "478",
+    "id": "492",
     "name": "Peixe-Lápis Vermelho (Nannostomus beckfordi)",
     "commonName": "Peixe-Lápis Vermelho",
     "scientificName": "Nannostomus beckfordi",
@@ -7654,7 +8205,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "479",
+    "id": "493",
     "name": "Peixe-Borboleta de Água Doce (Carnegiella strigata)",
     "commonName": "Peixe-Borboleta de Água Doce",
     "scientificName": "Carnegiella strigata",
@@ -7670,7 +8221,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "480",
+    "id": "494",
     "name": "Rásbora Mosquito Chili (Boraras brigittae)",
     "commonName": "Rásbora Mosquito Chili",
     "scientificName": "Boraras brigittae",
@@ -7685,7 +8236,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "481",
+    "id": "495",
     "name": "Rásbora Espei Lambchop (Trigonostigma espei)",
     "commonName": "Rásbora Espei Lambchop",
     "scientificName": "Trigonostigma espei",
@@ -7701,7 +8252,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "482",
+    "id": "496",
     "name": "Barbo Denisoni Torpedo (Sahyadria denisonii)",
     "commonName": "Barbo Denisoni Torpedo",
     "scientificName": "Sahyadria denisonii",
@@ -7716,7 +8267,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "483",
+    "id": "497",
     "name": "Barbo Odessa (Pethia padamya)",
     "commonName": "Barbo Odessa",
     "scientificName": "Pethia padamya",
@@ -7731,7 +8282,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "484",
+    "id": "498",
     "name": "Barbo Rosy Conchonius (Pethia conchonius)",
     "commonName": "Barbo Rosy Conchonius",
     "scientificName": "Pethia conchonius",
@@ -7747,7 +8298,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "485",
+    "id": "499",
     "name": "Barbo Tinfoil Barbo Prata (Barbonymus schwanenfeldii)",
     "commonName": "Barbo Tinfoil Barbo Prata",
     "scientificName": "Barbonymus schwanenfeldii",
@@ -7763,7 +8314,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "486",
+    "id": "500",
     "name": "Tanichthys Neon Chinês Dourado (Tanichthys albonubes var. Gold)",
     "commonName": "Tanichthys Neon Chinês Dourado",
     "scientificName": "Tanichthys albonubes var. Gold",
@@ -7778,7 +8329,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Caracídeos (Tetras e Cardumes)"
   },
   {
-    "id": "487",
+    "id": "501",
     "name": "Tanichthys Neon Chinês Clássico (Tanichthys albonubes)",
     "commonName": "Tanichthys Neon Chinês Clássico",
     "scientificName": "Tanichthys albonubes",
@@ -7794,7 +8345,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Caracídeos (Tetras e Cardumes)"
   },
   {
-    "id": "488",
+    "id": "502",
     "name": "Peixe Arco-Íris Boesemani (Melanotaenia boesemani)",
     "commonName": "Peixe Arco-Íris Boesemani",
     "scientificName": "Melanotaenia boesemani",
@@ -7809,7 +8360,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "489",
+    "id": "503",
     "name": "Peixe Arco-Íris Neon Praecox (Melanotaenia praecox)",
     "commonName": "Peixe Arco-Íris Neon Praecox",
     "scientificName": "Melanotaenia praecox",
@@ -7825,7 +8376,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Caracídeos (Tetras e Cardumes)"
   },
   {
-    "id": "490",
+    "id": "504",
     "name": "Peixe Arco-Íris Furcatus (Pseudomugil furcatus)",
     "commonName": "Peixe Arco-Íris Furcatus",
     "scientificName": "Pseudomugil furcatus",
@@ -7841,12 +8392,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "491",
-    "name": "Acará Bandeira Blue Paraíba (Pterophyllum scalare var. Blue Paraíba)",
+    "id": "505",
+    "name": "Acará Bandeira Blue Paraíba (Pterophyllum scalare)",
     "commonName": "Acará Bandeira Blue Paraíba",
-    "scientificName": "Pterophyllum scalare var. Blue Paraíba",
+    "scientificName": "Pterophyllum scalare",
     "synonyms": [
       "Acará Bandeira Blue Paraíba",
+      "Acará Bandeira Blue Paraíba (Pterophyllum scalare)",
       "Acará Bandeira Blue Paraíba (Pterophyllum scalare var. Blue Paraíba)"
     ],
     "type": "LIVING",
@@ -7856,12 +8408,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Ciclídeos (Americanos e Africanos)"
   },
   {
-    "id": "492",
-    "name": "Acará Bandeira Avatar (Pterophyllum scalare var. Avatar)",
+    "id": "506",
+    "name": "Acará Bandeira Avatar (Pterophyllum scalare)",
     "commonName": "Acará Bandeira Avatar",
-    "scientificName": "Pterophyllum scalare var. Avatar",
+    "scientificName": "Pterophyllum scalare",
     "synonyms": [
       "Acará Bandeira Avatar",
+      "Acará Bandeira Avatar (Pterophyllum scalare)",
       "Acará Bandeira Avatar (Pterophyllum scalare var. Avatar)",
       "acara-bandeira-avatar.jpg"
     ],
@@ -7872,12 +8425,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Ciclídeos (Americanos e Africanos)"
   },
   {
-    "id": "493",
-    "name": "Acará Altum Peruano (Pterophyllum scalare var. Peru Altum)",
+    "id": "507",
+    "name": "Acará Altum Peruano (Pterophyllum scalare)",
     "commonName": "Acará Altum Peruano",
-    "scientificName": "Pterophyllum scalare var. Peru Altum",
+    "scientificName": "Pterophyllum scalare",
     "synonyms": [
       "Acará Altum Peruano",
+      "Acará Altum Peruano (Pterophyllum scalare)",
       "Acará Altum Peruano (Pterophyllum scalare var. Peru Altum)",
       "acara-altum-verdadeiro.jpg"
     ],
@@ -7888,12 +8442,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Ciclídeos (Americanos e Africanos)"
   },
   {
-    "id": "494",
-    "name": "Acará Bandeira Gold Marble (Pterophyllum scalare var. Gold Marble)",
+    "id": "508",
+    "name": "Acará Bandeira Gold Marble (Pterophyllum scalare)",
     "commonName": "Acará Bandeira Gold Marble",
-    "scientificName": "Pterophyllum scalare var. Gold Marble",
+    "scientificName": "Pterophyllum scalare",
     "synonyms": [
       "Acará Bandeira Gold Marble",
+      "Acará Bandeira Gold Marble (Pterophyllum scalare)",
       "Acará Bandeira Gold Marble (Pterophyllum scalare var. Gold Marble)"
     ],
     "type": "LIVING",
@@ -7903,12 +8458,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Ciclídeos (Americanos e Africanos)"
   },
   {
-    "id": "495",
-    "name": "Acará Bandeira Red Devil (Pterophyllum scalare var. Red Devil)",
+    "id": "509",
+    "name": "Acará Bandeira Red Devil (Pterophyllum scalare)",
     "commonName": "Acará Bandeira Red Devil",
-    "scientificName": "Pterophyllum scalare var. Red Devil",
+    "scientificName": "Pterophyllum scalare",
     "synonyms": [
       "Acará Bandeira Red Devil",
+      "Acará Bandeira Red Devil (Pterophyllum scalare)",
       "Acará Bandeira Red Devil (Pterophyllum scalare var. Red Devil)",
       "acara-bandeira-red-devil.jpg"
     ],
@@ -7919,7 +8475,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Ciclídeos (Americanos e Africanos)"
   },
   {
-    "id": "496",
+    "id": "510",
     "name": "Acará Bandeira Leopoldi (Pterophyllum leopoldi)",
     "commonName": "Acará Bandeira Leopoldi",
     "scientificName": "Pterophyllum leopoldi",
@@ -7935,12 +8491,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Ciclídeos (Americanos e Africanos)"
   },
   {
-    "id": "497",
-    "name": "Acará Disco Red Melon (Symphysodon aequifasciatus var. Red Melon)",
+    "id": "511",
+    "name": "Acará Disco Red Melon (Symphysodon aequifasciatus)",
     "commonName": "Acará Disco Red Melon",
-    "scientificName": "Symphysodon aequifasciatus var. Red Melon",
+    "scientificName": "Symphysodon aequifasciatus",
     "synonyms": [
       "Acará Disco Red Melon",
+      "Acará Disco Red Melon (Symphysodon aequifasciatus)",
       "Acará Disco Red Melon (Symphysodon aequifasciatus var. Red Melon)"
     ],
     "type": "LIVING",
@@ -7950,12 +8507,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Ciclídeos (Americanos e Africanos)"
   },
   {
-    "id": "498",
-    "name": "Acará Disco Red Cover (Symphysodon aequifasciatus var. Red Cover)",
+    "id": "512",
+    "name": "Acará Disco Red Cover (Symphysodon aequifasciatus)",
     "commonName": "Acará Disco Red Cover",
-    "scientificName": "Symphysodon aequifasciatus var. Red Cover",
+    "scientificName": "Symphysodon aequifasciatus",
     "synonyms": [
       "Acará Disco Red Cover",
+      "Acará Disco Red Cover (Symphysodon aequifasciatus)",
       "Acará Disco Red Cover (Symphysodon aequifasciatus var. Red Cover)",
       "acara-disco-red-cover.jpg"
     ],
@@ -7966,12 +8524,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Ciclídeos (Americanos e Africanos)"
   },
   {
-    "id": "499",
-    "name": "Acará Disco Snakeskin (Symphysodon aequifasciatus var. Snakeskin)",
+    "id": "513",
+    "name": "Acará Disco Snakeskin (Symphysodon aequifasciatus)",
     "commonName": "Acará Disco Snakeskin",
-    "scientificName": "Symphysodon aequifasciatus var. Snakeskin",
+    "scientificName": "Symphysodon aequifasciatus",
     "synonyms": [
       "Acará Disco Snakeskin",
+      "Acará Disco Snakeskin (Symphysodon aequifasciatus)",
       "Acará Disco Snakeskin (Symphysodon aequifasciatus var. Snakeskin)"
     ],
     "type": "LIVING",
@@ -7981,12 +8540,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Ciclídeos (Americanos e Africanos)"
   },
   {
-    "id": "500",
-    "name": "Acará Disco Checkerboard (Symphysodon aequifasciatus var. Checkerboard)",
+    "id": "514",
+    "name": "Acará Disco Checkerboard (Symphysodon aequifasciatus)",
     "commonName": "Acará Disco Checkerboard",
-    "scientificName": "Symphysodon aequifasciatus var. Checkerboard",
+    "scientificName": "Symphysodon aequifasciatus",
     "synonyms": [
       "Acará Disco Checkerboard",
+      "Acará Disco Checkerboard (Symphysodon aequifasciatus)",
       "Acará Disco Checkerboard (Symphysodon aequifasciatus var. Checkerboard)",
       "acara-disco-checkerboard.jpg"
     ],
@@ -7997,12 +8557,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Ciclídeos (Americanos e Africanos)"
   },
   {
-    "id": "501",
-    "name": "Acará Disco Yellow Crystal (Symphysodon aequifasciatus var. Yellow)",
+    "id": "515",
+    "name": "Acará Disco Yellow Crystal (Symphysodon aequifasciatus)",
     "commonName": "Acará Disco Yellow Crystal",
-    "scientificName": "Symphysodon aequifasciatus var. Yellow",
+    "scientificName": "Symphysodon aequifasciatus",
     "synonyms": [
       "Acará Disco Yellow Crystal",
+      "Acará Disco Yellow Crystal (Symphysodon aequifasciatus)",
       "Acará Disco Yellow Crystal (Symphysodon aequifasciatus var. Yellow)",
       "acara-disco-yellow.jpg"
     ],
@@ -8013,12 +8574,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Ciclídeos (Americanos e Africanos)"
   },
   {
-    "id": "502",
-    "name": "Ramirezi Balão Electric Blue (Mikrogeophagus ramirezi var. Balloon Blue)",
+    "id": "516",
+    "name": "Ramirezi Balão Electric Blue (Mikrogeophagus ramirezi)",
     "commonName": "Ramirezi Balão Electric Blue",
-    "scientificName": "Mikrogeophagus ramirezi var. Balloon Blue",
+    "scientificName": "Mikrogeophagus ramirezi",
     "synonyms": [
       "Ramirezi Balão Electric Blue",
+      "Ramirezi Balão Electric Blue (Mikrogeophagus ramirezi)",
       "Ramirezi Balão Electric Blue (Mikrogeophagus ramirezi var. Balloon Blue)"
     ],
     "type": "LIVING",
@@ -8028,12 +8590,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Ciclídeos (Americanos e Africanos)"
   },
   {
-    "id": "503",
-    "name": "Ramirezi Balão Gold (Mikrogeophagus ramirezi var. Balloon Gold)",
+    "id": "517",
+    "name": "Ramirezi Balão Gold (Mikrogeophagus ramirezi)",
     "commonName": "Ramirezi Balão Gold",
-    "scientificName": "Mikrogeophagus ramirezi var. Balloon Gold",
+    "scientificName": "Mikrogeophagus ramirezi",
     "synonyms": [
       "Ramirezi Balão Gold",
+      "Ramirezi Balão Gold (Mikrogeophagus ramirezi)",
       "Ramirezi Balão Gold (Mikrogeophagus ramirezi var. Balloon Gold)",
       "ramirezi-balao-gold.jpg"
     ],
@@ -8044,12 +8607,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Ciclídeos (Americanos e Africanos)"
   },
   {
-    "id": "504",
-    "name": "Ramirezi Véu Longfin (Mikrogeophagus ramirezi var. Longfin)",
+    "id": "518",
+    "name": "Ramirezi Véu Longfin (Mikrogeophagus ramirezi)",
     "commonName": "Ramirezi Véu Longfin",
-    "scientificName": "Mikrogeophagus ramirezi var. Longfin",
+    "scientificName": "Mikrogeophagus ramirezi",
     "synonyms": [
       "Ramirezi Véu Longfin",
+      "Ramirezi Véu Longfin (Mikrogeophagus ramirezi)",
       "Ramirezi Véu Longfin (Mikrogeophagus ramirezi var. Longfin)",
       "ramirezi-veu.jpg"
     ],
@@ -8060,7 +8624,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Ciclídeos (Americanos e Africanos)"
   },
   {
-    "id": "505",
+    "id": "519",
     "name": "Ramirezi Boliviano Papilocromis (Mikrogeophagus altispinosus)",
     "commonName": "Ramirezi Boliviano Papilocromis",
     "scientificName": "Mikrogeophagus altispinosus",
@@ -8075,7 +8639,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Ciclídeos (Americanos e Africanos)"
   },
   {
-    "id": "506",
+    "id": "520",
     "name": "Kribensis Comum (Pelvicachromis pulcher)",
     "commonName": "Kribensis Comum",
     "scientificName": "Pelvicachromis pulcher",
@@ -8090,7 +8654,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "507",
+    "id": "521",
     "name": "Apistogramma Borellii Opal (Apistogramma borellii)",
     "commonName": "Apistogramma Borellii Opal",
     "scientificName": "Apistogramma borellii",
@@ -8106,7 +8670,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Ciclídeos (Americanos e Africanos)"
   },
   {
-    "id": "508",
+    "id": "522",
     "name": "Laetacara Curviceps Peixe-Bandeira Anão (Laetacara curviceps)",
     "commonName": "Laetacara Curviceps Peixe-Bandeira Anão",
     "scientificName": "Laetacara curviceps",
@@ -8122,12 +8686,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "509",
-    "name": "Acará Severo Gold (Heros efasciatus var. Gold)",
+    "id": "523",
+    "name": "Acará Severo Gold (Heros efasciatus)",
     "commonName": "Acará Severo Gold",
-    "scientificName": "Heros efasciatus var. Gold",
+    "scientificName": "Heros efasciatus",
     "synonyms": [
       "Acará Severo Gold",
+      "Acará Severo Gold (Heros efasciatus)",
       "Acará Severo Gold (Heros efasciatus var. Gold)"
     ],
     "type": "LIVING",
@@ -8137,12 +8702,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Ciclídeos (Americanos e Africanos)"
   },
   {
-    "id": "510",
-    "name": "Acará Severo Red Spotted (Heros efasciatus var. Red Spotted)",
+    "id": "524",
+    "name": "Acará Severo Red Spotted (Heros efasciatus)",
     "commonName": "Acará Severo Red Spotted",
-    "scientificName": "Heros efasciatus var. Red Spotted",
+    "scientificName": "Heros efasciatus",
     "synonyms": [
       "Acará Severo Red Spotted",
+      "Acará Severo Red Spotted (Heros efasciatus)",
       "Acará Severo Red Spotted (Heros efasciatus var. Red Spotted)",
       "acara-severo-green.jpg"
     ],
@@ -8153,7 +8719,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Ciclídeos (Americanos e Africanos)"
   },
   {
-    "id": "511",
+    "id": "525",
     "name": "Acará Festivum Mesonauta (Mesonauta festivus)",
     "commonName": "Acará Festivum Mesonauta",
     "scientificName": "Mesonauta festivus",
@@ -8168,7 +8734,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Ciclídeos (Americanos e Africanos)"
   },
   {
-    "id": "512",
+    "id": "526",
     "name": "Geophagus Sveni Tronco (Geophagus sveni)",
     "commonName": "Geophagus Sveni Tronco",
     "scientificName": "Geophagus sveni",
@@ -8184,7 +8750,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "513",
+    "id": "527",
     "name": "Ciclídeo Joia Vermelho (Hemichromis bimaculatus)",
     "commonName": "Ciclídeo Joia Vermelho",
     "scientificName": "Hemichromis bimaculatus",
@@ -8200,7 +8766,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Ciclídeos (Americanos e Africanos)"
   },
   {
-    "id": "514",
+    "id": "528",
     "name": "Jack Dempsey Electric Blue (Rocio octofasciata var. Blue)",
     "commonName": "Jack Dempsey Electric Blue",
     "scientificName": "Rocio octofasciata var. Blue",
@@ -8215,7 +8781,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "515",
+    "id": "529",
     "name": "Acará Azul Electric Blue (Andinoacara pulcher var. Blue)",
     "commonName": "Acará Azul Electric Blue",
     "scientificName": "Andinoacara pulcher var. Blue",
@@ -8231,7 +8797,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Ciclídeos (Americanos e Africanos)"
   },
   {
-    "id": "516",
+    "id": "530",
     "name": "Ciclídeo Flowerhorn Red Dragon (Amphilophus hybrid)",
     "commonName": "Ciclídeo Flowerhorn Red Dragon",
     "scientificName": "Amphilophus hybrid",
@@ -8246,7 +8812,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Ciclídeos (Americanos e Africanos)"
   },
   {
-    "id": "517",
+    "id": "531",
     "name": "Acará Papagaio Blood Parrot (Amphilophus citrinellus x Vieja)",
     "commonName": "Acará Papagaio Blood Parrot",
     "scientificName": "Amphilophus citrinellus x Vieja",
@@ -8262,7 +8828,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Ciclídeos (Americanos e Africanos)"
   },
   {
-    "id": "518",
+    "id": "532",
     "name": "Ciclídeo Frontosa Moba Zaire (Cyphotilapia frontosa)",
     "commonName": "Ciclídeo Frontosa Moba Zaire",
     "scientificName": "Cyphotilapia frontosa",
@@ -8278,7 +8844,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Ciclídeos (Americanos e Africanos)"
   },
   {
-    "id": "519",
+    "id": "533",
     "name": "Coridora Julii Leopardo (Corydoras julii)",
     "commonName": "Coridora Julii Leopardo",
     "scientificName": "Corydoras julii",
@@ -8293,7 +8859,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Coridoras (Callichthyidae)"
   },
   {
-    "id": "520",
+    "id": "534",
     "name": "Coridora Trilineatus (Corydoras trilineatus)",
     "commonName": "Coridora Trilineatus",
     "scientificName": "Corydoras trilineatus",
@@ -8309,7 +8875,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Coridoras (Callichthyidae)"
   },
   {
-    "id": "521",
+    "id": "535",
     "name": "Coridora Adolfoi (Corydoras adolfoi)",
     "commonName": "Coridora Adolfoi",
     "scientificName": "Corydoras adolfoi",
@@ -8325,7 +8891,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Coridoras (Callichthyidae)"
   },
   {
-    "id": "522",
+    "id": "536",
     "name": "Coridora Pigmeu Anã (Corydoras pygmaeus)",
     "commonName": "Coridora Pigmeu Anã",
     "scientificName": "Corydoras pygmaeus",
@@ -8340,7 +8906,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Coridoras (Callichthyidae)"
   },
   {
-    "id": "523",
+    "id": "537",
     "name": "Coridora Hastatus (Corydoras hastatus)",
     "commonName": "Coridora Hastatus",
     "scientificName": "Corydoras hastatus",
@@ -8356,7 +8922,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Coridoras (Callichthyidae)"
   },
   {
-    "id": "524",
+    "id": "538",
     "name": "Coridora Habrosus (Corydoras habrosus)",
     "commonName": "Coridora Habrosus",
     "scientificName": "Corydoras habrosus",
@@ -8372,7 +8938,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Coridoras (Callichthyidae)"
   },
   {
-    "id": "525",
+    "id": "539",
     "name": "Cascudo Zebra Imperial L046 (Hypancistrus zebra)",
     "commonName": "Cascudo Zebra Imperial L046",
     "scientificName": "Hypancistrus zebra",
@@ -8387,12 +8953,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Cascudos & Loricariídeos"
   },
   {
-    "id": "526",
-    "name": "Cascudo Queen Arabesque L260 (Hypancistrus sp. L260)",
+    "id": "540",
+    "name": "Cascudo Queen Arabesque L260 (Hypancistrus sp.)",
     "commonName": "Cascudo Queen Arabesque L260",
-    "scientificName": "Hypancistrus sp. L260",
+    "scientificName": "Hypancistrus sp.",
     "synonyms": [
       "Cascudo Queen Arabesque L260",
+      "Cascudo Queen Arabesque L260 (Hypancistrus sp.)",
       "Cascudo Queen Arabesque L260 (Hypancistrus sp. L260)",
       "cascudo-queen-arabesque.jpg"
     ],
@@ -8403,7 +8970,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Cascudos & Loricariídeos"
   },
   {
-    "id": "527",
+    "id": "541",
     "name": "Cascudo Panaque Real L190 (Panaque nigrolineatus)",
     "commonName": "Cascudo Panaque Real L190",
     "scientificName": "Panaque nigrolineatus",
@@ -8418,7 +8985,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Cascudos & Loricariídeos"
   },
   {
-    "id": "528",
+    "id": "542",
     "name": "Cascudo Bola de Neve L102 (Hypancistrus inspector)",
     "commonName": "Cascudo Bola de Neve L102",
     "scientificName": "Hypancistrus inspector",
@@ -8434,7 +9001,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Cascudos & Loricariídeos"
   },
   {
-    "id": "529",
+    "id": "543",
     "name": "Cascudo Melancia L330 (Panaque bathyphilus)",
     "commonName": "Cascudo Melancia L330",
     "scientificName": "Panaque bathyphilus",
@@ -8449,7 +9016,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Cascudos & Loricariídeos"
   },
   {
-    "id": "530",
+    "id": "544",
     "name": "Cascudo Vampiro L240 (Leporacanthicus galaxias)",
     "commonName": "Cascudo Vampiro L240",
     "scientificName": "Leporacanthicus galaxias",
@@ -8465,7 +9032,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Cascudos & Loricariídeos"
   },
   {
-    "id": "531",
+    "id": "545",
     "name": "Cascudo Leopardo L114 (Pseudacanthicus leopardus)",
     "commonName": "Cascudo Leopardo L114",
     "scientificName": "Pseudacanthicus leopardus",
@@ -8481,7 +9048,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Cascudos & Loricariídeos"
   },
   {
-    "id": "532",
+    "id": "546",
     "name": "Peixe-Galho Farlowella (Farlowella acus)",
     "commonName": "Peixe-Galho Farlowella",
     "scientificName": "Farlowella acus",
@@ -8496,7 +9063,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "533",
+    "id": "547",
     "name": "Rineloricaria Red Leliella (Leliella heteroptera)",
     "commonName": "Rineloricaria Red Leliella",
     "scientificName": "Leliella heteroptera",
@@ -8512,7 +9079,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "534",
+    "id": "548",
     "name": "Ituí Cavalo Black Ghost (Apteronotus albifrons)",
     "commonName": "Ituí Cavalo Black Ghost",
     "scientificName": "Apteronotus albifrons",
@@ -8527,7 +9094,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "535",
+    "id": "549",
     "name": "Cobrinha Kuhli (Pangio kuhlii)",
     "commonName": "Cobrinha Kuhli",
     "scientificName": "Pangio kuhlii",
@@ -8543,7 +9110,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "536",
+    "id": "550",
     "name": "Sewellia Hillstream Butterfly (Sewellia lineolata)",
     "commonName": "Sewellia Hillstream Butterfly",
     "scientificName": "Sewellia lineolata",
@@ -8559,7 +9126,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "537",
+    "id": "551",
     "name": "Baiacu Anão Pea Puffer (Carinotetraodon travancoricus)",
     "commonName": "Baiacu Anão Pea Puffer",
     "scientificName": "Carinotetraodon travancoricus",
@@ -8574,7 +9141,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Caracídeos (Tetras e Cardumes)"
   },
   {
-    "id": "538",
+    "id": "552",
     "name": "Baiacu Amazônico (Colomesus asellus)",
     "commonName": "Baiacu Amazônico",
     "scientificName": "Colomesus asellus",
@@ -8590,7 +9157,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "539",
+    "id": "553",
     "name": "Goby Abelha Bumblebee (Brachygobius doriae)",
     "commonName": "Goby Abelha Bumblebee",
     "scientificName": "Brachygobius doriae",
@@ -8605,7 +9172,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Gobies e Blênios"
   },
   {
-    "id": "540",
+    "id": "554",
     "name": "Dario Dario Scarlet Badis (Dario dario)",
     "commonName": "Dario Dario Scarlet Badis",
     "scientificName": "Dario dario",
@@ -8621,7 +9188,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "541",
+    "id": "555",
     "name": "Peixe-Vidro Indiano (Parambassis ranga)",
     "commonName": "Peixe-Vidro Indiano",
     "scientificName": "Parambassis ranga",
@@ -8637,12 +9204,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "542",
-    "name": "Camarão Caridina Crystal Red (Caridina logemanni var. Crystal Red)",
+    "id": "556",
+    "name": "Camarão Caridina Crystal Red (Caridina logemanni)",
     "commonName": "Camarão Caridina Crystal Red",
-    "scientificName": "Caridina logemanni var. Crystal Red",
+    "scientificName": "Caridina logemanni",
     "synonyms": [
       "Camarão Caridina Crystal Red",
+      "Camarão Caridina Crystal Red (Caridina logemanni)",
       "Camarão Caridina Crystal Red (Caridina logemanni var. Crystal Red)"
     ],
     "type": "LIVING",
@@ -8652,12 +9220,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Equipe de Limpeza & Invertebrados"
   },
   {
-    "id": "543",
-    "name": "Camarão Caridina Crystal Black (Caridina logemanni var. Crystal Black)",
+    "id": "557",
+    "name": "Camarão Caridina Crystal Black (Caridina logemanni)",
     "commonName": "Camarão Caridina Crystal Black",
-    "scientificName": "Caridina logemanni var. Crystal Black",
+    "scientificName": "Caridina logemanni",
     "synonyms": [
       "Camarão Caridina Crystal Black",
+      "Camarão Caridina Crystal Black (Caridina logemanni)",
       "Camarão Caridina Crystal Black (Caridina logemanni var. Crystal Black)"
     ],
     "type": "LIVING",
@@ -8667,12 +9236,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Equipe de Limpeza & Invertebrados"
   },
   {
-    "id": "544",
-    "name": "Camarão Caridina Blue Bolt (Caridina cantonensis var. Blue Bolt)",
+    "id": "558",
+    "name": "Camarão Caridina Blue Bolt (Caridina cantonensis)",
     "commonName": "Camarão Caridina Blue Bolt",
-    "scientificName": "Caridina cantonensis var. Blue Bolt",
+    "scientificName": "Caridina cantonensis",
     "synonyms": [
       "Camarão Caridina Blue Bolt",
+      "Camarão Caridina Blue Bolt (Caridina cantonensis)",
       "Camarão Caridina Blue Bolt (Caridina cantonensis var. Blue Bolt)"
     ],
     "type": "LIVING",
@@ -8682,12 +9252,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Equipe de Limpeza & Invertebrados"
   },
   {
-    "id": "545",
-    "name": "Camarão Caridina King Kong (Caridina cantonensis var. King Kong)",
+    "id": "559",
+    "name": "Camarão Caridina King Kong (Caridina cantonensis)",
     "commonName": "Camarão Caridina King Kong",
-    "scientificName": "Caridina cantonensis var. King Kong",
+    "scientificName": "Caridina cantonensis",
     "synonyms": [
       "Camarão Caridina King Kong",
+      "Camarão Caridina King Kong (Caridina cantonensis)",
       "Camarão Caridina King Kong (Caridina cantonensis var. King Kong)",
       "camarao-king-kong.jpg"
     ],
@@ -8698,7 +9269,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Equipe de Limpeza & Invertebrados"
   },
   {
-    "id": "546",
+    "id": "560",
     "name": "Camarão Amano Limpador (Caridina multidentata)",
     "commonName": "Camarão Amano Limpador",
     "scientificName": "Caridina multidentata",
@@ -8713,7 +9284,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Equipe de Limpeza & Invertebrados"
   },
   {
-    "id": "547",
+    "id": "561",
     "name": "Camarão Fantasma (Macrobrachium jelskii)",
     "commonName": "Camarão Fantasma",
     "scientificName": "Macrobrachium jelskii",
@@ -8729,7 +9300,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Equipe de Limpeza & Invertebrados"
   },
   {
-    "id": "548",
+    "id": "562",
     "name": "Camarão Filtrador Bambu (Atyopsis moluccensis)",
     "commonName": "Camarão Filtrador Bambu",
     "scientificName": "Atyopsis moluccensis",
@@ -8744,7 +9315,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Equipe de Limpeza & Invertebrados"
   },
   {
-    "id": "549",
+    "id": "563",
     "name": "Camarão Filtrador Africano (Atya gabonensis)",
     "commonName": "Camarão Filtrador Africano",
     "scientificName": "Atya gabonensis",
@@ -8760,7 +9331,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Equipe de Limpeza & Invertebrados"
   },
   {
-    "id": "550",
+    "id": "564",
     "name": "Caramujo Helena Assassino (Anentome helena)",
     "commonName": "Caramujo Helena Assassino",
     "scientificName": "Anentome helena",
@@ -8775,7 +9346,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Equipe de Limpeza & Invertebrados"
   },
   {
-    "id": "551",
+    "id": "565",
     "name": "Caramujo Coelho Rabbit Laranja (Tylomelania sp.)",
     "commonName": "Caramujo Coelho Rabbit Laranja",
     "scientificName": "Tylomelania sp.",
@@ -8791,7 +9362,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Equipe de Limpeza & Invertebrados"
   },
   {
-    "id": "552",
+    "id": "566",
     "name": "Macroalga Chaetomorpha Spaghetti (Chaetomorpha linum)",
     "commonName": "Macroalga Chaetomorpha Spaghetti",
     "scientificName": "Chaetomorpha linum",
@@ -8806,7 +9377,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Flora e Macroalgas"
   },
   {
-    "id": "553",
+    "id": "567",
     "name": "Macroalga Atomic Broccoli (Gracilaria sp.)",
     "commonName": "Macroalga Atomic Broccoli",
     "scientificName": "Gracilaria sp.",
@@ -8821,7 +9392,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Flora e Macroalgas"
   },
   {
-    "id": "554",
+    "id": "568",
     "name": "Macroalga Dragon's Breath (Halymenia durvillei)",
     "commonName": "Macroalga Dragon's Breath",
     "scientificName": "Halymenia durvillei",
@@ -8836,7 +9407,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Flora e Macroalgas"
   },
   {
-    "id": "555",
+    "id": "569",
     "name": "Macroalga Pink Dragon's Tongue (Halymenia floresia)",
     "commonName": "Macroalga Pink Dragon's Tongue",
     "scientificName": "Halymenia floresia",
@@ -8851,7 +9422,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Flora e Macroalgas"
   },
   {
-    "id": "556",
+    "id": "570",
     "name": "Macroalga Red Pom Pom (Gracilaria hayi)",
     "commonName": "Macroalga Red Pom Pom",
     "scientificName": "Gracilaria hayi",
@@ -8866,7 +9437,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Flora e Macroalgas"
   },
   {
-    "id": "557",
+    "id": "571",
     "name": "Macroalga Red Ogo (Gracilaria parvispora)",
     "commonName": "Macroalga Red Ogo",
     "scientificName": "Gracilaria parvispora",
@@ -8881,7 +9452,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Flora e Macroalgas"
   },
   {
-    "id": "558",
+    "id": "572",
     "name": "Macroalga Caulerpa Prolifera Folha Lisa (Caulerpa prolifera)",
     "commonName": "Macroalga Caulerpa Prolifera Folha Lisa",
     "scientificName": "Caulerpa prolifera",
@@ -8896,7 +9467,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Flora e Macroalgas"
   },
   {
-    "id": "559",
+    "id": "573",
     "name": "Macroalga Feather Pena (Caulerpa sertularioides)",
     "commonName": "Macroalga Feather Pena",
     "scientificName": "Caulerpa sertularioides",
@@ -8911,7 +9482,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Flora e Macroalgas"
   },
   {
-    "id": "560",
+    "id": "574",
     "name": "Macroalga Caulerpa Taxifolia (Caulerpa taxifolia)",
     "commonName": "Macroalga Caulerpa Taxifolia",
     "scientificName": "Caulerpa taxifolia",
@@ -8927,7 +9498,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Flora e Macroalgas"
   },
   {
-    "id": "561",
+    "id": "575",
     "name": "Macroalga Grape Uva-do-Mar (Caulerpa racemosa)",
     "commonName": "Macroalga Grape Uva-do-Mar",
     "scientificName": "Caulerpa racemosa",
@@ -8942,7 +9513,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Flora e Macroalgas"
   },
   {
-    "id": "562",
+    "id": "576",
     "name": "Macroalga Caulerpa Lentillifera Caviar Verde (Caulerpa lentillifera)",
     "commonName": "Macroalga Caulerpa Lentillifera Caviar Verde",
     "scientificName": "Caulerpa lentillifera",
@@ -8958,7 +9529,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Flora e Macroalgas"
   },
   {
-    "id": "563",
+    "id": "577",
     "name": "Macroalga Calcária Halimeda (Halimeda incrassata)",
     "commonName": "Macroalga Calcária Halimeda",
     "scientificName": "Halimeda incrassata",
@@ -8973,7 +9544,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Flora e Macroalgas"
   },
   {
-    "id": "564",
+    "id": "578",
     "name": "Macroalga Shaving Brush (Penicillus capitatus)",
     "commonName": "Macroalga Shaving Brush",
     "scientificName": "Penicillus capitatus",
@@ -8988,7 +9559,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Flora e Macroalgas"
   },
   {
-    "id": "565",
+    "id": "579",
     "name": "Macroalga Mermaid's Fan (Udotea spinulosa)",
     "commonName": "Macroalga Mermaid's Fan",
     "scientificName": "Udotea spinulosa",
@@ -9004,7 +9575,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Flora e Macroalgas"
   },
   {
-    "id": "566",
+    "id": "580",
     "name": "Macroalga Blue Hypnea Iridescente (Hypnea pannosa)",
     "commonName": "Macroalga Blue Hypnea Iridescente",
     "scientificName": "Hypnea pannosa",
@@ -9023,7 +9594,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Flora e Macroalgas"
   },
   {
-    "id": "567",
+    "id": "581",
     "name": "Macroalga Red Grape Kelp (Botryocladia occidentalis)",
     "commonName": "Macroalga Red Grape Kelp",
     "scientificName": "Botryocladia occidentalis",
@@ -9042,7 +9613,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Flora e Macroalgas"
   },
   {
-    "id": "568",
+    "id": "582",
     "name": "Macroalga Ulva Alface-do-Mar (Ulva lactuca)",
     "commonName": "Macroalga Ulva Alface-do-Mar",
     "scientificName": "Ulva lactuca",
@@ -9057,7 +9628,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Flora e Macroalgas"
   },
   {
-    "id": "569",
+    "id": "583",
     "name": "Macroalga Codium Verde (Codium fragile)",
     "commonName": "Macroalga Codium Verde",
     "scientificName": "Codium fragile",
@@ -9073,7 +9644,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Flora e Macroalgas"
   },
   {
-    "id": "570",
+    "id": "584",
     "name": "Mangue Vermelho Propágulo (Rhizophora mangle)",
     "commonName": "Mangue Vermelho Propágulo",
     "scientificName": "Rhizophora mangle",
@@ -9088,7 +9659,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "571",
+    "id": "585",
     "name": "Anubias Nana (Anubias barteri var. nana)",
     "commonName": "Anubias Nana",
     "scientificName": "Anubias barteri var. nana",
@@ -9107,7 +9678,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Flora e Macroalgas"
   },
   {
-    "id": "572",
+    "id": "586",
     "name": "Anubias Nana Petite (Anubias barteri var. nana 'Petite')",
     "commonName": "Anubias Nana Petite",
     "scientificName": "Anubias barteri var. nana 'Petite'",
@@ -9122,7 +9693,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Flora e Macroalgas"
   },
   {
-    "id": "573",
+    "id": "587",
     "name": "Anubias Pangolino (Anubias barteri var. nana 'Pangolino')",
     "commonName": "Anubias Pangolino",
     "scientificName": "Anubias barteri var. nana 'Pangolino'",
@@ -9138,7 +9709,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Flora e Macroalgas"
   },
   {
-    "id": "574",
+    "id": "588",
     "name": "Anubias Barteri Broad Leaf (Anubias barteri var. barteri)",
     "commonName": "Anubias Barteri Broad Leaf",
     "scientificName": "Anubias barteri var. barteri",
@@ -9153,7 +9724,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Flora e Macroalgas"
   },
   {
-    "id": "575",
+    "id": "589",
     "name": "Anubias Barteri Coffeefolia (Anubias barteri var. caladiifolia 'Coffeefolia')",
     "commonName": "Anubias Barteri Coffeefolia",
     "scientificName": "Anubias barteri var. caladiifolia 'Coffeefolia'",
@@ -9169,7 +9740,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Flora e Macroalgas"
   },
   {
-    "id": "576",
+    "id": "590",
     "name": "Anubias Lanceolata (Anubias barteri var. glabra)",
     "commonName": "Anubias Lanceolata",
     "scientificName": "Anubias barteri var. glabra",
@@ -9185,7 +9756,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Flora e Macroalgas"
   },
   {
-    "id": "577",
+    "id": "591",
     "name": "Anubias Nana Pinto Variegada (Anubias barteri var. nana 'Pinto')",
     "commonName": "Anubias Nana Pinto Variegada",
     "scientificName": "Anubias barteri var. nana 'Pinto'",
@@ -9200,7 +9771,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Flora e Macroalgas"
   },
   {
-    "id": "578",
+    "id": "592",
     "name": "Anubias Golden Coin (Anubias barteri var. nana 'Golden Coin')",
     "commonName": "Anubias Golden Coin",
     "scientificName": "Anubias barteri var. nana 'Golden Coin'",
@@ -9216,7 +9787,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Flora e Macroalgas"
   },
   {
-    "id": "579",
+    "id": "593",
     "name": "Samambaia de Java Clássica (Microsorum pteropus)",
     "commonName": "Samambaia de Java Clássica",
     "scientificName": "Microsorum pteropus",
@@ -9231,7 +9802,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "580",
+    "id": "594",
     "name": "Samambaia de Java Narrow Leaf (Microsorum pteropus 'Narrow')",
     "commonName": "Samambaia de Java Narrow Leaf",
     "scientificName": "Microsorum pteropus 'Narrow'",
@@ -9247,7 +9818,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "581",
+    "id": "595",
     "name": "Microsorum Windelov (Microsorum pteropus 'Windelov')",
     "commonName": "Microsorum Windelov",
     "scientificName": "Microsorum pteropus 'Windelov'",
@@ -9262,7 +9833,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "582",
+    "id": "596",
     "name": "Microsorum Trident (Microsorum pteropus 'Trident')",
     "commonName": "Microsorum Trident",
     "scientificName": "Microsorum pteropus 'Trident'",
@@ -9278,7 +9849,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "583",
+    "id": "597",
     "name": "Bucephalandra Green Wavy (Bucephalandra pygmaea 'Wavy Green')",
     "commonName": "Bucephalandra Green Wavy",
     "scientificName": "Bucephalandra pygmaea 'Wavy Green'",
@@ -9293,7 +9864,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "584",
+    "id": "598",
     "name": "Bucephalandra Godzilla (Bucephalandra sp. 'Godzilla')",
     "commonName": "Bucephalandra Godzilla",
     "scientificName": "Bucephalandra sp. 'Godzilla'",
@@ -9309,7 +9880,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "585",
+    "id": "599",
     "name": "Bucephalandra Brownie Ghost (Bucephalandra sp. 'Brownie Ghost')",
     "commonName": "Bucephalandra Brownie Ghost",
     "scientificName": "Bucephalandra sp. 'Brownie Ghost'",
@@ -9324,7 +9895,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "586",
+    "id": "600",
     "name": "Bucephalandra Red Mini (Bucephalandra sp. 'Red Mini')",
     "commonName": "Bucephalandra Red Mini",
     "scientificName": "Bucephalandra sp. 'Red Mini'",
@@ -9340,7 +9911,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "587",
+    "id": "601",
     "name": "Samambaia do Congo Bolbitis (Bolbitis heudelotii)",
     "commonName": "Samambaia do Congo Bolbitis",
     "scientificName": "Bolbitis heudelotii",
@@ -9355,7 +9926,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "588",
+    "id": "602",
     "name": "Hygrophila Pinnatifida (Hygrophila pinnatifida)",
     "commonName": "Hygrophila Pinnatifida",
     "scientificName": "Hygrophila pinnatifida",
@@ -9371,7 +9942,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "589",
+    "id": "603",
     "name": "Musgo de Java (Taxiphyllum barbieri)",
     "commonName": "Musgo de Java",
     "scientificName": "Taxiphyllum barbieri",
@@ -9386,7 +9957,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Flora e Macroalgas"
   },
   {
-    "id": "590",
+    "id": "604",
     "name": "Musgo Christmas Moss (Vesicularia montagnei)",
     "commonName": "Musgo Christmas Moss",
     "scientificName": "Vesicularia montagnei",
@@ -9402,7 +9973,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Flora e Macroalgas"
   },
   {
-    "id": "591",
+    "id": "605",
     "name": "Musgo Flame Moss (Taxiphyllum alternans)",
     "commonName": "Musgo Flame Moss",
     "scientificName": "Taxiphyllum alternans",
@@ -9418,7 +9989,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Flora e Macroalgas"
   },
   {
-    "id": "592",
+    "id": "606",
     "name": "Marimo Ball Alga Musgo (Aegagropila linnaei)",
     "commonName": "Marimo Ball Alga Musgo",
     "scientificName": "Aegagropila linnaei",
@@ -9434,7 +10005,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Flora e Macroalgas"
   },
   {
-    "id": "593",
+    "id": "607",
     "name": "Elódea Comum Anacharis (Egeria densa)",
     "commonName": "Elódea Comum Anacharis",
     "scientificName": "Egeria densa",
@@ -9449,7 +10020,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "594",
+    "id": "608",
     "name": "Elódea Najas (Egeria najas)",
     "commonName": "Elódea Najas",
     "scientificName": "Egeria najas",
@@ -9465,7 +10036,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "595",
+    "id": "609",
     "name": "Cabomba Verde (Cabomba caroliniana)",
     "commonName": "Cabomba Verde",
     "scientificName": "Cabomba caroliniana",
@@ -9480,7 +10051,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "596",
+    "id": "610",
     "name": "Cabomba Vermelha Furcata (Cabomba furcata)",
     "commonName": "Cabomba Vermelha Furcata",
     "scientificName": "Cabomba furcata",
@@ -9496,7 +10067,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "597",
+    "id": "611",
     "name": "Rabo-de-Raposa Coontail (Ceratophyllum demersum)",
     "commonName": "Rabo-de-Raposa Coontail",
     "scientificName": "Ceratophyllum demersum",
@@ -9511,7 +10082,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "598",
+    "id": "612",
     "name": "Ambulia Sessiliflora (Limnophila sessiliflora)",
     "commonName": "Ambulia Sessiliflora",
     "scientificName": "Limnophila sessiliflora",
@@ -9526,7 +10097,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "599",
+    "id": "613",
     "name": "Mil-Folhas Verde (Myriophyllum aquaticum)",
     "commonName": "Mil-Folhas Verde",
     "scientificName": "Myriophyllum aquaticum",
@@ -9542,7 +10113,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "600",
+    "id": "614",
     "name": "Hygrophila Polysperma Comum (Hygrophila polysperma)",
     "commonName": "Hygrophila Polysperma Comum",
     "scientificName": "Hygrophila polysperma",
@@ -9557,7 +10128,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "601",
+    "id": "615",
     "name": "Hygrophila Polysperma Rosanervig Sunset (Hygrophila polysperma 'Rosanervig')",
     "commonName": "Hygrophila Polysperma Rosanervig Sunset",
     "scientificName": "Hygrophila polysperma 'Rosanervig'",
@@ -9573,7 +10144,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "602",
+    "id": "616",
     "name": "Hygrophila Corymbosa Rio (Hygrophila corymbosa)",
     "commonName": "Hygrophila Corymbosa Rio",
     "scientificName": "Hygrophila corymbosa",
@@ -9588,7 +10159,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "603",
+    "id": "617",
     "name": "Hygrophila Corymbosa Compacta (Hygrophila corymbosa 'Compact')",
     "commonName": "Hygrophila Corymbosa Compacta",
     "scientificName": "Hygrophila corymbosa 'Compact'",
@@ -9604,7 +10175,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "604",
+    "id": "618",
     "name": "Hygrophila Difformis Sinema (Hygrophila difformis)",
     "commonName": "Hygrophila Difformis Sinema",
     "scientificName": "Hygrophila difformis",
@@ -9619,7 +10190,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "605",
+    "id": "619",
     "name": "Samambaia d'Água Ceratopteris (Ceratopteris thalictroides)",
     "commonName": "Samambaia d'Água Ceratopteris",
     "scientificName": "Ceratopteris thalictroides",
@@ -9635,7 +10206,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "606",
+    "id": "620",
     "name": "Bacopa Caroliniana (Bacopa caroliniana)",
     "commonName": "Bacopa Caroliniana",
     "scientificName": "Bacopa caroliniana",
@@ -9650,7 +10221,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "607",
+    "id": "621",
     "name": "Bacopa Monnieri Moneywort (Bacopa monnieri)",
     "commonName": "Bacopa Monnieri Moneywort",
     "scientificName": "Bacopa monnieri",
@@ -9666,7 +10237,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "608",
+    "id": "622",
     "name": "Rotala Rotundifolia Red (Rotala rotundifolia 'Red')",
     "commonName": "Rotala Rotundifolia Red",
     "scientificName": "Rotala rotundifolia 'Red'",
@@ -9681,12 +10252,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Flora e Macroalgas"
   },
   {
-    "id": "609",
-    "name": "Rotala Rotundifolia H'ra (Rotala rotundifolia 'H\\'ra')",
+    "id": "623",
+    "name": "Rotala Rotundifolia H'ra (Rotala rotundifolia 'Hra')",
     "commonName": "Rotala Rotundifolia H'ra",
-    "scientificName": "Rotala rotundifolia 'H\\'ra'",
+    "scientificName": "Rotala rotundifolia 'Hra'",
     "synonyms": [
       "Rotala Rotundifolia H'ra",
+      "Rotala Rotundifolia H'ra (Rotala rotundifolia 'Hra')",
       "Rotala Rotundifolia H'ra (Rotala rotundifolia 'H\\'ra')",
       "rotala-hra.jpg"
     ],
@@ -9697,7 +10269,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Flora e Macroalgas"
   },
   {
-    "id": "610",
+    "id": "624",
     "name": "Rotala Blood Red (Rotala rotundifolia 'Blood Red')",
     "commonName": "Rotala Blood Red",
     "scientificName": "Rotala rotundifolia 'Blood Red'",
@@ -9713,7 +10285,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Flora e Macroalgas"
   },
   {
-    "id": "611",
+    "id": "625",
     "name": "Rotala Green (Rotala rotundifolia 'Green')",
     "commonName": "Rotala Green",
     "scientificName": "Rotala rotundifolia 'Green'",
@@ -9728,7 +10300,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Flora e Macroalgas"
   },
   {
-    "id": "612",
+    "id": "626",
     "name": "Rotala Bonsai (Ammannia gracilis 'Bonsai')",
     "commonName": "Rotala Bonsai",
     "scientificName": "Ammannia gracilis 'Bonsai'",
@@ -9744,7 +10316,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Flora e Macroalgas"
   },
   {
-    "id": "613",
+    "id": "627",
     "name": "Rotala Wallichii Vermelha (Rotala wallichii)",
     "commonName": "Rotala Wallichii Vermelha",
     "scientificName": "Rotala wallichii",
@@ -9760,7 +10332,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Flora e Macroalgas"
   },
   {
-    "id": "614",
+    "id": "628",
     "name": "Ludwigia Super Red Mini (Ludwigia palustris 'Super Red')",
     "commonName": "Ludwigia Super Red Mini",
     "scientificName": "Ludwigia palustris 'Super Red'",
@@ -9775,7 +10347,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "615",
+    "id": "629",
     "name": "Ludwigia Repens Rubin (Ludwigia repens 'Rubin')",
     "commonName": "Ludwigia Repens Rubin",
     "scientificName": "Ludwigia repens 'Rubin'",
@@ -9791,7 +10363,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "616",
+    "id": "630",
     "name": "Ludwigia Glandulosa (Ludwigia glandulosa)",
     "commonName": "Ludwigia Glandulosa",
     "scientificName": "Ludwigia glandulosa",
@@ -9807,11 +10379,13 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "617",
-    "name": "Alternanthera Reineckii (AR Mini, Rosanervig, Rosaefolia e Lilacina)",
-    "commonName": "Alternanthera Reineckii",
-    "scientificName": "AR Mini, Rosanervig, Rosaefolia e Lilacina",
+    "id": "631",
+    "name": "Alternanthera Reineckii Mini (Alternanthera reineckii 'Mini')",
+    "commonName": "Alternanthera Reineckii Mini",
+    "scientificName": "Alternanthera reineckii 'Mini'",
     "synonyms": [
+      "Alternanthera Reineckii Mini",
+      "Alternanthera Reineckii Mini (Alternanthera reineckii 'Mini')",
       "Alternanthera Reineckii",
       "Alternanthera Reineckii (AR Mini, Rosanervig, Rosaefolia e Lilacina)",
       "alternanthera reineckii",
@@ -9822,12 +10396,78 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     ],
     "type": "LIVING",
     "subCategory": "PLANT",
-    "imageSlug": "337_alternanthera_reineckii_mini_rosanervig.jpg",
+    "imageSlug": "",
     "section": "Plantas Aquáticas",
     "familyGroup": "Geral"
   },
   {
-    "id": "618",
+    "id": "632",
+    "name": "Alternanthera Reineckii Rosanervig (Alternanthera reineckii 'Rosanervig')",
+    "commonName": "Alternanthera Reineckii Rosanervig",
+    "scientificName": "Alternanthera reineckii 'Rosanervig'",
+    "synonyms": [
+      "Alternanthera Reineckii Rosanervig",
+      "Alternanthera Reineckii Rosanervig (Alternanthera reineckii 'Rosanervig')",
+      "Alternanthera Reineckii",
+      "Alternanthera Reineckii (AR Mini, Rosanervig, Rosaefolia e Lilacina)",
+      "alternanthera reineckii",
+      "ar mini",
+      "reineckii rosanervig",
+      "scarlet temple",
+      "violacea"
+    ],
+    "type": "LIVING",
+    "subCategory": "PLANT",
+    "imageSlug": "",
+    "section": "Plantas Aquáticas",
+    "familyGroup": "Geral"
+  },
+  {
+    "id": "633",
+    "name": "Alternanthera Reineckii Rosaefolia (Alternanthera reineckii 'Rosaefolia')",
+    "commonName": "Alternanthera Reineckii Rosaefolia",
+    "scientificName": "Alternanthera reineckii 'Rosaefolia'",
+    "synonyms": [
+      "Alternanthera Reineckii Rosaefolia",
+      "Alternanthera Reineckii Rosaefolia (Alternanthera reineckii 'Rosaefolia')",
+      "Alternanthera Reineckii",
+      "Alternanthera Reineckii (AR Mini, Rosanervig, Rosaefolia e Lilacina)",
+      "alternanthera reineckii",
+      "ar mini",
+      "reineckii rosanervig",
+      "scarlet temple",
+      "violacea"
+    ],
+    "type": "LIVING",
+    "subCategory": "PLANT",
+    "imageSlug": "",
+    "section": "Plantas Aquáticas",
+    "familyGroup": "Geral"
+  },
+  {
+    "id": "634",
+    "name": "Alternanthera Reineckii Lilacina (Alternanthera reineckii 'Lilacina')",
+    "commonName": "Alternanthera Reineckii Lilacina",
+    "scientificName": "Alternanthera reineckii 'Lilacina'",
+    "synonyms": [
+      "Alternanthera Reineckii Lilacina",
+      "Alternanthera Reineckii Lilacina (Alternanthera reineckii 'Lilacina')",
+      "Alternanthera Reineckii",
+      "Alternanthera Reineckii (AR Mini, Rosanervig, Rosaefolia e Lilacina)",
+      "alternanthera reineckii",
+      "ar mini",
+      "reineckii rosanervig",
+      "scarlet temple",
+      "violacea"
+    ],
+    "type": "LIVING",
+    "subCategory": "PLANT",
+    "imageSlug": "",
+    "section": "Plantas Aquáticas",
+    "familyGroup": "Geral"
+  },
+  {
+    "id": "635",
     "name": "Planta Amazonense Clássica (Echinodorus bleheri)",
     "commonName": "Planta Amazonense Clássica",
     "scientificName": "Echinodorus bleheri",
@@ -9842,7 +10482,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "619",
+    "id": "636",
     "name": "Echinodorus Ozelot Red (Echinodorus 'Ozelot Red')",
     "commonName": "Echinodorus Ozelot Red",
     "scientificName": "Echinodorus 'Ozelot Red'",
@@ -9857,7 +10497,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "620",
+    "id": "637",
     "name": "Echinodorus Rubin (Echinodorus 'Rubin')",
     "commonName": "Echinodorus Rubin",
     "scientificName": "Echinodorus 'Rubin'",
@@ -9873,7 +10513,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "621",
+    "id": "638",
     "name": "Echinodorus Reni (Echinodorus 'Reni')",
     "commonName": "Echinodorus Reni",
     "scientificName": "Echinodorus 'Reni'",
@@ -9889,7 +10529,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "622",
+    "id": "639",
     "name": "Echinodorus Tenellus Comum (Helanthium tenellum)",
     "commonName": "Echinodorus Tenellus Comum",
     "scientificName": "Helanthium tenellum",
@@ -9904,7 +10544,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "623",
+    "id": "640",
     "name": "Echinodorus Tenellus Amano Red (Helanthium tenellum 'Red')",
     "commonName": "Echinodorus Tenellus Amano Red",
     "scientificName": "Helanthium tenellum 'Red'",
@@ -9920,7 +10560,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "624",
+    "id": "641",
     "name": "Vallisneria Gigantea Americana (Vallisneria americana)",
     "commonName": "Vallisneria Gigantea Americana",
     "scientificName": "Vallisneria americana",
@@ -9935,7 +10575,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "625",
+    "id": "642",
     "name": "Vallisneria Nana Australiana (Vallisneria nana)",
     "commonName": "Vallisneria Nana Australiana",
     "scientificName": "Vallisneria nana",
@@ -9951,7 +10591,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "626",
+    "id": "643",
     "name": "Vallisneria Saca-Rolhas Spiralis (Vallisneria spiralis 'Tortifolia')",
     "commonName": "Vallisneria Saca-Rolhas Spiralis",
     "scientificName": "Vallisneria spiralis 'Tortifolia'",
@@ -9966,7 +10606,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "627",
+    "id": "644",
     "name": "Sagittaria Subulata Anã (Sagittaria subulata)",
     "commonName": "Sagittaria Subulata Anã",
     "scientificName": "Sagittaria subulata",
@@ -9981,7 +10621,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "628",
+    "id": "645",
     "name": "Blyxa Japonica (Blyxa japonica)",
     "commonName": "Blyxa Japonica",
     "scientificName": "Blyxa japonica",
@@ -9997,7 +10637,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "629",
+    "id": "646",
     "name": "Cryptocoryne Wendtii Brown (Cryptocoryne wendtii 'Brown')",
     "commonName": "Cryptocoryne Wendtii Brown",
     "scientificName": "Cryptocoryne wendtii 'Brown'",
@@ -10012,7 +10652,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "630",
+    "id": "647",
     "name": "Cryptocoryne Beckettii Petchii (Cryptocoryne beckettii)",
     "commonName": "Cryptocoryne Beckettii Petchii",
     "scientificName": "Cryptocoryne beckettii",
@@ -10028,7 +10668,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "631",
+    "id": "648",
     "name": "Cryptocoryne Wendtii Green (Cryptocoryne wendtii 'Green')",
     "commonName": "Cryptocoryne Wendtii Green",
     "scientificName": "Cryptocoryne wendtii 'Green'",
@@ -10043,7 +10683,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "632",
+    "id": "649",
     "name": "Cryptocoryne Parva Mini (Cryptocoryne parva)",
     "commonName": "Cryptocoryne Parva Mini",
     "scientificName": "Cryptocoryne parva",
@@ -10059,7 +10699,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "633",
+    "id": "650",
     "name": "Cryptocoryne Balansae Crispatula (Cryptocoryne crispatula var. balansae)",
     "commonName": "Cryptocoryne Balansae Crispatula",
     "scientificName": "Cryptocoryne crispatula var. balansae",
@@ -10075,7 +10715,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "634",
+    "id": "651",
     "name": "Cryptocoryne Pink Flamingo (Cryptocoryne wendtii 'Pink Flamingo')",
     "commonName": "Cryptocoryne Pink Flamingo",
     "scientificName": "Cryptocoryne wendtii 'Pink Flamingo'",
@@ -10090,7 +10730,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "635",
+    "id": "652",
     "name": "Cryptocoryne Pink Panther (Cryptocoryne spiralis 'Pink Panther')",
     "commonName": "Cryptocoryne Pink Panther",
     "scientificName": "Cryptocoryne spiralis 'Pink Panther'",
@@ -10106,7 +10746,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "636",
+    "id": "653",
     "name": "Nymphaea Rubra Red Tiger Lotus (Nymphaea zenkeri)",
     "commonName": "Nymphaea Rubra Red Tiger Lotus",
     "scientificName": "Nymphaea zenkeri",
@@ -10121,7 +10761,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "637",
+    "id": "654",
     "name": "Crinum Calamistratum Ondulada (Crinum calamistratum)",
     "commonName": "Crinum Calamistratum Ondulada",
     "scientificName": "Crinum calamistratum",
@@ -10137,7 +10777,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "638",
+    "id": "655",
     "name": "Carpete Monte Carlo (Micranthemum tweediei)",
     "commonName": "Carpete Monte Carlo",
     "scientificName": "Micranthemum tweediei",
@@ -10156,7 +10796,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "639",
+    "id": "656",
     "name": "Carpete Cuba HC (Hemianthus callitrichoides)",
     "commonName": "Carpete Cuba HC",
     "scientificName": "Hemianthus callitrichoides",
@@ -10171,7 +10811,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "640",
+    "id": "657",
     "name": "Carpete Glossostigma Elatinoides (Glossostigma elatinoides)",
     "commonName": "Carpete Glossostigma Elatinoides",
     "scientificName": "Glossostigma elatinoides",
@@ -10187,7 +10827,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "641",
+    "id": "658",
     "name": "Carpete Eleocharis Minima (Eleocharis minima)",
     "commonName": "Carpete Eleocharis Minima",
     "scientificName": "Eleocharis minima",
@@ -10202,7 +10842,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "642",
+    "id": "659",
     "name": "Carpete Eleocharis Vivipara (Eleocharis vivipara)",
     "commonName": "Carpete Eleocharis Vivipara",
     "scientificName": "Eleocharis vivipara",
@@ -10218,7 +10858,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "643",
+    "id": "660",
     "name": "Staurogyne Repens Rasteira (Staurogyne repens)",
     "commonName": "Staurogyne Repens Rasteira",
     "scientificName": "Staurogyne repens",
@@ -10233,7 +10873,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "644",
+    "id": "661",
     "name": "Pogostemon Helferi Downoi (Pogostemon helferi)",
     "commonName": "Pogostemon Helferi Downoi",
     "scientificName": "Pogostemon helferi",
@@ -10249,7 +10889,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "645",
+    "id": "662",
     "name": "Hydrocotyle Tripartita Trevo Japonês (Hydrocotyle tripartita)",
     "commonName": "Hydrocotyle Tripartita Trevo Japonês",
     "scientificName": "Hydrocotyle tripartita",
@@ -10264,7 +10904,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "646",
+    "id": "663",
     "name": "Hydrocotyle Leucocephala Trevo Redondo (Hydrocotyle leucocephala)",
     "commonName": "Hydrocotyle Leucocephala Trevo Redondo",
     "scientificName": "Hydrocotyle leucocephala",
@@ -10280,7 +10920,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "647",
+    "id": "664",
     "name": "Grama Brasileira Lilaeopsis (Lilaeopsis brasiliensis)",
     "commonName": "Grama Brasileira Lilaeopsis",
     "scientificName": "Lilaeopsis brasiliensis",
@@ -10295,7 +10935,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "648",
+    "id": "665",
     "name": "Marsilea Hirsuta Trevo Quatro Folhas (Marsilea hirsuta)",
     "commonName": "Marsilea Hirsuta Trevo Quatro Folhas",
     "scientificName": "Marsilea hirsuta",
@@ -10311,7 +10951,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "649",
+    "id": "666",
     "name": "Lobelia Cardinalis Comum (Lobelia cardinalis)",
     "commonName": "Lobelia Cardinalis Comum",
     "scientificName": "Lobelia cardinalis",
@@ -10326,7 +10966,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "650",
+    "id": "667",
     "name": "Lobelia Cardinalis Mini (Lobelia cardinalis 'Mini')",
     "commonName": "Lobelia Cardinalis Mini",
     "scientificName": "Lobelia cardinalis 'Mini'",
@@ -10342,7 +10982,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "651",
+    "id": "668",
     "name": "Lagenandra Meeboldii Red (Lagenandra meeboldii 'Red')",
     "commonName": "Lagenandra Meeboldii Red",
     "scientificName": "Lagenandra meeboldii 'Red'",
@@ -10357,7 +10997,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "652",
+    "id": "669",
     "name": "Lagenandra Keralensis (Lagenandra keralensis)",
     "commonName": "Lagenandra Keralensis",
     "scientificName": "Lagenandra keralensis",
@@ -10373,7 +11013,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "653",
+    "id": "670",
     "name": "Planta Flutuante Salvínia Comum (Salvinia auriculata)",
     "commonName": "Planta Flutuante Salvínia Comum",
     "scientificName": "Salvinia auriculata",
@@ -10388,7 +11028,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "654",
+    "id": "671",
     "name": "Planta Flutuante Salvínia Orelha-de-Onça (Salvinia cucullata)",
     "commonName": "Planta Flutuante Salvínia Orelha-de-Onça",
     "scientificName": "Salvinia cucullata",
@@ -10404,7 +11044,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "655",
+    "id": "672",
     "name": "Alface d'Água Anã (Pistia stratiotes)",
     "commonName": "Alface d'Água Anã",
     "scientificName": "Pistia stratiotes",
@@ -10419,7 +11059,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "656",
+    "id": "673",
     "name": "Aguapé Flutuante (Eichhornia crassipes)",
     "commonName": "Aguapé Flutuante",
     "scientificName": "Eichhornia crassipes",
@@ -10435,7 +11075,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "657",
+    "id": "674",
     "name": "Phyllanthus Fluitans Flutuante Vermelha (Phyllanthus fluitans)",
     "commonName": "Phyllanthus Fluitans Flutuante Vermelha",
     "scientificName": "Phyllanthus fluitans",
@@ -10450,7 +11090,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "658",
+    "id": "675",
     "name": "Amazon Frogbit (Limnobium laevigatum)",
     "commonName": "Amazon Frogbit",
     "scientificName": "Limnobium laevigatum",
@@ -10465,7 +11105,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "659",
+    "id": "676",
     "name": "Amor-de-Peixe Hydrocleys (Hydrocleys nymphoides)",
     "commonName": "Amor-de-Peixe Hydrocleys",
     "scientificName": "Hydrocleys nymphoides",
@@ -10481,7 +11121,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "660",
+    "id": "677",
     "name": "Lentilha d'Água (Lemna minor)",
     "commonName": "Lentilha d'Água",
     "scientificName": "Lemna minor",
@@ -10496,7 +11136,7 @@ export const SPECIES_MASTER_CATALOG: MasterSpecies[] = [
     "familyGroup": "Geral"
   },
   {
-    "id": "661",
+    "id": "678",
     "name": "Azolla Flutuante Vermelha (Azolla caroliniana)",
     "commonName": "Azolla Flutuante Vermelha",
     "scientificName": "Azolla caroliniana",
