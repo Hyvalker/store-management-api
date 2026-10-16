@@ -42,3 +42,19 @@ export async function updateProduct(id: number, data: UpdateProductRequest): Pro
     const response = await api.put<Product>(`/products/${id}`, data)
     return response.data
 }
+
+export async function uploadProductImage(id: number, file: File): Promise<Product> {
+    const formData = new FormData()
+    formData.append('file', file)
+    const response = await api.post<Product>(`/products/${id}/image`, formData, {
+        headers: {
+            'Content-Type': 'multipart/form-data',
+        },
+    })
+    return response.data
+}
+
+export async function deleteProductImage(id: number): Promise<Product> {
+    const response = await api.delete<Product>(`/products/${id}/image`)
+    return response.data
+}

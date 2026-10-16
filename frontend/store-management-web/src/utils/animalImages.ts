@@ -17,6 +17,15 @@ export interface ItemImageSource {
 function verifyImageExists(pathOrSlug?: string | null): string | null {
     if (!pathOrSlug) return null
     let filename = pathOrSlug.trim()
+    if (
+        filename.startsWith('/api/') ||
+        filename.startsWith('http://') ||
+        filename.startsWith('https://') ||
+        filename.startsWith('data:image/') ||
+        filename.startsWith('/uploads/')
+    ) {
+        return filename
+    }
     if (filename.startsWith('/images/animals/')) {
         filename = filename.slice('/images/animals/'.length)
     }
@@ -47,6 +56,20 @@ export function getAnimalImage(itemOrName: ItemImageSource | string): string | n
     const imageSlug = typeof itemOrName === 'object' ? itemOrName.imageSlug : undefined
 
     if (!name || name.trim().length < 2) return null
+
+    // 0. Curadoria visual / upload oficial direto do produto (/api/, data URI ou URL)
+    if (imageSlug && imageSlug.trim().length > 0) {
+        const slug = imageSlug.trim()
+        if (
+            slug.startsWith('/api/') ||
+            slug.startsWith('http://') ||
+            slug.startsWith('https://') ||
+            slug.startsWith('data:image/') ||
+            slug.startsWith('/uploads/')
+        ) {
+            return slug
+        }
+    }
 
     const norm = name
         .normalize('NFD')

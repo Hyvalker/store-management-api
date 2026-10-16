@@ -13,7 +13,7 @@ import {
     Image as ImageIcon,
     Trash2
 } from 'lucide-react'
-import {createProduct} from '../../services/productService'
+import {createProduct, uploadProductImage} from '../../services/productService'
 import type {CreateProductRequest, ProductType} from '../../types/product'
 import {searchMasterSpecies, type MasterSpecies} from '../../data/speciesMasterCatalog'
 import {getSubCategoryLabel, getAnimalImage} from '../../utils/animalImages'
@@ -34,6 +34,7 @@ function ProductForm({onSuccess}: ProductFormProps) {
     const [barcode, setBarcode] = useState('')
     const [customImageSlug, setCustomImageSlug] = useState('')
     const [customImagePreview, setCustomImagePreview] = useState<string | null>(null)
+    const [selectedImageFile, setSelectedImageFile] = useState<File | null>(null)
 
     // Catálogo Mestre e Autocomplete
     const [speciesSuggestions, setSpeciesSuggestions] = useState<MasterSpecies[]>([])
@@ -144,7 +145,16 @@ function ProductForm({onSuccess}: ProductFormProps) {
                 data.salePrice = Number(salePrice)
             }
 
-            await createProduct(data)
+            const createdProduct = await createProduct(data)
+
+            if (selectedImageFile) {
+                try {
+                    await uploadProductImage(createdProduct.id, selectedImageFile)
+                } catch (uploadErr) {
+                    console.error('Falha ao enviar imagem customizada:', uploadErr)
+                    toast.error('Produto criado, mas houve falha ao enviar a foto. Edite o produto para tentar novamente.', 'Aviso de Foto')
+                }
+            }
 
             setSuccess(true)
             toast.success(`"${data.name}" cadastrado com sucesso no catálogo!`, 'Novo Produto')
@@ -161,6 +171,7 @@ function ProductForm({onSuccess}: ProductFormProps) {
             setBarcode('')
             setCustomImageSlug('')
             setCustomImagePreview(null)
+            setSelectedImageFile(null)
             setLastEditedPriceField(null)
 
             if (onSuccess) {
@@ -229,19 +240,19 @@ function ProductForm({onSuccess}: ProductFormProps) {
             return
         }
 
+        setSelectedImageFile(file)
+
         const reader = new FileReader()
         reader.onload = (event) => {
             const dataUrl = event.target?.result as string
             setCustomImagePreview(dataUrl)
-            const cleanFileName = file.name.replace(/[^a-zA-Z0-9._-]/g, '_')
-            const slugIdentifier = `loja_${Date.now()}_${cleanFileName}`
-            setCustomImageSlug(slugIdentifier)
             toast.success('Foto carregada para o novo item!', 'Curadoria de Imagem')
         }
         reader.readAsDataURL(file)
     }
 
     function handleRemovePhoto() {
+        setSelectedImageFile(null)
         setCustomImageSlug('')
         setCustomImagePreview(null)
     }

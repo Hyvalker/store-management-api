@@ -11,7 +11,7 @@ import {
     Image as ImageIcon
 } from 'lucide-react'
 import type {Product, ProductType, SubCategory, UpdateProductRequest} from '../../types/product'
-import {updateProduct} from '../../services/productService'
+import {updateProduct, uploadProductImage, deleteProductImage} from '../../services/productService'
 import {searchMasterSpecies, type MasterSpecies} from '../../data/speciesMasterCatalog'
 import {getAnimalImage, getSubCategoryLabel} from '../../utils/animalImages'
 import {useToast} from '../../contexts/ToastContext'
@@ -54,6 +54,8 @@ export default function EditProductModal({
     const [profitMargin, setProfitMargin] = useState('')
     const [imageSlug, setImageSlug] = useState('')
     const [customImagePreview, setCustomImagePreview] = useState<string | null>(null)
+    const [selectedImageFile, setSelectedImageFile] = useState<File | null>(null)
+    const [photoRemoved, setPhotoRemoved] = useState(false)
 
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState<string | null>(null)
@@ -74,6 +76,8 @@ export default function EditProductModal({
             setSalePrice(String(product.salePrice ?? ''))
             setProfitMargin(product.profitMargin != null ? String(product.profitMargin) : '')
             setImageSlug(product.imageSlug || '')
+            setSelectedImageFile(null)
+            setPhotoRemoved(false)
             setCustomImagePreview(
                 product.imageSlug
                     ? getAnimalImage({name: product.name, imageSlug: product.imageSlug})
@@ -162,26 +166,27 @@ export default function EditProductModal({
             return
         }
 
+        setSelectedImageFile(file)
+        setPhotoRemoved(false)
+
         const reader = new FileReader()
         reader.onload = (event) => {
             const dataUrl = event.target?.result as string
             setCustomImagePreview(dataUrl)
-            // Slug includes store curation prefix
-            const cleanFileName = file.name.replace(/[^a-zA-Z0-9._-]/g, '_')
-            const slugIdentifier = `loja_${Date.now()}_${cleanFileName}`
-            setImageSlug(slugIdentifier)
-            toast.success('Foto carregada localmente para este produto!', 'Curadoria de Imagem')
+            toast.success('Foto carregada! Clique em "Salvar Alterações" para gravar.', 'Curadoria de Imagem')
         }
         reader.readAsDataURL(file)
     }
 
     function handleRemovePhoto() {
+        setSelectedImageFile(null)
+        setPhotoRemoved(true)
         setImageSlug('')
         setCustomImagePreview(null)
         if (fileInputRef.current) {
             fileInputRef.current.value = ''
         }
-        toast.info('Foto removida. O produto usará o card visual da categoria.', 'Foto Removida')
+        toast.info('Foto removida. O produto usará o card visual da categoria ao salvar.', 'Foto Removida')
     }
 
     async function handleSubmit(e: React.FormEvent) {
@@ -206,7 +211,14 @@ export default function EditProductModal({
                 imageSlug: imageSlug.trim() || undefined,
             }
 
-            const updated = await updateProduct(product.id, updateData)
+            let updated = await updateProduct(product.id, updateData)
+
+            if (selectedImageFile) {
+                updated = await uploadProductImage(product.id, selectedImageFile)
+            } else if (photoRemoved) {
+                updated = await deleteProductImage(product.id)
+            }
+
             toast.success(`"${updated.name}" foi atualizado com sucesso!`, 'Produto Atualizado')
             onSaved(updated)
             onClose()

@@ -1,6 +1,5 @@
 package com.hyvalker.storemanagementapi.controller;
 
-
 import com.hyvalker.storemanagementapi.dto.CreateProductRequest;
 import com.hyvalker.storemanagementapi.dto.UpdateProductRequest;
 import com.hyvalker.storemanagementapi.dto.CreateStockEntryRequest;
@@ -9,6 +8,7 @@ import com.hyvalker.storemanagementapi.dto.CreateStockLossRequest;
 import com.hyvalker.storemanagementapi.exception.ApiError;
 import com.hyvalker.storemanagementapi.exception.ProductNotFoundException;
 import com.hyvalker.storemanagementapi.model.SubCategory;
+import com.hyvalker.storemanagementapi.service.ProductImageService;
 import com.hyvalker.storemanagementapi.service.ProductService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -17,12 +17,16 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
+import org.springframework.http.CacheControl;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 @Tag(name = "Products", description = "Endpoints para gerenciamento de produtos.")
 @RestController
@@ -30,11 +34,12 @@ import java.util.List;
 public class ProductController {
 
     private final ProductService productService;
+    private final ProductImageService productImageService;
 
-    public ProductController(ProductService productService) {
+    public ProductController(ProductService productService, ProductImageService productImageService) {
         this.productService = productService;
+        this.productImageService = productImageService;
     }
-
 
     @Operation(summary = "Cadastra um novo produto.")
     @ApiResponses(value = {
@@ -47,9 +52,7 @@ public class ProductController {
     })
     @PostMapping
     public ResponseEntity<ProductResponseDTO> createProduct(@Valid @RequestBody CreateProductRequest request) {
-
         ProductResponseDTO response = productService.create(request);
-
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
@@ -142,7 +145,6 @@ public class ProductController {
                 .orElseThrow(() -> new ProductNotFoundException("Produto não encontrado."));
 
         return ResponseEntity.ok(response);
-
     }
 
     @Operation(summary = "Desativa o produto da lista de produtos cadastrados.")
@@ -175,5 +177,32 @@ public class ProductController {
                 .anyMatch(a -> "ROLE_ADMIN".equals(a.getAuthority()));
         return ResponseEntity.ok(productService.createStockEntry(request, isAdmin));
     }
-}
 
+    @Operation(summary = "Retorna a imagem oficial cadastrada para o produto.")
+    @GetMapping("/{id}/image")
+    public ResponseEntity<byte[]> getProductImage(@PathVariable Long id) {
+        return productImageService.getImage(id)
+                .map(img -> ResponseEntity.ok()
+                        .contentType(MediaType.parseMediaType(img.getContentType()))
+                        .cacheControl(CacheControl.maxAge(7, TimeUnit.DAYS).cachePublic())
+                        .body(img.getImageData()))
+                .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    @Operation(summary = "Upload de foto oficial para curadoria visual do produto.")
+    @PostMapping(value = "/{id}/image", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<ProductResponseDTO> uploadProductImage(
+            @PathVariable Long id,
+            @RequestParam("file") MultipartFile file
+    ) {
+        ProductResponseDTO response = productImageService.saveImage(id, file);
+        return ResponseEntity.ok(response);
+    }
+
+    @Operation(summary = "Remove a foto oficial personalizada do produto.")
+    @DeleteMapping("/{id}/image")
+    public ResponseEntity<ProductResponseDTO> deleteProductImage(@PathVariable Long id) {
+        ProductResponseDTO response = productImageService.deleteImage(id);
+        return ResponseEntity.ok(response);
+    }
+}

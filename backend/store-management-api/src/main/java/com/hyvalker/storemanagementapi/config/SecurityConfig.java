@@ -72,6 +72,12 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
                         .requestMatchers("/swagger-ui/**", "/swagger-ui.html", "/v3/api-docs/**").permitAll()
                         .requestMatchers("/error").permitAll()
+                        // Imagens de produtos públicas para tags <img> e PDF/encarte do catálogo
+                        .requestMatchers(HttpMethod.GET, "/products/*/image").permitAll()
+
+                        // Curadoria visual de produtos: operadores e administradores autenticados podem enviar ou remover
+                        .requestMatchers(HttpMethod.POST, "/products/*/image").authenticated()
+                        .requestMatchers(HttpMethod.DELETE, "/products/*/image").authenticated()
 
                         // Somente ADMIN: gestão de operadores e painel gerencial (faturamento/lucro)
                         .requestMatchers("/operators/**").hasRole("ADMIN")
