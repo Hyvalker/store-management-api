@@ -53,7 +53,8 @@ public class Product {
     private Boolean active = true;
 
     @Version
-    private Long version;
+    @Column(nullable = false, columnDefinition = "bigint default 0")
+    private Long version = 0L;
 
     @Column (nullable = false, updatable = false)
     private LocalDateTime createdAt;
